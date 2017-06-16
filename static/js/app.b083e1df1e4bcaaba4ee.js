@@ -6,10 +6,10 @@ webpackJsonp([0],[
 
 
 var global = __webpack_require__(4),
-    core = __webpack_require__(31),
+    core = __webpack_require__(32),
     hide = __webpack_require__(17),
     redefine = __webpack_require__(18),
-    ctx = __webpack_require__(32),
+    ctx = __webpack_require__(33),
     PROTOTYPE = 'prototype';
 
 var $export = function $export(type, name, source) {
@@ -395,7 +395,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(279);
+var _index = __webpack_require__(277);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -512,7 +512,7 @@ exports.default = {
     /**
      * 为组件里面的类名增加前缀
      **/
-    prefixClass: function prefixClass(className) {
+    prefix: function prefix(className) {
       if (Array.isArray(className)) {
         for (var i = 0, len = className.length; i < len; i++) {
           className[i] = this.compPrefix + '-' + className[i];
@@ -727,7 +727,7 @@ module.exports = function (it) {
 
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(25);
+var defined = __webpack_require__(26);
 module.exports = function (it) {
   return Object(defined(it));
 };
@@ -9711,7 +9711,7 @@ var global = __webpack_require__(4),
     $toString = Function[TO_STRING],
     TPL = ('' + $toString).split(TO_STRING);
 
-__webpack_require__(31).inspectSource = function (it) {
+__webpack_require__(32).inspectSource = function (it) {
   return $toString.call(it);
 };
 
@@ -9744,7 +9744,7 @@ __webpack_require__(31).inspectSource = function (it) {
 
 var $export = __webpack_require__(0),
     fails = __webpack_require__(6),
-    defined = __webpack_require__(25),
+    defined = __webpack_require__(26),
     quot = /"/g;
 // B.2.3.2.1 CreateHTML(string, tag, attribute, value)
 var createHTML = function createHTML(string, tag, attribute, value) {
@@ -9771,7 +9771,7 @@ module.exports = function (NAME, exec) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = __webpack_require__(62),
-    defined = __webpack_require__(25);
+    defined = __webpack_require__(26);
 module.exports = function (it) {
   return IObject(defined(it));
 };
@@ -9914,47 +9914,6 @@ exports.default = iconCompConfig;
 
 /***/ }),
 /* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var toString = {}.toString;
-
-module.exports = function (it) {
-  return toString.call(it).slice(8, -1);
-};
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 7.2.1 RequireObjectCoercible(argument)
-module.exports = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on  " + it);
-  return it;
-};
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var fails = __webpack_require__(6);
-
-module.exports = function (method, arg) {
-  return !!method && fails(function () {
-    arg ? method.call(null, function () {}, 1) : method.call(null);
-  });
-};
-
-/***/ }),
-/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10215,6 +10174,47 @@ function pug_rethrow(err, filename, lineno, str){
 
 
 /***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var toString = {}.toString;
+
+module.exports = function (it) {
+  return toString.call(it).slice(8, -1);
+};
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 7.2.1 RequireObjectCoercible(argument)
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on  " + it);
+  return it;
+};
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var fails = __webpack_require__(6);
+
+module.exports = function (method, arg) {
+  return !!method && fails(function () {
+    arg ? method.call(null, function () {}, 1) : method.call(null);
+  });
+};
+
+/***/ }),
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10228,11 +10228,11 @@ function pug_rethrow(err, filename, lineno, str){
 // 4 -> Array#every
 // 5 -> Array#find
 // 6 -> Array#findIndex
-var ctx = __webpack_require__(32),
+var ctx = __webpack_require__(33),
     IObject = __webpack_require__(62),
     toObject = __webpack_require__(12),
     toLength = __webpack_require__(11),
-    asc = __webpack_require__(319);
+    asc = __webpack_require__(318);
 module.exports = function (TYPE, $create) {
   var IS_MAP = TYPE == 1,
       IS_FILTER = TYPE == 2,
@@ -10281,7 +10281,7 @@ module.exports = function (TYPE, $create) {
 
 // most Object methods by ES6 should accept primitives
 var $export = __webpack_require__(0),
-    core = __webpack_require__(31),
+    core = __webpack_require__(32),
     fails = __webpack_require__(6);
 module.exports = function (KEY, exec) {
   var fn = (core.Object || {})[KEY] || Object[KEY],
@@ -10313,7 +10313,8 @@ module.exports = function (it, S) {
 };
 
 /***/ }),
-/* 31 */
+/* 31 */,
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10323,7 +10324,7 @@ var core = module.exports = { version: '2.4.0' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10354,7 +10355,7 @@ module.exports = function (fn, that, length) {
 };
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10417,7 +10418,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10432,7 +10433,7 @@ if (__webpack_require__(9)) {
       $export = __webpack_require__(0),
       $typed = __webpack_require__(77),
       $buffer = __webpack_require__(107),
-      ctx = __webpack_require__(32),
+      ctx = __webpack_require__(33),
       anInstance = __webpack_require__(39),
       propertyDesc = __webpack_require__(37),
       hide = __webpack_require__(17),
@@ -10912,7 +10913,6 @@ if (__webpack_require__(9)) {
 } else module.exports = function () {/* empty */};
 
 /***/ }),
-/* 35 */,
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11995,13 +11995,13 @@ __webpack_require__(216);
 
 __webpack_require__(215);
 
-__webpack_require__(500);
+__webpack_require__(499);
 
 var _src = __webpack_require__(534);
 
 var _src2 = _interopRequireDefault(_src);
 
-var _zhCn = __webpack_require__(281);
+var _zhCn = __webpack_require__(279);
 
 var _zhCn2 = _interopRequireDefault(_zhCn);
 
@@ -12171,7 +12171,7 @@ module.exports = function (key) {
 "use strict";
 
 
-var ctx = __webpack_require__(32),
+var ctx = __webpack_require__(33),
     call = __webpack_require__(131),
     isArrayIter = __webpack_require__(92),
     anObject = __webpack_require__(3),
@@ -12234,7 +12234,7 @@ module.exports = function (it, tag, stat) {
 
 
 var $export = __webpack_require__(0),
-    defined = __webpack_require__(25),
+    defined = __webpack_require__(26),
     fails = __webpack_require__(6),
     spaces = __webpack_require__(105),
     space = '[' + spaces + ']',
@@ -12608,7 +12608,7 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuex = __webpack_require__(316);
+var _vuex = __webpack_require__(315);
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
@@ -12668,7 +12668,7 @@ module.exports = {
 
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = __webpack_require__(24),
+var cof = __webpack_require__(25),
     TAG = __webpack_require__(8)('toStringTag')
 // ES3 wrong here
 ,
@@ -12702,7 +12702,7 @@ module.exports = function (it) {
 
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(24);
+var cof = __webpack_require__(25);
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
@@ -12731,7 +12731,7 @@ __webpack_require__(186);
 
 __webpack_require__(185);
 
-var _btn = __webpack_require__(501);
+var _btn = __webpack_require__(500);
 
 var _btn2 = _interopRequireDefault(_btn);
 
@@ -13005,7 +13005,7 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _check = __webpack_require__(276);
+var _check = __webpack_require__(501);
 
 var _check2 = _interopRequireDefault(_check);
 
@@ -13045,7 +13045,7 @@ var checkCompConfig = {
 
   mixins: [_base2.default, _form2.default],
 
-  template: _check2.default,
+  render: _check2.default,
 
   components: {
     icon: _icon2.default,
@@ -13355,8 +13355,11 @@ var checkCompConfig = {
     /**
      * 选择 checkbox
      */
-    check: function check(evt, val) {
+    check: function check(evt) {
       var _this4 = this;
+
+      var index = evt.currentTarget.getAttribute('z-data-index');
+      var val = this.option[parseInt(index, 10)].value;
 
       if (this.beforeCheck && this.beforeCheck.call(null, this) === false) {
         return false;
@@ -14235,7 +14238,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 var hide = __webpack_require__(17),
     redefine = __webpack_require__(18),
     fails = __webpack_require__(6),
-    defined = __webpack_require__(25),
+    defined = __webpack_require__(26),
     wks = __webpack_require__(8);
 
 module.exports = function (KEY, length, exec) {
@@ -14318,7 +14321,7 @@ module.exports = function (fn, args, that) {
 
 // 7.2.8 IsRegExp(argument)
 var isObject = __webpack_require__(7),
-    cof = __webpack_require__(24),
+    cof = __webpack_require__(25),
     MATCH = __webpack_require__(8)('match');
 module.exports = function (it) {
   var isRegExp;
@@ -16046,7 +16049,7 @@ module.exports = function (it) {
 
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(24);
+var cof = __webpack_require__(25);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
@@ -16206,7 +16209,7 @@ var global = __webpack_require__(4),
     Observer = global.MutationObserver || global.WebKitMutationObserver,
     process = global.process,
     Promise = global.Promise,
-    isNode = __webpack_require__(24)(process) == 'process';
+    isNode = __webpack_require__(25)(process) == 'process';
 
 module.exports = function () {
   var head, last, notify;
@@ -16288,7 +16291,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
   function (test, buggy, set) {
     try {
-      set = __webpack_require__(32)(Function.call, __webpack_require__(21).f(Object.prototype, '__proto__').set, 2);
+      set = __webpack_require__(33)(Function.call, __webpack_require__(21).f(Object.prototype, '__proto__').set, 2);
       set(test, []);
       buggy = !(test instanceof Array);
     } catch (e) {
@@ -16341,7 +16344,7 @@ module.exports = function (O, D) {
 
 
 var toInteger = __webpack_require__(38),
-    defined = __webpack_require__(25);
+    defined = __webpack_require__(26);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -16366,7 +16369,7 @@ module.exports = function (TO_STRING) {
 
 // helper for String#{startsWith, endsWith, includes}
 var isRegExp = __webpack_require__(72),
-    defined = __webpack_require__(25);
+    defined = __webpack_require__(26);
 
 module.exports = function (that, searchString, NAME) {
   if (isRegExp(searchString)) throw TypeError('String#' + NAME + " doesn't accept regex!");
@@ -16381,7 +16384,7 @@ module.exports = function (that, searchString, NAME) {
 
 
 var toInteger = __webpack_require__(38),
-    defined = __webpack_require__(25);
+    defined = __webpack_require__(26);
 
 module.exports = function repeat(count) {
   var str = String(defined(this)),
@@ -16409,7 +16412,7 @@ module.exports = '\t\n\x0B\f\r \xA0\u1680\u180E\u2000\u2001\u2002\u2003' + '\u20
 "use strict";
 
 
-var ctx = __webpack_require__(32),
+var ctx = __webpack_require__(33),
     invoke = __webpack_require__(71),
     html = __webpack_require__(90),
     cel = __webpack_require__(87),
@@ -16452,7 +16455,7 @@ if (!setTask || !clearTask) {
     delete queue[id];
   };
   // Node.js 0.8-
-  if (__webpack_require__(24)(process) == 'process') {
+  if (__webpack_require__(25)(process) == 'process') {
     defer = function defer(id) {
       process.nextTick(ctx(run, id, 1));
     };
@@ -16783,7 +16786,7 @@ exports[DATA_VIEW] = $DataView;
 
 
 var global = __webpack_require__(4),
-    core = __webpack_require__(31),
+    core = __webpack_require__(32),
     LIBRARY = __webpack_require__(40),
     wksExt = __webpack_require__(144),
     defineProperty = __webpack_require__(10).f;
@@ -16802,7 +16805,7 @@ module.exports = function (name) {
 var classof = __webpack_require__(61),
     ITERATOR = __webpack_require__(8)('iterator'),
     Iterators = __webpack_require__(53);
-module.exports = __webpack_require__(31).getIteratorMethod = function (it) {
+module.exports = __webpack_require__(32).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR] || it['@@iterator'] || Iterators[classof(it)];
 };
 
@@ -17639,7 +17642,20 @@ module.exports = [
 				"sub": [
 					{
 						"name": "基本用法",
-						"route": "/component/select#basic"
+						"route": "/component/check#start"
+					},
+					{
+						"name": "多选",
+						"route": "/component/check#multiple"
+					}
+				]
+			},
+			{
+				"name": "菜单组件",
+				"sub": [
+					{
+						"name": "基本用法",
+						"route": "/component/select#start"
 					},
 					{
 						"name": "标签声明",
@@ -17832,7 +17848,7 @@ module.exports = __webpack_require__.p + "static/img/home-bg.c5db186.jpg";
 "use strict";
 
 
-var cof = __webpack_require__(24);
+var cof = __webpack_require__(25);
 module.exports = function (it, msg) {
   if (typeof it != 'number' && cof(it) != 'Number') throw TypeError(msg);
   return +it;
@@ -17964,9 +17980,9 @@ module.exports = Function.bind || function bind(that /*, args... */) {
 var dP = __webpack_require__(10).f,
     create = __webpack_require__(41),
     redefineAll = __webpack_require__(44),
-    ctx = __webpack_require__(32),
+    ctx = __webpack_require__(33),
     anInstance = __webpack_require__(39),
-    defined = __webpack_require__(25),
+    defined = __webpack_require__(26),
     forOf = __webpack_require__(52),
     $iterDefine = __webpack_require__(95),
     step = __webpack_require__(132),
@@ -18504,7 +18520,7 @@ module.exports = Object.is || function is(x, y) {
 // https://github.com/tc39/proposal-string-pad-start-end
 var toLength = __webpack_require__(11),
     repeat = __webpack_require__(104),
-    defined = __webpack_require__(25);
+    defined = __webpack_require__(26);
 
 module.exports = function (that, maxLength, fillString, left) {
   var S = String(defined(that)),
@@ -19740,7 +19756,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(189);
 
-var _form = __webpack_require__(277);
+var _form = __webpack_require__(275);
 
 var _form2 = _interopRequireDefault(_form);
 
@@ -22316,7 +22332,7 @@ exports.dataType = dataType;
 "use strict";
 
 
-__webpack_require__(312);
+__webpack_require__(311);
 
 /***/ }),
 /* 165 */
@@ -22325,11 +22341,11 @@ __webpack_require__(312);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-__webpack_require__(497);
+__webpack_require__(496);
 
-__webpack_require__(315);
+__webpack_require__(314);
 
-__webpack_require__(317);
+__webpack_require__(316);
 
 if (global._babelPolyfill) {
   throw new Error("only one instance of babel-polyfill is allowed");
@@ -23974,7 +23990,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.z-check .z-check-stage .z-check-opt-ul::after {\n  content: \"\\200B\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden; }\n\n/*\r\n* check 组件样式\r\n*/\n.z-check {\n  display: inline-block; }\n  .z-check .z-check-stage {\n    display: inline-block;\n    vertical-align: middle;\n    position: relative; }\n    .z-check .z-check-stage .z-check-read-only {\n      position: absolute;\n      top: 0;\n      left: 0;\n      z-index: 2;\n      width: 100%;\n      height: 100%;\n      background: #000;\n      opacity: 0; }\n    .z-check .z-check-stage .z-check-opt-ul .z-check-opt-li {\n      margin-left: 10px;\n      float: left; }\n      .z-check .z-check-stage .z-check-opt-ul .z-check-opt-li:first-child {\n        margin-left: 0; }\n      .z-check .z-check-stage .z-check-opt-ul .z-check-opt-li .z-check-box {\n        display: inline-block; }\n        .z-check .z-check-stage .z-check-opt-ul .z-check-opt-li .z-check-box > .z-icon {\n          vertical-align: middle;\n          width: 14px; }\n          .z-check .z-check-stage .z-check-opt-ul .z-check-opt-li .z-check-box > .z-icon .z-icon-ali {\n            text-align: center; }\n          .z-check .z-check-stage .z-check-opt-ul .z-check-opt-li .z-check-box > .z-icon .z-icon-circle-check-o,\n          .z-check .z-check-stage .z-check-opt-ul .z-check-opt-li .z-check-box > .z-icon .z-icon-square-check-o {\n            color: #ef5350; }\n        .z-check .z-check-stage .z-check-opt-ul .z-check-opt-li .z-check-box .z-check-lable {\n          display: inline-block;\n          vertical-align: middle;\n          cursor: default; }\n    .z-check .z-check-stage .z-check-opt-check-all {\n      margin-bottom: 10px; }\n      .z-check .z-check-stage .z-check-opt-check-all > .z-icon {\n        width: 14px;\n        margin-right: 0; }\n        .z-check .z-check-stage .z-check-opt-check-all > .z-icon .z-icon-square-check {\n          color: #ef5350; }\n      .z-check .z-check-stage .z-check-opt-check-all .z-check-lable {\n        cursor: default; }\n    .z-check .z-check-stage.theme-primary .z-check-opt-ul .z-check-opt-li {\n      margin-bottom: 10px; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.z-check .z-check-opt-ul::after {\n  content: \"\\200B\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden; }\n\n/*\r\n* check 组件样式\r\n*/\n.z-check {\n  display: inline-block;\n  vertical-align: middle;\n  position: relative; }\n  .z-check .z-check-read-only {\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 2;\n    width: 100%;\n    height: 100%;\n    background: #000;\n    opacity: 0; }\n  .z-check .z-check-opt-ul .z-check-opt-li {\n    margin: 0 5px;\n    display: inline-block; }\n    .z-check .z-check-opt-ul .z-check-opt-li .z-check-box {\n      display: inline-block; }\n      .z-check .z-check-opt-ul .z-check-opt-li .z-check-box > .z-icon {\n        vertical-align: middle;\n        width: 14px; }\n        .z-check .z-check-opt-ul .z-check-opt-li .z-check-box > .z-icon .z-icon-ali {\n          text-align: center; }\n        .z-check .z-check-opt-ul .z-check-opt-li .z-check-box > .z-icon .z-icon-circle-check-o,\n        .z-check .z-check-opt-ul .z-check-opt-li .z-check-box > .z-icon .z-icon-square-check-o {\n          color: #ef5350; }\n      .z-check .z-check-opt-ul .z-check-opt-li .z-check-box .z-check-lable {\n        display: inline-block;\n        vertical-align: middle;\n        margin-left: 5px;\n        cursor: default; }\n  .z-check .z-check-opt-check-all {\n    margin-bottom: 10px; }\n    .z-check .z-check-opt-check-all > .z-icon {\n      width: 14px;\n      margin-right: 0; }\n      .z-check .z-check-opt-check-all > .z-icon .z-icon-square-check {\n        color: #ef5350; }\n    .z-check .z-check-opt-check-all .z-check-lable {\n      cursor: default; }\n  .z-check.theme-primary .z-check-opt-ul .z-check-opt-li {\n    margin-bottom: 10px; }\n", ""]);
 
 // exports
 
@@ -24427,40 +24443,28 @@ module.exports = "<div class=\"component-page\">\r\n  <article class=\"example-a
 /* 273 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"component-check\">\r\n  <article class=\"component-example-article\">\r\n    <section>\r\n      <router-link\r\n          class=\"component-anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('basic')\">\r\n        <span @click=\"goAnchor\">基本用法</span>\r\n      </router-link>\r\n      <z-check>提交</z-check>\r\n    </section>\r\n    <section>\r\n      <router-link\r\n          class=\"component-anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('kind')\">\r\n        <span @click=\"goAnchor\">按钮种类</span>\r\n      </router-link>\r\n      <z-check>提交</z-check>\r\n      <z-check kind=\"success\">成功</z-check>\r\n      <z-check kind=\"warning\">提交</z-check>\r\n    </section>\r\n    <section>\r\n      <router-link\r\n          class=\"component-anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('custom')\">\r\n        <span @click=\"goAnchor\">自定义按钮内容</span>\r\n      </router-link>\r\n      <z-check>\r\n        <div>custom</div>\r\n      </z-check>\r\n    </section>\r\n  </article>\r\n</div>";
+module.exports = "<div class=\"component-tip\">\r\n  <article class=\"example-article\">\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('alert')\">\r\n        <span @click=\"goAnchor\">弹窗提示</span>\r\n      </router-link>\r\n\r\n      <z-btn @click=\"tip\">提示</z-btn>\r\n    </section>\r\n  </article>\r\n</div>";
 
 /***/ }),
 /* 274 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"component-tip\">\r\n  <article class=\"example-article\">\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('alert')\">\r\n        <span @click=\"goAnchor\">弹窗提示</span>\r\n      </router-link>\r\n\r\n      <z-btn @click=\"tip\">提示</z-btn>\r\n    </section>\r\n  </article>\r\n</div>";
+module.exports = "<div class=\"welcome\">\r\n  <article class=\"example-article\">\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"z-btn-component\">\r\n        <a href=\"#z-btn-component\">按钮组件</a>\r\n      </h1>\r\n      <z-btn>提交</z-btn>\r\n      <z-btn kind=\"success\">成功</z-btn>\r\n      <z-btn kind=\"warning\">提交</z-btn>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"select-component\">\r\n        <a href=\"#select-component\">下拉框组件</a>\r\n      </h1>\r\n      <z-select\r\n          :multiple=\"true\"\r\n          :search=\"true\"\r\n          :select-all=\"true\"\r\n          :init-val=\"initVal\">\r\n        <z-select-ele value=\"1\">{{ testName }}</z-select-ele>\r\n        <z-select-ele value=\"2\">测试2</z-select-ele>\r\n        <z-select-ele value=\"3\">测试222</z-select-ele>\r\n        <z-select-ele value=\"4\">测试3</z-select-ele>\r\n        <z-select-ele value=\"5\">测试4</z-select-ele>\r\n      </z-select>\r\n\r\n      <z-select\r\n          :multiple=\"true\"\r\n          :search=\"true\"\r\n          :select-all=\"true\"\r\n          :init-val=\"[1, 3]\"\r\n          :classify=\"[{\r\n            key: 'recent',\r\n            text: '最近'\r\n          }, {\r\n            key: 'hot',\r\n            text: '热门'\r\n          }]\"\r\n          :classify-opt=\"classifyOpt\"></z-select>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"form-component\">\r\n        <a href=\"#form-component\">表单组件</a>\r\n      </h1>\r\n\r\n      <z-form slot=\"1\" ref=\"formArea\">\r\n          <z-row :gap=\"10\">\r\n            <z-col :span=\"6\">test2: </z-col>\r\n            <z-col :span=\"6\">\r\n              <z-select\r\n                  :init-opt=\"dropMenuOpt\"\r\n                  :init-val=\"2\"\r\n                  :opt-processor=\"optProcessor\"\r\n                  query-name=\"test3\"></z-select>\r\n            </z-col>\r\n          </z-row>\r\n\r\n          <z-row :gap=\"10\">\r\n            <z-col :span=\"6\">name: </z-col>\r\n            <z-col :span=\"6\">\r\n              <z-input\r\n                  number\r\n                  init-val=\"test-input\"\r\n                  query-name=\"name\">\r\n              </z-input>\r\n            </z-col>\r\n          </z-row>\r\n\r\n          <z-row :gap=\"10\">\r\n            <z-col :offset=\"6\">\r\n              <z-btn ref=\"submit\" @click=\"submit\">提交</z-btn>\r\n            </z-col>\r\n          </z-row>\r\n        </z-form>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"list-component\">\r\n        <a href=\"#list-component\">列表组件</a>\r\n      </h1>\r\n      <z-list\r\n          page-type=\"more\"\r\n          page-trigger=\"click\"\r\n          scroller-auto-hide\r\n          auto\r\n          pager\r\n          :page-size=\"7\"\r\n          :item=\"dropMenuOpt\"\r\n          class=\"z-m-t\">\r\n        <template scope=\"props\">\r\n          <div>{{ props.item.text }}</div>\r\n        </template>\r\n      </z-list>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"table-component\">\r\n        <a href=\"#table-component\">表格组件</a>\r\n      </h1>\r\n      <z-table\r\n          auto\r\n          :thead=\"['test', 'name', 'en']\"\r\n          :tbody=\"dropMenuOpt\">\r\n        <template slot=\"thead\" v-for=\"item in ['test', 'name', 'en']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <template slot=\"tbody\" scope=\"props\">\r\n          <z-table-col>{{ props.item.text }}</z-table-col>\r\n          <z-table-col>{{ props.item.name }}</z-table-col>\r\n          <z-table-col>{{ props.item.en }}</z-table-col>\r\n        </template>\r\n      </z-table>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"layout-component\">\r\n        <a href=\"#layout-component\">布局组件</a>\r\n      </h1>\r\n      <z-row :gap=\"10\">\r\n        <z-col :span=\"6\" :m=4 :xs=\"12\">name: </z-col>\r\n        <z-col :span=\"4\" :m=\"4\" :s=\"8\">\r\n          <z-input\r\n              number\r\n              init-val=\"test-input\"\r\n              query-name=\"test\">\r\n          </z-input>\r\n        </z-col>\r\n        <z-col :span=\"2\" :m=\"4\" :s=\"4\">\r\n          <z-input init-val=\"test-input\" query-name=\"test\"></z-input>\r\n        </z-col>\r\n      </z-row>\r\n      <z-row :gap=\"10\">\r\n        <z-col :grid=\"{xs: 10, s: 8}\" :m=\"4\" :xs=\"12\" :span=\"6\">test1: </z-col>\r\n        <z-col :span=\"6\">\r\n          <z-select\r\n              @click=\"clickIcon\"\r\n              query-name=\"test2\"\r\n              init-val=\"2\">\r\n            <z-select-ele value=\"1\">{{ testName }}</z-select-ele>\r\n            <z-select-ele value=\"2\">测试2</z-select-ele>\r\n          </z-select>\r\n        </z-col>\r\n      </z-row>\r\n\r\n      <z-row :gap=\"10\">\r\n        <z-col :push=\"6\" :span=\"6\">test3: </z-col>\r\n        <z-col :pull=\"6\" :span=\"6\">test3: </z-col>\r\n      </z-row>\r\n      <z-row :gap=\"10\">\r\n        <z-col :span=\"12\" :offset=\"6\">\r\n          <z-btn ref=\"submit\" @click=\"submit\">提交</z-btn>\r\n        </z-col>\r\n      </z-row>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"shift-component\">\r\n        <a href=\"#shift-component\">切换组件</a>\r\n      </h1>\r\n\r\n      <z-shift ref=\"shift\" :index=\"1\">\r\n\r\n\r\n      </z-shift>\r\n\r\n      <z-pop ref=\"pop\">sadf</z-pop>\r\n      <z-btn @click=\"next\">next</z-btn>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"tab-component\">\r\n        <a href=\"#tab-component\">选项卡组件</a>\r\n      </h1>\r\n\r\n      <article>\r\n        <h3>可以嵌套自定义组件</h3>\r\n        <z-tab slot=\"2\">\r\n          <z-tab-ele slot=\"1\" value=\"1\" text=\"tab1\">\r\n            <z-btn @click=\"next\">tab1</z-btn>\r\n          </z-tab-ele>\r\n          <z-tab-ele slot=\"2\" value=\"2\" text=\"tab2\">\r\n            <z-btn @click=\"next\">tab2</z-btn>\r\n          </z-tab-ele>\r\n        </z-tab>\r\n      </article>\r\n\r\n      <article>\r\n        <h3>传入初始化数据</h3>\r\n        <z-tab\r\n            slot=\"3\"\r\n            :init-opt=\"[{\r\n              value: 1,\r\n              text: 'tab-1-1'\r\n            }, {\r\n              value: 2,\r\n              text: 'tab-1-2'\r\n            }, {\r\n              value: 3,\r\n              text: 'tab-1-3'\r\n            }]\"></z-tab>\r\n      </article>\r\n    </section>\r\n  </article>\r\n</div>";
 
 /***/ }),
 /* 275 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"welcome\">\r\n  <article class=\"example-article\">\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"z-btn-component\">\r\n        <a href=\"#z-btn-component\">按钮组件</a>\r\n      </h1>\r\n      <z-btn>提交</z-btn>\r\n      <z-btn kind=\"success\">成功</z-btn>\r\n      <z-btn kind=\"warning\">提交</z-btn>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"select-component\">\r\n        <a href=\"#select-component\">下拉框组件</a>\r\n      </h1>\r\n      <z-select\r\n          :multiple=\"true\"\r\n          :search=\"true\"\r\n          :select-all=\"true\"\r\n          :init-val=\"initVal\">\r\n        <z-select-ele value=\"1\">{{ testName }}</z-select-ele>\r\n        <z-select-ele value=\"2\">测试2</z-select-ele>\r\n        <z-select-ele value=\"3\">测试222</z-select-ele>\r\n        <z-select-ele value=\"4\">测试3</z-select-ele>\r\n        <z-select-ele value=\"5\">测试4</z-select-ele>\r\n      </z-select>\r\n\r\n      <z-select\r\n          :multiple=\"true\"\r\n          :search=\"true\"\r\n          :select-all=\"true\"\r\n          :init-val=\"[1, 3]\"\r\n          :classify=\"[{\r\n            key: 'recent',\r\n            text: '最近'\r\n          }, {\r\n            key: 'hot',\r\n            text: '热门'\r\n          }]\"\r\n          :classify-opt=\"classifyOpt\"></z-select>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"form-component\">\r\n        <a href=\"#form-component\">表单组件</a>\r\n      </h1>\r\n\r\n      <z-form slot=\"1\" ref=\"formArea\">\r\n          <z-row :gap=\"10\">\r\n            <z-col :span=\"6\">test2: </z-col>\r\n            <z-col :span=\"6\">\r\n              <z-select\r\n                  :init-opt=\"dropMenuOpt\"\r\n                  :init-val=\"2\"\r\n                  :opt-processor=\"optProcessor\"\r\n                  query-name=\"test3\"></z-select>\r\n            </z-col>\r\n          </z-row>\r\n\r\n          <z-row :gap=\"10\">\r\n            <z-col :span=\"6\">name: </z-col>\r\n            <z-col :span=\"6\">\r\n              <z-input\r\n                  number\r\n                  init-val=\"test-input\"\r\n                  query-name=\"name\">\r\n              </z-input>\r\n            </z-col>\r\n          </z-row>\r\n\r\n          <z-row :gap=\"10\">\r\n            <z-col :offset=\"6\">\r\n              <z-btn ref=\"submit\" @click=\"submit\">提交</z-btn>\r\n            </z-col>\r\n          </z-row>\r\n        </z-form>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"list-component\">\r\n        <a href=\"#list-component\">列表组件</a>\r\n      </h1>\r\n      <z-list\r\n          page-type=\"more\"\r\n          page-trigger=\"click\"\r\n          scroller-auto-hide\r\n          auto\r\n          pager\r\n          :page-size=\"7\"\r\n          :item=\"dropMenuOpt\"\r\n          class=\"z-m-t\">\r\n        <template scope=\"props\">\r\n          <div>{{ props.item.text }}</div>\r\n        </template>\r\n      </z-list>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"table-component\">\r\n        <a href=\"#table-component\">表格组件</a>\r\n      </h1>\r\n      <z-table\r\n          auto\r\n          :thead=\"['test', 'name', 'en']\"\r\n          :tbody=\"dropMenuOpt\">\r\n        <template slot=\"thead\" v-for=\"item in ['test', 'name', 'en']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <template slot=\"tbody\" scope=\"props\">\r\n          <z-table-col>{{ props.item.text }}</z-table-col>\r\n          <z-table-col>{{ props.item.name }}</z-table-col>\r\n          <z-table-col>{{ props.item.en }}</z-table-col>\r\n        </template>\r\n      </z-table>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"layout-component\">\r\n        <a href=\"#layout-component\">布局组件</a>\r\n      </h1>\r\n      <z-row :gap=\"10\">\r\n        <z-col :span=\"6\" :m=4 :xs=\"12\">name: </z-col>\r\n        <z-col :span=\"4\" :m=\"4\" :s=\"8\">\r\n          <z-input\r\n              number\r\n              init-val=\"test-input\"\r\n              query-name=\"test\">\r\n          </z-input>\r\n        </z-col>\r\n        <z-col :span=\"2\" :m=\"4\" :s=\"4\">\r\n          <z-input init-val=\"test-input\" query-name=\"test\"></z-input>\r\n        </z-col>\r\n      </z-row>\r\n      <z-row :gap=\"10\">\r\n        <z-col :grid=\"{xs: 10, s: 8}\" :m=\"4\" :xs=\"12\" :span=\"6\">test1: </z-col>\r\n        <z-col :span=\"6\">\r\n          <z-select\r\n              @click=\"clickIcon\"\r\n              query-name=\"test2\"\r\n              init-val=\"2\">\r\n            <z-select-ele value=\"1\">{{ testName }}</z-select-ele>\r\n            <z-select-ele value=\"2\">测试2</z-select-ele>\r\n          </z-select>\r\n        </z-col>\r\n      </z-row>\r\n\r\n      <z-row :gap=\"10\">\r\n        <z-col :push=\"6\" :span=\"6\">test3: </z-col>\r\n        <z-col :pull=\"6\" :span=\"6\">test3: </z-col>\r\n      </z-row>\r\n      <z-row :gap=\"10\">\r\n        <z-col :span=\"12\" :offset=\"6\">\r\n          <z-btn ref=\"submit\" @click=\"submit\">提交</z-btn>\r\n        </z-col>\r\n      </z-row>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"shift-component\">\r\n        <a href=\"#shift-component\">切换组件</a>\r\n      </h1>\r\n\r\n      <z-shift ref=\"shift\" :index=\"1\">\r\n\r\n\r\n      </z-shift>\r\n\r\n      <z-pop ref=\"pop\">sadf</z-pop>\r\n      <z-btn @click=\"next\">next</z-btn>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"tab-component\">\r\n        <a href=\"#tab-component\">选项卡组件</a>\r\n      </h1>\r\n\r\n      <article>\r\n        <h3>可以嵌套自定义组件</h3>\r\n        <z-tab slot=\"2\">\r\n          <z-tab-ele slot=\"1\" value=\"1\" text=\"tab1\">\r\n            <z-btn @click=\"next\">tab1</z-btn>\r\n          </z-tab-ele>\r\n          <z-tab-ele slot=\"2\" value=\"2\" text=\"tab2\">\r\n            <z-btn @click=\"next\">tab2</z-btn>\r\n          </z-tab-ele>\r\n        </z-tab>\r\n      </article>\r\n\r\n      <article>\r\n        <h3>传入初始化数据</h3>\r\n        <z-tab\r\n            slot=\"3\"\r\n            :init-opt=\"[{\r\n              value: 1,\r\n              text: 'tab-1-1'\r\n            }, {\r\n              value: 2,\r\n              text: 'tab-1-2'\r\n            }, {\r\n              value: 3,\r\n              text: 'tab-1-3'\r\n            }]\"></z-tab>\r\n      </article>\r\n    </section>\r\n  </article>\r\n</div>";
+module.exports = "<div :class=\"[cPrefix]\">\r\n  <div v-xclass=\"xclass(themeClass)\">\r\n    <slot></slot>\r\n  </div>\r\n</div>";
 
 /***/ }),
 /* 276 */
 /***/ (function(module, exports) {
 
-module.exports = "<div :class=\"[cPrefix]\">\r\n  <div v-xclass=\"xclass(['stage', themeClass])\">\r\n    <div v-xclass=\"xclass('read-only')\" v-show=\"readOnly\"></div>\r\n    <ul class=\"z-ul\" v-xclass=\"xclass('opt-ul')\">\r\n      <li class=\"z-li\" v-if=\"checkAll\">\r\n        <div @click=\"checkAllOption\" v-xclass=\"xclass('opt-check-all')\">\r\n          <icon size=\"m\" :kind=\"checkedAll ? 'square-check-o' : 'square-o'\"></icon>\r\n          <span v-xclass=\"xclass('lable')\">全选</span>\r\n        </div>\r\n      </li>\r\n      <li\r\n          class=\"z-li\"\r\n          v-for=\"item in option\"\r\n          v-xclass=\"xclass('opt-li')\">\r\n        <div\r\n            @click=\"check($event, item[valName])\"\r\n            v-xclass=\"xclass('box')\">\r\n          <icon size=\"m\" :kind=\"iconName(item[valName])\"></icon>\r\n          <span v-if=\"item[txtName]\" v-xclass=\"xclass('lable')\">{{ item[txtName] }}</span>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n    <div class=\"z-hide\" v-xclass=\"xclass('opt-slot')\">\r\n      <slot></slot>\r\n    </div>\r\n  </div>\r\n</div>";
-
-/***/ }),
-/* 277 */
-/***/ (function(module, exports) {
-
-module.exports = "<div :class=\"[cPrefix]\">\r\n  <div v-xclass=\"xclass(themeClass)\">\r\n    <slot></slot>\r\n  </div>\r\n</div>";
-
-/***/ }),
-/* 278 */
-/***/ (function(module, exports) {
-
 module.exports = "<div\r\n    :class=\"{'search-option-wrap': $parent.searchFilter }\"\r\n    v-xclass=\"xclass(['ul', themeClass])\">\r\n  <div\r\n      @click.stop=\"$parent.selectAllOption\"\r\n      v-if=\"$parent.mutiple && $parent.selectAll\"\r\n      v-xclass=\"xclass('li')\">\r\n    <check\r\n\t\t\t\ttype=\"checkbox\"\r\n        :init-val=\"$parent.selectedAll ? [-1] : []\"\r\n        :init-opt=\"selectedAllCheckOpt\">\r\n    </check>\r\n    <span>{{ $parent.selectAllTxt }}</span>\r\n  </div>\r\n\r\n  <list\r\n\t\t\t:class=\"xclass('list')\"\r\n\t\t\t:item=\"option\"\r\n\t\t\t:page-size=\"6\"\r\n\t\t\tauto\r\n\t\t\tpage-type=\"more\"\r\n\t\t\tpager\r\n\t\t\t:scroller-height='200'\r\n\t\t\ttheme=\"default\">\r\n\t\t<template scope=\"props\">\r\n\t\t\t<div\r\n\t\t\t\t\t:class=\"liClass(props.item.classify, props.item.value)\"\r\n\t\t\t\t\t@click.stop=\"selectOption(props.item, props.index)\">\r\n\t\t\t\t<check\r\n\t\t\t\t\t\tv-if=\"multiple && !props.item.classify\"\r\n\t\t\t\t\t\ttheme=\"default\"\r\n\t\t\t\t\t\ttype=\"checkbox\"\r\n\t\t\t\t\t\t:init-val=\"optRoot.checkboxVal(props.item[valName])\"\r\n\t\t\t\t\t\t:init-opt=\"selectedAllCheckOpt\">\r\n\t\t\t\t</check>\r\n\r\n\t\t\t\t<slot :name=\"props.index\" :item=\"props\">\r\n\t\t\t\t\t<span\r\n\t\t\t\t\t\t\tv-bubble=\"{\r\n\t\t\t\t\t\t\t\ttext: props.item[txtName] && props.item[txtName].length > 9 ?\r\n\t\t\t\t\t\t\t\tprops.item[txtName] :\r\n\t\t\t\t\t\t\t\t''\r\n\t\t\t\t\t\t\t}\">\r\n\t\t\t\t\t\t{{ props.item[txtName] }}\r\n\t\t\t\t\t</span>\r\n\t\t\t\t</slot>\r\n\r\n\t\t\t\t<icon v-if=\"hasSubOption(props.item)\" kind=\"caret-right\"></icon>\r\n\t\t\t\t<select-opt\r\n\t\t\t\t\t\t:multiple=\"multiple\"\r\n\t\t\t\t\t\t:option=\"props.item.sub\"\r\n\t\t\t\t\t\t:opt-root=\"optRoot\"\r\n\t\t\t\t\t\tv-if=\"hasSubOption(props.item)\"></select-opt>\r\n\t\t\t</div>\r\n\t\t</template>\r\n  </list>\r\n</div>";
 
 /***/ }),
-/* 279 */
+/* 277 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -24470,7 +24474,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 280 */
+/* 278 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -24499,7 +24503,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 281 */
+/* 279 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -24528,16 +24532,16 @@ module.exports = {
 };
 
 /***/ }),
-/* 282 */
+/* 280 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAADtCAYAAADurKT6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzQ4QzI3QjA4OTcxMUU3QTUzOEE1RjhBN0FEQ0Q3RiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzQ4QzI3QzA4OTcxMUU3QTUzOEE1RjhBN0FEQ0Q3RiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRDNDhDMjc5MDg5NzExRTdBNTM4QTVGOEE3QURDRDdGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDNDhDMjdBMDg5NzExRTdBNTM4QTVGOEE3QURDRDdGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+2FwMGgAAB9BJREFUeNrs3YmO2zoQRFHT8P//cYYvEyQPiqPV2sjuU8AgjjctvF0sSpRcfvz48SDqVc/nc/T5r6+v+vv1MvXZl91HHan+/rdMwb5F4KfewH9/XD4B/1evsGNFqvagi6CfYm0R/LnXnwetWO1oh1Gfbr/59bm8f3TseV+RctMOWfPegquuoT9Er5s2oGzcyDLxuB68booiGPDf7v8dfcZ6gVcjG1pacAJFEdflj3L+enEx1MYbSGE0DvyU+7/snEvWtZy4nAL4cU3Fnf933AdneCMfRSkdb2sB/LTzjxWDk1zTjVVmgKodgFYyA7+qKLj+7LZO/fW4/lctqzkNT3QNH3N+g8xy8Pc9Wi8A8NMaiEuvsJ8ReyhfYYSbKvL/dGftSxn168iP3UBZJfNTKg2P8291fqfyKQT4Mj+lAX5smgP4KTT4c/N7PoFf9KEuos3SxDbOTzEHswuXMH7L0R4K5/ZrXH+P84s+1JyG83fWOL/YQz3qn3izFXzwU6/6685tn4C/F37Rh5pw/0/AP2LAWxp1hB4b0k22duT8reAfAX/zbtBJodSJda8KY7adPwY/IvxHFEptqFBFy5PAzw7/p8AtXSheV8aauhJu7n+SOTja89kOH/7Nvf4Y+fcf99rZ0CUh7PWI7Qb/tQPZMnhu+HhNEdSZAirJwD9E4L+3KNYUwVgBvUNQk/QI9chtA//17j8F8ZaeoGwAJdo+PKyowd/G+GHJ2TNn/VPAB/89XfZSDNrSC2Qc7II/YMONOX5Z8dnoBXBafAN/Ww1ZJsYI5WwQsrk++NttwKnIM/e8/Qb+MN340O2nzhVUhgH+qI05l/nfi8A8IPCHLpq68TWuD/7mGnUPqBnO5l6yPeDvt3jM8gR/SvePfOizgJ+WiiZaAZTHxfHNxSz3g1x2fkfvBXDbeIXziwpp1xv8fWf/ngvg9vUFf4yC6e2X4psoVPDHcn9uD34CPvi5v5gDfsXC7cEPaOCDX57ODD7421T98P0V+ODP4uAF+ODn/sAHv/xuncHP/YEPfu5P4NczKFLwd+b+tfH14/yUzvVDxDLwc/+04xHw9zcIrsAHf0b3Bz745Xzggz9b5AE++Lk+8MFPwAc/1wc++IEPfPAT8MHP9YEPfuADH/xE4G/a9a9w42bvpnaF/DhFu+DXk6FPL/DnEujFnpSuD3zwpwIf8GJP6oijAMCfxvXBDv7uXLqCXubP6PrAB39K8MUc8BucEvizuX6mnyIFP/APA1+PAf5uow7HB39K1wc++FOCT+AneR/8XJ/AD3wCP/AJ/CTvg5/rE/iJwE8EfpGHwG+wS+AHPoE/TuQB/sFyATu35/wEfPBTK5EH+ODn+AT+LK4PfANebk+cP4PrAx/8wCfwizoE/sCuD3zwA5/AD3wCv4xP4I/l+sAHP/AJ/KIOgT+w6wMf/MAn8BOBP6jr+9Vz8KcFvwIf/AqFwG+QS+AHPoE/pIAPftmdwC/uEPiBT+CX8wn8cj6BX9wh8AOfwC/qEPgNcul8ZbxRretwifMT+Lk+1wc/AR/8XJ/AL+5ABPxE4Of6BP4cOd84AfwGuAR+4BP4icAfSwa54Bd5CPzZVPUE4M/o+kVPAn4CPfjBSuDPIxkf/FyfwA98An8i8IsoBP5sOb/OFJfeBfwhXR/Y4E8dd4pCAH9W8EEP/pQD3Lrx/wT+EOAT+IFP4CcFCH7QEfiBT+AHPoE/Kvjm8IA/teMrAPCHVxGzqDX464XLKRueVyDgDxV3KsDBnw18uZ6agb8GXx6BvzkQ9QDgTwm+HoBug79n8BQN+MFD4Ac+gT+BysM1v+AP6vqOAIG/W/DLzvfWgbvPzf/h/gH0CgD98J47deO6jUFcF5ZVH3oIzh9An4BcZgqHwH85wHcVwEMBgP/uAW694PPu3gx+mhhvEPhPh6E0WgAE/uYjzlnL5f7gDxdpxB/wN+/MV2zH3LkEBZAc/igNXxaeE4HAH1Z1BfB1pkCcAEsGf7TGLju32VGgJPBHdLk/+b7MAF1GxgHO/iaNPb273dKd3IazPsdee0wUBwWFfwmA3rN+2dDLDXsL05+Dwx+5UcuE2z9GYs5UgSiARLEnWt6fyvVLvcUjQQSqvW/Pc+fGR8j5a7ZzakZnGYk7ZUUhRdgn3RfB86CNz9ATjEWhOhKH6iPmJZB1RQ/YVSHsvYwxepYtExn+/bn3QlgTkXq5HLIe9JkSAf5Mrr802J0qhDVF0HoB1Ju+75T98fX19dfyn89ned28Q3qMPEu93fD9ZUPBRIX+1OX/hPq22BNdZSLLr4l7n9xJIivw1w50f7r+Vvgzu/5cL7A249aGCiDtOYc/4G+BvyYb6K7dH3WmCMbmBa3tLQrI2xzwOlu5HrKpAlg6OmT/nuz6a+GvwD+8MEx/uBn8X89tBJ+OHUy79PHOgtjhYophf48A+kbhn4s7wKew8C+Bz7WoK72f4V0Te4oBL2Vy/rkjEMCnsPDPnaQh6hf0jYc6RRxK4/wiDqVx/SH8QKdU4P+B/xPwjQUo3IB3rfQU1LXrf+v1WL5LGVFIvTbGGkURV6GuIVhy/Tn41+yg2lmjnNF4Zcd3lgPWozReRE2b5etgKGuAgXFp5DsjHFS4tBDWuP1R8EdtMDq3EI4sgvIT+Fucn+isxHCJuYKfWo5HpyaJ/wQYANZhS2MSpvy0AAAAAElFTkSuQmCC"
 
 /***/ }),
-/* 283 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pug = __webpack_require__(27);
+var pug = __webpack_require__(24);
 
 function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -24555,7 +24559,7 @@ pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-list class=\"z-m-t\" page-type=\"more\" page-trigger=\"click\" auto pager :page-size=\"7\" :item=\"testOpt\"\u003E\u003Ctemplate scope=\"props\"\u003E\u003Cdiv\u003E{{ props.item.text }}asdfkj 打发士大夫 asdfasdi  sdf 士大夫 asdf dafdf打发士大夫asdsf sadf\u003C\u002Fdiv\u003E\u003C\u002Ftemplate\u003E\u003C\u002Fz-list\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-list') ? "" : pug_interp)) + "\n    page-type=\"more\"\n    page-trigger=\"click\"\n    auto\n    pager\n    class=\"z-m-t\"\n    :page-size=\"7\"\n    :item=\"testOpt\"" + (pug.escape(null == (pug_interp = '>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-template scope="props">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<div>') ? "" : pug_interp)) + "\n      {{ props.item.text }}asdfkj 打发士大夫 asdfasdi  sdf 士大夫 asdf dafdf打发士大夫asdsf sadf\n    " + (pug.escape(null == (pug_interp = '</div>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-template>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-list>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'basic', '基本用法');
+}, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\"\u003E\u003Cz-table-col th\u003E名字\u003C\u002Fz-table-col\u003E\u003Cz-table-col th omit\u003E类型\u003C\u002Fz-table-col\u003E\u003Cz-table-col th omit\u003E可选值\u003C\u002Fz-table-col\u003E\u003Cz-table-col th width=\"40%\"\u003E说明\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Eauto\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E根据传入的列表数据生成分页数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Eitem\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E列表数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Epage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E分页数据（没传的话，默认将传的列表数据（item）作为分页数据）\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Etotal: 总共得页数\u003C\u002Fli\u003E\u003Cli\u003Elength: 列表条数\u003C\u002Fli\u003E\u003Cli\u003Esize: 每页得数据数\u003C\u002Fli\u003E\u003Cli\u003Ecurrent: 当前页码\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Epager\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动分页功能\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003EpageSize\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E将列表数据（item）分为每页多少条数据，默认 5 条\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003EpageType\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *num | more )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E列表分页类型（加载更多：more | 数字标注（默认）：num）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003EpageTrigger\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *scroll | click )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E加载更多的触发模式（滚动到底部自动触发（默认）：scroll | 点击：click）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003EautoHideScroller\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E是否自动隐藏滚动条\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
@@ -24570,10 +24574,10 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 284 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pug = __webpack_require__(27);
+var pug = __webpack_require__(24);
 
 function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -24591,7 +24595,7 @@ pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-table\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Edisplay\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E布尔值\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Etrue\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E分页的显示状态\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Edisplay2\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E布\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Efalse\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E分页的显示状态\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Edisplay3\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E布尔值\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Etrue\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E撒旦发\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-table>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<') ? "" : pug_interp)) + "template slot=\"thead\" v-for=\"item in ['名字', '类型', '可选值', '说明']\"" + (pug.escape(null == (pug_interp = '>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ item }}</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</template>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-table-row slot="1">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>display</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>布尔值</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>true</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>分页的显示状态</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-table-row>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-table-row slot="2">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>display2</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>布尔值</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>false</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col></z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-table-row>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-table-row slot="3">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>display3</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>布尔值</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>true</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>显示</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-table-row>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-table>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'basic', '基本用法');
+}, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-table auto list pager :page-size=\"11\" :thead=\"[&quot;test&quot;, &quot;name&quot;, &quot;en&quot;]\" :tbody=\"testOpt\"\u003E\u003Ctemplate slot=\"thead\"\u003E\u003Cz-table-col max-width=\"30%\"\u003Etest\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Ename\u003C\u002Fz-table-col\u003E\u003Cz-table-col max-width=\"100px\"\u003Een\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Ctemplate slot=\"tbody\" scope=\"props\"\u003E\u003Cz-table-col\u003E{{ props.item.text }}\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E{{ props.item.name }}\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E{{ props.item.en }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003C\u002Fz-table\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-table') ? "" : pug_interp)) + "\n    auto\n    list\n    pager\n    :pageSize=\"10\"\n    :thead=\"['test', 'name', 'en']\"\n    " + (pug.escape(null == (pug_interp = ':tbody="testOpt">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<template slot="thead">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col max-width="30%">test</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>name</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col max-width="100px">en</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</template>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<template slot="tbody" scope="props">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ props.item.text }}</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ props.item.name }}</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ props.item.en }}</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</template>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-table>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
@@ -24611,10 +24615,10 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 285 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pug = __webpack_require__(27);
+var pug = __webpack_require__(24);
 
 function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -24632,7 +24636,7 @@ pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-btn\u003E提交\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-btn>') ? "" : pug_interp)) + "\n  提交\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'basic', '基本用法');
+}, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-btn kind='success'\u003E成功\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-btn kind="success">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '成功') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E\u003Cz-btn class=\"z-m-t-double\" kind=\"success\" type=\"outline\" radius=\"none\"\u003E只有轮廓\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-btn kind="success" outline radius="none">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '只有轮廓') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
@@ -24662,10 +24666,46 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 286 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pug = __webpack_require__(27);
+var pug = __webpack_require__(24);
+
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
+var block = (this && this.block), attributes = (this && this.attributes) || {};
+pug_html = pug_html + "\u003Csection\u003E\u003Crouter-link" + (" class=\"anchor-title\""+" tag=\"h1\""+pug.attr(":to", 'anchorLink("' + name + '")', true, true)) + "\u003E\u003Cspan @click=\"goAnchor\"\u003E" + (pug.escape(null == (pug_interp = title) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E\u003C\u002Frouter-link\u003E";
+if (block) {
+block && block();
+}
+else {
+pug_html = pug_html + "\u003Cp\u003E暂无内容\u003C\u002Fp\u003E";
+}
+pug_html = pug_html + "\u003C\u002Fsection\u003E";
+};
+pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-check :init-opt=\"testOpt\"\u003E\u003C\u002Fz-check\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-check></z-check>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+}
+}, 'start', '开始使用');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Ehidden\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E设置为隐藏域\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003EinitVal\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EAll\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E设置当前输入框的值\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Enumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E输入框的数字指定为 nmuber 类型\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Eplaceholder\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E占位符\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003EqueryName\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E查询参数名\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003EreadOnly\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E是否为只读状态\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003Erequired\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E是否为必填，默认否\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003Erow\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Etextarea 的行数, 默认为 4\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"9\"\u003E\u003Cz-table-col\u003EtextLengthTip\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E显示当前输入的长度的提示\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"10\"\u003E\u003Cz-table-col\u003Etype\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(*input | textarea)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E输入类型( text | textarea )\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"11\"\u003E\u003Cz-table-col\u003Etheme\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(default | *primary)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E主题\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"12\"\u003E\u003Cz-table-col\u003EerrorMessage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Einput 为空和格式不对的错误信息\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"13\"\u003E\u003Cz-table-col\u003EerrorTipType\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( bubble | *tip )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E弹出错误提示的类型（ bubble | tip ）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"14\"\u003E\u003Cz-table-col\u003EformatMessage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E格式错误的提示信息\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"15\"\u003E\u003Cz-table-col\u003Emin\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Einput，textarea 可输入最小长度（数字）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"16\"\u003E\u003Cz-table-col\u003Emax\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Einput，textarea 可输入最大长度（数字）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"17\"\u003E\u003Cz-table-col\u003Eregex\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E验证值的正则\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"18\"\u003E\u003Cz-table-col\u003EverifedType\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(email | phone | password | url | tel)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E验证值的类型\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"19\"\u003E\u003Cz-table-col\u003Ecompletion\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E是否启用自动搜索补全功能\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'props', 'props 数据类型');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;返回值类型&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Echange\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 派送事件的宿主\u003C\u002Fli\u003E\u003Cli\u003Evalue - 输入框的值\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Efocus\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 派送事件的宿主\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Eblur\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 派送事件的宿主\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Ekeyup\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 派送事件的宿主\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'events', 'events 组件事件');
+pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
+module.exports = template;
+
+/***/ }),
+/* 285 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var pug = __webpack_require__(24);
 
 function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -24683,7 +24723,7 @@ pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-input\u003E\u003C\u002Fz-input\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input></z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'basic', '基本用法');
+}, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-input type=\"row\" :row=\"4\" placeholder=\"请输入...\"\u003E\u003C\u002Fz-input\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input type="row" :row="4" placeholder="请输入..."></z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
@@ -24713,10 +24753,10 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 287 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pug = __webpack_require__(27);
+var pug = __webpack_require__(24);
 
 function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -24734,7 +24774,7 @@ pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E直接传入 init-opt\u003C\u002Fp\u003E\u003Cz-select :init-opt=\"selectOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select :init-opt="selectOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'basic', '基本用法');
+}, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E用直观的标签声明下拉框的数据\u003C\u002Fp\u003E\u003Cz-select id=\"test\"\u003E\u003Cz-select-ele value=\"1\"\u003E{{ testName }}\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"2\"\u003E\u003Cz-btn\u003E按钮\u003C\u002Fz-btn\u003E\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"3\"\u003E测试3\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"4\"\u003E测试4\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"5\"\u003E测试5\u003C\u002Fz-select-ele\u003E\u003C\u002Fz-select\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-select>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="1">{{ testName }}</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="2">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-btn>按钮</z-btn>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="3">测试222</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="4">测试3</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="5">测试4</z-select-ele>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
@@ -24774,10 +24814,10 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 288 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pug = __webpack_require__(27);
+var pug = __webpack_require__(24);
 
 function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -24795,7 +24835,7 @@ pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-row :gap=\"10\"\u003E\u003Cz-col :l=\"4\" :xs=\"12\"\u003Ename:\u003C\u002Fz-col\u003E\u003Cz-col :l=\"4\" :xs=\"8\"\u003E\u003Cz-input number init-val=\"test-input\"\u003E\u003C\u002Fz-input\u003E\u003C\u002Fz-col\u003E\u003Cz-col :l=\"4\" :xs=\"4\"\u003E测试1\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003Cz-row :gap=\"10\"\u003E\u003Cz-col :l=\"4\" :xs=\"12\"\u003Etest1:\u003C\u002Fz-col\u003E\u003Cz-col :l=\"8\" :xs=\"12\"\u003E\u003Cz-input init-val=\"test2-input\"\u003E\u003C\u002Fz-input\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-row :gap="10">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="12">name: </z-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="8">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-input') ? "" : pug_interp)) + "\n        number\n        " + (pug.escape(null == (pug_interp = 'init-val="test-input"') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '</z-input>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="4">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-input init-val="test-input" query-name="test"></z-input>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-col>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-row>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '<z-row :gap="10">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="12">test1: </z-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="8" :xs="12">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-input') ? "" : pug_interp)) + "\n        " + (pug.escape(null == (pug_interp = 'init-val="test2-input"') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '</z-input>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-col>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-row>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'basic', '基本用法');
+}, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Ealign\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(start, end, *center)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在行上垂直方向上的对齐方式，对应 flex 的 align-items 属性\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Egap\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E每列的间隔是多少（px）-- 草案\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Ejustify\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(start, end, center, *justify)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在行上的水平空间的对齐方式，对应 flex 的 justify-content 属性\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Ewrap\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(nowrap | wrap)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义列的换行模式，对应 flex 的 flex-wrap 属性（nowrap | wrap）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
@@ -24810,10 +24850,10 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 289 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pug = __webpack_require__(27);
+var pug = __webpack_require__(24);
 
 function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -24851,10 +24891,10 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 290 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pug = __webpack_require__(27);
+var pug = __webpack_require__(24);
 
 function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -24872,7 +24912,7 @@ pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-scroller height=\"150\"\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003C\u002Fz-scroller\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-scroller height="150">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-scroller>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'basic', '基本用法');
+}, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"(item, index) in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col :max-width=\"index === 3 ? &quot;23px&quot; : &quot;&quot;\"\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Eheight\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *'100%' | 'auto' | {Number} )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E滚动区域的最大高度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Ewidth\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *'100%' | 'auto' | {Number} )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E滚动区域的最大宽度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003EautoHide\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E自动隐藏滚动条, 默认为 false\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
@@ -24887,10 +24927,10 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 291 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pug = __webpack_require__(27);
+var pug = __webpack_require__(24);
 
 function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
 var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -24908,21 +24948,21 @@ pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cp\u003E在终端安装（推荐使用 yarn）\u003C\u002Fp\u003E\u003Cz-code\u003Enpm install vue2do -S\u003C\u002Fz-code\u003E\u003Cz-code\u003Eyarn add vue2do\u003C\u002Fz-code\u003E\u003Cp\u003E全部加载\u003C\u002Fp\u003E\u003Cz-code\u003Eimport Vue from 'vue'\nimport vue2do from 'vue2do'\n\nVue.use(vue2do)\u003C\u002Fz-code\u003E\u003Cp\u003E局部加载\u003C\u002Fp\u003E\u003Cz-code\u003Eimport {\n  select,\n  input\n  \u002F\u002F ...\n} from 'vue2do'\n\nVue.component('select', select)\nVue.component('yourPrefix' + input.compName, input)\u003C\u002Fz-code\u003E\u003Cp\u003E获取更多信息请访问 vue2do 的\u003Ca href=\"https:\u002F\u002Fzen0822.github.io\" target=\"_blank\"\u003E官方网站。\u003C\u002Fa\u003E\u003C\u002Fp\u003E";
 }
-}, 'basic', '基本用法');
+}, 'start', '开始使用');
 pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
 /***/ }),
-/* 292 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pug = __webpack_require__(27);
+var pug = __webpack_require__(24);
 
 function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"welcome\"\u003E\u003Cdiv class=\"welcome-bg\"\u003E\u003Ch3 class=\"z-text-center z-m-t-double\"\u003Ewelcome to\u003C\u002Fh3\u003E\u003Ch2 class=\"z-text-center z-m-t-double\"\u003Evue2do\u003C\u002Fh2\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"welcome-container\"\u003E\u003Cz-row align=\"start\" justify=\"justify\"\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E响应\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E适配任何设备，在移动端有更好的用户体验。\n支持五种尺寸的设备，让你不再担心适配不同设备的尺寸带来的烦恼。\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E灵活\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E组件和组件之间可以灵活组合，能满足任何需求。\n组件的功能丰富，能随意搭配成需要的功能\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E待定\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E（还没想到）\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
 /***/ }),
-/* 293 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24938,7 +24978,7 @@ var _app = __webpack_require__(269);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _headerLayout = __webpack_require__(296);
+var _headerLayout = __webpack_require__(295);
 
 var _headerLayout2 = _interopRequireDefault(_headerLayout);
 
@@ -24955,7 +24995,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 294 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24964,7 +25004,7 @@ exports.default = {
 __webpack_require__(184);
 
 /***/ }),
-/* 295 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24986,7 +25026,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 296 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25015,7 +25055,7 @@ exports.default = {
 
   data: function data() {
     return {
-      logoUrl: __webpack_require__(282),
+      logoUrl: __webpack_require__(280),
       menuOpt: [{
         'name': '组件',
         'route': '/component'
@@ -25043,7 +25083,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 297 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25155,7 +25195,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 298 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25167,7 +25207,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(170);
 
-var _list = __webpack_require__(283);
+var _list = __webpack_require__(281);
 
 var _list2 = _interopRequireDefault(_list);
 
@@ -25190,7 +25230,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 299 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25228,7 +25268,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 300 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25240,7 +25280,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(172);
 
-var _table = __webpack_require__(284);
+var _table = __webpack_require__(282);
 
 var _table2 = _interopRequireDefault(_table);
 
@@ -25263,7 +25303,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 301 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25275,7 +25315,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(173);
 
-var _btn = __webpack_require__(285);
+var _btn = __webpack_require__(283);
 
 var _btn2 = _interopRequireDefault(_btn);
 
@@ -25298,7 +25338,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 302 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25310,7 +25350,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(174);
 
-var _check = __webpack_require__(273);
+var _check = __webpack_require__(284);
 
 var _check2 = _interopRequireDefault(_check);
 
@@ -25321,7 +25361,7 @@ var _mixin2 = _interopRequireDefault(_mixin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  template: _check2.default,
+  template: (0, _check2.default)(),
 
   mixins: [_mixin2.default],
 
@@ -25333,7 +25373,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 303 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25345,7 +25385,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(175);
 
-var _input = __webpack_require__(286);
+var _input = __webpack_require__(285);
 
 var _input2 = _interopRequireDefault(_input);
 
@@ -25380,7 +25420,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 304 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25392,7 +25432,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(176);
 
-var _select = __webpack_require__(287);
+var _select = __webpack_require__(286);
 
 var _select2 = _interopRequireDefault(_select);
 
@@ -25445,7 +25485,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 305 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25457,7 +25497,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(177);
 
-var _grid = __webpack_require__(288);
+var _grid = __webpack_require__(287);
 
 var _grid2 = _interopRequireDefault(_grid);
 
@@ -25480,7 +25520,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 306 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25492,7 +25532,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(178);
 
-var _pop = __webpack_require__(289);
+var _pop = __webpack_require__(288);
 
 var _pop2 = _interopRequireDefault(_pop);
 
@@ -25546,7 +25586,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 307 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25558,7 +25598,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(179);
 
-var _tip2 = __webpack_require__(274);
+var _tip2 = __webpack_require__(273);
 
 var _tip3 = _interopRequireDefault(_tip2);
 
@@ -25594,7 +25634,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 308 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25606,7 +25646,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(180);
 
-var _scroller = __webpack_require__(290);
+var _scroller = __webpack_require__(289);
 
 var _scroller2 = _interopRequireDefault(_scroller);
 
@@ -25629,7 +25669,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 309 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25641,7 +25681,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(181);
 
-var _start = __webpack_require__(291);
+var _start = __webpack_require__(290);
 
 var _start2 = _interopRequireDefault(_start);
 
@@ -25664,7 +25704,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 310 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25676,7 +25716,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(182);
 
-var _total = __webpack_require__(275);
+var _total = __webpack_require__(274);
 
 var _total2 = _interopRequireDefault(_total);
 
@@ -25765,7 +25805,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 311 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25777,7 +25817,7 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(183);
 
-var _welcome = __webpack_require__(292);
+var _welcome = __webpack_require__(291);
 
 var _welcome2 = _interopRequireDefault(_welcome);
 
@@ -25812,19 +25852,19 @@ exports.default = {
 };
 
 /***/ }),
-/* 312 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(294);
+__webpack_require__(293);
 
 var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(499);
+var _vueRouter = __webpack_require__(498);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -25832,11 +25872,11 @@ var _vueI18n = __webpack_require__(149);
 
 var _vueI18n2 = _interopRequireDefault(_vueI18n);
 
-var _route = __webpack_require__(314);
+var _route = __webpack_require__(313);
 
 var _route2 = _interopRequireDefault(_route);
 
-var _app = __webpack_require__(293);
+var _app = __webpack_require__(292);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -25844,7 +25884,7 @@ var _vue2do = __webpack_require__(50);
 
 var _vue2do2 = _interopRequireDefault(_vue2do);
 
-var _en = __webpack_require__(280);
+var _en = __webpack_require__(278);
 
 var _en2 = _interopRequireDefault(_en);
 
@@ -25877,7 +25917,7 @@ var app = new _vue2.default(Object.assign(_app2.default, {
 })).$mount('#app');
 
 /***/ }),
-/* 313 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25887,55 +25927,55 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _total = __webpack_require__(310);
+var _total = __webpack_require__(309);
 
 var _total2 = _interopRequireDefault(_total);
 
-var _btn = __webpack_require__(301);
+var _btn = __webpack_require__(300);
 
 var _btn2 = _interopRequireDefault(_btn);
 
-var _start = __webpack_require__(309);
+var _start = __webpack_require__(308);
 
 var _start2 = _interopRequireDefault(_start);
 
-var _select = __webpack_require__(304);
+var _select = __webpack_require__(303);
 
 var _select2 = _interopRequireDefault(_select);
 
-var _check = __webpack_require__(302);
+var _check = __webpack_require__(301);
 
 var _check2 = _interopRequireDefault(_check);
 
-var _input = __webpack_require__(303);
+var _input = __webpack_require__(302);
 
 var _input2 = _interopRequireDefault(_input);
 
-var _pop = __webpack_require__(306);
+var _pop = __webpack_require__(305);
 
 var _pop2 = _interopRequireDefault(_pop);
 
-var _tip = __webpack_require__(307);
+var _tip = __webpack_require__(306);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _table = __webpack_require__(300);
+var _table = __webpack_require__(299);
 
 var _table2 = _interopRequireDefault(_table);
 
-var _list = __webpack_require__(298);
+var _list = __webpack_require__(297);
 
 var _list2 = _interopRequireDefault(_list);
 
-var _page = __webpack_require__(299);
+var _page = __webpack_require__(298);
 
 var _page2 = _interopRequireDefault(_page);
 
-var _grid = __webpack_require__(305);
+var _grid = __webpack_require__(304);
 
 var _grid2 = _interopRequireDefault(_grid);
 
-var _scroller = __webpack_require__(308);
+var _scroller = __webpack_require__(307);
 
 var _scroller2 = _interopRequireDefault(_scroller);
 
@@ -25956,6 +25996,12 @@ exports.default = [{
 }, {
   path: 'btn',
   component: _btn2.default,
+  meta: {
+    title: '按钮组件'
+  }
+}, {
+  path: 'check',
+  component: _check2.default,
   meta: {
     title: '按钮组件'
   }
@@ -26028,7 +26074,7 @@ exports.default = [{
 }];
 
 /***/ }),
-/* 314 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26038,19 +26084,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ = __webpack_require__(295);
+var _ = __webpack_require__(294);
 
 var _2 = _interopRequireDefault(_);
 
-var _welcome = __webpack_require__(311);
+var _welcome = __webpack_require__(310);
 
 var _welcome2 = _interopRequireDefault(_welcome);
 
-var _component = __webpack_require__(297);
+var _component = __webpack_require__(296);
 
 var _component2 = _interopRequireDefault(_component);
 
-var _componentChildren = __webpack_require__(313);
+var _componentChildren = __webpack_require__(312);
 
 var _componentChildren2 = _interopRequireDefault(_componentChildren);
 
@@ -26075,7 +26121,7 @@ exports.default = [{
 }];
 
 /***/ }),
-/* 315 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26785,10 +26831,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 // object, this seems to be the most reliable technique that does not
 // use indirect eval (which violates Content Security Policy).
 (typeof global === "undefined" ? "undefined" : _typeof(global)) === "object" ? global : (typeof window === "undefined" ? "undefined" : _typeof(window)) === "object" ? window : (typeof self === "undefined" ? "undefined" : _typeof(self)) === "object" ? self : undefined);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(111), __webpack_require__(498)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(111), __webpack_require__(497)(module)))
 
 /***/ }),
-/* 316 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27630,17 +27676,17 @@ exports.mapActions = mapActions;
 exports.default = index_esm;
 
 /***/ }),
-/* 317 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(326);
-module.exports = __webpack_require__(31).RegExp.escape;
+__webpack_require__(325);
+module.exports = __webpack_require__(32).RegExp.escape;
 
 /***/ }),
-/* 318 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27664,21 +27710,21 @@ module.exports = function (original) {
 };
 
 /***/ }),
-/* 319 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var speciesConstructor = __webpack_require__(318);
+var speciesConstructor = __webpack_require__(317);
 
 module.exports = function (original, length) {
   return new (speciesConstructor(original))(length);
 };
 
 /***/ }),
-/* 320 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27694,7 +27740,7 @@ module.exports = function (hint) {
 };
 
 /***/ }),
-/* 321 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27719,7 +27765,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 322 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27739,13 +27785,13 @@ module.exports = function (object, el) {
 };
 
 /***/ }),
-/* 323 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var path = __webpack_require__(324),
+var path = __webpack_require__(323),
     invoke = __webpack_require__(71),
     aFunction = __webpack_require__(16);
 module.exports = function () /* ...pargs */{
@@ -27774,7 +27820,7 @@ module.exports = function () /* ...pargs */{
 };
 
 /***/ }),
-/* 324 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27783,7 +27829,7 @@ module.exports = function () /* ...pargs */{
 module.exports = __webpack_require__(4);
 
 /***/ }),
-/* 325 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27799,7 +27845,7 @@ module.exports = function (regExp, replace) {
 };
 
 /***/ }),
-/* 326 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27807,14 +27853,14 @@ module.exports = function (regExp, replace) {
 
 // https://github.com/benjamingr/RexExp.escape
 var $export = __webpack_require__(0),
-    $re = __webpack_require__(325)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+    $re = __webpack_require__(324)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export($export.S, 'RegExp', { escape: function escape(it) {
     return $re(it);
   } });
 
 /***/ }),
-/* 327 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27828,7 +27874,7 @@ $export($export.P, 'Array', { copyWithin: __webpack_require__(122) });
 __webpack_require__(51)('copyWithin');
 
 /***/ }),
-/* 328 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27837,7 +27883,7 @@ __webpack_require__(51)('copyWithin');
 var $export = __webpack_require__(0),
     $every = __webpack_require__(28)(4);
 
-$export($export.P + $export.F * !__webpack_require__(26)([].every, true), 'Array', {
+$export($export.P + $export.F * !__webpack_require__(27)([].every, true), 'Array', {
   // 22.1.3.5 / 15.4.4.16 Array.prototype.every(callbackfn [, thisArg])
   every: function every(callbackfn /* , thisArg */) {
     return $every(this, callbackfn, arguments[1]);
@@ -27845,7 +27891,7 @@ $export($export.P + $export.F * !__webpack_require__(26)([].every, true), 'Array
 });
 
 /***/ }),
-/* 329 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27859,7 +27905,7 @@ $export($export.P, 'Array', { fill: __webpack_require__(85) });
 __webpack_require__(51)('fill');
 
 /***/ }),
-/* 330 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27868,7 +27914,7 @@ __webpack_require__(51)('fill');
 var $export = __webpack_require__(0),
     $filter = __webpack_require__(28)(2);
 
-$export($export.P + $export.F * !__webpack_require__(26)([].filter, true), 'Array', {
+$export($export.P + $export.F * !__webpack_require__(27)([].filter, true), 'Array', {
   // 22.1.3.7 / 15.4.4.20 Array.prototype.filter(callbackfn [, thisArg])
   filter: function filter(callbackfn /* , thisArg */) {
     return $filter(this, callbackfn, arguments[1]);
@@ -27876,7 +27922,7 @@ $export($export.P + $export.F * !__webpack_require__(26)([].filter, true), 'Arra
 });
 
 /***/ }),
-/* 331 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27899,7 +27945,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(51)(KEY);
 
 /***/ }),
-/* 332 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27922,7 +27968,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(51)(KEY);
 
 /***/ }),
-/* 333 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27930,7 +27976,7 @@ __webpack_require__(51)(KEY);
 
 var $export = __webpack_require__(0),
     $forEach = __webpack_require__(28)(0),
-    STRICT = __webpack_require__(26)([].forEach, true);
+    STRICT = __webpack_require__(27)([].forEach, true);
 
 $export($export.P + $export.F * !STRICT, 'Array', {
   // 22.1.3.10 / 15.4.4.18 Array.prototype.forEach(callbackfn [, thisArg])
@@ -27940,13 +27986,13 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 });
 
 /***/ }),
-/* 334 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var ctx = __webpack_require__(32),
+var ctx = __webpack_require__(33),
     $export = __webpack_require__(0),
     toObject = __webpack_require__(12),
     call = __webpack_require__(131),
@@ -27989,7 +28035,7 @@ $export($export.S + $export.F * !__webpack_require__(73)(function (iter) {
 });
 
 /***/ }),
-/* 335 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28000,7 +28046,7 @@ var $export = __webpack_require__(0),
     $native = [].indexOf,
     NEGATIVE_ZERO = !!$native && 1 / [1].indexOf(1, -0) < 0;
 
-$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(26)($native)), 'Array', {
+$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(27)($native)), 'Array', {
   // 22.1.3.11 / 15.4.4.14 Array.prototype.indexOf(searchElement [, fromIndex])
   indexOf: function indexOf(searchElement /*, fromIndex = 0 */) {
     return NEGATIVE_ZERO
@@ -28010,7 +28056,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(26)($nati
 });
 
 /***/ }),
-/* 336 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28022,7 +28068,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Array', { isArray: __webpack_require__(93) });
 
 /***/ }),
-/* 337 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28034,14 +28080,14 @@ var $export = __webpack_require__(0),
     arrayJoin = [].join;
 
 // fallback for not array-like strings
-$export($export.P + $export.F * (__webpack_require__(62) != Object || !__webpack_require__(26)(arrayJoin)), 'Array', {
+$export($export.P + $export.F * (__webpack_require__(62) != Object || !__webpack_require__(27)(arrayJoin)), 'Array', {
   join: function join(separator) {
     return arrayJoin.call(toIObject(this), separator === undefined ? ',' : separator);
   }
 });
 
 /***/ }),
-/* 338 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28054,7 +28100,7 @@ var $export = __webpack_require__(0),
     $native = [].lastIndexOf,
     NEGATIVE_ZERO = !!$native && 1 / [1].lastIndexOf(1, -0) < 0;
 
-$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(26)($native)), 'Array', {
+$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(27)($native)), 'Array', {
   // 22.1.3.14 / 15.4.4.15 Array.prototype.lastIndexOf(searchElement [, fromIndex])
   lastIndexOf: function lastIndexOf(searchElement /*, fromIndex = @[*-1] */) {
     // convert -0 to +0
@@ -28071,7 +28117,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(26)($nati
 });
 
 /***/ }),
-/* 339 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28080,7 +28126,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(26)($nati
 var $export = __webpack_require__(0),
     $map = __webpack_require__(28)(1);
 
-$export($export.P + $export.F * !__webpack_require__(26)([].map, true), 'Array', {
+$export($export.P + $export.F * !__webpack_require__(27)([].map, true), 'Array', {
   // 22.1.3.15 / 15.4.4.19 Array.prototype.map(callbackfn [, thisArg])
   map: function map(callbackfn /* , thisArg */) {
     return $map(this, callbackfn, arguments[1]);
@@ -28088,7 +28134,7 @@ $export($export.P + $export.F * !__webpack_require__(26)([].map, true), 'Array',
 });
 
 /***/ }),
-/* 340 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28115,6 +28161,23 @@ $export($export.S + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
+/* 340 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $export = __webpack_require__(0),
+    $reduce = __webpack_require__(124);
+
+$export($export.P + $export.F * !__webpack_require__(27)([].reduceRight, true), 'Array', {
+  // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
+  reduceRight: function reduceRight(callbackfn /* , initialValue */) {
+    return $reduce(this, callbackfn, arguments.length, arguments[1], true);
+  }
+});
+
+/***/ }),
 /* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28124,10 +28187,10 @@ $export($export.S + $export.F * __webpack_require__(6)(function () {
 var $export = __webpack_require__(0),
     $reduce = __webpack_require__(124);
 
-$export($export.P + $export.F * !__webpack_require__(26)([].reduceRight, true), 'Array', {
-  // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
-  reduceRight: function reduceRight(callbackfn /* , initialValue */) {
-    return $reduce(this, callbackfn, arguments.length, arguments[1], true);
+$export($export.P + $export.F * !__webpack_require__(27)([].reduce, true), 'Array', {
+  // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
+  reduce: function reduce(callbackfn /* , initialValue */) {
+    return $reduce(this, callbackfn, arguments.length, arguments[1], false);
   }
 });
 
@@ -28139,25 +28202,8 @@ $export($export.P + $export.F * !__webpack_require__(26)([].reduceRight, true), 
 
 
 var $export = __webpack_require__(0),
-    $reduce = __webpack_require__(124);
-
-$export($export.P + $export.F * !__webpack_require__(26)([].reduce, true), 'Array', {
-  // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
-  reduce: function reduce(callbackfn /* , initialValue */) {
-    return $reduce(this, callbackfn, arguments.length, arguments[1], false);
-  }
-});
-
-/***/ }),
-/* 343 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $export = __webpack_require__(0),
     html = __webpack_require__(90),
-    cof = __webpack_require__(24),
+    cof = __webpack_require__(25),
     toIndex = __webpack_require__(46),
     toLength = __webpack_require__(11),
     arraySlice = [].slice;
@@ -28183,7 +28229,7 @@ $export($export.P + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 344 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28192,7 +28238,7 @@ $export($export.P + $export.F * __webpack_require__(6)(function () {
 var $export = __webpack_require__(0),
     $some = __webpack_require__(28)(3);
 
-$export($export.P + $export.F * !__webpack_require__(26)([].some, true), 'Array', {
+$export($export.P + $export.F * !__webpack_require__(27)([].some, true), 'Array', {
   // 22.1.3.23 / 15.4.4.17 Array.prototype.some(callbackfn [, thisArg])
   some: function some(callbackfn /* , thisArg */) {
     return $some(this, callbackfn, arguments[1]);
@@ -28200,7 +28246,7 @@ $export($export.P + $export.F * !__webpack_require__(26)([].some, true), 'Array'
 });
 
 /***/ }),
-/* 345 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28220,7 +28266,7 @@ $export($export.P + $export.F * (fails(function () {
   // V8 bug
   test.sort(null);
   // Old WebKit
-}) || !__webpack_require__(26)($sort)), 'Array', {
+}) || !__webpack_require__(27)($sort)), 'Array', {
   // 22.1.3.25 Array.prototype.sort(comparefn)
   sort: function sort(comparefn) {
     return comparefn === undefined ? $sort.call(toObject(this)) : $sort.call(toObject(this), aFunction(comparefn));
@@ -28228,7 +28274,7 @@ $export($export.P + $export.F * (fails(function () {
 });
 
 /***/ }),
-/* 346 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28237,7 +28283,7 @@ $export($export.P + $export.F * (fails(function () {
 __webpack_require__(45)('Array');
 
 /***/ }),
-/* 347 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28251,7 +28297,7 @@ $export($export.S, 'Date', { now: function now() {
   } });
 
 /***/ }),
-/* 348 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28283,7 +28329,7 @@ $export($export.P + $export.F * (fails(function () {
 });
 
 /***/ }),
-/* 349 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28306,7 +28352,7 @@ $export($export.P + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 350 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28315,10 +28361,10 @@ $export($export.P + $export.F * __webpack_require__(6)(function () {
 var TO_PRIMITIVE = __webpack_require__(8)('toPrimitive'),
     proto = Date.prototype;
 
-if (!(TO_PRIMITIVE in proto)) __webpack_require__(17)(proto, TO_PRIMITIVE, __webpack_require__(320));
+if (!(TO_PRIMITIVE in proto)) __webpack_require__(17)(proto, TO_PRIMITIVE, __webpack_require__(319));
 
 /***/ }),
-/* 351 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28337,7 +28383,7 @@ if (new Date(NaN) + '' != INVALID_DATE) {
 }
 
 /***/ }),
-/* 352 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28349,7 +28395,7 @@ var $export = __webpack_require__(0);
 $export($export.P, 'Function', { bind: __webpack_require__(125) });
 
 /***/ }),
-/* 353 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28370,7 +28416,7 @@ if (!(HAS_INSTANCE in FunctionProto)) __webpack_require__(10).f(FunctionProto, H
   } });
 
 /***/ }),
-/* 354 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28403,7 +28449,7 @@ NAME in FProto || __webpack_require__(9) && dP(FProto, NAME, {
 });
 
 /***/ }),
-/* 355 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28426,7 +28472,7 @@ $export($export.S + $export.F * !($acosh
 });
 
 /***/ }),
-/* 356 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28444,7 +28490,7 @@ function asinh(x) {
 $export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', { asinh: asinh });
 
 /***/ }),
-/* 357 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28462,7 +28508,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
 });
 
 /***/ }),
-/* 358 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28479,7 +28525,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 359 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28495,7 +28541,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 360 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28512,7 +28558,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 361 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28525,7 +28571,7 @@ var $export = __webpack_require__(0),
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', { expm1: $expm1 });
 
 /***/ }),
-/* 362 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28559,7 +28605,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 363 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28594,7 +28640,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 364 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28619,7 +28665,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 365 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28635,7 +28681,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 366 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28647,7 +28693,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { log1p: __webpack_require__(133) });
 
 /***/ }),
-/* 367 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28663,7 +28709,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 368 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28675,7 +28721,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { sign: __webpack_require__(97) });
 
 /***/ }),
-/* 369 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28696,7 +28742,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 370 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28716,7 +28762,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 371 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28732,7 +28778,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 372 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28740,7 +28786,7 @@ $export($export.S, 'Math', {
 
 var global = __webpack_require__(4),
     has = __webpack_require__(14),
-    cof = __webpack_require__(24),
+    cof = __webpack_require__(25),
     inheritIfRequired = __webpack_require__(91),
     toPrimitive = __webpack_require__(30),
     fails = __webpack_require__(6),
@@ -28813,7 +28859,7 @@ if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
 }
 
 /***/ }),
-/* 373 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28825,7 +28871,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { EPSILON: Math.pow(2, -52) });
 
 /***/ }),
-/* 374 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28842,7 +28888,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 375 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28854,7 +28900,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { isInteger: __webpack_require__(130) });
 
 /***/ }),
-/* 376 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28870,7 +28916,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 377 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28888,7 +28934,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 378 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28900,7 +28946,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { MAX_SAFE_INTEGER: 0x1fffffffffffff });
 
 /***/ }),
-/* 379 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28912,7 +28958,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { MIN_SAFE_INTEGER: -0x1fffffffffffff });
 
 /***/ }),
-/* 380 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28924,7 +28970,7 @@ var $export = __webpack_require__(0),
 $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { parseFloat: $parseFloat });
 
 /***/ }),
-/* 381 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28936,7 +28982,7 @@ var $export = __webpack_require__(0),
 $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { parseInt: $parseInt });
 
 /***/ }),
-/* 382 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29054,7 +29100,7 @@ $export($export.P + $export.F * (!!$toFixed && (0.00008.toFixed(3) !== '0.000' |
 });
 
 /***/ }),
-/* 383 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29079,7 +29125,7 @@ $export($export.P + $export.F * ($fails(function () {
 });
 
 /***/ }),
-/* 384 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29091,7 +29137,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F, 'Object', { assign: __webpack_require__(134) });
 
 /***/ }),
-/* 385 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29102,7 +29148,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', { create: __webpack_require__(41) });
 
 /***/ }),
-/* 386 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29113,7 +29159,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F * !__webpack_require__(9), 'Object', { defineProperties: __webpack_require__(135) });
 
 /***/ }),
-/* 387 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29124,7 +29170,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F * !__webpack_require__(9), 'Object', { defineProperty: __webpack_require__(10).f });
 
 /***/ }),
-/* 388 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29141,7 +29187,7 @@ __webpack_require__(29)('freeze', function ($freeze) {
 });
 
 /***/ }),
-/* 389 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29158,7 +29204,7 @@ __webpack_require__(29)('getOwnPropertyDescriptor', function () {
 });
 
 /***/ }),
-/* 390 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29170,7 +29216,7 @@ __webpack_require__(29)('getOwnPropertyNames', function () {
 });
 
 /***/ }),
-/* 391 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29187,7 +29233,7 @@ __webpack_require__(29)('getPrototypeOf', function () {
 });
 
 /***/ }),
-/* 392 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29203,7 +29249,7 @@ __webpack_require__(29)('isExtensible', function ($isExtensible) {
 });
 
 /***/ }),
-/* 393 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29219,7 +29265,7 @@ __webpack_require__(29)('isFrozen', function ($isFrozen) {
 });
 
 /***/ }),
-/* 394 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29235,7 +29281,7 @@ __webpack_require__(29)('isSealed', function ($isSealed) {
 });
 
 /***/ }),
-/* 395 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29246,7 +29292,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', { is: __webpack_require__(142) });
 
 /***/ }),
-/* 396 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29263,7 +29309,7 @@ __webpack_require__(29)('keys', function () {
 });
 
 /***/ }),
-/* 397 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29280,7 +29326,7 @@ __webpack_require__(29)('preventExtensions', function ($preventExtensions) {
 });
 
 /***/ }),
-/* 398 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29297,7 +29343,7 @@ __webpack_require__(29)('seal', function ($seal) {
 });
 
 /***/ }),
-/* 399 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29308,7 +29354,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(99).set });
 
 /***/ }),
-/* 400 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29325,7 +29371,7 @@ if (test + '' != '[object z]') {
 }
 
 /***/ }),
-/* 401 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29337,7 +29383,7 @@ var $export = __webpack_require__(0),
 $export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $parseFloat });
 
 /***/ }),
-/* 402 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29349,7 +29395,7 @@ var $export = __webpack_require__(0),
 $export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt });
 
 /***/ }),
-/* 403 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29357,7 +29403,7 @@ $export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt }
 
 var LIBRARY = __webpack_require__(40),
     global = __webpack_require__(4),
-    ctx = __webpack_require__(32),
+    ctx = __webpack_require__(33),
     classof = __webpack_require__(61),
     $export = __webpack_require__(0),
     isObject = __webpack_require__(7),
@@ -29592,7 +29638,7 @@ if (!USE_NATIVE) {
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
 __webpack_require__(54)($Promise, PROMISE);
 __webpack_require__(45)(PROMISE);
-Wrapper = __webpack_require__(31)[PROMISE];
+Wrapper = __webpack_require__(32)[PROMISE];
 
 // statics
 $export($export.S + $export.F * !USE_NATIVE, PROMISE, {
@@ -29661,7 +29707,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(73)(function
 });
 
 /***/ }),
-/* 404 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29685,7 +29731,7 @@ $export($export.S + $export.F * !__webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 405 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29745,7 +29791,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 });
 
 /***/ }),
-/* 406 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29775,7 +29821,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 407 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29794,7 +29840,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 408 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29830,7 +29876,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 409 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29848,7 +29894,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 410 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29866,7 +29912,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 411 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29892,7 +29938,7 @@ function get(target, propertyKey /*, receiver*/) {
 $export($export.S, 'Reflect', { get: get });
 
 /***/ }),
-/* 412 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29908,7 +29954,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 413 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29927,7 +29973,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 414 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29939,7 +29985,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Reflect', { ownKeys: __webpack_require__(139) });
 
 /***/ }),
-/* 415 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29963,7 +30009,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 416 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29986,7 +30032,7 @@ if (setProto) $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 417 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30026,7 +30072,7 @@ function set(target, propertyKey, V /*, receiver*/) {
 $export($export.S, 'Reflect', { set: set });
 
 /***/ }),
-/* 418 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30079,7 +30125,7 @@ if (__webpack_require__(9) && (!CORRECT_NEW || __webpack_require__(6)(function (
 __webpack_require__(45)('RegExp');
 
 /***/ }),
-/* 419 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30098,7 +30144,7 @@ __webpack_require__(69)('match', 1, function (defined, MATCH, $match) {
 });
 
 /***/ }),
-/* 420 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30117,7 +30163,7 @@ __webpack_require__(69)('replace', 2, function (defined, REPLACE, $replace) {
 });
 
 /***/ }),
-/* 421 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30136,7 +30182,7 @@ __webpack_require__(69)('search', 1, function (defined, SEARCH, $search) {
 });
 
 /***/ }),
-/* 422 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30207,7 +30253,7 @@ __webpack_require__(69)('split', 2, function (defined, SPLIT, $split) {
 });
 
 /***/ }),
-/* 423 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30240,7 +30286,7 @@ if (__webpack_require__(6)(function () {
 }
 
 /***/ }),
-/* 424 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30254,7 +30300,7 @@ __webpack_require__(19)('anchor', function (createHTML) {
 });
 
 /***/ }),
-/* 425 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30268,7 +30314,7 @@ __webpack_require__(19)('big', function (createHTML) {
 });
 
 /***/ }),
-/* 426 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30282,7 +30328,7 @@ __webpack_require__(19)('blink', function (createHTML) {
 });
 
 /***/ }),
-/* 427 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30296,7 +30342,7 @@ __webpack_require__(19)('bold', function (createHTML) {
 });
 
 /***/ }),
-/* 428 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30312,7 +30358,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 429 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30337,7 +30383,7 @@ $export($export.P + $export.F * __webpack_require__(89)(ENDS_WITH), 'String', {
 });
 
 /***/ }),
-/* 430 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30351,7 +30397,7 @@ __webpack_require__(19)('fixed', function (createHTML) {
 });
 
 /***/ }),
-/* 431 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30365,7 +30411,7 @@ __webpack_require__(19)('fontcolor', function (createHTML) {
 });
 
 /***/ }),
-/* 432 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30379,7 +30425,7 @@ __webpack_require__(19)('fontsize', function (createHTML) {
 });
 
 /***/ }),
-/* 433 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30408,7 +30454,7 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
 });
 
 /***/ }),
-/* 434 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30426,7 +30472,7 @@ $export($export.P + $export.F * __webpack_require__(89)(INCLUDES), 'String', {
 });
 
 /***/ }),
-/* 435 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30440,7 +30486,7 @@ __webpack_require__(19)('italics', function (createHTML) {
 });
 
 /***/ }),
-/* 436 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30464,7 +30510,7 @@ __webpack_require__(95)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 437 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30478,7 +30524,7 @@ __webpack_require__(19)('link', function (createHTML) {
 });
 
 /***/ }),
-/* 438 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30504,7 +30550,7 @@ $export($export.S, 'String', {
 });
 
 /***/ }),
-/* 439 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30518,7 +30564,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 440 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30532,7 +30578,7 @@ __webpack_require__(19)('small', function (createHTML) {
 });
 
 /***/ }),
-/* 441 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30555,7 +30601,7 @@ $export($export.P + $export.F * __webpack_require__(89)(STARTS_WITH), 'String', 
 });
 
 /***/ }),
-/* 442 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30569,7 +30615,7 @@ __webpack_require__(19)('strike', function (createHTML) {
 });
 
 /***/ }),
-/* 443 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30583,7 +30629,7 @@ __webpack_require__(19)('sub', function (createHTML) {
 });
 
 /***/ }),
-/* 444 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30597,7 +30643,7 @@ __webpack_require__(19)('sup', function (createHTML) {
 });
 
 /***/ }),
-/* 445 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30611,7 +30657,7 @@ __webpack_require__(55)('trim', function ($trim) {
 });
 
 /***/ }),
-/* 446 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30633,8 +30679,8 @@ var global = __webpack_require__(4),
     wks = __webpack_require__(8),
     wksExt = __webpack_require__(144),
     wksDefine = __webpack_require__(108),
-    keyOf = __webpack_require__(322),
-    enumKeys = __webpack_require__(321),
+    keyOf = __webpack_require__(321),
+    enumKeys = __webpack_require__(320),
     isArray = __webpack_require__(93),
     anObject = __webpack_require__(3),
     toIObject = __webpack_require__(20),
@@ -30861,7 +30907,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 447 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30914,7 +30960,7 @@ $export($export.P + $export.U + $export.F * __webpack_require__(6)(function () {
 __webpack_require__(45)(ARRAY_BUFFER);
 
 /***/ }),
-/* 448 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30926,14 +30972,27 @@ $export($export.G + $export.W + $export.F * !__webpack_require__(77).ABV, {
 });
 
 /***/ }),
+/* 448 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(35)('Float32', 4, function (init) {
+  return function Float32Array(data, byteOffset, length) {
+    return init(this, data, byteOffset, length);
+  };
+});
+
+/***/ }),
 /* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(34)('Float32', 4, function (init) {
-  return function Float32Array(data, byteOffset, length) {
+__webpack_require__(35)('Float64', 8, function (init) {
+  return function Float64Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
@@ -30945,8 +31004,8 @@ __webpack_require__(34)('Float32', 4, function (init) {
 "use strict";
 
 
-__webpack_require__(34)('Float64', 8, function (init) {
-  return function Float64Array(data, byteOffset, length) {
+__webpack_require__(35)('Int16', 2, function (init) {
+  return function Int16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
@@ -30958,8 +31017,8 @@ __webpack_require__(34)('Float64', 8, function (init) {
 "use strict";
 
 
-__webpack_require__(34)('Int16', 2, function (init) {
-  return function Int16Array(data, byteOffset, length) {
+__webpack_require__(35)('Int32', 4, function (init) {
+  return function Int32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
@@ -30971,8 +31030,8 @@ __webpack_require__(34)('Int16', 2, function (init) {
 "use strict";
 
 
-__webpack_require__(34)('Int32', 4, function (init) {
-  return function Int32Array(data, byteOffset, length) {
+__webpack_require__(35)('Int8', 1, function (init) {
+  return function Int8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
@@ -30984,8 +31043,8 @@ __webpack_require__(34)('Int32', 4, function (init) {
 "use strict";
 
 
-__webpack_require__(34)('Int8', 1, function (init) {
-  return function Int8Array(data, byteOffset, length) {
+__webpack_require__(35)('Uint16', 2, function (init) {
+  return function Uint16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
@@ -30997,8 +31056,8 @@ __webpack_require__(34)('Int8', 1, function (init) {
 "use strict";
 
 
-__webpack_require__(34)('Uint16', 2, function (init) {
-  return function Uint16Array(data, byteOffset, length) {
+__webpack_require__(35)('Uint32', 4, function (init) {
+  return function Uint32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
@@ -31010,8 +31069,8 @@ __webpack_require__(34)('Uint16', 2, function (init) {
 "use strict";
 
 
-__webpack_require__(34)('Uint32', 4, function (init) {
-  return function Uint32Array(data, byteOffset, length) {
+__webpack_require__(35)('Uint8', 1, function (init) {
+  return function Uint8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
@@ -31023,27 +31082,14 @@ __webpack_require__(34)('Uint32', 4, function (init) {
 "use strict";
 
 
-__webpack_require__(34)('Uint8', 1, function (init) {
-  return function Uint8Array(data, byteOffset, length) {
-    return init(this, data, byteOffset, length);
-  };
-});
-
-/***/ }),
-/* 457 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(34)('Uint8', 1, function (init) {
+__webpack_require__(35)('Uint8', 1, function (init) {
   return function Uint8ClampedArray(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 }, true);
 
 /***/ }),
-/* 458 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31064,7 +31110,7 @@ __webpack_require__(68)('WeakSet', function (get) {
 }, weak, false, true);
 
 /***/ }),
-/* 459 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31083,7 +31129,7 @@ $export($export.P, 'Array', {
 __webpack_require__(51)('includes');
 
 /***/ }),
-/* 460 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31093,7 +31139,7 @@ __webpack_require__(51)('includes');
 var $export = __webpack_require__(0),
     microtask = __webpack_require__(98)(),
     process = __webpack_require__(4).process,
-    isNode = __webpack_require__(24)(process) == 'process';
+    isNode = __webpack_require__(25)(process) == 'process';
 
 $export($export.G, {
   asap: function asap(fn) {
@@ -31103,7 +31149,7 @@ $export($export.G, {
 });
 
 /***/ }),
-/* 461 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31111,7 +31157,7 @@ $export($export.G, {
 
 // https://github.com/ljharb/proposal-is-error
 var $export = __webpack_require__(0),
-    cof = __webpack_require__(24);
+    cof = __webpack_require__(25);
 
 $export($export.S, 'Error', {
   isError: function isError(it) {
@@ -31120,7 +31166,7 @@ $export($export.S, 'Error', {
 });
 
 /***/ }),
-/* 462 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31132,7 +31178,7 @@ var $export = __webpack_require__(0);
 $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(127)('Map') });
 
 /***/ }),
-/* 463 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31151,7 +31197,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 464 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31175,7 +31221,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 465 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31194,7 +31240,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 466 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31218,7 +31264,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 467 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31237,7 +31283,7 @@ __webpack_require__(9) && $export($export.P + __webpack_require__(74), 'Object',
 });
 
 /***/ }),
-/* 468 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31256,7 +31302,7 @@ __webpack_require__(9) && $export($export.P + __webpack_require__(74), 'Object',
 });
 
 /***/ }),
-/* 469 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31273,7 +31319,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 470 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31301,7 +31347,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 471 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31326,7 +31372,7 @@ __webpack_require__(9) && $export($export.P + __webpack_require__(74), 'Object',
 });
 
 /***/ }),
-/* 472 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31351,7 +31397,7 @@ __webpack_require__(9) && $export($export.P + __webpack_require__(74), 'Object',
 });
 
 /***/ }),
-/* 473 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31368,7 +31414,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 474 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31377,7 +31423,7 @@ $export($export.S, 'Object', {
 
 var $export = __webpack_require__(0),
     global = __webpack_require__(4),
-    core = __webpack_require__(31),
+    core = __webpack_require__(32),
     microtask = __webpack_require__(98)(),
     OBSERVABLE = __webpack_require__(8)('observable'),
     aFunction = __webpack_require__(16),
@@ -31584,13 +31630,13 @@ $export($export.G, { Observable: $Observable });
 __webpack_require__(45)('Observable');
 
 /***/ }),
-/* 475 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var metadata = __webpack_require__(33),
+var metadata = __webpack_require__(34),
     anObject = __webpack_require__(3),
     toMetaKey = metadata.key,
     ordinaryDefineOwnMetadata = metadata.set;
@@ -31600,13 +31646,13 @@ metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValu
   } });
 
 /***/ }),
-/* 476 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var metadata = __webpack_require__(33),
+var metadata = __webpack_require__(34),
     anObject = __webpack_require__(3),
     toMetaKey = metadata.key,
     getOrCreateMetadataMap = metadata.map,
@@ -31623,7 +31669,7 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /*, t
   } });
 
 /***/ }),
-/* 477 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31631,7 +31677,7 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /*, t
 
 var Set = __webpack_require__(147),
     from = __webpack_require__(123),
-    metadata = __webpack_require__(33),
+    metadata = __webpack_require__(34),
     anObject = __webpack_require__(3),
     getPrototypeOf = __webpack_require__(22),
     ordinaryOwnMetadataKeys = metadata.keys,
@@ -31650,13 +31696,13 @@ metadata.exp({ getMetadataKeys: function getMetadataKeys(target /*, targetKey */
   } });
 
 /***/ }),
-/* 478 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var metadata = __webpack_require__(33),
+var metadata = __webpack_require__(34),
     anObject = __webpack_require__(3),
     getPrototypeOf = __webpack_require__(22),
     ordinaryHasOwnMetadata = metadata.has,
@@ -31675,13 +31721,13 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /*, targetK
   } });
 
 /***/ }),
-/* 479 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var metadata = __webpack_require__(33),
+var metadata = __webpack_require__(34),
     anObject = __webpack_require__(3),
     ordinaryOwnMetadataKeys = metadata.keys,
     toMetaKey = metadata.key;
@@ -31691,13 +31737,13 @@ metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /*, target
   } });
 
 /***/ }),
-/* 480 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var metadata = __webpack_require__(33),
+var metadata = __webpack_require__(34),
     anObject = __webpack_require__(3),
     ordinaryGetOwnMetadata = metadata.get,
     toMetaKey = metadata.key;
@@ -31707,13 +31753,13 @@ metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /*, t
   } });
 
 /***/ }),
-/* 481 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var metadata = __webpack_require__(33),
+var metadata = __webpack_require__(34),
     anObject = __webpack_require__(3),
     getPrototypeOf = __webpack_require__(22),
     ordinaryHasOwnMetadata = metadata.has,
@@ -31731,13 +31777,13 @@ metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /*, targetK
   } });
 
 /***/ }),
-/* 482 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var metadata = __webpack_require__(33),
+var metadata = __webpack_require__(34),
     anObject = __webpack_require__(3),
     ordinaryHasOwnMetadata = metadata.has,
     toMetaKey = metadata.key;
@@ -31747,13 +31793,13 @@ metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /*, t
   } });
 
 /***/ }),
-/* 483 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var metadata = __webpack_require__(33),
+var metadata = __webpack_require__(34),
     anObject = __webpack_require__(3),
     aFunction = __webpack_require__(16),
     toMetaKey = metadata.key,
@@ -31766,7 +31812,7 @@ metadata.exp({ metadata: function metadata(metadataKey, metadataValue) {
   } });
 
 /***/ }),
-/* 484 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31778,7 +31824,7 @@ var $export = __webpack_require__(0);
 $export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(127)('Set') });
 
 /***/ }),
-/* 485 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31795,7 +31841,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 486 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31803,7 +31849,7 @@ $export($export.P, 'String', {
 // https://tc39.github.io/String.prototype.matchAll/
 
 var $export = __webpack_require__(0),
-    defined = __webpack_require__(25),
+    defined = __webpack_require__(26),
     toLength = __webpack_require__(11),
     isRegExp = __webpack_require__(72),
     getFlags = __webpack_require__(70),
@@ -31832,7 +31878,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 487 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31849,7 +31895,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 488 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31866,7 +31912,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 489 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31880,7 +31926,7 @@ __webpack_require__(55)('trimLeft', function ($trim) {
 }, 'trimStart');
 
 /***/ }),
-/* 490 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31894,7 +31940,7 @@ __webpack_require__(55)('trimRight', function ($trim) {
 }, 'trimEnd');
 
 /***/ }),
-/* 491 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31903,7 +31949,7 @@ __webpack_require__(55)('trimRight', function ($trim) {
 __webpack_require__(108)('asyncIterator');
 
 /***/ }),
-/* 492 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31912,7 +31958,7 @@ __webpack_require__(108)('asyncIterator');
 __webpack_require__(108)('observable');
 
 /***/ }),
-/* 493 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31924,7 +31970,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'System', { global: __webpack_require__(4) });
 
 /***/ }),
-/* 494 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31956,7 +32002,7 @@ for (var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList
 }
 
 /***/ }),
-/* 495 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31970,7 +32016,7 @@ $export($export.G + $export.B, {
 });
 
 /***/ }),
-/* 496 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31980,7 +32026,7 @@ $export($export.G + $export.B, {
 var global = __webpack_require__(4),
     $export = __webpack_require__(0),
     invoke = __webpack_require__(71),
-    partial = __webpack_require__(323),
+    partial = __webpack_require__(322),
     navigator = global.navigator,
     MSIE = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
 var wrap = function wrap(set) {
@@ -31994,38 +32040,39 @@ $export($export.G + $export.B + $export.F * MSIE, {
 });
 
 /***/ }),
-/* 497 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(446);
-__webpack_require__(385);
-__webpack_require__(387);
-__webpack_require__(386);
-__webpack_require__(389);
-__webpack_require__(391);
-__webpack_require__(396);
-__webpack_require__(390);
-__webpack_require__(388);
-__webpack_require__(398);
-__webpack_require__(397);
-__webpack_require__(393);
-__webpack_require__(394);
-__webpack_require__(392);
+__webpack_require__(445);
 __webpack_require__(384);
+__webpack_require__(386);
+__webpack_require__(385);
+__webpack_require__(388);
+__webpack_require__(390);
 __webpack_require__(395);
-__webpack_require__(399);
-__webpack_require__(400);
-__webpack_require__(352);
-__webpack_require__(354);
-__webpack_require__(353);
-__webpack_require__(402);
-__webpack_require__(401);
-__webpack_require__(372);
-__webpack_require__(382);
+__webpack_require__(389);
+__webpack_require__(387);
+__webpack_require__(397);
+__webpack_require__(396);
+__webpack_require__(392);
+__webpack_require__(393);
+__webpack_require__(391);
 __webpack_require__(383);
+__webpack_require__(394);
+__webpack_require__(398);
+__webpack_require__(399);
+__webpack_require__(351);
+__webpack_require__(353);
+__webpack_require__(352);
+__webpack_require__(401);
+__webpack_require__(400);
+__webpack_require__(371);
+__webpack_require__(381);
+__webpack_require__(382);
+__webpack_require__(372);
 __webpack_require__(373);
 __webpack_require__(374);
 __webpack_require__(375);
@@ -32034,7 +32081,7 @@ __webpack_require__(377);
 __webpack_require__(378);
 __webpack_require__(379);
 __webpack_require__(380);
-__webpack_require__(381);
+__webpack_require__(354);
 __webpack_require__(355);
 __webpack_require__(356);
 __webpack_require__(357);
@@ -32051,134 +32098,133 @@ __webpack_require__(367);
 __webpack_require__(368);
 __webpack_require__(369);
 __webpack_require__(370);
-__webpack_require__(371);
+__webpack_require__(432);
+__webpack_require__(437);
+__webpack_require__(444);
+__webpack_require__(435);
+__webpack_require__(427);
+__webpack_require__(428);
 __webpack_require__(433);
 __webpack_require__(438);
-__webpack_require__(445);
-__webpack_require__(436);
-__webpack_require__(428);
-__webpack_require__(429);
-__webpack_require__(434);
-__webpack_require__(439);
-__webpack_require__(441);
+__webpack_require__(440);
+__webpack_require__(423);
 __webpack_require__(424);
 __webpack_require__(425);
 __webpack_require__(426);
-__webpack_require__(427);
+__webpack_require__(429);
 __webpack_require__(430);
 __webpack_require__(431);
-__webpack_require__(432);
-__webpack_require__(435);
-__webpack_require__(437);
-__webpack_require__(440);
+__webpack_require__(434);
+__webpack_require__(436);
+__webpack_require__(439);
+__webpack_require__(441);
 __webpack_require__(442);
 __webpack_require__(443);
-__webpack_require__(444);
-__webpack_require__(347);
-__webpack_require__(349);
+__webpack_require__(346);
 __webpack_require__(348);
-__webpack_require__(351);
+__webpack_require__(347);
 __webpack_require__(350);
-__webpack_require__(336);
-__webpack_require__(334);
-__webpack_require__(340);
-__webpack_require__(337);
-__webpack_require__(343);
-__webpack_require__(345);
+__webpack_require__(349);
+__webpack_require__(335);
 __webpack_require__(333);
 __webpack_require__(339);
-__webpack_require__(330);
-__webpack_require__(344);
-__webpack_require__(328);
+__webpack_require__(336);
 __webpack_require__(342);
-__webpack_require__(341);
-__webpack_require__(335);
-__webpack_require__(338);
-__webpack_require__(327);
-__webpack_require__(329);
+__webpack_require__(344);
 __webpack_require__(332);
+__webpack_require__(338);
+__webpack_require__(329);
+__webpack_require__(343);
+__webpack_require__(327);
+__webpack_require__(341);
+__webpack_require__(340);
+__webpack_require__(334);
+__webpack_require__(337);
+__webpack_require__(326);
+__webpack_require__(328);
 __webpack_require__(331);
-__webpack_require__(346);
+__webpack_require__(330);
+__webpack_require__(345);
 __webpack_require__(110);
-__webpack_require__(418);
-__webpack_require__(423);
+__webpack_require__(417);
+__webpack_require__(422);
 __webpack_require__(146);
+__webpack_require__(418);
 __webpack_require__(419);
 __webpack_require__(420);
 __webpack_require__(421);
-__webpack_require__(422);
-__webpack_require__(403);
+__webpack_require__(402);
 __webpack_require__(145);
 __webpack_require__(147);
 __webpack_require__(148);
-__webpack_require__(458);
-__webpack_require__(447);
-__webpack_require__(448);
-__webpack_require__(453);
-__webpack_require__(456);
 __webpack_require__(457);
-__webpack_require__(451);
-__webpack_require__(454);
+__webpack_require__(446);
+__webpack_require__(447);
 __webpack_require__(452);
 __webpack_require__(455);
-__webpack_require__(449);
+__webpack_require__(456);
 __webpack_require__(450);
+__webpack_require__(453);
+__webpack_require__(451);
+__webpack_require__(454);
+__webpack_require__(448);
+__webpack_require__(449);
+__webpack_require__(403);
 __webpack_require__(404);
 __webpack_require__(405);
 __webpack_require__(406);
 __webpack_require__(407);
-__webpack_require__(408);
-__webpack_require__(411);
-__webpack_require__(409);
 __webpack_require__(410);
+__webpack_require__(408);
+__webpack_require__(409);
+__webpack_require__(411);
 __webpack_require__(412);
 __webpack_require__(413);
 __webpack_require__(414);
-__webpack_require__(415);
-__webpack_require__(417);
 __webpack_require__(416);
-__webpack_require__(459);
-__webpack_require__(485);
-__webpack_require__(488);
-__webpack_require__(487);
-__webpack_require__(489);
-__webpack_require__(490);
-__webpack_require__(486);
-__webpack_require__(491);
-__webpack_require__(492);
-__webpack_require__(470);
-__webpack_require__(473);
-__webpack_require__(469);
-__webpack_require__(467);
-__webpack_require__(468);
-__webpack_require__(471);
-__webpack_require__(472);
-__webpack_require__(462);
+__webpack_require__(415);
+__webpack_require__(458);
 __webpack_require__(484);
-__webpack_require__(493);
+__webpack_require__(487);
+__webpack_require__(486);
+__webpack_require__(488);
+__webpack_require__(489);
+__webpack_require__(485);
+__webpack_require__(490);
+__webpack_require__(491);
+__webpack_require__(469);
+__webpack_require__(472);
+__webpack_require__(468);
+__webpack_require__(466);
+__webpack_require__(467);
+__webpack_require__(470);
+__webpack_require__(471);
 __webpack_require__(461);
+__webpack_require__(483);
+__webpack_require__(492);
+__webpack_require__(460);
+__webpack_require__(462);
+__webpack_require__(464);
 __webpack_require__(463);
 __webpack_require__(465);
-__webpack_require__(464);
-__webpack_require__(466);
+__webpack_require__(474);
 __webpack_require__(475);
-__webpack_require__(476);
-__webpack_require__(478);
 __webpack_require__(477);
-__webpack_require__(480);
+__webpack_require__(476);
 __webpack_require__(479);
+__webpack_require__(478);
+__webpack_require__(480);
 __webpack_require__(481);
 __webpack_require__(482);
-__webpack_require__(483);
-__webpack_require__(460);
-__webpack_require__(474);
-__webpack_require__(496);
+__webpack_require__(459);
+__webpack_require__(473);
 __webpack_require__(495);
 __webpack_require__(494);
-module.exports = __webpack_require__(31);
+__webpack_require__(493);
+module.exports = __webpack_require__(32);
 
 /***/ }),
-/* 498 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32208,7 +32254,7 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 499 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34517,7 +34563,7 @@ if (inBrowser && window.Vue) {
 exports.default = VueRouter;
 
 /***/ }),
-/* 500 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34578,7 +34624,7 @@ exports.default = VueRouter;
 })(window);
 
 /***/ }),
-/* 501 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34663,7 +34709,7 @@ exports.default = function (h) {
       }
     }
   }), h('div', {
-    class: [this.prefixClass('global-rip')],
+    class: [this.prefix('global-rip')],
     directives: [{
       name: 'show',
       value: this.motion
@@ -34673,6 +34719,86 @@ exports.default = function (h) {
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
                                                                                                                                                                                                                    * btn.render.js
+                                                                                                                                                                                                                   */
+
+/***/ }),
+/* 501 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (h) {
+  var _this = this;
+
+  var ulChildren = [];
+
+  if (this.checkAll) {
+    ulChildren.push(h('li', {
+      class: [this.prefix('li')]
+    }, [h('div', {
+      class: [this.xclass('opt-check-all')],
+      on: {
+        click: this.checkAllOption
+      }
+    }, [h('icon', {
+      props: {
+        size: 'm',
+        kind: this.checkedAll ? 'square-check-o' : 'square-o'
+      }
+    }), h('span', {
+      class: [this.xclass('lable')]
+    }, '全选')])]));
+  }
+
+  if (Array.isArray(this.option) && this.option.length > 0) {
+    var checkEle = [];
+
+    this.option.forEach(function (item, index) {
+      checkEle.push(h('li', {
+        attrs: _defineProperty({}, _this.prefix('data-index'), index),
+        class: [_this.prefix('li'), _this.xclass('opt-li')],
+        on: {
+          click: _this.check
+        }
+      }, [h('div', {
+        class: [_this.xclass('box')]
+      }, [h('icon', {
+        props: {
+          size: 'm',
+          kind: _this.iconName(item[_this.valName])
+        }
+      }), function () {
+        if (item[_this.txtName]) {
+          return h('span', {
+            class: [_this.xclass('lable')]
+          }, item[_this.txtName]);
+        }
+      }()])]));
+    });
+
+    ulChildren.push(checkEle);
+  }
+
+  return h('div', {
+    class: [this.cPrefix, this.xclass(['stage', this.themeClass])]
+  }, [h('div', {
+    class: [this.xclass('read-only')],
+    directives: [{
+      name: 'show',
+      value: this.readOnly
+    }]
+  }), h('ul', {
+    class: [this.prefix('ul'), this.xclass('opt-ul')]
+  }, ulChildren)]);
+};
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
+                                                                                                                                                                                                                   * check.render.js
                                                                                                                                                                                                                    */
 
 /***/ }),
@@ -35743,7 +35869,7 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _selectOpt = __webpack_require__(278);
+var _selectOpt = __webpack_require__(276);
 
 var _selectOpt2 = _interopRequireDefault(_selectOpt);
 
@@ -36409,7 +36535,7 @@ exports.default = function (h) {
   }, $slots.footer || this.footer), h('aside', {
     class: [this.xclass('line-num')]
   }, [h('ul', {
-    class: [this.prefixClass('ul')]
+    class: [this.prefix('ul')]
   }, lineNumEle)])])])]);
 };
 
@@ -36560,7 +36686,7 @@ exports.default = function (h) {
     ref: 'scroller'
   }, scrollerChildren), h('transition', {
     props: {
-      name: this.prefixClass('slide-up')
+      name: this.prefix('slide-up')
     }
   }, [h('page', {
     class: [this.xclass('page')],
@@ -36648,7 +36774,7 @@ exports.default = function (h) {
   } else {
     menuStage.push(h('transition', {
       props: {
-        name: this.prefixClass(this.menuAnimate + '-down')
+        name: this.prefix(this.menuAnimate + '-down')
       }
     }, [h('div', {
       class: [this.xclass('stage'), this.xclass('animate-' + this.menuAnimate)],
@@ -36886,9 +37012,9 @@ var tableColComp = {
   },
   render: function render(h) {
     return h(this.th ? 'th' : 'td', {
-      class: [this.cPrefix, this.prefixClass('text-' + this.align)]
+      class: [this.cPrefix, this.prefix('text-' + this.align)]
     }, [h('div', {
-      class: [_defineProperty({}, '' + this.prefixClass('text-omit'), this.omit)],
+      class: [_defineProperty({}, '' + this.prefix('text-omit'), this.omit)],
       style: this.colBodyStyle
     }, this.$slots.default)]);
   },
@@ -37229,7 +37355,7 @@ exports.default = {
     var data = {
       on: {
         beforeEnter: function beforeEnter(el) {
-          (0, _element.addClass)(el, _this.prefixClass('transition-rip'));
+          (0, _element.addClass)(el, _this.prefix('transition-rip'));
 
           if (_this.assign) {
             var $spot = el.firstChild;
@@ -37246,7 +37372,7 @@ exports.default = {
             $spot.style.top = _this.mousePoi.y - spotH / 2 + 'px';
             $spot.style.left = _this.mousePoi.x - spotW / 2 + 'px';
           } else {
-            (0, _element.addClass)(el, _this.prefixClass('transition-rip-auto'));
+            (0, _element.addClass)(el, _this.prefix('transition-rip-auto'));
           }
 
           var height = el.offsetHeight;
@@ -37259,7 +37385,7 @@ exports.default = {
         enter: function enter(el) {
           var height = el.offsetHeight;
 
-          (0, _element.addClass)(el, _this.prefixClass('transition-rip-active'));
+          (0, _element.addClass)(el, _this.prefix('transition-rip-active'));
 
           _this.$emit('enter');
         },
@@ -37267,7 +37393,7 @@ exports.default = {
         afterEnter: function afterEnter(el) {
           el.firstChild.style.transition = el.style.transition = '';
 
-          (0, _element.delClass)(el, [_this.prefixClass('transition-rip'), _this.prefixClass('transition-rip-active')]);
+          (0, _element.delClass)(el, [_this.prefix('transition-rip'), _this.prefix('transition-rip-active')]);
 
           _this.$emit('afterEnter');
         }
@@ -37279,7 +37405,7 @@ exports.default = {
         name: 'show',
         value: this.show
       }]
-    }, [h('div', { class: [this.prefixClass('transition-rip-spot')] })])]);
+    }, [h('div', { class: [this.prefix('transition-rip-spot')] })])]);
   }
 }; /**
     * rip(涟漪) transition component
@@ -37992,4 +38118,4 @@ module.exports = __webpack_require__(164);
 
 /***/ })
 ],[544]);
-//# sourceMappingURL=app.bbeb133a3f654ff9148d.js.map
+//# sourceMappingURL=app.b083e1df1e4bcaaba4ee.js.map
