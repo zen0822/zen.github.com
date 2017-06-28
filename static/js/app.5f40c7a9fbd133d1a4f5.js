@@ -14324,6 +14324,16 @@ var modalComp = {
         default:
           return true;
       }
+    },
+
+    // 模态框的内容的高度
+    modalHeight: function modalHeight() {
+      switch (this.type) {
+        case 'full':
+          return this.isBiggerFull ? 300 : '100%';
+        default:
+          return 120;
+      }
     }
   },
 
@@ -23845,7 +23855,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n.z-modal {\n  position: fixed;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 100%;\n  z-index: 1000; }\n  .z-modal .z-modal-bg {\n    background: rgba(0, 0, 0, 0.12);\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    left: 0;\n    top: 0; }\n  .z-modal .z-modal-pop {\n    position: absolute;\n    background: #fff;\n    border-radius: 3px;\n    overflow: hidden;\n    -webkit-transform: rotate(0);\n            transform: rotate(0);\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\n    padding-top: 24px; }\n    .z-modal .z-modal-pop > header {\n      cursor: move;\n      padding: 0 24px 20px;\n      box-sizing: border-box;\n      width: 100%; }\n      .z-modal .z-modal-pop > header .z-modal-header-title {\n        font-size: 16px;\n        line-height: 1;\n        font-weight: bold; }\n    .z-modal .z-modal-pop > article {\n      box-sizing: border-box;\n      max-width: 100%;\n      min-width: 280px; }\n      .z-modal .z-modal-pop > article > .z-modal-scroller\n> .z-scroller-box {\n        padding: 0 24px 24px;\n        box-sizing: border-box; }\n    .z-modal .z-modal-pop > footer {\n      padding: 8px 8px 8px 24px;\n      box-sizing: border-box;\n      line-height: normal;\n      text-align: right;\n      height: auto;\n      width: 100%; }\n      .z-modal .z-modal-pop > footer > .z-btn {\n        margin: 0 4px; }\n  .z-modal.z-modal-has-scroller .z-modal-pop > header {\n    border-bottom: #d6d6d6 1px solid; }\n  .z-modal.z-modal-has-scroller .z-modal-pop > article {\n    padding-top: 0;\n    padding-bottom: 0; }\n  .z-modal.z-modal-has-scroller .z-modal-pop > footer {\n    border-top: #d6d6d6 1px solid; }\n  .z-modal.z-modal-type-alert .z-modal-pop > article {\n    min-height: auto; }\n  .z-modal.z-modal-type-full.z-modal-has-scroller .z-modal-pop\n.z-modal.z-modal-type-full > header {\n    border-color: #ef5350; }\n  .z-modal.z-modal-type-full .z-modal-pop {\n    width: 530px;\n    padding-top: 0; }\n    .z-modal.z-modal-type-full .z-modal-pop > header {\n      color: #fff;\n      padding-top: 12px;\n      padding-bottom: 12px;\n      background-color: #ef5350;\n      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2); }\n      .z-modal.z-modal-type-full .z-modal-pop > header > div {\n        min-height: 36px; }\n      .z-modal.z-modal-type-full .z-modal-pop > header .z-modal-header-nav {\n        line-height: 1; }\n    .z-modal.z-modal-type-full .z-modal-pop > article {\n      height: 300px; }\n    .z-modal.z-modal-type-full .z-modal-pop > footer {\n      border-top: #d6d6d6 1px solid;\n      padding-top: 12px;\n      padding-bottom: 12px; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n.z-modal {\n  position: fixed;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 100%;\n  z-index: 1000; }\n  .z-modal.z-modal-no-header .z-modal-pop > article > .z-modal-scroller\n> .z-scroller-box {\n    padding-top: 24px; }\n  .z-modal .z-modal-bg {\n    background: rgba(0, 0, 0, 0.12);\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    left: 0;\n    top: 0; }\n  .z-modal .z-modal-pop {\n    position: absolute;\n    background: #fff;\n    border-radius: 3px;\n    overflow: hidden;\n    -webkit-transform: rotate(0);\n            transform: rotate(0);\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2); }\n    .z-modal .z-modal-pop > header {\n      cursor: move;\n      padding: 24px 24px 20px;\n      box-sizing: border-box;\n      width: 100%; }\n      .z-modal .z-modal-pop > header .z-modal-header-title {\n        font-size: 16px;\n        line-height: 1;\n        font-weight: bold; }\n    .z-modal .z-modal-pop > article {\n      box-sizing: border-box;\n      max-width: 100%;\n      min-width: 280px; }\n      .z-modal .z-modal-pop > article > .z-modal-scroller\n> .z-scroller-box {\n        padding: 0 24px 24px;\n        box-sizing: border-box; }\n    .z-modal .z-modal-pop > footer {\n      padding: 8px 8px 8px 24px;\n      box-sizing: border-box;\n      line-height: normal;\n      text-align: right;\n      height: auto;\n      width: 100%; }\n      .z-modal .z-modal-pop > footer > .z-btn {\n        margin: 0 4px; }\n  .z-modal.z-modal-has-scroller .z-modal-pop > header {\n    border-bottom: #d6d6d6 1px solid; }\n  .z-modal.z-modal-has-scroller .z-modal-pop > article {\n    padding-top: 0;\n    padding-bottom: 0; }\n  .z-modal.z-modal-has-scroller .z-modal-pop > footer {\n    border-top: #d6d6d6 1px solid; }\n  .z-modal.z-modal-type-alert .z-modal-pop > article {\n    min-height: auto; }\n  .z-modal.z-modal-type-full.z-modal-has-scroller .z-modal-pop > header {\n    border-color: #ef5350; }\n  .z-modal.z-modal-type-full .z-modal-pop {\n    width: 530px;\n    padding-top: 0; }\n    .z-modal.z-modal-type-full .z-modal-pop > header {\n      color: #fff;\n      padding-top: 12px;\n      padding-bottom: 12px;\n      background-color: #ef5350;\n      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2); }\n      .z-modal.z-modal-type-full .z-modal-pop > header > div {\n        min-height: 36px; }\n      .z-modal.z-modal-type-full .z-modal-pop > header .z-modal-header-nav {\n        line-height: 1; }\n    .z-modal.z-modal-type-full .z-modal-pop > article {\n      height: 300px; }\n    .z-modal.z-modal-type-full .z-modal-pop > footer {\n      border-top: #d6d6d6 1px solid;\n      padding-top: 12px;\n      padding-bottom: 12px; }\n", ""]);
 
 // exports
 
@@ -24592,7 +24602,7 @@ pug_mixins["section"].call({
 block: function(){
 pug_html = pug_html + "\u003Cz-btn @click=\"showFullPop\"\u003E全屏弹窗\u003C\u002Fz-btn\u003E\u003Cz-btn @click=\"hideFullPop\"\u003E隐藏全屏弹窗\u003C\u002Fz-btn\u003E\u003Cz-modal commit header=\"dasfdfasdf\" ok-btn=\"发布\" type=\"full\" ref=\"fullPop\"\u003E";
 var n = 0
-while (n < 6) {
+while (n < 8) {
 pug_html = pug_html + "\u003Cp\u003Efull-" + (pug.escape(null == (pug_interp = n++) ? "" : pug_interp)) + "\u003C\u002Fp\u003E";
 }
 pug_html = pug_html + "\u003C\u002Fz-modal\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-pop header-name="custom" ref="pop">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>custom</p>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-pop>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
@@ -36760,7 +36770,7 @@ exports.default = function (h) {
   modalChildren.push(h('article', [h('scroller', {
     class: [this.xclass('scroller')],
     props: {
-      height: this.isFull ? this.isBiggerFull ? 300 : '100%' : 120,
+      height: this.modalHeight,
       autoHide: true
     },
     ref: 'scroller'
@@ -36789,7 +36799,7 @@ exports.default = function (h) {
       speed: 'fast'
     }
   }, [h('div', {
-    class: [this.cPrefix, this.xclass([this.themeClass]), this.xclass('type-' + this.type), _defineProperty({}, this.xclass('has-scroller'), this.hasScroller)],
+    class: [this.cPrefix, this.xclass([this.themeClass]), this.xclass('type-' + this.type), _defineProperty({}, this.xclass('no-header'), !this.modalHeaderDisplay), _defineProperty({}, this.xclass('has-scroller'), this.hasScroller)],
     directives: [{
       name: 'show',
       value: this.modalDisplay
@@ -38752,4 +38762,4 @@ module.exports = __webpack_require__(166);
 
 /***/ })
 ],[555]);
-//# sourceMappingURL=app.325b07420fecbf2b9c79.js.map
+//# sourceMappingURL=app.5f40c7a9fbd133d1a4f5.js.map
