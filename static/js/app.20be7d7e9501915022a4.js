@@ -13589,8 +13589,6 @@ var inputComp = {
       default: ''
     },
 
-    errorTipName: String,
-
     readOnly: {
       type: Boolean,
       default: false
@@ -13676,7 +13674,9 @@ var inputComp = {
       // 冒泡的错误提示显示状态
       bubbleDisplay: false,
       // 当前输入框值的长度
-      inputTextLength: 0
+      inputTextLength: 0,
+      // 错误提示框的显示状态
+      errorBorderDisplay: false
     };
   },
 
@@ -13699,9 +13699,6 @@ var inputComp = {
     },
     isText: function isText() {
       return this.type === TYPE_TEXT;
-    },
-    errorBorderDisplay: function errorBorderDisplay() {
-      return !this.verified;
     },
     inputHub: function inputHub() {
       return this.$store.getters[_type2.default.input.get];
@@ -15280,6 +15277,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * @prop auto - 根据传入的列表数据自动生成分页数据
  * @prop autoHideScroller - 是否自动隐藏滚动条
+ * @prop autoHidePage - 是否自动隐藏分页触发器
  * @prop item - 列表数据
  * @prop page - 分页数据（没传的话，默认将传的列表数据（item）作为分页数据）
  * @prop pager - 启动分页功能
@@ -15345,6 +15343,11 @@ var listComp = {
     },
 
     autoHideScroller: {
+      type: Boolean,
+      default: false
+    },
+
+    autoHidePage: {
       type: Boolean,
       default: false
     },
@@ -24440,7 +24443,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input 组件样式\r\n */\n.z-input {\n  display: inline-block;\n  vertical-align: middle;\n  width: 170px;\n  position: relative; }\n  .z-input:hover .z-input-wrap {\n    border-color: #999999; }\n    .z-input:hover .z-input-wrap > .z-input-wrap-border {\n      border-color: #999999; }\n  .z-input:hover.z-input-type-area .z-input-wrap {\n    border: #999999 1px solid; }\n    .z-input:hover.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border: #999999 1px solid; }\n  .z-input.z-input-type-area .z-input-wrap {\n    border: #d6d6d6 1px solid;\n    border-radius: 3px; }\n    .z-input.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border-radius: 3px;\n      border: transparent 1px solid; }\n  .z-input .z-input-limit-txt {\n    padding: 8px 0;\n    text-align: right; }\n  .z-input .z-input-wrap {\n    position: relative;\n    border-bottom: #d6d6d6 1px solid;\n    background-color: #fff;\n    box-sizing: border-box;\n    transition: all 100ms ease-out; }\n    .z-input .z-input-wrap::after {\n      content: '';\n      position: absolute;\n      width: 0;\n      height: 2px;\n      left: 0;\n      right: 0;\n      margin: 0 auto;\n      bottom: -1px;\n      background-color: transparent;\n      z-index: 1;\n      -webkit-transform: scaleX(0);\n              transform: scaleX(0);\n      transition: all 300ms ease-out; }\n    .z-input .z-input-wrap > .z-input-wrap-border {\n      border-top-left-radius: 3px;\n      border-top-right-radius: 3px;\n      border-bottom: transparent 1px solid;\n      transition: all 100ms ease-out; }\n    .z-input .z-input-wrap.z-input-error-border {\n      border: #ef5350 1px solid; }\n    .z-input .z-input-wrap.z-input-editting::after {\n      width: 100%;\n      background-color: #ef5350;\n      -webkit-transform: scaleX(1);\n              transform: scaleX(1); }\n    .z-input .z-input-wrap .z-input-hide {\n      display: none; }\n    .z-input .z-input-wrap .z-input-edit-box-start > .z-input-icon-stage {\n      line-height: 34px;\n      padding-left: 8px; }\n    .z-input .z-input-wrap .z-input-edit-box > input,\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      border: none;\n      width: 100%;\n      font: inherit;\n      color: inherit; }\n      .z-input .z-input-wrap .z-input-edit-box > input:focus,\n      .z-input .z-input-wrap .z-input-edit-box > textarea:focus {\n        outline-style: none;\n        border-style: none; }\n    .z-input .z-input-wrap .z-input-edit-box > input {\n      box-sizing: border-box;\n      background-color: transparent; }\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      box-sizing: border-box;\n      resize: none; }\n  .z-input .z-input-danger-tip {\n    color: #ef5350;\n    margin-top: 4px;\n    font-size: 12px; }\n\n.z-input.z-input-theme-primary .z-input-wrap .z-input-edit-box > input,\n.z-input.z-input-theme-primary .z-input-wrap .z-input-edit-box > textarea, .z-input.z-input-theme-fill .z-input-wrap .z-input-edit-box > input,\n.z-input.z-input-theme-fill .z-input-wrap .z-input-edit-box > textarea {\n  padding: 7.5px; }\n\n.z-input.z-input-theme-primary .z-input-wrap .z-input-auto-completion, .z-input.z-input-theme-fill .z-input-wrap .z-input-auto-completion {\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px; }\n\n.z-input.z-input-theme-primary .z-input-danger-tip, .z-input.z-input-theme-fill .z-input-danger-tip {\n  position: absolute;\n  top: 41px;\n  width: 100%;\n  background: #fff;\n  border: #ef5350 1px solid;\n  padding: 8px;\n  z-index: 1; }\n  .z-input.z-input-theme-primary .z-input-danger-tip::after, .z-input.z-input-theme-primary .z-input-danger-tip::before, .z-input.z-input-theme-fill .z-input-danger-tip::after, .z-input.z-input-theme-fill .z-input-danger-tip::before {\n    content: \"\\25C6\";\n    position: absolute;\n    top: -11px;\n    left: 0;\n    right: 0;\n    margin: auto;\n    width: 22px;\n    height: 20px;\n    font-size: 33px;\n    line-height: 20px; }\n  .z-input.z-input-theme-primary .z-input-danger-tip::after, .z-input.z-input-theme-fill .z-input-danger-tip::after {\n    top: -9px;\n    color: #fff; }\n\n.z-input.z-input-theme-fill {\n  width: 100%; }\n\n@media only screen and (max-width: 991px) {\n  .z-input {\n    width: 100%; } }\n\n.z-input.z-input-ui-bootstrap .z-input-wrap {\n  border: #d6d6d6 1px solid; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input 组件样式\r\n */\n.z-input {\n  display: inline-block;\n  vertical-align: middle;\n  width: 170px;\n  position: relative; }\n  .z-input:hover .z-input-wrap {\n    border-color: #999999; }\n    .z-input:hover .z-input-wrap > .z-input-wrap-border {\n      border-color: #999999; }\n  .z-input:hover.z-input-type-area .z-input-wrap {\n    border: #999999 1px solid; }\n    .z-input:hover.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border: #999999 1px solid; }\n  .z-input.z-input-type-area .z-input-wrap {\n    border: #d6d6d6 1px solid;\n    border-radius: 3px; }\n    .z-input.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border-radius: 3px;\n      border: transparent 1px solid; }\n  .z-input .z-input-limit-txt {\n    padding: 8px 0;\n    text-align: right; }\n  .z-input .z-input-wrap {\n    position: relative;\n    border-bottom: #d6d6d6 1px solid;\n    background-color: #fff;\n    box-sizing: border-box;\n    transition: all 100ms ease-out; }\n    .z-input .z-input-wrap::after {\n      content: '';\n      position: absolute;\n      width: 0;\n      height: 2px;\n      left: 0;\n      right: 0;\n      margin: 0 auto;\n      bottom: -1px;\n      background-color: transparent;\n      z-index: 1;\n      -webkit-transform: scaleX(0);\n              transform: scaleX(0);\n      transition: all 300ms ease-out; }\n    .z-input .z-input-wrap > .z-input-wrap-border {\n      border-top-left-radius: 3px;\n      border-top-right-radius: 3px;\n      border-bottom: transparent 1px solid;\n      transition: all 100ms ease-out; }\n    .z-input .z-input-wrap.z-input-error-border {\n      border: #ef5350 1px solid; }\n    .z-input .z-input-wrap.z-input-editting::after {\n      width: 100%;\n      background-color: #ef5350;\n      -webkit-transform: scaleX(1);\n              transform: scaleX(1); }\n    .z-input .z-input-wrap .z-input-hide {\n      display: none; }\n    .z-input .z-input-wrap .z-input-edit-box-start > .z-input-icon-stage {\n      line-height: 34px;\n      padding-left: 8px; }\n    .z-input .z-input-wrap .z-input-edit-box > input,\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      border: none;\n      width: 100%;\n      font: inherit;\n      color: inherit; }\n      .z-input .z-input-wrap .z-input-edit-box > input:focus,\n      .z-input .z-input-wrap .z-input-edit-box > textarea:focus {\n        outline-style: none;\n        border-style: none; }\n    .z-input .z-input-wrap .z-input-edit-box > input {\n      box-sizing: border-box;\n      background-color: transparent; }\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      box-sizing: border-box;\n      resize: none; }\n  .z-input .z-input-danger-tip {\n    color: #ef5350;\n    margin-top: 4px;\n    font-size: 12px; }\n\n.z-input.z-input-theme-primary .z-input-wrap .z-input-edit-box > input,\n.z-input.z-input-theme-primary .z-input-wrap .z-input-edit-box > textarea, .z-input.z-input-theme-fill .z-input-wrap .z-input-edit-box > input,\n.z-input.z-input-theme-fill .z-input-wrap .z-input-edit-box > textarea {\n  padding: 7.5px; }\n\n.z-input.z-input-theme-primary .z-input-wrap .z-input-auto-completion, .z-input.z-input-theme-fill .z-input-wrap .z-input-auto-completion {\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px; }\n\n.z-input.z-input-theme-primary .z-input-danger-tip, .z-input.z-input-theme-fill .z-input-danger-tip {\n  position: absolute;\n  top: 41px;\n  width: 100%;\n  background: #fff;\n  border: #ef5350 1px solid;\n  padding: 8px;\n  z-index: 1; }\n  .z-input.z-input-theme-primary .z-input-danger-tip::after, .z-input.z-input-theme-primary .z-input-danger-tip::before, .z-input.z-input-theme-fill .z-input-danger-tip::after, .z-input.z-input-theme-fill .z-input-danger-tip::before {\n    content: \"\\25C6\";\n    position: absolute;\n    top: -11px;\n    left: 0;\n    right: 0;\n    margin: auto;\n    width: 22px;\n    height: 20px;\n    font-size: 33px;\n    line-height: 20px; }\n  .z-input.z-input-theme-primary .z-input-danger-tip::after, .z-input.z-input-theme-fill .z-input-danger-tip::after {\n    top: -9px;\n    color: #fff; }\n\n.z-input.z-input-theme-fill {\n  width: 100%; }\n\n@media only screen and (max-width: 991px) {\n  .z-input {\n    width: 100%; } }\n\n.z-input.z-input-ui-bootstrap .z-input-wrap {\n  border: #d6d6d6 1px solid;\n  border-radius: 3px; }\n  .z-input.z-input-ui-bootstrap .z-input-wrap::after {\n    display: none; }\n", ""]);
 
 // exports
 
@@ -24496,7 +24499,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n@media only screen and (max-width: 991px) {\n  .z-pop .z-pop-stage.z-pop-theme-primary .z-pop-container {\n    width: 95%; } }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n@media only screen and (max-width: 991px) {\n  .z-pop > .z-pop-pop {\n    max-width: 100px; } }\n", ""]);
 
 // exports
 
@@ -24510,7 +24513,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n.z-message {\n  position: absolute;\n  z-index: 1001; }\n  .z-message > .z-message-pop {\n    max-width: 80px;\n    background: #fff;\n    overflow: hidden;\n    -webkit-transform: rotate(0);\n            transform: rotate(0);\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\n    padding: 12px;\n    border-radius: 3px; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n.z-message {\n  position: absolute;\n  z-index: 1001; }\n  .z-message > .z-message-pop {\n    max-width: 100px;\n    background: #fff;\n    overflow: hidden;\n    -webkit-transform: rotate(0);\n            transform: rotate(0);\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\n    padding: 12px;\n    border-radius: 3px; }\n", ""]);
 
 // exports
 
@@ -24819,7 +24822,7 @@ module.exports = "<div class=\"app-container\">\r\n  <header-layout></header-lay
 /* 278 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header-layout-stage\">\r\n  <z-row class=\"nav-box\">\r\n    <z-col :span=\"8\">\r\n      <router-link to=\"/\">\r\n        <img class=\"logo-box\" :src=\"logoUrl\" />\r\n      </router-link>\r\n    </z-col>\r\n    <z-col :span=\"4\">\r\n      <z-row class=\"nav-menu-box\">\r\n        <z-col>\r\n          <router-link to=\"/component\">组件</router-link>\r\n        </z-col>\r\n        <z-col>\r\n          <router-link to=\"/build\">构建</router-link>\r\n        </z-col>\r\n        <z-col>\r\n          <router-link to=\"/about\">关于</router-link>\r\n        </z-col>\r\n      </z-row>\r\n    </z-col>\r\n  </z-row>\r\n\r\n  <z-row class=\"nav-box nav-box-mobile\">\r\n    <z-col :span=\"4\">\r\n      <div @click.stop=\"showMenu\">\r\n        <z-icon kind=\"sort\" v-show=\"sortIconDisplay\"></z-icon>\r\n      </div>\r\n    </z-col>\r\n    <z-col class=\"z-text-center\" :span=\"4\">\r\n      <img class=\"logo-box\" :src=\"logoUrl\" />\r\n    </z-col>\r\n    <z-col :span=\"4\" class=\"z-text-right\">\r\n      <div @click.stop=\"showMenu\">\r\n        <z-icon kind=\"search\"></z-icon>\r\n      </div>\r\n    </z-col>\r\n  </z-row>\r\n\r\n  <z-nav\r\n      class=\"mobile-menu\"\r\n      ref=\"mobileMenu\"\r\n      @hide=\"hideMenu\"\r\n      :autoSwitch=\"false\"\r\n      :init-opt=\"menuOpt\">\r\n    <div class=\"menu-search\" slot=\"end\">\r\n      <z-input placeholder=\"search in vue2do\">\r\n        <z-icon slot=\"head\" kind=\"search\"></z-icon>\r\n      </z-input>\r\n    </div>\r\n  </z-nav>\r\n</div>";
+module.exports = "<div class=\"header-layout-stage\">\r\n  <z-row class=\"nav-box\">\r\n    <z-col :span=\"8\">\r\n      <router-link to=\"/\">\r\n        <img class=\"logo-box\" :src=\"logoUrl\" />\r\n      </router-link>\r\n    </z-col>\r\n    <z-col :span=\"4\">\r\n      <z-row class=\"nav-menu-box\">\r\n        <z-col>\r\n          <router-link to=\"/component/start\">组件</router-link>\r\n        </z-col>\r\n        <z-col>\r\n          <router-link to=\"/build\">构建</router-link>\r\n        </z-col>\r\n        <z-col>\r\n          <router-link to=\"/about\">关于</router-link>\r\n        </z-col>\r\n      </z-row>\r\n    </z-col>\r\n  </z-row>\r\n\r\n  <z-row class=\"nav-box nav-box-mobile\">\r\n    <z-col :span=\"4\">\r\n      <div @click.stop=\"showMenu\">\r\n        <z-icon kind=\"sort\" v-show=\"sortIconDisplay\"></z-icon>\r\n      </div>\r\n    </z-col>\r\n    <z-col class=\"z-text-center\" :span=\"4\">\r\n      <img class=\"logo-box\" :src=\"logoUrl\" />\r\n    </z-col>\r\n    <z-col :span=\"4\" class=\"z-text-right\">\r\n      <div @click.stop=\"showMenu\">\r\n        <z-icon kind=\"search\"></z-icon>\r\n      </div>\r\n    </z-col>\r\n  </z-row>\r\n\r\n  <z-nav\r\n      class=\"mobile-menu\"\r\n      ref=\"mobileMenu\"\r\n      @hide=\"hideMenu\"\r\n      :autoSwitch=\"false\"\r\n      :init-opt=\"menuOpt\">\r\n    <div class=\"menu-search\" slot=\"end\">\r\n      <z-input placeholder=\"search in vue2do\">\r\n        <z-icon slot=\"head\" kind=\"search\"></z-icon>\r\n      </z-input>\r\n    </div>\r\n  </z-nav>\r\n</div>";
 
 /***/ }),
 /* 279 */
@@ -25109,7 +25112,7 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-input ref=\"startInput\"\u003E\u003C\u002Fz-input\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input></z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-input ref=\"startInput\" ui=\"bootstrap\"\u003E\u003C\u002Fz-input\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input></z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'start', '开始使用');
 pug_mixins["section"].call({
@@ -35875,6 +35878,7 @@ exports.default = {
       this.verify();
 
       if (!this.verified) {
+        this.errorBorderDisplay = true;
         (0, _tip2.default)(this.dangerTip);
 
         return false;
@@ -35889,6 +35893,7 @@ exports.default = {
      * @return {Object} this - 组件
      */
     focus: function focus(evt) {
+      this.errorBorderDisplay = false;
       this.verified = true;
       this.focusing = true;
 
@@ -38328,10 +38333,11 @@ exports.default = {
           pageNum = _ref$pageNum === undefined ? 1 : _ref$pageNum,
           _ref$pageData = _ref.pageData,
           pageData = _ref$pageData === undefined ? {} : _ref$pageData,
-          listItem = _ref.listItem;
+          _ref$listItem = _ref.listItem,
+          listItem = _ref$listItem === undefined ? [] : _ref$listItem;
 
       if (!this.auto) {
-        this.listItem = listItem;
+        this.listItem = listItem.slice();
 
         this.initPage(Object.assign(pageData, {
           current: pageNum
@@ -38343,11 +38349,11 @@ exports.default = {
       var startSlice = 0;
       var endSlice = 0;
 
-      if (this.pageType === PAGE_TYPE_NUM) {
+      if (this.isPageTypeMore) {
+        endSlice = pageNum * this.pageSize;
+      } else {
         startSlice = (pageNum - 1) * this.pageSize;
         endSlice = startSlice + this.pageSize;
-      } else {
-        endSlice = pageNum * this.pageSize;
       }
 
       this.listItem = this.getListItemByPage({
@@ -39967,4 +39973,4 @@ module.exports = __webpack_require__(168);
 
 /***/ })
 ],[561]);
-//# sourceMappingURL=app.5cfbdad1358381b87c80.js.map
+//# sourceMappingURL=app.20be7d7e9501915022a4.js.map
