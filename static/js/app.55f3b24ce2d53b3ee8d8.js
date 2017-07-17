@@ -25549,7 +25549,7 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cp\u003E在终端安装（推荐使用 yarn）\u003C\u002Fp\u003E\u003Cz-code\u003Enpm install vue2do -S\u003C\u002Fz-code\u003E\u003Cz-code\u003Eyarn add vue2do\u003C\u002Fz-code\u003E\u003Cp\u003E全部加载\u003C\u002Fp\u003E\u003Cz-code\u003Eimport Vue from 'vue'\nimport vue2do from 'vue2do'\n\nVue.use(vue2do)\u003C\u002Fz-code\u003E\u003Cp\u003E局部加载\u003C\u002Fp\u003E\u003Cz-code\u003Eimport {\n  select,\n  input\n  \u002F\u002F ...\n} from 'vue2do'\n\nVue.component('select', select)\nVue.component('yourPrefix' + input.compName, input)\u003C\u002Fz-code\u003E\u003Cp\u003E获取更多信息请访问 vue2do 的\u003Ca href=\"https:\u002F\u002Fzen0822.github.io\" target=\"_blank\"\u003E官方网站。\u003C\u002Fa\u003E\u003C\u002Fp\u003E";
+pug_html = pug_html + "\u003Cp\u003E在终端安装（推荐使用 yarn）\u003C\u002Fp\u003E\u003Cz-code\u003Enpm install vue2do -S\u003C\u002Fz-code\u003E\u003Cz-code\u003Eyarn add vue2do\u003C\u002Fz-code\u003E\u003Cp\u003E全部加载\u003C\u002Fp\u003E\u003Cz-code\u003Eimport Vue from 'vue'\nimport vue2do from 'vue2do'\n\nVue.use(vue2do)\u003C\u002Fz-code\u003E\u003Cp\u003E局部加载\u003C\u002Fp\u003E\u003Cz-code\u003Eimport {\n  select,\n  input\n  \u002F\u002F ...\n} from 'vue2do'\n\nVue.component('select', select)\nVue.component('yourPrefix' + input.compName, input)\u003C\u002Fz-code\u003E";
 }
 }, 'start', '开始使用');
 pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
@@ -40140,4 +40140,4 @@ module.exports = __webpack_require__(168);
 
 /***/ })
 ],[561]);
-//# sourceMappingURL=app.c73b62ccb646943ff0fa.js.map
+//# sourceMappingURL=app.55f3b24ce2d53b3ee8d8.js.map
