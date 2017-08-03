@@ -13078,7 +13078,7 @@ var btnComp = {
         left: 0
       },
       // 判断是否在触摸屏
-      inTouch: 'ontouchstart' in document
+      inTouch: false
     };
   },
 
@@ -13092,31 +13092,6 @@ var btnComp = {
   methods: {
     _setDataOpt: function _setDataOpt() {
       this.banState = this.ban;
-    },
-    touchstart: function touchstart(event) {
-      if (this.banState) {
-        return false;
-      }
-
-      var el = event.currentTarget;
-
-      this.allowFocus = false;
-      this.pressing = true;
-
-      this.mousePoi = {
-        x: event.changedTouches[0].pageX - el.offsetLeft,
-        y: event.changedTouches[0].pageY - el.offsetTop
-      };
-    },
-    touchmove: function touchmove(event) {
-      event.preventDefault();
-    },
-    touchend: function touchend() {
-      if (this.banState) {
-        return false;
-      }
-
-      this.allowFocus = true;
     },
     mouseup: function mouseup() {
       if (this.inTouch) {
@@ -13169,13 +13144,21 @@ var btnComp = {
      * @return {Object} this - 组件
      */
     click: function click(event) {
-      event.preventDefault();
-
       if (this.banState) {
         return false;
       }
 
       return this.$emit('click');
+    },
+
+
+    /**
+     * keyup 句柄
+     */
+    keyup: function keyup(event) {
+      if (event.keyCode === 13) {
+        return this.$emit('click');
+      }
     },
 
 
@@ -28746,9 +28729,7 @@ exports.default = function (h) {
       click: this.click,
       mousedown: this.mousedown,
       mouseup: this.mouseup,
-      touchstart: this.touchstart,
-      touchmove: this.touchmove,
-      touchend: this.touchend
+      keyup: this.keyup
     }
   }, [h('div', {
     class: [this.xclass('ele')],
@@ -40151,4 +40132,4 @@ module.exports = __webpack_require__(169);
 
 /***/ })
 ],[561]);
-//# sourceMappingURL=app.8387de1fce75631f59f8.js.map
+//# sourceMappingURL=app.f527078405062143c78e.js.map
