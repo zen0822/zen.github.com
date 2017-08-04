@@ -11736,8 +11736,6 @@ var scrollerComp = {
       this[barName].boxAndScrollerOffset = boxAndScrollerOffset;
       this[barName].barAndScrollerOffset = barAndScrollerOffset;
 
-      this[barName][barPositionName] = scrollerContainBox ? 0 : -this[boxPositionName] * barAndScrollerOffset / boxAndScrollerOffset;
-
       this._boxAndBarScroll({
         type: 'y',
         boxDistance: 0,
@@ -11775,27 +11773,23 @@ var scrollerComp = {
       var barName = type + 'Data';
       var barPositionName = 'bar' + (type === 'y' ? 'Top' : 'Left');
       var boxPositionName = 'box' + (type === 'y' ? 'Top' : 'Left');
-      var boxPosition = this[boxPositionName] + boxDistance;
-      var barPosition = this[barName][barPositionName] + barDistance;
+
       var barAndScrollerOffset = this[barName].barAndScrollerOffset;
       var boxAndScrollerOffset = this[barName].boxAndScrollerOffset;
 
+      // 调整内容区域和滚动条的位置
+      this[boxPositionName] = this[boxPositionName] < -boxAndScrollerOffset ? -boxAndScrollerOffset : this[boxPositionName];
+      this[barName][barPositionName] = this.scrollerContainBox ? 0 : -this[boxPositionName] * barAndScrollerOffset / boxAndScrollerOffset;
+
+      var boxPosition = this[boxPositionName] + boxDistance;
+      var barPosition = this[barName][barPositionName] + barDistance;
+
       if (boxDistance >= 0) {
-        if (type === 'y') {
-          this[barName][barPositionName] = barPosition < 0 ? 0 : barPosition;
-          this[boxPositionName] = boxPosition > 0 ? 0 : boxPosition;
-        } else {
-          this[barName][barPositionName] = barPosition < 0 ? 0 : barPosition;
-          this[boxPositionName] = boxPosition > 0 ? 0 : boxPosition;
-        }
+        this[barName][barPositionName] = barPosition < 0 ? 0 : barPosition;
+        this[boxPositionName] = boxPosition > 0 ? 0 : boxPosition;
       } else {
-        if (type === 'y') {
-          this[barName][barPositionName] = barPosition > barAndScrollerOffset ? barAndScrollerOffset : barPosition;
-          this[boxPositionName] = boxPosition < -boxAndScrollerOffset ? -boxAndScrollerOffset : boxPosition;
-        } else {
-          this[barName][barPositionName] = barPosition > barAndScrollerOffset ? barAndScrollerOffset : barPosition;
-          this[boxPositionName] = boxPosition < -boxAndScrollerOffset ? -boxAndScrollerOffset : boxPosition;
-        }
+        this[barName][barPositionName] = barPosition > barAndScrollerOffset ? barAndScrollerOffset : barPosition;
+        this[boxPositionName] = boxPosition < -boxAndScrollerOffset ? -boxAndScrollerOffset : boxPosition;
       }
     },
 
@@ -19708,27 +19702,15 @@ var menuComp = {
       }
 
       if (this.$refs.scroller) {
-        this.$refs.scroller.$on('changeScroller', function (_ref4) {
-          var boxHeight = _ref4.boxHeight;
-
-          _this2._adjustmenuMenuPoiStyle({
-            height: boxHeight
-          });
-        });
-
-        this.$refs.scroller.$on('changeYBar', function (_ref5) {
-          var boxHeight = _ref5.boxHeight;
-
-          _this2._adjustmenuMenuPoiStyle({
-            height: boxHeight
-          });
+        this.$refs.scroller.$on('changeScroller', function () {
+          _this2._adjustmenuMenuPoiStyle();
         });
       }
 
-      !this.isTagMenu && this.$refs.menuOption.$on('change', function (_ref6) {
-        var value = _ref6.value,
-            text = _ref6.text,
-            index = _ref6.index;
+      !this.isTagMenu && this.$refs.menuOption.$on('change', function (_ref4) {
+        var value = _ref4.value,
+            text = _ref4.text,
+            index = _ref4.index;
 
         _this2.currentIndex = index;
         var selectedItem = _this2._isExistedVal(value);
@@ -19756,24 +19738,11 @@ var menuComp = {
      * 调整多选下拉框的选择值的样式
      */
     _adjustmenuMenuPoiStyle: function _adjustmenuMenuPoiStyle() {
-      var _ref7 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          height = _ref7.height,
-          cb = _ref7.cb;
+      var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          cb = _ref5.cb;
 
-      var menuHeight = height || this.$el.offsetHeight;
-      var menuWidth = this.$el.offsetWidth;
-      var over100 = menuHeight > 117;
-      var top = menuHeight;
-      var width = menuWidth;
-      menuHeight = over100 ? 117 : menuHeight;
-
-      if (this.multiple) {
-        if (over100) {
-          top = menuHeight;
-        } else {
-          top = height ? menuHeight + MENU_BORDER_WIDTH * 2 : menuHeight;
-        }
-      }
+      var top = this.$el.offsetHeight;
+      var width = this.$el.offsetWidth;
 
       this.menuMenuPoiStyle = {
         top: top + 'px',
@@ -20002,11 +19971,11 @@ var menuComp = {
     /**
      * 处理下拉框的 text 和 value
      */
-    _setTxtVal: function _setTxtVal(_ref8) {
-      var value = _ref8.value,
-          text = _ref8.text,
-          _ref8$replace = _ref8.replace,
-          replace = _ref8$replace === undefined ? false : _ref8$replace;
+    _setTxtVal: function _setTxtVal(_ref6) {
+      var value = _ref6.value,
+          text = _ref6.text,
+          _ref6$replace = _ref6.replace,
+          replace = _ref6$replace === undefined ? false : _ref6$replace;
 
       if (!this.multiple || replace) {
         if (value !== undefined) {
@@ -20114,16 +20083,16 @@ var menuComp = {
      */
     _processClassifyOption: function _processClassifyOption(optionItem) {
       var _this7 = this,
-          _ref10;
+          _ref8;
 
       var optionTemp = [];
       var allOptionTemp = [];
       var allOption = [];
 
       this.classify.forEach(function (item) {
-        var _ref9;
+        var _ref7;
 
-        optionTemp = optionTemp.concat([(_ref9 = {}, _defineProperty(_ref9, _this7.valName, item.key), _defineProperty(_ref9, _this7.txtName, item.text), _defineProperty(_ref9, 'classify', true), _ref9)], optionItem[item.key]);
+        optionTemp = optionTemp.concat([(_ref7 = {}, _defineProperty(_ref7, _this7.valName, item.key), _defineProperty(_ref7, _this7.txtName, item.text), _defineProperty(_ref7, 'classify', true), _ref7)], optionItem[item.key]);
 
         allOption = allOption.concat(optionItem[item.key]);
       });
@@ -20140,7 +20109,7 @@ var menuComp = {
 
       allOption = allOptionTemp;
 
-      optionTemp = optionTemp.concat([(_ref10 = {}, _defineProperty(_ref10, this.valName, 'all'), _defineProperty(_ref10, this.txtName, '全部'), _defineProperty(_ref10, 'classify', true), _ref10)], allOption);
+      optionTemp = optionTemp.concat([(_ref8 = {}, _defineProperty(_ref8, this.valName, 'all'), _defineProperty(_ref8, this.txtName, '全部'), _defineProperty(_ref8, 'classify', true), _ref8)], allOption);
 
       this.optionItemCopy = allOption;
 
@@ -40132,4 +40101,4 @@ module.exports = __webpack_require__(169);
 
 /***/ })
 ],[561]);
-//# sourceMappingURL=app.f527078405062143c78e.js.map
+//# sourceMappingURL=app.d17cb999a75beb270c23.js.map
