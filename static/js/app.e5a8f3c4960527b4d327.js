@@ -406,9 +406,9 @@ var _type = __webpack_require__(69);
 
 var _type2 = _interopRequireDefault(_type);
 
-var _prop = __webpack_require__(61);
+var _prop = __webpack_require__(54);
 
-var _attr = __webpack_require__(121);
+var _attr = __webpack_require__(122);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -725,7 +725,7 @@ module.exports = !__webpack_require__(6)(function () {
 
 
 var anObject = __webpack_require__(3);
-var IE8_DOM_DEFINE = __webpack_require__(134);
+var IE8_DOM_DEFINE = __webpack_require__(135);
 var toPrimitive = __webpack_require__(35);
 var dP = Object.defineProperty;
 
@@ -9957,7 +9957,7 @@ function getOuterHTML(el) {
 Vue$3.compile = compileToFunctions;
 
 exports.default = Vue$3;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(123)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(124)))
 
 /***/ }),
 /* 15 */
@@ -10476,7 +10476,7 @@ var createDesc = __webpack_require__(46);
 var toIObject = __webpack_require__(20);
 var toPrimitive = __webpack_require__(35);
 var has = __webpack_require__(16);
-var IE8_DOM_DEFINE = __webpack_require__(134);
+var IE8_DOM_DEFINE = __webpack_require__(135);
 var gOPD = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(9) ? gOPD : function getOwnPropertyDescriptor(O, P) {
@@ -10828,10 +10828,10 @@ module.exports = function (it, S) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var Map = __webpack_require__(154);
+var Map = __webpack_require__(155);
 var $export = __webpack_require__(0);
 var shared = __webpack_require__(82)('metadata');
-var store = shared.store || (shared.store = new (__webpack_require__(157))());
+var store = shared.store || (shared.store = new (__webpack_require__(158))());
 
 var getOrCreateMetadataMap = function getOrCreateMetadataMap(target, targetKey, create) {
   var targetMetadata = store.get(target);
@@ -10905,7 +10905,7 @@ if (__webpack_require__(9)) {
   var redefineAll = __webpack_require__(47);
   var toInteger = __webpack_require__(34);
   var toLength = __webpack_require__(11);
-  var toIndex = __webpack_require__(152);
+  var toIndex = __webpack_require__(153);
   var toAbsoluteIndex = __webpack_require__(49);
   var toPrimitive = __webpack_require__(35);
   var has = __webpack_require__(16);
@@ -10923,11 +10923,11 @@ if (__webpack_require__(9)) {
   var createArrayIncludes = __webpack_require__(70);
   var speciesConstructor = __webpack_require__(83);
   var ArrayIterators = __webpack_require__(115);
-  var Iterators = __webpack_require__(54);
+  var Iterators = __webpack_require__(55);
   var $iterDetect = __webpack_require__(77);
   var setSpecies = __webpack_require__(48);
   var arrayFill = __webpack_require__(90);
-  var arrayCopyWithin = __webpack_require__(126);
+  var arrayCopyWithin = __webpack_require__(127);
   var $DP = __webpack_require__(10);
   var $GOPD = __webpack_require__(23);
   var dP = $DP.f;
@@ -11457,7 +11457,7 @@ var meta = module.exports = {
 
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(144);
+var $keys = __webpack_require__(145);
 var enumBugKeys = __webpack_require__(94);
 
 module.exports = Object.keys || function keys(O) {
@@ -11485,7 +11485,7 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 
 
 var ctx = __webpack_require__(26);
-var call = __webpack_require__(136);
+var call = __webpack_require__(137);
 var isArrayIter = __webpack_require__(98);
 var anObject = __webpack_require__(3);
 var toLength = __webpack_require__(11);
@@ -11530,7 +11530,7 @@ module.exports = false;
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(3);
-var dPs = __webpack_require__(142);
+var dPs = __webpack_require__(143);
 var enumBugKeys = __webpack_require__(94);
 var IE_PROTO = __webpack_require__(106)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
@@ -11579,7 +11579,7 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(144);
+var $keys = __webpack_require__(145);
 var hiddenKeys = __webpack_require__(94).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
@@ -11687,7 +11687,7 @@ var _scrollerRender = __webpack_require__(431);
 
 var _scrollerRender2 = _interopRequireDefault(_scrollerRender);
 
-var _fade = __webpack_require__(168);
+var _fade = __webpack_require__(169);
 
 var _fade2 = _interopRequireDefault(_fade);
 
@@ -12584,572 +12584,6 @@ exports.default = {
 "use strict";
 
 
-module.exports = {};
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var def = __webpack_require__(10).f;
-var has = __webpack_require__(16);
-var TAG = __webpack_require__(8)('toStringTag');
-
-module.exports = function (it, tag, stat) {
-  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
-};
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $export = __webpack_require__(0);
-var defined = __webpack_require__(32);
-var fails = __webpack_require__(6);
-var spaces = __webpack_require__(110);
-var space = '[' + spaces + ']';
-var non = '\u200B\x85';
-var ltrim = RegExp('^' + space + space + '*');
-var rtrim = RegExp(space + space + '*$');
-
-var exporter = function exporter(KEY, exec, ALIAS) {
-  var exp = {};
-  var FORCE = fails(function () {
-    return !!spaces[KEY]() || non[KEY]() != non;
-  });
-  var fn = exp[KEY] = FORCE ? exec(trim) : spaces[KEY];
-  if (ALIAS) exp[ALIAS] = fn;
-  $export($export.P + $export.F * FORCE, 'String', exp);
-};
-
-// 1 -> String#trimLeft
-// 2 -> String#trimRight
-// 3 -> String#trim
-var trim = exporter.trim = function (string, TYPE) {
-  string = String(defined(string));
-  if (TYPE & 1) string = string.replace(ltrim, '');
-  if (TYPE & 2) string = string.replace(rtrim, '');
-  return string;
-};
-
-module.exports = exporter;
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isObject = __webpack_require__(7);
-module.exports = function (it, TYPE) {
-  if (!isObject(it) || it._t !== TYPE) throw TypeError('Incompatible receiver, ' + TYPE + ' required!');
-  return it;
-};
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.set = exports.row = exports.col = exports.tabEle = exports.tab = exports.shiftEle = exports.shift = exports.menuEle = exports.menu = exports.tableRow = exports.tableCol = exports.table = exports.list = exports.search = exports.scroller = exports.page = exports.nav = exports.loading = exports.icon = exports.input = exports.form = exports.fold = exports.check = exports.btn = exports.tip = exports.pop = exports.message = exports.modal = exports.confirm = exports.bubble = exports.alert = undefined;
-
-__webpack_require__(451);
-
-__webpack_require__(590);
-
-__webpack_require__(587);
-
-__webpack_require__(589);
-
-__webpack_require__(588);
-
-__webpack_require__(406);
-
-var _src = __webpack_require__(448);
-
-var _src2 = _interopRequireDefault(_src);
-
-var _zhCn = __webpack_require__(524);
-
-var _zhCn2 = _interopRequireDefault(_zhCn);
-
-var _config = __webpack_require__(447);
-
-var _btn = __webpack_require__(66);
-
-var _btn2 = _interopRequireDefault(_btn);
-
-var _check = __webpack_require__(67);
-
-var _check2 = _interopRequireDefault(_check);
-
-var _form = __webpack_require__(159);
-
-var _form2 = _interopRequireDefault(_form);
-
-var _fold = __webpack_require__(116);
-
-var _fold2 = _interopRequireDefault(_fold);
-
-var _input = __webpack_require__(68);
-
-var _input2 = _interopRequireDefault(_input);
-
-var _icon = __webpack_require__(21);
-
-var _icon2 = _interopRequireDefault(_icon);
-
-var _loading = __webpack_require__(59);
-
-var _loading2 = _interopRequireDefault(_loading);
-
-var _nav = __webpack_require__(165);
-
-var _nav2 = _interopRequireDefault(_nav);
-
-var _page = __webpack_require__(86);
-
-var _page2 = _interopRequireDefault(_page);
-
-var _search = __webpack_require__(166);
-
-var _search2 = _interopRequireDefault(_search);
-
-var _bubble = __webpack_require__(158);
-
-var _bubble2 = _interopRequireDefault(_bubble);
-
-var _pop = __webpack_require__(87);
-
-var _pop2 = _interopRequireDefault(_pop);
-
-var _modal = __webpack_require__(85);
-
-var _modal2 = _interopRequireDefault(_modal);
-
-var _alert = __webpack_require__(423);
-
-var _alert2 = _interopRequireDefault(_alert);
-
-var _confirm = __webpack_require__(424);
-
-var _confirm2 = _interopRequireDefault(_confirm);
-
-var _message = __webpack_require__(117);
-
-var _message2 = _interopRequireDefault(_message);
-
-var _tip = __webpack_require__(28);
-
-var _tip2 = _interopRequireDefault(_tip);
-
-var _scroller = __webpack_require__(51);
-
-var _scroller2 = _interopRequireDefault(_scroller);
-
-var _list = __webpack_require__(88);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _table = __webpack_require__(167);
-
-var _menu = __webpack_require__(161);
-
-var _menu2 = _interopRequireDefault(_menu);
-
-var _menuEle = __webpack_require__(160);
-
-var _menuEle2 = _interopRequireDefault(_menuEle);
-
-var _shift = __webpack_require__(118);
-
-var _shift2 = _interopRequireDefault(_shift);
-
-var _shiftEle = __webpack_require__(162);
-
-var _shiftEle2 = _interopRequireDefault(_shiftEle);
-
-var _tab = __webpack_require__(164);
-
-var _tab2 = _interopRequireDefault(_tab);
-
-var _tabEle = __webpack_require__(163);
-
-var _tabEle2 = _interopRequireDefault(_tabEle);
-
-var _col = __webpack_require__(52);
-
-var _col2 = _interopRequireDefault(_col);
-
-var _row = __webpack_require__(53);
-
-var _row2 = _interopRequireDefault(_row);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_config.set.lang(_zhCn2.default);
-
-exports.default = _src2.default;
-exports.alert = _alert2.default;
-exports.bubble = _bubble2.default;
-exports.confirm = _confirm2.default;
-exports.modal = _modal2.default;
-exports.message = _message2.default;
-exports.pop = _pop2.default;
-exports.tip = _tip2.default;
-exports.btn = _btn2.default;
-exports.check = _check2.default;
-exports.fold = _fold2.default;
-exports.form = _form2.default;
-exports.input = _input2.default;
-exports.icon = _icon2.default;
-exports.loading = _loading2.default;
-exports.nav = _nav2.default;
-exports.page = _page2.default;
-exports.scroller = _scroller2.default;
-exports.search = _search2.default;
-exports.list = _list2.default;
-exports.table = _table.tableComp;
-exports.tableCol = _table.tableColComp;
-exports.tableRow = _table.tableRowComp;
-exports.menu = _menu2.default;
-exports.menuEle = _menuEle2.default;
-exports.shift = _shift2.default;
-exports.shiftEle = _shiftEle2.default;
-exports.tab = _tab2.default;
-exports.tabEle = _tabEle2.default;
-exports.col = _col2.default;
-exports.row = _row2.default;
-exports.set = _config.set;
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-__webpack_require__(565);
-
-var _icon = __webpack_require__(21);
-
-var _icon2 = _interopRequireDefault(_icon);
-
-var _base = __webpack_require__(5);
-
-var _base2 = _interopRequireDefault(_base);
-
-var _loading = __webpack_require__(416);
-
-var _loading2 = _interopRequireDefault(_loading);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * loading 组件
- * 使用自定义的loading 需要将父元素设置成 position: relative
- *
- * @prop bgDisplay - 是否显示 loading 的背景
- * @prop text - 等待文字
- * @prop theme - 主题
- * @prop type - 类型
- *
- */
-
-var TYPE_ROTATE = 'rotate';
-var TYPE_ROTATE_2 = 'rotate2';
-var TYPE_SPOT = 'spot';
-
-var loadingComp = {
-  name: 'loading',
-
-  mixins: [_base2.default],
-
-  render: _loading2.default,
-
-  components: {
-    icon: _icon2.default
-  },
-
-  props: {
-    type: {
-      type: String,
-      default: TYPE_ROTATE
-    },
-
-    bgDisplay: {
-      type: Boolean,
-      default: false
-    },
-
-    text: {
-      type: String,
-      default: ''
-    }
-  },
-
-  data: function data() {
-    return {
-      display: false
-    };
-  },
-
-
-  computed: {
-    // 组件类名的前缀
-    cPrefix: function cPrefix() {
-      return this.compPrefix + '-loading';
-    },
-    isRotate: function isRotate() {
-      return this.type === TYPE_ROTATE;
-    },
-    isRotate2: function isRotate2() {
-      return this.type === TYPE_ROTATE_2;
-    },
-    isSpot: function isSpot() {
-      return this.type === TYPE_SPOT;
-    }
-  },
-
-  methods: {
-    /**
-     * 显示
-     * @return {Object} this - 组件
-     */
-    show: function show(cb) {
-      this.display = true;
-
-      return this;
-    },
-
-
-    /**
-     * 隐藏
-     * @return {Object} this - 组件
-     */
-    hide: function hide() {
-      this.display = false;
-
-      return this;
-    },
-    createTimeout: function createTimeout(cb) {
-      var _this = this;
-
-      this.clearTimeout();
-
-      this.timeout = setTimeout(function () {
-        _this.timeout = null;
-        _this.hide();
-
-        return cb && cb();
-      }, this.time);
-    },
-    clearTimeout: function clearTimeout() {
-      var timeout = this.timeout;
-      if (timeout) {
-        window.clearTimeout(timeout);
-        this.timeout = null;
-      }
-    }
-  }
-};
-
-exports.default = loadingComp;
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-/**
- * transition 组件的 mixin
- *
- * @prop speed - 动画速度
- *
- * @event beforeEnter - 进来过渡之前
- * @event enter - 进来过渡期间
- * @event afterEnter - 进来过渡完成
- * @event beforeLeave - 离开过渡之前
- * @event leave - 离开过渡期间
- * @event afterLeave - 离开过渡之后
- */
-
-exports.default = {
-  props: {
-    speed: {
-      type: [Number, String],
-      default: 'normal'
-    }
-  },
-
-  computed: {
-    time: function time() {
-      switch (this.speed) {
-        case 'normal':
-          return 300;
-        case 'fast':
-          return 150;
-        case 'slow':
-          return 450;
-        default:
-          return 300;
-      }
-    },
-    transitionTime: function transitionTime() {
-      return this.time + 'ms';
-    }
-  },
-
-  methods: {
-    /**
-     * 启动进来时的过渡动画
-     * @param {Object} opt 
-     */
-    enter: function () {
-      var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
-        var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                this.transiting = this.isEntering = true;
-
-                _context.next = 3;
-                return this.beforeEnter(opt);
-
-              case 3:
-                _context.next = 5;
-                return this.entering(opt);
-
-              case 5:
-                _context.next = 7;
-                return this.afterEnter(opt);
-
-              case 7:
-
-                this.transiting = this.isEntering = false;
-
-                return _context.abrupt('return', new Promise(function (resolve, reject) {
-                  return resolve();
-                }));
-
-              case 9:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function enter() {
-        return _ref.apply(this, arguments);
-      }
-
-      return enter;
-    }(),
-
-
-    /**
-     * 启动离开时的过渡动画
-     * @param {Object} opt 
-     */
-    leave: function () {
-      var _ref2 = _asyncToGenerator(regeneratorRuntime.mark(function _callee2() {
-        var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                this.transiting = this.isEntering = true;
-
-                _context2.next = 3;
-                return this.beforeLeave(opt);
-
-              case 3:
-                _context2.next = 5;
-                return this.leaveing(opt);
-
-              case 5:
-                _context2.next = 7;
-                return this.afterLeave(opt);
-
-              case 7:
-
-                this.transiting = this.isEntering = false;
-
-                return _context2.abrupt('return', new Promise(function (resolve, reject) {
-                  return resolve();
-                }));
-
-              case 9:
-              case 'end':
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this);
-      }));
-
-      function leave() {
-        return _ref2.apply(this, arguments);
-      }
-
-      return leave;
-    }(),
-    beforeEnter: function beforeEnter() {
-      this.$el.style.display = '';
-
-      return this.$emit('beforeEnter');
-    },
-    entering: function entering() {
-      return this.$emit('entering');
-    },
-    afterEnter: function afterEnter() {
-      return this.$emit('afterEnter');
-    },
-    beforeLeave: function beforeLeave() {
-      this.$el.style.display = 'none';
-
-      return this.$emit('beforeLeave');
-    },
-    leaveing: function leaveing() {
-      return this.$emit('leaveing');
-    },
-    afterLeave: function afterLeave() {
-      return this.$emit('afterLeave');
-    }
-  }
-};
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -13303,6 +12737,572 @@ exports.prop = prop;
 exports.handleEleDisplay = handleEleDisplay;
 
 /***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {};
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var def = __webpack_require__(10).f;
+var has = __webpack_require__(16);
+var TAG = __webpack_require__(8)('toStringTag');
+
+module.exports = function (it, tag, stat) {
+  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
+};
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $export = __webpack_require__(0);
+var defined = __webpack_require__(32);
+var fails = __webpack_require__(6);
+var spaces = __webpack_require__(110);
+var space = '[' + spaces + ']';
+var non = '\u200B\x85';
+var ltrim = RegExp('^' + space + space + '*');
+var rtrim = RegExp(space + space + '*$');
+
+var exporter = function exporter(KEY, exec, ALIAS) {
+  var exp = {};
+  var FORCE = fails(function () {
+    return !!spaces[KEY]() || non[KEY]() != non;
+  });
+  var fn = exp[KEY] = FORCE ? exec(trim) : spaces[KEY];
+  if (ALIAS) exp[ALIAS] = fn;
+  $export($export.P + $export.F * FORCE, 'String', exp);
+};
+
+// 1 -> String#trimLeft
+// 2 -> String#trimRight
+// 3 -> String#trim
+var trim = exporter.trim = function (string, TYPE) {
+  string = String(defined(string));
+  if (TYPE & 1) string = string.replace(ltrim, '');
+  if (TYPE & 2) string = string.replace(rtrim, '');
+  return string;
+};
+
+module.exports = exporter;
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isObject = __webpack_require__(7);
+module.exports = function (it, TYPE) {
+  if (!isObject(it) || it._t !== TYPE) throw TypeError('Incompatible receiver, ' + TYPE + ' required!');
+  return it;
+};
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.set = exports.row = exports.col = exports.tabEle = exports.tab = exports.shiftEle = exports.shift = exports.menuEle = exports.menu = exports.tableRow = exports.tableCol = exports.table = exports.list = exports.search = exports.scroller = exports.page = exports.nav = exports.loading = exports.icon = exports.input = exports.form = exports.fold = exports.check = exports.btn = exports.tip = exports.pop = exports.message = exports.modal = exports.confirm = exports.bubble = exports.alert = undefined;
+
+__webpack_require__(451);
+
+__webpack_require__(590);
+
+__webpack_require__(587);
+
+__webpack_require__(589);
+
+__webpack_require__(588);
+
+__webpack_require__(406);
+
+var _src = __webpack_require__(448);
+
+var _src2 = _interopRequireDefault(_src);
+
+var _zhCn = __webpack_require__(524);
+
+var _zhCn2 = _interopRequireDefault(_zhCn);
+
+var _config = __webpack_require__(447);
+
+var _btn = __webpack_require__(66);
+
+var _btn2 = _interopRequireDefault(_btn);
+
+var _check = __webpack_require__(67);
+
+var _check2 = _interopRequireDefault(_check);
+
+var _form = __webpack_require__(160);
+
+var _form2 = _interopRequireDefault(_form);
+
+var _fold = __webpack_require__(116);
+
+var _fold2 = _interopRequireDefault(_fold);
+
+var _input = __webpack_require__(68);
+
+var _input2 = _interopRequireDefault(_input);
+
+var _icon = __webpack_require__(21);
+
+var _icon2 = _interopRequireDefault(_icon);
+
+var _loading = __webpack_require__(60);
+
+var _loading2 = _interopRequireDefault(_loading);
+
+var _nav = __webpack_require__(166);
+
+var _nav2 = _interopRequireDefault(_nav);
+
+var _page = __webpack_require__(86);
+
+var _page2 = _interopRequireDefault(_page);
+
+var _search = __webpack_require__(167);
+
+var _search2 = _interopRequireDefault(_search);
+
+var _bubble = __webpack_require__(159);
+
+var _bubble2 = _interopRequireDefault(_bubble);
+
+var _pop = __webpack_require__(87);
+
+var _pop2 = _interopRequireDefault(_pop);
+
+var _modal = __webpack_require__(85);
+
+var _modal2 = _interopRequireDefault(_modal);
+
+var _alert = __webpack_require__(423);
+
+var _alert2 = _interopRequireDefault(_alert);
+
+var _confirm = __webpack_require__(424);
+
+var _confirm2 = _interopRequireDefault(_confirm);
+
+var _message = __webpack_require__(117);
+
+var _message2 = _interopRequireDefault(_message);
+
+var _tip = __webpack_require__(28);
+
+var _tip2 = _interopRequireDefault(_tip);
+
+var _scroller = __webpack_require__(51);
+
+var _scroller2 = _interopRequireDefault(_scroller);
+
+var _list = __webpack_require__(88);
+
+var _list2 = _interopRequireDefault(_list);
+
+var _table = __webpack_require__(168);
+
+var _menu = __webpack_require__(162);
+
+var _menu2 = _interopRequireDefault(_menu);
+
+var _menuEle = __webpack_require__(161);
+
+var _menuEle2 = _interopRequireDefault(_menuEle);
+
+var _shift = __webpack_require__(118);
+
+var _shift2 = _interopRequireDefault(_shift);
+
+var _shiftEle = __webpack_require__(163);
+
+var _shiftEle2 = _interopRequireDefault(_shiftEle);
+
+var _tab = __webpack_require__(165);
+
+var _tab2 = _interopRequireDefault(_tab);
+
+var _tabEle = __webpack_require__(164);
+
+var _tabEle2 = _interopRequireDefault(_tabEle);
+
+var _col = __webpack_require__(52);
+
+var _col2 = _interopRequireDefault(_col);
+
+var _row = __webpack_require__(53);
+
+var _row2 = _interopRequireDefault(_row);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_config.set.lang(_zhCn2.default);
+
+exports.default = _src2.default;
+exports.alert = _alert2.default;
+exports.bubble = _bubble2.default;
+exports.confirm = _confirm2.default;
+exports.modal = _modal2.default;
+exports.message = _message2.default;
+exports.pop = _pop2.default;
+exports.tip = _tip2.default;
+exports.btn = _btn2.default;
+exports.check = _check2.default;
+exports.fold = _fold2.default;
+exports.form = _form2.default;
+exports.input = _input2.default;
+exports.icon = _icon2.default;
+exports.loading = _loading2.default;
+exports.nav = _nav2.default;
+exports.page = _page2.default;
+exports.scroller = _scroller2.default;
+exports.search = _search2.default;
+exports.list = _list2.default;
+exports.table = _table.tableComp;
+exports.tableCol = _table.tableColComp;
+exports.tableRow = _table.tableRowComp;
+exports.menu = _menu2.default;
+exports.menuEle = _menuEle2.default;
+exports.shift = _shift2.default;
+exports.shiftEle = _shiftEle2.default;
+exports.tab = _tab2.default;
+exports.tabEle = _tabEle2.default;
+exports.col = _col2.default;
+exports.row = _row2.default;
+exports.set = _config.set;
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+__webpack_require__(565);
+
+var _icon = __webpack_require__(21);
+
+var _icon2 = _interopRequireDefault(_icon);
+
+var _base = __webpack_require__(5);
+
+var _base2 = _interopRequireDefault(_base);
+
+var _loading = __webpack_require__(416);
+
+var _loading2 = _interopRequireDefault(_loading);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * loading 组件
+ * 使用自定义的loading 需要将父元素设置成 position: relative
+ *
+ * @prop bgDisplay - 是否显示 loading 的背景
+ * @prop text - 等待文字
+ * @prop theme - 主题
+ * @prop type - 类型
+ *
+ */
+
+var TYPE_ROTATE = 'rotate';
+var TYPE_ROTATE_2 = 'rotate2';
+var TYPE_SPOT = 'spot';
+
+var loadingComp = {
+  name: 'loading',
+
+  mixins: [_base2.default],
+
+  render: _loading2.default,
+
+  components: {
+    icon: _icon2.default
+  },
+
+  props: {
+    type: {
+      type: String,
+      default: TYPE_ROTATE
+    },
+
+    bgDisplay: {
+      type: Boolean,
+      default: false
+    },
+
+    text: {
+      type: String,
+      default: ''
+    }
+  },
+
+  data: function data() {
+    return {
+      display: false
+    };
+  },
+
+
+  computed: {
+    // 组件类名的前缀
+    cPrefix: function cPrefix() {
+      return this.compPrefix + '-loading';
+    },
+    isRotate: function isRotate() {
+      return this.type === TYPE_ROTATE;
+    },
+    isRotate2: function isRotate2() {
+      return this.type === TYPE_ROTATE_2;
+    },
+    isSpot: function isSpot() {
+      return this.type === TYPE_SPOT;
+    }
+  },
+
+  methods: {
+    /**
+     * 显示
+     * @return {Object} this - 组件
+     */
+    show: function show(cb) {
+      this.display = true;
+
+      return this;
+    },
+
+
+    /**
+     * 隐藏
+     * @return {Object} this - 组件
+     */
+    hide: function hide() {
+      this.display = false;
+
+      return this;
+    },
+    createTimeout: function createTimeout(cb) {
+      var _this = this;
+
+      this.clearTimeout();
+
+      this.timeout = setTimeout(function () {
+        _this.timeout = null;
+        _this.hide();
+
+        return cb && cb();
+      }, this.time);
+    },
+    clearTimeout: function clearTimeout() {
+      var timeout = this.timeout;
+      if (timeout) {
+        window.clearTimeout(timeout);
+        this.timeout = null;
+      }
+    }
+  }
+};
+
+exports.default = loadingComp;
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+/**
+ * transition 组件的 mixin
+ *
+ * @prop speed - 动画速度
+ *
+ * @event beforeEnter - 进来过渡之前
+ * @event enter - 进来过渡期间
+ * @event afterEnter - 进来过渡完成
+ * @event beforeLeave - 离开过渡之前
+ * @event leave - 离开过渡期间
+ * @event afterLeave - 离开过渡之后
+ */
+
+exports.default = {
+  props: {
+    speed: {
+      type: [Number, String],
+      default: 'normal'
+    }
+  },
+
+  computed: {
+    time: function time() {
+      switch (this.speed) {
+        case 'normal':
+          return 300;
+        case 'fast':
+          return 150;
+        case 'slow':
+          return 450;
+        default:
+          return 300;
+      }
+    },
+    transitionTime: function transitionTime() {
+      return this.time + 'ms';
+    }
+  },
+
+  methods: {
+    /**
+     * 启动进来时的过渡动画
+     * @param {Object} opt
+     */
+    enter: function () {
+      var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
+        var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.transiting = this.isEntering = true;
+
+                _context.next = 3;
+                return this.beforeEnter(opt);
+
+              case 3:
+                _context.next = 5;
+                return this.entering(opt);
+
+              case 5:
+                _context.next = 7;
+                return this.afterEnter(opt);
+
+              case 7:
+
+                this.transiting = this.isEntering = false;
+
+                return _context.abrupt('return', new Promise(function (resolve, reject) {
+                  return resolve();
+                }));
+
+              case 9:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function enter() {
+        return _ref.apply(this, arguments);
+      }
+
+      return enter;
+    }(),
+
+
+    /**
+     * 启动离开时的过渡动画
+     * @param {Object} opt
+     */
+    leave: function () {
+      var _ref2 = _asyncToGenerator(regeneratorRuntime.mark(function _callee2() {
+        var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                this.transiting = this.isEntering = true;
+
+                _context2.next = 3;
+                return this.beforeLeave(opt);
+
+              case 3:
+                _context2.next = 5;
+                return this.leaveing(opt);
+
+              case 5:
+                _context2.next = 7;
+                return this.afterLeave(opt);
+
+              case 7:
+
+                this.transiting = this.isEntering = false;
+
+                return _context2.abrupt('return', new Promise(function (resolve, reject) {
+                  return resolve();
+                }));
+
+              case 9:
+              case 'end':
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function leave() {
+        return _ref2.apply(this, arguments);
+      }
+
+      return leave;
+    }(),
+    beforeEnter: function beforeEnter() {
+      this.$el.style.display = '';
+
+      return this.$emit('beforeEnter');
+    },
+    entering: function entering() {
+      return this.$emit('entering');
+    },
+    afterEnter: function afterEnter() {
+      return this.$emit('afterEnter');
+    },
+    beforeLeave: function beforeLeave() {
+      this.$el.style.display = 'none';
+
+      return this.$emit('beforeLeave');
+    },
+    leaveing: function leaveing() {
+      return this.$emit('leaveing');
+    },
+    afterLeave: function afterLeave() {
+      return this.$emit('afterLeave');
+    }
+  }
+};
+
+/***/ }),
 /* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13433,7 +13433,7 @@ var _form = __webpack_require__(89);
 
 var _form2 = _interopRequireDefault(_form);
 
-var _loading = __webpack_require__(59);
+var _loading = __webpack_require__(60);
 
 var _loading2 = _interopRequireDefault(_loading);
 
@@ -14102,7 +14102,7 @@ var _store = __webpack_require__(62);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _type = __webpack_require__(124);
+var _type = __webpack_require__(125);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -14566,7 +14566,7 @@ var anInstance = __webpack_require__(41);
 var isObject = __webpack_require__(7);
 var fails = __webpack_require__(6);
 var $iterDetect = __webpack_require__(77);
-var setToStringTag = __webpack_require__(55);
+var setToStringTag = __webpack_require__(56);
 var inheritIfRequired = __webpack_require__(97);
 
 module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
@@ -14994,7 +14994,7 @@ var _col = __webpack_require__(52);
 
 var _col2 = _interopRequireDefault(_col);
 
-var _fade = __webpack_require__(168);
+var _fade = __webpack_require__(169);
 
 var _fade2 = _interopRequireDefault(_fade);
 
@@ -15002,7 +15002,7 @@ var _no = __webpack_require__(446);
 
 var _no2 = _interopRequireDefault(_no);
 
-var _prop = __webpack_require__(61);
+var _prop = __webpack_require__(54);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15606,7 +15606,7 @@ var _base = __webpack_require__(5);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _slide = __webpack_require__(169);
+var _slide = __webpack_require__(121);
 
 var _slide2 = _interopRequireDefault(_slide);
 
@@ -15809,7 +15809,7 @@ var _icon = __webpack_require__(21);
 
 var _icon2 = _interopRequireDefault(_icon);
 
-var _loading = __webpack_require__(59);
+var _loading = __webpack_require__(60);
 
 var _loading2 = _interopRequireDefault(_loading);
 
@@ -15821,7 +15821,7 @@ var _scroller = __webpack_require__(51);
 
 var _scroller2 = _interopRequireDefault(_scroller);
 
-var _slide = __webpack_require__(169);
+var _slide = __webpack_require__(121);
 
 var _slide2 = _interopRequireDefault(_slide);
 
@@ -15837,7 +15837,7 @@ var _list5 = __webpack_require__(170);
 
 var _list6 = _interopRequireDefault(_list5);
 
-var _util = __webpack_require__(122);
+var _util = __webpack_require__(123);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16297,7 +16297,7 @@ module.exports = function (that, target, C) {
 
 
 // check on default Array iterator
-var Iterators = __webpack_require__(54);
+var Iterators = __webpack_require__(55);
 var ITERATOR = __webpack_require__(8)('iterator');
 var ArrayProto = Array.prototype;
 
@@ -16314,7 +16314,7 @@ module.exports = function (it) {
 
 var create = __webpack_require__(44);
 var descriptor = __webpack_require__(46);
-var setToStringTag = __webpack_require__(55);
+var setToStringTag = __webpack_require__(56);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
@@ -16339,9 +16339,9 @@ var $export = __webpack_require__(0);
 var redefine = __webpack_require__(18);
 var hide = __webpack_require__(17);
 var has = __webpack_require__(16);
-var Iterators = __webpack_require__(54);
+var Iterators = __webpack_require__(55);
 var $iterCreate = __webpack_require__(99);
-var setToStringTag = __webpack_require__(55);
+var setToStringTag = __webpack_require__(56);
 var getPrototypeOf = __webpack_require__(24);
 var ITERATOR = __webpack_require__(8)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
@@ -16771,11 +16771,11 @@ var fails = __webpack_require__(6);
 var anInstance = __webpack_require__(41);
 var toInteger = __webpack_require__(34);
 var toLength = __webpack_require__(11);
-var toIndex = __webpack_require__(152);
+var toIndex = __webpack_require__(153);
 var gOPN = __webpack_require__(45).f;
 var dP = __webpack_require__(10).f;
 var arrayFill = __webpack_require__(90);
-var setToStringTag = __webpack_require__(55);
+var setToStringTag = __webpack_require__(56);
 var ARRAY_BUFFER = 'ArrayBuffer';
 var DATA_VIEW = 'DataView';
 var PROTOTYPE = 'prototype';
@@ -17051,7 +17051,7 @@ exports[DATA_VIEW] = $DataView;
 var global = __webpack_require__(4);
 var core = __webpack_require__(31);
 var LIBRARY = __webpack_require__(43);
-var wksExt = __webpack_require__(153);
+var wksExt = __webpack_require__(154);
 var defineProperty = __webpack_require__(10).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -17067,7 +17067,7 @@ module.exports = function (name) {
 
 var classof = __webpack_require__(63);
 var ITERATOR = __webpack_require__(8)('iterator');
-var Iterators = __webpack_require__(54);
+var Iterators = __webpack_require__(55);
 module.exports = __webpack_require__(31).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR] || it['@@iterator'] || Iterators[classof(it)];
 };
@@ -17080,8 +17080,8 @@ module.exports = __webpack_require__(31).getIteratorMethod = function (it) {
 
 
 var addToUnscopables = __webpack_require__(38);
-var step = __webpack_require__(137);
-var Iterators = __webpack_require__(54);
+var step = __webpack_require__(138);
+var Iterators = __webpack_require__(55);
 var toIObject = __webpack_require__(20);
 
 // 22.1.3.4 Array.prototype.entries()
@@ -17147,18 +17147,9 @@ var _fold = __webpack_require__(119);
 
 var _fold2 = _interopRequireDefault(_fold);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _prop = __webpack_require__(54);
 
-/**
- * fold 组件
- *
- * @prop initOpt - 折叠版的初始化数据
- * @prop initIndex - 当前展开的折叠板
- * @prop spread-all - 展开全部
- * @prop only - 开启一次只能展开一个面板功能
- * @prop type - 布局类型
- *
- */
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var foldTitleComp = {
   name: 'fold-title',
@@ -17174,7 +17165,16 @@ var foldTitleComp = {
       class: [this.cPrefix]
     }, this.$slots.default);
   }
-};
+}; /**
+    * fold 组件
+    *
+    * @prop initOpt - 折叠版的初始化数据
+    * @prop initIndex - 当前展开的折叠板
+    * @prop spread-all - 展开全部
+    * @prop only - 开启一次只能展开一个面板功能
+    * @prop type - 布局类型
+    *
+    */
 
 var foldContentComp = {
   name: 'fold-content',
@@ -17239,7 +17239,9 @@ var foldComp = {
       // 前一个打开的面板
       preIndex: 1,
       // 折叠版数据
-      foldData: []
+      foldData: [],
+      // 过渡动画的元素高度
+      transitionChildHeight: 0
     };
   },
 
@@ -17336,25 +17338,50 @@ var foldComp = {
       }
 
       if (this.only) {
+        this.switch(this.preIndex);
+
         _vue2.default.set(this.foldData, this.preIndex - 1, Object.assign(this.foldData[this.preIndex - 1], {
           folding: true
         }));
       }
 
+      this.switch(this.currentIndex, !folding);
+
       _vue2.default.set(this.foldData, currentIndex - 1, Object.assign(currentData, {
         folding: !folding
       }));
     },
-    foldingStatus: function foldingStatus(currentIndex) {
-      var currentData = this.foldData[currentIndex - 1];
 
-      return currentData && currentData.folding;
+
+    /**
+     *
+     * @param {Number} currentIndex - 折叠的序号
+     * @param {Boolean} fold - true 为折叠 false 为展开
+     */
+    switch: function _switch(currentIndex) {
+      var fold = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+      var currentData = this.foldData[currentIndex - 1];
+      var $transition = this.$refs['transition' + currentIndex];
+
+      if (!$transition) {
+        return false;
+      }
+
+      var transitionHeight = this.elementProp($transition.$el).offsetHeight;
+      $transition.setHeight(transitionHeight);
+
+      if (fold) {
+        return $transition.leave();
+      } else {
+        return $transition.enter();
+      }
     },
     foldTitleIcon: function foldTitleIcon(contentIndex) {
-      return this.foldingStatus(contentIndex) ? 'fold' : 'spread';
+      return this.foldData[contentIndex - 1].folding ? 'fold' : 'spread';
     },
     foldContentActive: function foldContentActive(contentIndex) {
-      return this.foldingStatus(contentIndex) ? this.cPrefix + '-folding' : '';
+      return this.foldData[contentIndex - 1].folding ? this.cPrefix + '-folding' : '';
     }
   },
 
@@ -17402,7 +17429,7 @@ var _icon = __webpack_require__(21);
 
 var _icon2 = _interopRequireDefault(_icon);
 
-var _prop = __webpack_require__(61);
+var _prop = __webpack_require__(54);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17796,27 +17823,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _attr = __webpack_require__(121);
+var _attr = __webpack_require__(122);
 
-var _mixin = __webpack_require__(60);
+var _base = __webpack_require__(5);
 
-var _mixin2 = _interopRequireDefault(_mixin);
+var _base2 = _interopRequireDefault(_base);
+
+var _transition = __webpack_require__(61);
+
+var _transition2 = _interopRequireDefault(_transition);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * fold(折叠) transition component
- *
- * @prop height - 被过渡的元素高度
- *
- */
-
 exports.default = {
-  mixins: [_mixin2.default],
+  mixins: [_base2.default, _transition2.default],
 
   props: {
     height: Number
   },
+
+  data: function data() {
+    return {
+      transitionHeight: 0
+    };
+  },
+
 
   computed: {
     transition: function transition() {
@@ -17824,7 +17855,31 @@ exports.default = {
     }
   },
 
+  watch: {
+    height: function height(val) {
+      return this.setHeight(val);
+    }
+  },
+
   methods: {
+    _setDataOpt: function _setDataOpt() {
+      this.transitionHeight = this.height;
+    },
+    _init: function _init() {
+      if (this.height === undefined && this.$el.firstChild) {
+        this.transitionHeight = this.$el.firstChild.offsetHeight;
+      }
+    },
+
+
+    /**
+     * 设置高度
+     *
+     * @param { Number }
+     */
+    setHeight: function setHeight(height) {
+      this.transitionHeight = height;
+    },
     beforeEnter: function beforeEnter() {
       this.$emit('beforeEnter');
       var el = this.$el;
@@ -17846,8 +17901,10 @@ exports.default = {
       var _this = this;
 
       var el = this.$el;
+      // HACK: trigger browser reflow
+      var height = el.offsetHeight;
 
-      el.style.height = this.height + 'px';
+      el.style.height = this.transitionHeight + 'px';
 
       this.$emit('entering');
 
@@ -17872,7 +17929,7 @@ exports.default = {
 
       this.$emit('beforeLeave');
 
-      el.style.height = this.height + 'px';
+      el.style.height = this.transitionHeight + 'px';
 
       Object.assign(el.style, {
         'transition': this.transition
@@ -17915,7 +17972,12 @@ exports.default = {
   render: function render(h) {
     return h('transition', this.$slots.default);
   }
-};
+}; /**
+    * fold(折叠) transition component
+    *
+    * @prop height - 被过渡的元素高度
+    *
+    */
 
 /***/ }),
 /* 120 */
@@ -17928,15 +17990,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _attr = __webpack_require__(121);
+var _attr = __webpack_require__(122);
 
 var _base = __webpack_require__(5);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _mixin = __webpack_require__(60);
+var _transition = __webpack_require__(61);
 
-var _mixin2 = _interopRequireDefault(_mixin);
+var _transition2 = _interopRequireDefault(_transition);
 
 __webpack_require__(586);
 
@@ -17949,7 +18011,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 exports.default = {
-  mixins: [_base2.default, _mixin2.default],
+  mixins: [_base2.default, _transition2.default],
 
   props: {
     assign: {
@@ -18056,6 +18118,190 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _transition = __webpack_require__(61);
+
+var _transition2 = _interopRequireDefault(_transition);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  mixins: [_transition2.default],
+
+  props: {
+    direction: {
+      type: String,
+      default: 'top'
+    },
+    detail: Object,
+    position: Function
+  },
+
+  data: function data() {
+    return {
+      transiting: false,
+      isEnter: false,
+      isLeaving: false
+    };
+  },
+
+
+  computed: {
+    translate: function translate() {
+      return this._getTranslate();
+    },
+    transition: function transition() {
+      return 'transform ' + this.transitionTime + ' ease-out';
+    },
+
+    // 过渡体的 bottom 值，就是过渡体底部离父元素底部的偏移值
+    bottom: function bottom() {
+      return this.detail.parentHeight - this.detail.top - this.detail.height;
+    },
+
+    // 过渡体的 right 值，就是过渡体右侧离父元素右侧的偏移值
+    right: function right() {
+      return this.detail.parentWidth - this.detail.left - this.detail.width;
+    }
+  },
+
+  methods: {
+    /**
+     *
+     * @param {Object} opt -
+     *                      {Number} top
+     *                      {Number} left
+     * @return {String} - 过渡的样式声明
+     *
+     */
+    _getTranslate: function _getTranslate() {
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          _ref$top = _ref.top,
+          top = _ref$top === undefined ? this.detail.top : _ref$top,
+          _ref$left = _ref.left,
+          left = _ref$left === undefined ? this.detail.left : _ref$left;
+
+      switch (this.direction) {
+        case 'top':
+          return 'translateY(calc(-110% - ' + top + 'px))';
+        case 'bottom':
+          return 'translateY(calc(110% + ' + this.bottom + 'px))';
+        case 'left':
+          return 'translateX(calc(-110% - ' + left + 'px))';
+        case 'right':
+          return 'translateX(calc(110% + ' + this.right + 'px))';
+        default:
+          return 'translateY(calc(-110% - ' + top + 'px))';
+      }
+    },
+    beforeEnter: function beforeEnter() {
+      this.$emit('beforeEnter');
+
+      var el = this.$el;
+      var elPoi = this.position ? this.position() : {};
+
+      Object.assign(el.style, {
+        'transition': this.transition,
+        'transform': this._getTranslate(elPoi)
+      });
+
+      return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          el.style.display = '';
+
+          return resolve();
+        });
+      });
+    },
+    entering: function entering() {
+      var _this = this;
+
+      var el = this.$el;
+      // HACK: trigger browser reflow
+      var height = el.offsetHeight;
+
+      this.$emit('entering');
+
+      Object.assign(el.style, {
+        'transform': ''
+      });
+
+      return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          return resolve();
+        }, _this.time);
+      });
+    },
+    afterEnter: function afterEnter() {
+      var el = this.$el;
+
+      Object.assign(el.style, {
+        'transition': ''
+      });
+
+      this.$emit('afterEnter');
+    },
+    beforeLeave: function beforeLeave() {
+      var el = this.$el;
+
+      this.$emit('beforeLeave');
+
+      return Object.assign(el.style, {
+        'transition': this.transition,
+        'transform': ''
+      });
+    },
+    leaveing: function leaveing() {
+      var _this2 = this;
+
+      var el = this.$el;
+
+      this.$emit('leaving');
+
+      Object.assign(el.style, {
+        'transform': this.translate
+      });
+
+      return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          el.style.display = 'none';
+
+          return resolve();
+        }, _this2.time);
+      });
+    },
+    afterLeave: function afterLeave() {
+      var el = this.$el;
+
+      Object.assign(el.style, {
+        'transition': '',
+        'transform': ''
+      });
+
+      return this.$emit('afterLeave');
+    }
+  },
+
+  render: function render(h) {
+    return h('transition', this.$slots.default);
+  }
+}; /**
+    * slide transition component - 滑动过度效果
+    *
+    * @prop speed - 淡出速度
+    * @prop position - 即时获取元素位置
+    */
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var addClass = function addClass(el, classHub) {
@@ -18112,7 +18358,7 @@ exports.delClass = delClass;
 exports.childrenHeight = childrenHeight;
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18146,7 +18392,7 @@ var findGrandpa = function findGrandpa(parent, grandpaName) {
 exports.findGrandpa = findGrandpa;
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18176,13 +18422,13 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports) {
 
 module.exports = {"input":{"add":"hub/input/add","delete":"hub/input/delete","get":"hub/input/get"},"select":{"add":"hub/select/add","delete":"hub/select/delete"}}
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18195,7 +18441,7 @@ module.exports = function (it, msg) {
 };
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18227,7 +18473,7 @@ module.exports = [].copyWithin || function copyWithin(target /* = 0 */, start /*
 };
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18242,7 +18488,7 @@ module.exports = function (iter, ITERATOR) {
 };
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18279,7 +18525,7 @@ module.exports = function (that, callbackfn, aLen, memo, isRight) {
 };
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18312,7 +18558,7 @@ module.exports = Function.bind || function bind(that /* , ...args */) {
 };
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18325,11 +18571,11 @@ var ctx = __webpack_require__(26);
 var anInstance = __webpack_require__(41);
 var forOf = __webpack_require__(42);
 var $iterDefine = __webpack_require__(100);
-var step = __webpack_require__(137);
+var step = __webpack_require__(138);
 var setSpecies = __webpack_require__(48);
 var DESCRIPTORS = __webpack_require__(9);
 var fastKey = __webpack_require__(39).fastKey;
-var validate = __webpack_require__(57);
+var validate = __webpack_require__(58);
 var SIZE = DESCRIPTORS ? '_s' : 'size';
 
 var getEntry = function getEntry(that, key) {
@@ -18466,7 +18712,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18474,7 +18720,7 @@ module.exports = {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var classof = __webpack_require__(63);
-var from = __webpack_require__(127);
+var from = __webpack_require__(128);
 module.exports = function (NAME) {
   return function toJSON() {
     if (classof(this) != NAME) throw TypeError(NAME + "#toJSON isn't generic");
@@ -18483,7 +18729,7 @@ module.exports = function (NAME) {
 };
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18497,7 +18743,7 @@ var anInstance = __webpack_require__(41);
 var forOf = __webpack_require__(42);
 var createArrayMethod = __webpack_require__(30);
 var $has = __webpack_require__(16);
-var validate = __webpack_require__(57);
+var validate = __webpack_require__(58);
 var arrayFind = createArrayMethod(5);
 var arrayFindIndex = createArrayMethod(6);
 var id = 0;
@@ -18573,7 +18819,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18619,7 +18865,7 @@ function flattenIntoArray(target, original, source, sourceLen, start, depth, map
 module.exports = flattenIntoArray;
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18632,7 +18878,7 @@ module.exports = !__webpack_require__(9) && !__webpack_require__(6)(function () 
 });
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18646,7 +18892,7 @@ module.exports = function isInteger(it) {
 };
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18666,7 +18912,7 @@ module.exports = function (iterator, fn, value, entries) {
 };
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18677,7 +18923,7 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18708,7 +18954,7 @@ module.exports = Math.fround || function fround(x) {
 };
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18720,7 +18966,7 @@ module.exports = Math.log1p || function log1p(x) {
 };
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18744,7 +18990,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 };
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18790,7 +19036,7 @@ module.exports = !$assign || __webpack_require__(6)(function () {
 } : $assign;
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18812,7 +19058,7 @@ module.exports = __webpack_require__(9) ? Object.defineProperties : function def
 };
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18840,7 +19086,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18867,7 +19113,7 @@ module.exports = function (object, names) {
 };
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18893,7 +19139,7 @@ module.exports = function (isEntries) {
 };
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18911,14 +19157,14 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
 };
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var $parseFloat = __webpack_require__(4).parseFloat;
-var $trim = __webpack_require__(56).trim;
+var $trim = __webpack_require__(57).trim;
 
 module.exports = 1 / $parseFloat(__webpack_require__(110) + '-0') !== -Infinity ? function parseFloat(str) {
   var string = $trim(String(str), 3);
@@ -18927,14 +19173,14 @@ module.exports = 1 / $parseFloat(__webpack_require__(110) + '-0') !== -Infinity 
 } : $parseFloat;
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var $parseInt = __webpack_require__(4).parseInt;
-var $trim = __webpack_require__(56).trim;
+var $trim = __webpack_require__(57).trim;
 var ws = __webpack_require__(110);
 var hex = /^[-+]?0[xX]/;
 
@@ -18944,7 +19190,7 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
 } : $parseInt;
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18959,7 +19205,7 @@ module.exports = function (exec) {
 };
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18975,7 +19221,7 @@ module.exports = function (C, x) {
 };
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18999,7 +19245,7 @@ module.exports = function (that, maxLength, fillString, left) {
 };
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19017,7 +19263,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19026,14 +19272,14 @@ module.exports = function (it) {
 exports.f = __webpack_require__(8);
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var strong = __webpack_require__(130);
-var validate = __webpack_require__(57);
+var strong = __webpack_require__(131);
+var validate = __webpack_require__(58);
 var MAP = 'Map';
 
 // 23.1 Map Objects
@@ -19054,7 +19300,7 @@ module.exports = __webpack_require__(71)(MAP, function (get) {
 }, strong, true);
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19067,14 +19313,14 @@ if (__webpack_require__(9) && /./g.flags != 'g') __webpack_require__(10).f(RegEx
 });
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var strong = __webpack_require__(130);
-var validate = __webpack_require__(57);
+var strong = __webpack_require__(131);
+var validate = __webpack_require__(58);
 var SET = 'Set';
 
 // 23.2 Set Objects
@@ -19090,7 +19336,7 @@ module.exports = __webpack_require__(71)(SET, function (get) {
 }, strong);
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19099,11 +19345,11 @@ module.exports = __webpack_require__(71)(SET, function (get) {
 var each = __webpack_require__(30)(0);
 var redefine = __webpack_require__(18);
 var meta = __webpack_require__(39);
-var assign = __webpack_require__(141);
-var weak = __webpack_require__(132);
+var assign = __webpack_require__(142);
+var weak = __webpack_require__(133);
 var isObject = __webpack_require__(7);
 var fails = __webpack_require__(6);
-var validate = __webpack_require__(57);
+var validate = __webpack_require__(58);
 var WEAK_MAP = 'WeakMap';
 var getWeak = meta.getWeak;
 var isExtensible = Object.isExtensible;
@@ -19158,7 +19404,7 @@ if (fails(function () {
 }
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19190,7 +19436,7 @@ var _bubble3 = __webpack_require__(445);
 
 var _bubble4 = _interopRequireDefault(_bubble3);
 
-var _prop = __webpack_require__(61);
+var _prop = __webpack_require__(54);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19450,7 +19696,7 @@ var bubbleComp = {
 exports.default = bubbleComp;
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19886,7 +20132,7 @@ var formComp = {
 exports.default = formComp;
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19920,7 +20166,7 @@ exports.default = {
     */
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19950,7 +20196,7 @@ var _store = __webpack_require__(62);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _type = __webpack_require__(124);
+var _type = __webpack_require__(125);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -20719,7 +20965,7 @@ var menuComp = {
 exports.default = menuComp;
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20756,7 +21002,7 @@ exports.default = {
     */
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20792,7 +21038,7 @@ exports.default = {
     */
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20946,7 +21192,7 @@ exports.default = {
     */
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20974,6 +21220,10 @@ var _fold2 = __webpack_require__(119);
 
 var _fold3 = _interopRequireDefault(_fold2);
 
+var _slide = __webpack_require__(121);
+
+var _slide2 = _interopRequireDefault(_slide);
+
 var _icon = __webpack_require__(21);
 
 var _icon2 = _interopRequireDefault(_icon);
@@ -20988,21 +21238,23 @@ var _col2 = _interopRequireDefault(_col);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var layoutType = ['grid', 'flex', 'flow']; /**
-                                            * nav 组件
-                                            *
-                                            * @prop animate - 菜单显示动画()
-                                            * @prop autoSwitch - 菜单是否根据设备响应式切换
-                                            * @prop initOpt - 菜单的数据
-                                            * @prop kind - 菜单的种类
-                                            * @prop only - 手风琴模式，一次只能打开一个面板
-                                            * @prop trigger - 2，3 级菜单的触发模式
-                                            * @prop type - 布局类型
-                                            * @prop spreadAll - 打开全部一级菜单
-                                            * @prop title - 菜单标题
-                                            *
-                                            * @event hide - 隐藏 nav
-                                            */
+/**
+ * nav 组件
+ *
+ * @prop animate - 菜单显示动画()
+ * @prop autoSwitch - 菜单是否根据设备响应式切换
+ * @prop initOpt - 菜单的数据
+ * @prop kind - 菜单的种类
+ * @prop only - 手风琴模式，一次只能打开一个面板
+ * @prop trigger - 2，3 级菜单的触发模式
+ * @prop type - 布局类型
+ * @prop spreadAll - 打开全部一级菜单
+ * @prop title - 菜单标题
+ *
+ * @event hide - 隐藏 nav
+ */
+
+var layoutType = ['grid', 'flex', 'flow'];
 
 exports.default = {
   name: 'nav',
@@ -21016,6 +21268,7 @@ exports.default = {
     'fold-title': _fold.foldTitleComp,
     'fold-content': _fold.foldContentComp,
     'fold-transition': _fold3.default,
+    'slide-transition': _slide2.default,
     row: _row2.default,
     column: _col2.default,
     icon: _icon2.default
@@ -21085,11 +21338,21 @@ exports.default = {
     // 设备小于 L 尺寸
     isSmallDevice: function isSmallDevice() {
       return this.deviceRange <= this._deviceTypeRange('<l');
+    },
+    isVerticalType: function isVerticalType() {
+      return this.type === 'vertical';
+    },
+    isFoldAnimate: function isFoldAnimate() {
+      return this.navAnimate === 'fold';
     }
   },
 
   watch: {
     deviceSize: function deviceSize(val) {
+      if (!val) {
+        return false;
+      }
+
       this.changeByDeviceSize(val);
     }
   },
@@ -21103,36 +21366,46 @@ exports.default = {
       }
     },
     show: function show() {
+      var transitionRef = this.$refs.transition;
+
       this.isStageActive = true;
+
+      if (this.isFoldAnimate) {
+        var transitionHeight = this.elementProp(transitionRef.$el).offsetHeight;
+
+        transitionRef.setHeight(transitionHeight);
+      }
+
+      transitionRef.enter();
       this.$emit('show');
     },
     hide: function hide() {
+      this.$refs.transition.leave();
+
       this.isStageActive = false;
       this.$emit('hide');
     },
     toggle: function toggle() {
       this.isStageActive = !this.isStageActive;
+
+      if (this.isStageActive) {
+        return this.show();
+      } else {
+        return this.hide();
+      }
     },
-    changeByDeviceSize: function changeByDeviceSize(size) {
+    changeByDeviceSize: function changeByDeviceSize() {
       if (!this.autoSwitch) {
         return false;
       }
 
       this.isSmallDevice ? this.hide() : this.show();
     }
-  },
-
-  mounted: function mounted() {
-    var _this = this;
-
-    this.$nextTick(function () {
-      return [_this.changeByDeviceSize(_this.deviceSize)];
-    });
   }
 };
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21263,7 +21536,7 @@ var searchComp = {
 exports.default = searchComp;
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21288,7 +21561,7 @@ var _tableRow = __webpack_require__(443);
 
 var _tableRow2 = _interopRequireDefault(_tableRow);
 
-var _loading = __webpack_require__(59);
+var _loading = __webpack_require__(60);
 
 var _loading2 = _interopRequireDefault(_loading);
 
@@ -21304,7 +21577,7 @@ var _tip = __webpack_require__(28);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _util = __webpack_require__(122);
+var _util = __webpack_require__(123);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21537,7 +21810,7 @@ exports.tableColComp = _tableCol2.default;
 exports.tableRowComp = _tableRow2.default;
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21547,14 +21820,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _mixin = __webpack_require__(60);
+var _transition = __webpack_require__(61);
 
-var _mixin2 = _interopRequireDefault(_mixin);
+var _transition2 = _interopRequireDefault(_transition);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  mixins: [_mixin2.default],
+  mixins: [_transition2.default],
 
   props: {
     opacity: {
@@ -21674,190 +21947,6 @@ exports.default = {
     */
 
 /***/ }),
-/* 169 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _mixin = __webpack_require__(60);
-
-var _mixin2 = _interopRequireDefault(_mixin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  mixins: [_mixin2.default],
-
-  props: {
-    direction: {
-      type: String,
-      default: 'top'
-    },
-    detail: Object,
-    position: Function
-  },
-
-  data: function data() {
-    return {
-      transiting: false,
-      isEnter: false,
-      isLeaving: false
-    };
-  },
-
-
-  computed: {
-    translate: function translate() {
-      return this._getTranslate();
-    },
-    transition: function transition() {
-      return 'transform ' + this.transitionTime + ' ease-out';
-    },
-
-    // 过渡体的 bottom 值，就是过渡体底部离父元素底部的偏移值
-    bottom: function bottom() {
-      return this.detail.parentHeight - this.detail.top - this.detail.height;
-    },
-
-    // 过渡体的 right 值，就是过渡体右侧离父元素右侧的偏移值
-    right: function right() {
-      return this.detail.parentWidth - this.detail.left - this.detail.width;
-    }
-  },
-
-  methods: {
-    /**
-     *
-     * @param {Object} opt -
-     *                      {Number} top
-     *                      {Number} left
-     * @return {String} - 过渡的样式声明
-     *
-     */
-    _getTranslate: function _getTranslate() {
-      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref$top = _ref.top,
-          top = _ref$top === undefined ? this.detail.top : _ref$top,
-          _ref$left = _ref.left,
-          left = _ref$left === undefined ? this.detail.left : _ref$left;
-
-      switch (this.direction) {
-        case 'top':
-          return 'translateY(calc(-110% - ' + top + 'px))';
-        case 'bottom':
-          return 'translateY(calc(110% + ' + this.bottom + 'px))';
-        case 'left':
-          return 'translateX(calc(-110% - ' + left + 'px))';
-        case 'right':
-          return 'translateX(calc(110% + ' + this.right + 'px))';
-        default:
-          return 'translateY(calc(-110% - ' + top + 'px))';
-      }
-    },
-    beforeEnter: function beforeEnter() {
-      this.$emit('beforeEnter');
-
-      var el = this.$el;
-      var elPoi = this.position ? this.position() : {};
-
-      Object.assign(el.style, {
-        'transition': this.transition,
-        'transform': this._getTranslate(elPoi)
-      });
-
-      return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-          el.style.display = '';
-
-          return resolve();
-        });
-      });
-    },
-    entering: function entering() {
-      var _this = this;
-
-      var el = this.$el;
-      // HACK: trigger browser reflow
-      var height = el.offsetHeight;
-
-      this.$emit('entering');
-
-      Object.assign(el.style, {
-        'transform': ''
-      });
-
-      return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-          return resolve();
-        }, _this.time);
-      });
-    },
-    afterEnter: function afterEnter() {
-      var el = this.$el;
-
-      Object.assign(el.style, {
-        'transition': ''
-      });
-
-      this.$emit('afterEnter');
-    },
-    beforeLeave: function beforeLeave() {
-      var el = this.$el;
-
-      this.$emit('beforeLeave');
-
-      return Object.assign(el.style, {
-        'transition': this.transition,
-        'transform': ''
-      });
-    },
-    leaveing: function leaveing() {
-      var _this2 = this;
-
-      var el = this.$el;
-
-      this.$emit('leaving');
-
-      Object.assign(el.style, {
-        'transform': this.translate
-      });
-
-      return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-          el.style.display = 'none';
-
-          return resolve();
-        }, _this2.time);
-      });
-    },
-    afterLeave: function afterLeave() {
-      var el = this.$el;
-
-      Object.assign(el.style, {
-        'transition': '',
-        'transform': ''
-      });
-
-      return this.$emit('afterLeave');
-    }
-  },
-
-  render: function render(h) {
-    return h('transition', this.$slots.default);
-  }
-}; /**
-    * slide transition component - 滑动过度效果
-    *
-    * @prop speed - 淡出速度
-    * @prop position - 即时获取元素位置
-    */
-
-/***/ }),
 /* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21872,7 +21961,7 @@ var _scroller = __webpack_require__(51);
 
 var _scroller2 = _interopRequireDefault(_scroller);
 
-var _loading = __webpack_require__(59);
+var _loading = __webpack_require__(60);
 
 var _loading2 = _interopRequireDefault(_loading);
 
@@ -23135,7 +23224,7 @@ define(String.prototype, "padRight", "".padEnd);
 "pop,reverse,shift,keys,values,entries,indexOf,every,some,forEach,map,filter,find,findIndex,includes,join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill".split(",").forEach(function (key) {
   [][key] && define(Array, key, Function.call.bind([][key]));
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(123)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(124)))
 
 /***/ }),
 /* 179 */
@@ -23369,7 +23458,7 @@ $export($export.S, 'RegExp', { escape: function escape(it) {
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Array', { copyWithin: __webpack_require__(126) });
+$export($export.P, 'Array', { copyWithin: __webpack_require__(127) });
 
 __webpack_require__(38)('copyWithin');
 
@@ -23495,7 +23584,7 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 var ctx = __webpack_require__(26);
 var $export = __webpack_require__(0);
 var toObject = __webpack_require__(12);
-var call = __webpack_require__(136);
+var call = __webpack_require__(137);
 var isArrayIter = __webpack_require__(98);
 var toLength = __webpack_require__(11);
 var createProperty = __webpack_require__(92);
@@ -23665,7 +23754,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function () {
 
 
 var $export = __webpack_require__(0);
-var $reduce = __webpack_require__(128);
+var $reduce = __webpack_require__(129);
 
 $export($export.P + $export.F * !__webpack_require__(27)([].reduceRight, true), 'Array', {
   // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
@@ -23682,7 +23771,7 @@ $export($export.P + $export.F * !__webpack_require__(27)([].reduceRight, true), 
 
 
 var $export = __webpack_require__(0);
-var $reduce = __webpack_require__(128);
+var $reduce = __webpack_require__(129);
 
 $export($export.P + $export.F * !__webpack_require__(27)([].reduce, true), 'Array', {
   // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
@@ -23875,7 +23964,7 @@ if (new Date(NaN) + '' != INVALID_DATE) {
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Function', { bind: __webpack_require__(129) });
+$export($export.P, 'Function', { bind: __webpack_require__(130) });
 
 /***/ }),
 /* 217 */
@@ -23931,7 +24020,7 @@ NAME in FProto || __webpack_require__(9) && dP(FProto, NAME, {
 
 // 20.2.2.3 Math.acosh(x)
 var $export = __webpack_require__(0);
-var log1p = __webpack_require__(139);
+var log1p = __webpack_require__(140);
 var sqrt = Math.sqrt;
 var $acosh = Math.acosh;
 
@@ -24054,7 +24143,7 @@ $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', { expm1: $expm1 
 // 20.2.2.16 Math.fround(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { fround: __webpack_require__(138) });
+$export($export.S, 'Math', { fround: __webpack_require__(139) });
 
 /***/ }),
 /* 227 */
@@ -24141,7 +24230,7 @@ $export($export.S, 'Math', {
 // 20.2.2.20 Math.log1p(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { log1p: __webpack_require__(139) });
+$export($export.S, 'Math', { log1p: __webpack_require__(140) });
 
 /***/ }),
 /* 231 */
@@ -24244,7 +24333,7 @@ var fails = __webpack_require__(6);
 var gOPN = __webpack_require__(45).f;
 var gOPD = __webpack_require__(23).f;
 var dP = __webpack_require__(10).f;
-var $trim = __webpack_require__(56).trim;
+var $trim = __webpack_require__(57).trim;
 var NUMBER = 'Number';
 var $Number = global[NUMBER];
 var Base = $Number;
@@ -24345,7 +24434,7 @@ $export($export.S, 'Number', {
 // 20.1.2.3 Number.isInteger(number)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Number', { isInteger: __webpack_require__(135) });
+$export($export.S, 'Number', { isInteger: __webpack_require__(136) });
 
 /***/ }),
 /* 240 */
@@ -24373,7 +24462,7 @@ $export($export.S, 'Number', {
 
 // 20.1.2.5 Number.isSafeInteger(number)
 var $export = __webpack_require__(0);
-var isInteger = __webpack_require__(135);
+var isInteger = __webpack_require__(136);
 var abs = Math.abs;
 
 $export($export.S, 'Number', {
@@ -24414,7 +24503,7 @@ $export($export.S, 'Number', { MIN_SAFE_INTEGER: -0x1fffffffffffff });
 
 
 var $export = __webpack_require__(0);
-var $parseFloat = __webpack_require__(147);
+var $parseFloat = __webpack_require__(148);
 // 20.1.2.12 Number.parseFloat(string)
 $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { parseFloat: $parseFloat });
 
@@ -24426,7 +24515,7 @@ $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { 
 
 
 var $export = __webpack_require__(0);
-var $parseInt = __webpack_require__(148);
+var $parseInt = __webpack_require__(149);
 // 20.1.2.13 Number.parseInt(string, radix)
 $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { parseInt: $parseInt });
 
@@ -24439,7 +24528,7 @@ $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { pars
 
 var $export = __webpack_require__(0);
 var toInteger = __webpack_require__(34);
-var aNumberValue = __webpack_require__(125);
+var aNumberValue = __webpack_require__(126);
 var repeat = __webpack_require__(109);
 var $toFixed = 1.0.toFixed;
 var floor = Math.floor;
@@ -24555,7 +24644,7 @@ $export($export.P + $export.F * (!!$toFixed && (0.00008.toFixed(3) !== '0.000' |
 
 var $export = __webpack_require__(0);
 var $fails = __webpack_require__(6);
-var aNumberValue = __webpack_require__(125);
+var aNumberValue = __webpack_require__(126);
 var $toPrecision = 1.0.toPrecision;
 
 $export($export.P + $export.F * ($fails(function () {
@@ -24581,7 +24670,7 @@ $export($export.P + $export.F * ($fails(function () {
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(0);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(141) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(142) });
 
 /***/ }),
 /* 249 */
@@ -24603,7 +24692,7 @@ $export($export.S, 'Object', { create: __webpack_require__(44) });
 
 var $export = __webpack_require__(0);
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export($export.S + $export.F * !__webpack_require__(9), 'Object', { defineProperties: __webpack_require__(142) });
+$export($export.S + $export.F * !__webpack_require__(9), 'Object', { defineProperties: __webpack_require__(143) });
 
 /***/ }),
 /* 251 */
@@ -24659,7 +24748,7 @@ __webpack_require__(33)('getOwnPropertyDescriptor', function () {
 
 // 19.1.2.7 Object.getOwnPropertyNames(O)
 __webpack_require__(33)('getOwnPropertyNames', function () {
-  return __webpack_require__(143).f;
+  return __webpack_require__(144).f;
 });
 
 /***/ }),
@@ -24825,7 +24914,7 @@ if (test + '' != '[object z]') {
 
 
 var $export = __webpack_require__(0);
-var $parseFloat = __webpack_require__(147);
+var $parseFloat = __webpack_require__(148);
 // 18.2.4 parseFloat(string)
 $export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $parseFloat });
 
@@ -24837,7 +24926,7 @@ $export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $pars
 
 
 var $export = __webpack_require__(0);
-var $parseInt = __webpack_require__(148);
+var $parseInt = __webpack_require__(149);
 // 18.2.5 parseInt(string, radix)
 $export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt });
 
@@ -24861,8 +24950,8 @@ var speciesConstructor = __webpack_require__(83);
 var task = __webpack_require__(111).set;
 var microtask = __webpack_require__(103)();
 var newPromiseCapabilityModule = __webpack_require__(104);
-var perform = __webpack_require__(149);
-var promiseResolve = __webpack_require__(150);
+var perform = __webpack_require__(150);
+var promiseResolve = __webpack_require__(151);
 var PROMISE = 'Promise';
 var TypeError = global.TypeError;
 var process = global.process;
@@ -25068,7 +25157,7 @@ if (!USE_NATIVE) {
 }
 
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
-__webpack_require__(55)($Promise, PROMISE);
+__webpack_require__(56)($Promise, PROMISE);
 __webpack_require__(48)(PROMISE);
 Wrapper = __webpack_require__(31)[PROMISE];
 
@@ -25173,7 +25262,7 @@ var aFunction = __webpack_require__(13);
 var anObject = __webpack_require__(3);
 var isObject = __webpack_require__(7);
 var fails = __webpack_require__(6);
-var bind = __webpack_require__(129);
+var bind = __webpack_require__(130);
 var rConstruct = (__webpack_require__(4).Reflect || {}).construct;
 
 // MS Edge supports only 2 arguments and argumentsList argument is optional
@@ -25410,7 +25499,7 @@ $export($export.S, 'Reflect', {
 // 26.1.11 Reflect.ownKeys(target)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Reflect', { ownKeys: __webpack_require__(146) });
+$export($export.S, 'Reflect', { ownKeys: __webpack_require__(147) });
 
 /***/ }),
 /* 279 */
@@ -25686,7 +25775,7 @@ __webpack_require__(72)('split', 2, function (defined, SPLIT, $split) {
 "use strict";
 
 
-__webpack_require__(155);
+__webpack_require__(156);
 var anObject = __webpack_require__(3);
 var $flags = __webpack_require__(73);
 var DESCRIPTORS = __webpack_require__(9);
@@ -26077,7 +26166,7 @@ __webpack_require__(19)('sup', function (createHTML) {
 
 // 21.1.3.25 String.prototype.trim()
 
-__webpack_require__(56)('trim', function ($trim) {
+__webpack_require__(57)('trim', function ($trim) {
   return function trim() {
     return $trim(this, 3);
   };
@@ -26101,10 +26190,10 @@ var redefine = __webpack_require__(18);
 var META = __webpack_require__(39).KEY;
 var $fails = __webpack_require__(6);
 var shared = __webpack_require__(82);
-var setToStringTag = __webpack_require__(55);
+var setToStringTag = __webpack_require__(56);
 var uid = __webpack_require__(50);
 var wks = __webpack_require__(8);
-var wksExt = __webpack_require__(153);
+var wksExt = __webpack_require__(154);
 var wksDefine = __webpack_require__(113);
 var keyOf = __webpack_require__(185);
 var enumKeys = __webpack_require__(184);
@@ -26114,7 +26203,7 @@ var toIObject = __webpack_require__(20);
 var toPrimitive = __webpack_require__(35);
 var createDesc = __webpack_require__(46);
 var _create = __webpack_require__(44);
-var gOPNExt = __webpack_require__(143);
+var gOPNExt = __webpack_require__(144);
 var $GOPD = __webpack_require__(23);
 var $DP = __webpack_require__(10);
 var $keys = __webpack_require__(40);
@@ -26521,8 +26610,8 @@ __webpack_require__(37)('Uint8', 1, function (init) {
 "use strict";
 
 
-var weak = __webpack_require__(132);
-var validate = __webpack_require__(57);
+var weak = __webpack_require__(133);
+var validate = __webpack_require__(58);
 var WEAK_SET = 'WeakSet';
 
 // 23.4 WeakSet Objects
@@ -26546,7 +26635,7 @@ __webpack_require__(71)(WEAK_SET, function (get) {
 // https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatMap
 
 var $export = __webpack_require__(0);
-var flattenIntoArray = __webpack_require__(133);
+var flattenIntoArray = __webpack_require__(134);
 var toObject = __webpack_require__(12);
 var toLength = __webpack_require__(11);
 var aFunction = __webpack_require__(13);
@@ -26575,7 +26664,7 @@ __webpack_require__(38)('flatMap');
 // https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatten
 
 var $export = __webpack_require__(0);
-var flattenIntoArray = __webpack_require__(133);
+var flattenIntoArray = __webpack_require__(134);
 var toObject = __webpack_require__(12);
 var toLength = __webpack_require__(11);
 var toInteger = __webpack_require__(34);
@@ -26692,7 +26781,7 @@ __webpack_require__(81)('Map');
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(0);
 
-$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(131)('Map') });
+$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(132)('Map') });
 
 /***/ }),
 /* 332 */
@@ -26748,8 +26837,8 @@ $export($export.S, 'Math', {
 
 // https://rwaldron.github.io/proposal-math-extensions/
 var $export = __webpack_require__(0);
-var scale = __webpack_require__(140);
-var fround = __webpack_require__(138);
+var scale = __webpack_require__(141);
+var fround = __webpack_require__(139);
 
 $export($export.S, 'Math', {
   fscale: function fscale(x, inLow, inHigh, outLow, outHigh) {
@@ -26858,7 +26947,7 @@ $export($export.S, 'Math', {
 // https://rwaldron.github.io/proposal-math-extensions/
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { scale: __webpack_require__(140) });
+$export($export.S, 'Math', { scale: __webpack_require__(141) });
 
 /***/ }),
 /* 342 */
@@ -26946,7 +27035,7 @@ __webpack_require__(9) && $export($export.P + __webpack_require__(78), 'Object',
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(0);
-var $entries = __webpack_require__(145)(true);
+var $entries = __webpack_require__(146)(true);
 
 $export($export.S, 'Object', {
   entries: function entries(it) {
@@ -26963,7 +27052,7 @@ $export($export.S, 'Object', {
 
 // https://github.com/tc39/proposal-object-getownpropertydescriptors
 var $export = __webpack_require__(0);
-var ownKeys = __webpack_require__(146);
+var ownKeys = __webpack_require__(147);
 var toIObject = __webpack_require__(20);
 var gOPD = __webpack_require__(23);
 var createProperty = __webpack_require__(92);
@@ -27043,7 +27132,7 @@ __webpack_require__(9) && $export($export.P + __webpack_require__(78), 'Object',
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(0);
-var $values = __webpack_require__(145)(false);
+var $values = __webpack_require__(146)(false);
 
 $export($export.S, 'Object', {
   values: function values(it) {
@@ -27279,7 +27368,7 @@ var $export = __webpack_require__(0);
 var core = __webpack_require__(31);
 var global = __webpack_require__(4);
 var speciesConstructor = __webpack_require__(83);
-var promiseResolve = __webpack_require__(150);
+var promiseResolve = __webpack_require__(151);
 
 $export($export.P + $export.R, 'Promise', { 'finally': function _finally(onFinally) {
     var C = speciesConstructor(this, core.Promise || global.Promise);
@@ -27305,7 +27394,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function _finally(onFinal
 
 var $export = __webpack_require__(0);
 var newPromiseCapability = __webpack_require__(104);
-var perform = __webpack_require__(149);
+var perform = __webpack_require__(150);
 
 $export($export.S, 'Promise', { 'try': function _try(callbackfn) {
     var promiseCapability = newPromiseCapability.f(this);
@@ -27360,8 +27449,8 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /* , 
 "use strict";
 
 
-var Set = __webpack_require__(156);
-var from = __webpack_require__(127);
+var Set = __webpack_require__(157);
+var from = __webpack_require__(128);
 var metadata = __webpack_require__(36);
 var anObject = __webpack_require__(3);
 var getPrototypeOf = __webpack_require__(24);
@@ -27526,7 +27615,7 @@ __webpack_require__(81)('Set');
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(0);
 
-$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(131)('Set') });
+$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(132)('Set') });
 
 /***/ }),
 /* 366 */
@@ -27591,7 +27680,7 @@ $export($export.P, 'String', {
 // https://github.com/tc39/proposal-string-pad-start-end
 
 var $export = __webpack_require__(0);
-var $pad = __webpack_require__(151);
+var $pad = __webpack_require__(152);
 
 $export($export.P, 'String', {
   padEnd: function padEnd(maxLength /* , fillString = ' ' */) {
@@ -27608,7 +27697,7 @@ $export($export.P, 'String', {
 // https://github.com/tc39/proposal-string-pad-start-end
 
 var $export = __webpack_require__(0);
-var $pad = __webpack_require__(151);
+var $pad = __webpack_require__(152);
 
 $export($export.P, 'String', {
   padStart: function padStart(maxLength /* , fillString = ' ' */) {
@@ -27624,7 +27713,7 @@ $export($export.P, 'String', {
 
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
 
-__webpack_require__(56)('trimLeft', function ($trim) {
+__webpack_require__(57)('trimLeft', function ($trim) {
   return function trimLeft() {
     return $trim(this, 1);
   };
@@ -27638,7 +27727,7 @@ __webpack_require__(56)('trimLeft', function ($trim) {
 
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
 
-__webpack_require__(56)('trimRight', function ($trim) {
+__webpack_require__(57)('trimRight', function ($trim) {
   return function trimRight() {
     return $trim(this, 2);
   };
@@ -27726,7 +27815,7 @@ var getKeys = __webpack_require__(40);
 var redefine = __webpack_require__(18);
 var global = __webpack_require__(4);
 var hide = __webpack_require__(17);
-var Iterators = __webpack_require__(54);
+var Iterators = __webpack_require__(55);
 var wks = __webpack_require__(8);
 var ITERATOR = wks('iterator');
 var TO_STRING_TAG = wks('toStringTag');
@@ -27931,15 +28020,15 @@ __webpack_require__(210);
 __webpack_require__(115);
 __webpack_require__(282);
 __webpack_require__(287);
-__webpack_require__(155);
+__webpack_require__(156);
 __webpack_require__(283);
 __webpack_require__(284);
 __webpack_require__(285);
 __webpack_require__(286);
 __webpack_require__(267);
-__webpack_require__(154);
-__webpack_require__(156);
+__webpack_require__(155);
 __webpack_require__(157);
+__webpack_require__(158);
 __webpack_require__(322);
 __webpack_require__(311);
 __webpack_require__(312);
@@ -28124,7 +28213,7 @@ exports.default = {
       logoUrl: __webpack_require__(591),
       menuOpt: [{
         'name': '组件',
-        'route': '/component'
+        'route': '/component/start'
       }, {
         'name': '构建',
         'route': '/build'
@@ -28173,7 +28262,7 @@ var _mixin = __webpack_require__(15);
 
 var _mixin2 = _interopRequireDefault(_mixin);
 
-var _index = __webpack_require__(58);
+var _index = __webpack_require__(59);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28474,7 +28563,7 @@ var _mixin = __webpack_require__(15);
 
 var _mixin2 = _interopRequireDefault(_mixin);
 
-var _index = __webpack_require__(58);
+var _index = __webpack_require__(59);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28629,7 +28718,7 @@ var _mixin = __webpack_require__(15);
 
 var _mixin2 = _interopRequireDefault(_mixin);
 
-var _index = __webpack_require__(58);
+var _index = __webpack_require__(59);
 
 var _homeBg = __webpack_require__(177);
 
@@ -28886,7 +28975,7 @@ var _total = __webpack_require__(520);
 
 var _total2 = _interopRequireDefault(_total);
 
-var _index = __webpack_require__(58);
+var _index = __webpack_require__(59);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28991,7 +29080,7 @@ var _mixin = __webpack_require__(15);
 
 var _mixin2 = _interopRequireDefault(_mixin);
 
-var _index = __webpack_require__(58);
+var _index = __webpack_require__(59);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29046,7 +29135,7 @@ var _app = __webpack_require__(383);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _vue2do = __webpack_require__(58);
+var _vue2do = __webpack_require__(59);
 
 var _vue2do2 = _interopRequireDefault(_vue2do);
 
@@ -29830,13 +29919,12 @@ exports.default = function (h) {
           'data-index': contentIndex
         },
         class: [_this.foldContentActive(contentIndex)]
-      }, [h('fold-transition', [h('div', {
+      }, [h('fold-transition', {
+        height: _this.transitionChildHeight,
+        ref: 'transition' + contentIndex
+      }, [h('div', {
         class: [_this.xclass('transition')],
         css: false,
-        directives: [{
-          name: 'show',
-          value: !_this.foldingStatus(contentIndex)
-        }],
         style: _this.foldData[index].style
       }, slotEle)])]));
     });
@@ -30684,7 +30772,7 @@ var _tip = __webpack_require__(28);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _prop = __webpack_require__(61);
+var _prop = __webpack_require__(54);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31134,7 +31222,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _prop = __webpack_require__(61);
+var _prop = __webpack_require__(54);
 
 exports.default = {
   methods: {
@@ -32808,25 +32896,31 @@ exports.default = function (h) {
     }
   })]), this.$slots.start, foldContent.call(this, h, this.initOpt), this.$slots.end])];
 
-  if (this.type === 'vertical') {
-    navStage.push(h('fold-transition', [h('div', {
-      class: [this.xclass('stage'), this.xclass('animate-' + this.navAnimate)],
+  if (this.isVerticalType) {
+    navStage.push(h('fold-transition', {
       directives: [{
         name: 'show',
         value: this.isStageActive
-      }]
+      }],
+      ref: 'transition'
+    }, [h('div', {
+      class: [this.xclass('stage'), this.xclass('animate-' + this.navAnimate)]
     }, stageChildren)]));
   } else {
-    navStage.push(h('transition', {
+    navStage.push(h('slide-transition', {
       props: {
-        name: this.prefix(this.navAnimate + '-down')
-      }
-    }, [h('div', {
-      class: [this.xclass('stage'), this.xclass('animate-' + this.navAnimate)],
+        direction: 'top',
+        detail: {
+          top: 0
+        }
+      },
       directives: [{
         name: 'show',
         value: this.isStageActive
-      }]
+      }],
+      ref: 'transition'
+    }, [h('div', {
+      class: [this.xclass('stage'), this.xclass('animate-' + this.navAnimate)]
     }, stageChildren)]));
   }
 
@@ -32986,7 +33080,7 @@ var _base = __webpack_require__(5);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _util = __webpack_require__(122);
+var _util = __webpack_require__(123);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33272,14 +33366,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _mixin = __webpack_require__(60);
+var _transition = __webpack_require__(61);
 
-var _mixin2 = _interopRequireDefault(_mixin);
+var _transition2 = _interopRequireDefault(_transition);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  mixins: [_mixin2.default],
+  mixins: [_transition2.default],
 
   computed: {
     transition: function transition() {
@@ -33400,9 +33494,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _mixin = __webpack_require__(60);
+var _transition = __webpack_require__(61);
 
-var _mixin2 = _interopRequireDefault(_mixin);
+var _transition2 = _interopRequireDefault(_transition);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33413,7 +33507,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             */
 
 exports.default = {
-  mixins: [_mixin2.default],
+  mixins: [_transition2.default],
 
   computed: {
     transition: function transition() {
@@ -33600,7 +33694,7 @@ var _check = __webpack_require__(67);
 
 var _check2 = _interopRequireDefault(_check);
 
-var _form = __webpack_require__(159);
+var _form = __webpack_require__(160);
 
 var _form2 = _interopRequireDefault(_form);
 
@@ -33612,7 +33706,7 @@ var _icon = __webpack_require__(21);
 
 var _icon2 = _interopRequireDefault(_icon);
 
-var _bubble = __webpack_require__(158);
+var _bubble = __webpack_require__(159);
 
 var _bubble2 = _interopRequireDefault(_bubble);
 
@@ -33632,11 +33726,11 @@ var _code = __webpack_require__(434);
 
 var _code2 = _interopRequireDefault(_code);
 
-var _loading = __webpack_require__(59);
+var _loading = __webpack_require__(60);
 
 var _loading2 = _interopRequireDefault(_loading);
 
-var _nav = __webpack_require__(165);
+var _nav = __webpack_require__(166);
 
 var _nav2 = _interopRequireDefault(_nav);
 
@@ -33648,7 +33742,7 @@ var _scroller = __webpack_require__(51);
 
 var _scroller2 = _interopRequireDefault(_scroller);
 
-var _search = __webpack_require__(166);
+var _search = __webpack_require__(167);
 
 var _search2 = _interopRequireDefault(_search);
 
@@ -33658,13 +33752,13 @@ var _list = __webpack_require__(88);
 
 var _list2 = _interopRequireDefault(_list);
 
-var _table = __webpack_require__(167);
+var _table = __webpack_require__(168);
 
-var _menu = __webpack_require__(161);
+var _menu = __webpack_require__(162);
 
 var _menu2 = _interopRequireDefault(_menu);
 
-var _menuEle = __webpack_require__(160);
+var _menuEle = __webpack_require__(161);
 
 var _menuEle2 = _interopRequireDefault(_menuEle);
 
@@ -33672,15 +33766,15 @@ var _shift = __webpack_require__(118);
 
 var _shift2 = _interopRequireDefault(_shift);
 
-var _shiftEle = __webpack_require__(162);
+var _shiftEle = __webpack_require__(163);
 
 var _shiftEle2 = _interopRequireDefault(_shiftEle);
 
-var _tab = __webpack_require__(164);
+var _tab = __webpack_require__(165);
 
 var _tab2 = _interopRequireDefault(_tab);
 
-var _tabEle = __webpack_require__(163);
+var _tabEle = __webpack_require__(164);
 
 var _tabEle2 = _interopRequireDefault(_tabEle);
 
@@ -34116,7 +34210,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _actions, _mutations;
 
-var _type = __webpack_require__(124);
+var _type = __webpack_require__(125);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -34866,7 +34960,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 // object, this seems to be the most reliable technique that does not
 // use indirect eval (which violates Content Security Policy).
 (typeof global === "undefined" ? "undefined" : _typeof(global)) === "object" ? global : (typeof window === "undefined" ? "undefined" : _typeof(window)) === "object" ? window : (typeof self === "undefined" ? "undefined" : _typeof(self)) === "object" ? self : undefined);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(123), __webpack_require__(461)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(124), __webpack_require__(461)(module)))
 
 /***/ }),
 /* 459 */
@@ -38843,7 +38937,7 @@ module.exports = "<div class=\"app-container\">\r\n  <header-layout></header-lay
 /* 517 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header-layout-stage\">\r\n  <z-row class=\"nav-box\">\r\n    <z-col :span=\"8\">\r\n      <router-link to=\"/\">\r\n        <img class=\"logo-box\" :src=\"logoUrl\" />\r\n      </router-link>\r\n    </z-col>\r\n    <z-col :span=\"4\">\r\n      <z-row class=\"nav-menu-box\">\r\n        <z-col>\r\n          <router-link to=\"/component/start\">组件</router-link>\r\n        </z-col>\r\n        <z-col>\r\n          <router-link to=\"/build\">构建</router-link>\r\n        </z-col>\r\n        <z-col>\r\n          <router-link to=\"/about\">关于</router-link>\r\n        </z-col>\r\n      </z-row>\r\n    </z-col>\r\n  </z-row>\r\n\r\n  <z-row class=\"nav-box nav-box-mobile\">\r\n    <z-col :span=\"4\">\r\n      <div @click.stop=\"showMenu\">\r\n        <z-icon kind=\"sort\" v-show=\"sortIconDisplay\"></z-icon>\r\n      </div>\r\n    </z-col>\r\n    <z-col class=\"z-text-center\" :span=\"4\">\r\n      <img class=\"logo-box\" :src=\"logoUrl\" />\r\n    </z-col>\r\n    <z-col :span=\"4\" class=\"z-text-right\">\r\n      <div @click.stop=\"showMenu\">\r\n        <z-icon kind=\"search\"></z-icon>\r\n      </div>\r\n    </z-col>\r\n  </z-row>\r\n\r\n  <z-nav\r\n      class=\"mobile-menu\"\r\n      ref=\"mobileMenu\"\r\n      @hide=\"hideMenu\"\r\n      :autoSwitch=\"false\"\r\n      :init-opt=\"menuOpt\">\r\n    <div class=\"menu-search\" slot=\"end\">\r\n      <z-input placeholder=\"search in vue2do\">\r\n        <z-icon slot=\"head\" kind=\"search\"></z-icon>\r\n      </z-input>\r\n    </div>\r\n  </z-nav>\r\n</div>";
+module.exports = "<div class=\"header-layout-stage\">\r\n  <z-row class=\"nav-box\">\r\n    <z-col :span=\"8\">\r\n      <router-link to=\"/\">\r\n        <img class=\"logo-box\" :src=\"logoUrl\" />\r\n      </router-link>\r\n    </z-col>\r\n    <z-col :span=\"4\">\r\n      <z-row class=\"nav-menu-box\">\r\n        <z-col>\r\n          <router-link to=\"/component/start\">组件</router-link>\r\n        </z-col>\r\n        <z-col>\r\n          <router-link to=\"/build\">构建</router-link>\r\n        </z-col>\r\n        <z-col>\r\n          <router-link to=\"/about\">关于</router-link>\r\n        </z-col>\r\n      </z-row>\r\n    </z-col>\r\n  </z-row>\r\n\r\n  <z-row class=\"nav-box nav-box-mobile\">\r\n    <z-col :span=\"4\">\r\n      <div @click.stop=\"showMenu\">\r\n        <z-icon kind=\"sort\" v-show=\"sortIconDisplay\"></z-icon>\r\n      </div>\r\n    </z-col>\r\n    <z-col class=\"z-text-center\" :span=\"4\">\r\n      <img class=\"logo-box\" :src=\"logoUrl\" />\r\n    </z-col>\r\n    <z-col :span=\"4\" class=\"z-text-right\">\r\n      <div @click.stop=\"showMenu\">\r\n        <z-icon kind=\"search\"></z-icon>\r\n      </div>\r\n    </z-col>\r\n  </z-row>\r\n\r\n  <z-nav\r\n      class=\"mobile-menu\"\r\n      ref=\"mobileMenu\"\r\n      @hide=\"hideMenu\"\r\n      :init-opt=\"menuOpt\">\r\n    <div class=\"menu-search\" slot=\"end\">\r\n      <z-input placeholder=\"search in vue2do\">\r\n        <z-icon slot=\"head\" kind=\"search\"></z-icon>\r\n      </z-input>\r\n    </div>\r\n  </z-nav>\r\n</div>";
 
 /***/ }),
 /* 518 */
@@ -40793,4 +40887,4 @@ module.exports = __webpack_require__(179);
 
 /***/ })
 ],[593]);
-//# sourceMappingURL=app.6ef56035d417c9d8753d.js.map
+//# sourceMappingURL=app.e5a8f3c4960527b4d327.js.map
