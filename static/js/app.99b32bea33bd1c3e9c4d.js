@@ -12385,7 +12385,7 @@ var scrollerComp = {
 
       // 调整内容区域和滚动条的位置
       this[boxPositionName] = this[boxPositionName] < -boxAndScrollerOffset ? -boxAndScrollerOffset : this[boxPositionName];
-      this[barName][barPositionName] = this.scrollerContainBox ? 0 : -this[boxPositionName] * barAndScrollerOffset / boxAndScrollerOffset;
+      this[barName][barPositionName] = this[barName].scrollerContainBox ? 0 : -this[boxPositionName] * barAndScrollerOffset / boxAndScrollerOffset;
 
       var boxPosition = this[boxPositionName] + boxDistance;
       var barPosition = this[barName][barPositionName] + barDistance;
@@ -18250,7 +18250,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    * @prop noCb - 同上的取消回调函数
                                                                                                                                                                                                                    * @prop okBtn - 确定按钮名字
                                                                                                                                                                                                                    * @prop noBtn - 取消按钮名字
-                                                                                                                                                                                                                   * @prop okBtnDisplay - 确定按钮是否显示
                                                                                                                                                                                                                    * @prop noBtnDisplay - 取消按钮是否显示
                                                                                                                                                                                                                    *
                                                                                                                                                                                                                    * @prop headerDisplay - 是否显示弹窗头部
@@ -18263,6 +18262,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    *
                                                                                                                                                                                                                    * @event ok - 点击确定按钮
                                                                                                                                                                                                                    * @event no - 点击取消按钮
+                                                                                                                                                                                                                   * @event show - 显示之后事件
+                                                                                                                                                                                                                   * @event hide - 隐藏之后事件
                                                                                                                                                                                                                    */
 
 var TYPE_ALERT = 'alert';
@@ -18408,19 +18409,19 @@ var modalComp = {
     },
     headerDisplay: {
       type: Boolean,
-      default: true
+      default: false
     },
     headerNoBtnDisplay: {
       type: Boolean,
-      default: true
+      default: false
     },
     noBtnDisplay: {
       type: Boolean,
-      default: true
+      default: false
     },
     footerDisplay: {
       type: Boolean,
-      default: true
+      default: false
     },
     height: [Number, String]
   },
@@ -18446,13 +18447,28 @@ var modalComp = {
     _initComp: function _initComp() {
       this._initModal();
     },
-    _initModal: function _initModal() {
+    _binder: function _binder() {
       var _this = this;
+
+      this.$refs.pop.$on('show', function (opt) {
+        return _this.$emit('show', Object.assign({}, opt, {
+          emitter: _this
+        }));
+      });
+
+      this.$refs.pop.$on('hide', function (opt) {
+        return _this.$emit('show', Object.assign({}, opt, {
+          emitter: _this
+        }));
+      });
+    },
+    _initModal: function _initModal() {
+      var _this2 = this;
 
       (0, _prop.handleEleDisplay)({
         element: this.$el,
         cb: function cb() {
-          _this.$refs.pop.computePosition();
+          _this2.$refs.pop.computePosition();
         }
       });
 
@@ -18460,9 +18476,9 @@ var modalComp = {
         var scrollerHeight = _ref3.scrollerHeight;
 
         (0, _prop.handleEleDisplay)({
-          element: _this.$el,
+          element: _this2.$el,
           cb: function cb() {
-            _this.$refs.pop.computePosition();
+            _this2.$refs.pop.computePosition();
           }
         });
       });
@@ -18470,7 +18486,7 @@ var modalComp = {
       this.$refs.scroller.$on('changeYBar', function (_ref4) {
         var hasScroller = _ref4.hasScroller;
 
-        _this.hasScroller = hasScroller;
+        _this2.hasScroller = hasScroller;
       });
     },
 
@@ -18856,7 +18872,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    * @prop speed - 弹出速度
                                                                                                                                                                                                                    * @prop type - 弹出类型
                                                                                                                                                                                                                    *
-                                                                                                                                                                                                                   * @slot - 弹窗的主体内容
+                                                                                                                                                                                                                   * @slot - 弹出层的主体内容
                                                                                                                                                                                                                    *
                                                                                                                                                                                                                    * @event show - 显示之后的钩子函数
                                                                                                                                                                                                                    * @event hide - 隐藏之后的钩子函数
@@ -39857,9 +39873,24 @@ var n = 0
 while (n < 8) {
 pug_html = pug_html + "\u003Cp\u003Efull-" + (pug.escape(null == (pug_interp = n++) ? "" : pug_interp)) + "\u003C\u002Fp\u003E";
 }
-pug_html = pug_html + "\u003C\u002Fz-modal\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-modal header-name="custom" ref="modal">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>custom</p>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-modal>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003C\u002Fz-modal\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-modal header-name="custom" ref="modal">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>custom</p>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-modal>') ? "" : pug_interp)) + "\n\u003C\u002Fz-code\u003E";
 }
 }, 'full', '全屏弹窗 (移动端) ');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Ecoommit\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Eboolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E*false | true\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E当是 full 类型的时候，不用确认直接提交的模态框，默认为否\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Eheader\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E弹窗头部标题\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Emessage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E模态框信息\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003EokCb\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Efunction | boolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E确定的回调函数，如果为 false 则执行默认的回调函数，否则如果是函数就执行，不是就不执行\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003EnoCb\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Efunction | boolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E取消的回调函数，如果为 false 则执行默认的回调函数，否则如果是函数就执行，不是就不执行\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003EokBtn\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E确定\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E确定按钮的名字\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003EnoBtn\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E取消\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E取消按钮的名字\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003EnoBtnDisplay\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Eboolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E*false | true\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E取消按钮是否显示\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"9\"\u003E\u003Cz-table-col\u003EheaderDisplay\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Eboolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E*false | true\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E是否显示弹窗头部\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"10\"\u003E\u003Cz-table-col\u003EfooterDisplay\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Eboolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E*false | true\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E是否显示弹窗低部\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"11\"\u003E\u003Cz-table-col\u003Eheight\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring | number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E([Number] | 'auto' | '100%')\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E弹窗内容的高度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"12\"\u003E\u003Cz-table-col\u003Etype\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Efull | alert | confirm | simple | long\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E弹窗类型\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'props', 'props 数据类型');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;返回值类型&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Eshow\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003CP\u003E显示之后事件\u003C\u002FP\u003E\u003Cp\u003E以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 派送事件的组件上下文\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Ehide\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E隐藏之后事件\u003C\u002Fp\u003E\u003Cp\u003E以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 派送事件的组件上下文\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Eok\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E点击确定按钮事件\u003C\u002Fp\u003E\u003Cp\u003E以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 派送事件的组件上下文\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Eno\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E点击取消按钮事件\u003C\u002Fp\u003E\u003Cp\u003E以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 派送事件的组件上下文\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'events', 'events 组件事件');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003E—— (default)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E弹窗的主体内容\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'slots', 'slots 内容分发');
 pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
@@ -39922,6 +39953,21 @@ block: function(){
 pug_html = pug_html + "\u003Cz-btn @click=\"showPop\"\u003E显示弹出层\u003C\u002Fz-btn\u003E\u003Cz-btn class=\"z-m-l\" @click=\"hidePop\"\u003E隐藏弹出层\u003C\u002Fz-btn\u003E\u003Cz-pop ref=\"pop\" direction=\"north\" position=\"left\"\u003E\u003Cp\u003E这是一个简单\u003C\u002Fp\u003E\u003Cp\u003E{{testName}}\u003C\u002Fp\u003E\u003C\u002Fz-pop\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-btn @click="simple">') ? "" : pug_interp)) + "\n  确认\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '<z-modal ref="simple">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p> 这是一个简单</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p> 的小弹窗</p>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-modal>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'start', '弹窗');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Edirection\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Enorth | east | west | south\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E只有当 position 为 center 生效，弹出方向\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Epart\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Eboolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Efalse | true\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E在一个父类元素弹出，默认为否即在当前文档之外弹窗\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Eposition\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Etop | right | bottom | left | center\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E弹出层最终的所在位置\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Espeed\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Eslow | normal | fast\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E弹出速度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Etype\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E*slide | bounce\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E弹出类型\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'props', 'props 数据类型');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;返回值类型&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Eshow\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 派送事件的组件上下文\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Ehide\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 派送事件的组件上下文\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'events', 'events 组件事件');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003E—— (default)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E弹出层的主体内容\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'slots', 'slots 内容分发');
 pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
@@ -41484,4 +41530,4 @@ module.exports = __webpack_require__(182);
 
 /***/ })
 ],[597]);
-//# sourceMappingURL=app.6ca0027ea7a1367f32c4.js.map
+//# sourceMappingURL=app.99b32bea33bd1c3e9c4d.js.map
