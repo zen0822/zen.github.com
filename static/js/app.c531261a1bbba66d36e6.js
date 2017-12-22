@@ -34151,7 +34151,8 @@ exports.default = {
     compHub.forEach(function (item) {
       var compName = '';
 
-      if (item.name !== undefined) {
+      // FlodEle -> -fold-ele
+      if (item.name) {
         compName = item.name.replace(/([A-Z])/g, '-$1').toLowerCase();
       }
 
@@ -44691,4 +44692,4 @@ module.exports = {"en":{"btn":{},"column":{},"check":{},"form":{},"input":{},"ic
 
 /***/ })
 ],[189]);
-//# sourceMappingURL=app.87cd93b47da089705e46.js.map
+//# sourceMappingURL=app.c531261a1bbba66d36e6.js.map
