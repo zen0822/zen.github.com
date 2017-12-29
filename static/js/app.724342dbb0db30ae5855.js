@@ -12977,7 +12977,19 @@ exports.default = {
       this.$el.style[lengthType] = boxLength + 'px';
       var $elParent = this.$el.parentElement;
       var parentStyle = getComputedStyle($elParent);
-      parentLength = Math.round(parseFloat(parentStyle[lengthType]));
+
+      var paddingLength = 0;
+      var borderLength = 0;
+
+      if (type === 'y') {
+        paddingLength = paddingLength + Math.round(parseFloat(parentStyle.paddingTop)) + Math.round(parseFloat(parentStyle.paddingBottom));
+        borderLength = borderLength + Math.round(parseFloat(parentStyle.borderTopWidth)) + Math.round(parseFloat(parentStyle.borderBottomWidth));
+      } else {
+        paddingLength = paddingLength + Math.round(parseFloat(parentStyle.paddingLeft)) + Math.round(parseFloat(parentStyle.paddingRight));
+        borderLength = borderLength + Math.round(parseFloat(parentStyle.borderLeftWidth)) + Math.round(parseFloat(parentStyle.borderRightWidth));
+      }
+
+      parentLength = Math.round(parseFloat(parentStyle[lengthType])) - paddingLength - borderLength;
 
       if (length === '100%') {
         // 因为有些滚动内容的高度/宽度是 100%的，所以
@@ -14124,7 +14136,7 @@ Object.defineProperty(exports, "__esModule", {
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 /**
- * transition 组件的 mixin
+ * motion 组件的 mixin
  *
  * @prop display - 默认一开始是隐藏（进来之前的状态）
  * @prop speed - 动画速度
@@ -14186,7 +14198,7 @@ exports.default = {
 
       var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      if (this.sync && this.transiting) {
+      if (this.sync && this.moving) {
         return false;
       }
 
@@ -14198,7 +14210,7 @@ exports.default = {
                 case 0:
                   _context.prev = 0;
 
-                  _this.transiting = _this.isEntering = true;
+                  _this.moving = _this.isEntering = true;
 
                   _context.next = 4;
                   return _this.beforeEnter(opt);
@@ -14213,7 +14225,7 @@ exports.default = {
 
                 case 8:
 
-                  _this.transiting = _this.isEntering = false;
+                  _this.moving = _this.isEntering = false;
 
                   resolve();
                   _context.next = 15;
@@ -14250,7 +14262,7 @@ exports.default = {
 
       var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      if (this.sync && this.transiting) {
+      if (this.sync && this.moving) {
         return false;
       }
 
@@ -14262,7 +14274,7 @@ exports.default = {
                 case 0:
                   _context2.prev = 0;
 
-                  _this2.transiting = _this2.isLeaving = true;
+                  _this2.moving = _this2.isLeaving = true;
 
                   _context2.next = 4;
                   return _this2.beforeLeave(opt);
@@ -14277,7 +14289,7 @@ exports.default = {
 
                 case 8:
 
-                  _this2.transiting = _this2.isLeaving = false;
+                  _this2.moving = _this2.isLeaving = false;
 
                   resolve();
                   _context2.next = 15;
@@ -17332,16 +17344,16 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _transition = __webpack_require__(64);
+var _motion = __webpack_require__(64);
 
-var _transition2 = _interopRequireDefault(_transition);
+var _motion2 = _interopRequireDefault(_motion);
 
 __webpack_require__(441);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * rip(涟漪) transition component
+ * rip(涟漪) motion component
  *
  * @prop assign - 指定涟漪在是什么位置开始
  */
@@ -17349,7 +17361,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
   name: 'MotionRip',
 
-  mixins: [_base2.default, _transition2.default],
+  mixins: [_base2.default, _motion2.default],
 
   props: {
     assign: {
@@ -17359,7 +17371,7 @@ exports.default = {
   },
 
   data: function data() {
-    this.transiting = false; // 是否正在执行过渡动画
+    this.moving = false; // 是否正在执行过渡动画
 
     return {};
   },
@@ -17465,16 +17477,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _transition = __webpack_require__(64);
+var _motion = __webpack_require__(64);
 
-var _transition2 = _interopRequireDefault(_transition);
+var _motion2 = _interopRequireDefault(_motion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   name: 'MotionSlide',
 
-  mixins: [_transition2.default],
+  mixins: [_motion2.default],
 
   props: {
     direction: {
@@ -17495,7 +17507,7 @@ exports.default = {
   },
 
   data: function data() {
-    this.transiting = false; // 是否正在执行过渡动画
+    this.moving = false; // 是否正在执行过渡动画
 
     return {
       transiting: false,
@@ -17654,7 +17666,7 @@ exports.default = {
     }
   }
 }; /**
-    * slide transition component - 滑动过度效果
+    * slide motion component - 滑动过度效果
     *
     * @prop offset - 元素滑动的偏移值,
     *                direction 为 south：实例顶部距离实例的 offsetParent 的顶部的偏移值
@@ -17685,14 +17697,14 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _transition = __webpack_require__(64);
+var _motion = __webpack_require__(64);
 
-var _transition2 = _interopRequireDefault(_transition);
+var _motion2 = _interopRequireDefault(_motion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * fold(折叠) transition component
+ * fold(折叠) motion component
  *
  * @prop height - 被过渡的元素高度
  *
@@ -17701,14 +17713,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
   name: 'MotionFold',
 
-  mixins: [_base2.default, _transition2.default],
+  mixins: [_base2.default, _motion2.default],
 
   props: {
     height: Number
   },
 
   data: function data() {
-    this.transiting = false; // 是否正在执行过渡动画
+    this.moving = false; // 是否正在执行过渡动画
 
     return {
       transitionHeight: 0
@@ -19656,16 +19668,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _transition = __webpack_require__(64);
+var _motion = __webpack_require__(64);
 
-var _transition2 = _interopRequireDefault(_transition);
+var _motion2 = _interopRequireDefault(_motion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   name: 'MotionFade',
 
-  mixins: [_transition2.default],
+  mixins: [_motion2.default],
 
   props: {
     opacity: {
@@ -19778,7 +19790,7 @@ exports.default = {
     return h('transition', this.$slots.default);
   }
 }; /**
-    * fade transition component
+    * fade motion component
     *
     * @prop speed - 淡出速度
     * @prop opacity - 使用 css 定义的 opacity 淡入淡出
@@ -21421,16 +21433,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _transition = __webpack_require__(64);
+var _motion = __webpack_require__(64);
 
-var _transition2 = _interopRequireDefault(_transition);
+var _motion2 = _interopRequireDefault(_motion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   name: 'MotionZoom',
 
-  mixins: [_transition2.default],
+  mixins: [_motion2.default],
 
   props: {
     global: {
@@ -21444,7 +21456,7 @@ exports.default = {
   },
 
   data: function data() {
-    this.transiting = false; // 是否正在执行过渡动画
+    this.moving = false; // 是否正在执行过渡动画
 
     return {};
   },
@@ -21565,7 +21577,7 @@ exports.default = {
     }
   }
 }; /**
-    * zoom transition component - 放大缩小效果
+    * zoom motion component - 放大缩小效果
     *
     * @prop speed - 淡出速度
     * @prop origin - 放大缩小的起始位置 (同 css 里的属性 transform-origin)
@@ -21992,30 +22004,11 @@ var _uid2 = _interopRequireDefault(_uid);
 
 var _data = __webpack_require__(128);
 
+var _prop = __webpack_require__(36);
+
 var _array = __webpack_require__(127);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * menu 组件
- *
- * @prop store - 储存实例化的信息
- * @prop noCoverTrig - 菜单展开是不遮挡触发器，TODO： pc 上默认是不遮挡的，mobile 是默认遮挡的
- * @prop noTrig - 不使用组件自带的菜单触发器
- * @prop height - 菜单高度，默认是 auto
- *                1、auto：根据菜单内容的高度
- *                2、数字：输入数字就是自定义的像素高度
- * @prop width - 菜单宽度，默认是 170
- *               1、auto：根据 trigger 的宽度
- *               2、数字：输入数字就是自定义的像素宽度
- * @prop trigHeight - 菜单触发器的高度，默认是 auto
- *                    1、auto：根据菜单内容的宽度
- *                    2、数字：输入数字就是自定义的像素高度
- *
- * @event afterSpread - 展开之后的事件
- * @event afterFold - 折叠之后的事件
- * @event scrollerChange - 滚动组件发生变化
- */
 
 exports.default = {
   name: 'Menu',
@@ -22098,7 +22091,6 @@ exports.default = {
   data: function data() {
     this.compName = 'menu'; // 组件名字
     this.uid = ''; // 组件唯一标识符
-    this.togglingMenu = false; // 300ms 之内只能点击一次的标识
 
     return {
       focusing: false, // 正在处于 focus 状态
@@ -22130,18 +22122,16 @@ exports.default = {
   watch: {
     deviceSize: function deviceSize(val) {
       this._changeByDeviceSize(val);
+    },
+    trigHeight: function trigHeight(val) {
+      this._adjustTriggerPoiStyle(val);
     }
   },
 
   methods: {
     _initComp: function _initComp() {
-      this.triggerHeight = this.trigHeight === 'auto' ? this.$refs.trigger.offsetHeight : this.trigHeight;
+      !this.noTrig && this._adjustTriggerPoiStyle();
     },
-
-
-    /**
-     * 绑定事件
-     */
     _binder: function _binder() {
       var _this = this;
 
@@ -22169,7 +22159,7 @@ exports.default = {
         });
       });
 
-      if (!this.noTrig) {
+      if (this.$refs.triggerBtn) {
         this.$refs.triggerBtn.$on('keyEnter', function (_ref) {
           var event = _ref.event;
 
@@ -22180,16 +22170,17 @@ exports.default = {
 
 
     /**
-     * 初始化触发器的
-     */
-
-    /**
      * 调整菜单触发器的样式
      */
-    _adjustTriggerPoiStyle: function _adjustTriggerPoiStyle(cb) {
-      this.triggerHeight = this.trigHeight === 'auto' ? this.$refs.trigger.offsetHeight : this.trigHeight;
+    _adjustTriggerPoiStyle: function _adjustTriggerPoiStyle() {
+      var trigHeight = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.trigHeight;
+      var cb = arguments[1];
 
-      return cb && cb();
+      this.triggerHeight = trigHeight === 'auto' ? this.$refs.trigger.offsetHeight : trigHeight;
+
+      return this.$nextTick(function () {
+        cb && cb();
+      });
     },
 
 
@@ -22197,7 +22188,60 @@ exports.default = {
      * 当设备改变尺寸
      */
     _changeByDeviceSize: function _changeByDeviceSize(size) {
-      return this._adjustTriggerPoiStyle();
+      if (this.panelDisplay) {
+        this.spread();
+      }
+    },
+
+
+    /**
+     * 下拉框的动画操作
+     *
+     * @param {Boolean} optVal - 操作状态,
+     *                        （false: 隐藏， true: 显示，undefined： 切换显示状态）
+     *
+     * @return {Object} - this组件
+     */
+    _togglePanelDisplay: function _togglePanelDisplay() {
+      var optVal = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : !this.panelDisplay;
+
+      var menuHub = this.$store.state.comp.menu;
+
+      var getMenuHeight = function getMenuHeight(vm) {
+        (0, _prop.handleEleDisplay)({
+          element: vm.$refs.panel,
+          cb: function cb(element) {
+            if (vm.height === 'auto') {
+              var scrollerComp = vm.$refs.scroller;
+              scrollerComp._initScroller();
+
+              vm.menuHeight = scrollerComp.scrollerHeight;
+            } else {
+              vm.menuHeight = vm.height;
+            }
+          }
+        });
+      };
+
+      var transite = function transite(state, vm) {
+        if (state) {
+          getMenuHeight(vm);
+
+          vm.panelDisplay = true;
+          vm.$refs.motion.enter();
+        } else {
+          getMenuHeight(vm);
+
+          vm.panelDisplay = false;
+          vm.$refs.motion.leave();
+        }
+      };
+
+      if (this.noTrig) {
+        return transite(optVal, this);
+      } else {
+        return this._adjustTriggerPoiStyle(transite(optVal, this));
+      }
     }
   },
 
@@ -22210,7 +22254,26 @@ exports.default = {
       id: this.uid
     });
   }
-};
+}; /**
+    * menu 组件
+    *
+    * @prop store - 储存实例化的信息
+    * @prop noCoverTrig - 菜单展开是不遮挡触发器，TODO： pc 上默认是不遮挡的，mobile 是默认遮挡的
+    * @prop noTrig - 不使用组件自带的菜单触发器
+    * @prop height - 菜单高度，默认是 auto
+    *                1、auto：根据菜单内容的高度
+    *                2、数字：输入数字就是自定义的像素高度
+    * @prop width - 菜单宽度，默认是 170
+    *               1、auto：根据 trigger 的宽度
+    *               2、数字：输入数字就是自定义的像素宽度
+    * @prop trigHeight - 菜单触发器的高度，默认是 auto
+    *                    1、auto：根据菜单内容的宽度
+    *                    2、数字：输入数字就是自定义的像素高度
+    *
+    * @event afterSpread - 展开之后的事件
+    * @event afterFold - 折叠之后的事件
+    * @event scrollerChange - 滚动组件发生变化
+    */
 
 /***/ }),
 /* 135 */
@@ -26364,8 +26427,8 @@ exports.default = {
       focusing: false, // 正在处于 focus 状态
       hasSlotOption: false, // 是否是 slot 定义的 option
       menuHeight: 0, // 下拉菜单的高度
+      menuWidth: 0, // 下拉菜单的高度
       menuDisplay: false, // 下拉菜单的显示状态
-      menuMenuPoiStyle: {}, // 下拉菜单位置的样式
       optionItemCopy: {}, // 当下拉框为 classify 的时候，将 option 转换为数组
       option: [], // props 里面 optionItem 的 data 替换值
       unwatchOption: {}, // 取消观察 option
@@ -26375,7 +26438,8 @@ exports.default = {
       searchOptionDisplay: false, // 是否显示搜索 optionItem
       searchOptionItem: {}, // 搜索出来的 option
       selectedAll: false, // 是否全选多选下拉框的标记
-      selectedHeight: 0, // 当前选择值的高度
+      selectedHeight: 0, // 当前选择值的样式高度值
+      selectedStyleHeight: 0, // 当前选择值的样式高度值
       transitionFinish: false, // 下拉框显示过渡完成的标识符
       text: undefined // 当前下拉框的 text 值
     };
@@ -26410,13 +26474,18 @@ exports.default = {
     value: function value(val) {
       var _this = this;
 
+      if (this.multiple && this.initTxtDisplay) {
+        // 没有值时
+        return this.$nextTick(function () {
+          return _this._adjustSelectedPoiStyle('');
+        });
+      }
+
       if (this.multiple && this.selectAll) {
         this.selectedAll = val.length > 0 && val.length === this.allOptionVal.length;
       }
 
-      return this._initMenuTxt().$nextTick(function () {
-        _this._adjustSelectedPoiStyle();
-      });
+      return this._initSelectTxt();
     },
     initVal: function initVal(val) {
       this.value = this.multiple ? val.slice() : val;
@@ -26425,16 +26494,19 @@ exports.default = {
       return this._processOption(val.slice());
     },
     classifyOpt: function classifyOpt(val) {
-      return this._processOption(val)._initAllOptionVal()._initMenuTxt();
+      return this._processOption(val)._initAllOptionVal()._initSelectTxt();
     },
     deviceSize: function deviceSize(val) {
       this.changeByDeviceSize(val);
+    },
+    selectedHeight: function selectedHeight(val) {
+      this._adjustMenuMotion();
     }
   },
 
   methods: {
     _initComp: function _initComp() {
-      this.selectedHeight = this.$refs.selected.offsetHeight;
+      this._adjustSelectedPoiStyle();
     },
 
 
@@ -26449,39 +26521,42 @@ exports.default = {
       }
 
       if (this.$refs.scroller) {
-        this.$refs.scroller.$on('scrollerChange', function () {
-          _this2._adjustSelectedPoiStyle();
+        this.$refs.scroller.$on('scrollerChange', function (_ref4) {
+          var scrollerHeight = _ref4.scrollerHeight;
+
+          // 有选择值时需要重新计算已选框的高度
+          if (!_this2.initTxtDisplay) {
+            return _this2._adjustSelectedPoiStyle(scrollerHeight + 16);
+          }
         });
       }
 
-      this.$refs.menu.$on('afterSpread', function (_ref4) {
-        var scrollerHeight = _ref4.scrollerHeight;
+      this.$refs.menu.$on('afterSpread', function (_ref5) {
+        var scrollerHeight = _ref5.scrollerHeight;
 
         _this2.$refs.option.$refs.list.initPagePosition(scrollerHeight);
       });
 
-      this.$refs.option.$on('change', function (_ref5) {
-        var value = _ref5.value,
-            text = _ref5.text,
-            index = _ref5.index;
+      this.$refs.option.$on('change', function (_ref6) {
+        var value = _ref6.value,
+            text = _ref6.text,
+            index = _ref6.index;
 
         _this2.currentIndex = index;
         var selectedItem = _this2._isExistedVal(value);
 
         if (_this2.multiple) {
           if (!selectedItem) {
-            if (_this2.max !== 0 && _this2.value.length === _this2.max) {
-              return false;
+            if (_this2.max === 0 || _this2.value.length !== _this2.max) {
+              _this2.value.push(value);
             }
-
-            return _this2.value.push(value);
           } else {
-            return _this2.removeMultiSelected(selectedItem.index + 1);
+            _this2.removeMultiSelected(selectedItem.index + 1);
           }
         } else {
           _this2.value = value;
 
-          return _this2.toggleMenuDisplay(false);
+          return _this2._menuMotion(false);
         }
       });
     },
@@ -26490,21 +26565,23 @@ exports.default = {
     /**
      * 调整多选下拉框的选择值的样式
      */
-    _adjustSelectedPoiStyle: function _adjustSelectedPoiStyle() {
-      var _ref6 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          cb = _ref6.cb;
+    _adjustSelectedPoiStyle: function _adjustSelectedPoiStyle(height, cb) {
+      var refSelected = this.$refs.selected;
 
-      var top = this.$el.offsetHeight;
-      var width = this.$el.offsetWidth;
+      if (height === undefined) {
+        var selectedHeight = refSelected.offsetHeight;
 
-      this.selectedHeight = this.$refs.selected.offsetHeight;
+        this.selectedStyleHeight = selectedHeight + 'px';
+        this.selectedHeight = selectedHeight;
+      } else if (height === '') {
+        refSelected.style.height = '';
+        this.selectedHeight = refSelected.offsetHeight;
+      } else {
+        this.selectedStyleHeight = height + 'px';
+        this.selectedHeight = height;
+      }
 
-      this.menuMenuPoiStyle = {
-        top: top + 'px',
-        width: width + 'px'
-      };
-
-      return cb && cb();
+      cb && cb();
     },
 
 
@@ -26544,15 +26621,15 @@ exports.default = {
      */
     _initOption: function _initOption() {
       if (this.classifyOpt) {
-        return this._processOption(this.classifyOpt)._initAllOptionVal()._initMenuTxt();
+        return this._processOption(this.classifyOpt)._initAllOptionVal()._initSelectTxt();
       } else {
-        var slotOption = this._initMenuSlot();
+        var slotOption = this._initSelectSlot();
 
         if (slotOption) {
           this.option = slotOption;
         }
 
-        return this._processOption(this.option.slice())._initAllOptionVal()._initMenuTxt();
+        return this._processOption(this.option.slice())._initAllOptionVal()._initSelectTxt();
       }
     },
 
@@ -26562,7 +26639,7 @@ exports.default = {
      *
      * @return { Array } optionItem - 返回在 slot 取得的 option
      */
-    _initMenuSlot: function _initMenuSlot() {
+    _initSelectSlot: function _initSelectSlot() {
       var $defaultSlotContent = this.$slots.default;
 
       // slot default 没数据就退出
@@ -26600,11 +26677,11 @@ exports.default = {
     /**
      * 初始化下拉菜单的值
      */
-    _initMenuTxt: function _initMenuTxt() {
+    _initSelectTxt: function _initSelectTxt() {
       if (this.multiple) {
-        this._initMultipleMenuTxt();
+        this._initMultipleSelectTxt();
       } else {
-        this._initSingleMenuTxt();
+        this._initSingleSelectTxt();
       }
 
       return this;
@@ -26614,7 +26691,7 @@ exports.default = {
     /**
      *  初始化多选下拉菜单
      */
-    _initMultipleMenuTxt: function _initMultipleMenuTxt() {
+    _initMultipleSelectTxt: function _initMultipleSelectTxt() {
       var _this4 = this;
 
       if (!Array.isArray(this.option)) {
@@ -26654,7 +26731,7 @@ exports.default = {
     /**
      * 初始化单选下拉菜单
      */
-    _initSingleMenuTxt: function _initSingleMenuTxt(val, txt) {
+    _initSingleSelectTxt: function _initSingleSelectTxt(val, txt) {
       var _this5 = this;
 
       if (!Array.isArray(this.option)) {
@@ -26806,7 +26883,7 @@ exports.default = {
     _watchOption: function _watchOption() {
       this.unwatchOption = this.$watch('option', function (val, oldVal) {
         if (!this.hasSlotOption) {
-          return this._processOption(val)._initAllOptionVal()._initMenuTxt();
+          return this._processOption(val)._initAllOptionVal()._initSelectTxt();
         }
       });
     },
@@ -26870,6 +26947,65 @@ exports.default = {
       this.optionItemCopy = allOption;
 
       return optionTemp;
+    },
+
+
+    /**
+     * 下拉框的显示操作
+     *
+     * @param {Boolean} optVal - 操作状态,
+     *                        （false: 隐藏， true: 显示，undefined： 切换显示状态）
+     *
+     * @return {Object} - this组件
+     */
+    _menuMotion: function _menuMotion() {
+      var _this8 = this;
+
+      var optVal = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : !this.menuDisplay;
+      var vm = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
+
+      var getMenuData = function getMenuData(vm) {
+        (0, _prop.handleEleDisplay)({
+          element: vm.$refs.menu.$refs.panel,
+          cb: function cb(element) {
+            var scrollerComp = vm.$refs.option.$refs.list.$refs.scroller;
+            scrollerComp.initScroller();
+
+            vm.menuHeight = scrollerComp.scrollerHeight;
+            vm.menuWidth = vm.$el.offsetWidth;
+          }
+        });
+      };
+
+      var transite = function transite(state, vm) {
+        if (state) {
+          getMenuData(vm);
+
+          vm.menuDisplay = true;
+
+          // 等 menu 组件的 height 的值更新了才能正确的展开 menu 组件
+          _this8.$nextTick(function () {
+            vm.$refs.menu.spread();
+          });
+        } else {
+          getMenuData(vm);
+
+          vm.menuDisplay = false;
+          vm.$refs.menu.fold();
+        }
+      };
+
+      return transite(optVal, vm);
+    },
+
+
+    /**
+     * 调整菜单动画（显示的时候）
+     */
+    _adjustMenuMotion: function _adjustMenuMotion() {
+      if (this.menuDisplay) {
+        return this.$refs.menu.adjust();
+      }
     }
   },
 
@@ -27256,7 +27392,7 @@ exports.default = toast;
 /* 190 */
 /***/ (function(module, exports) {
 
-module.exports = [{"name":"开始使用","route":"/component/start"},{"name":"表单控件","sub":[{"name":"按钮组件","route":"/component/btn"},{"name":"选择组件","route":"/component/check"},{"name":"下拉选择组件","route":"/component/select"},{"name":"输入组件","route":"/component/input"}]},{"name":"消息提示","sub":[{"name":"弹窗","sub":[{"name":"确认弹窗","route":"/component/modal#confirm"},{"name":"消息弹窗","route":"/component/modal#alert"}]},{"name":"提示","sub":[{"name":"泡泡提示","route":"/component/tip#bubble"},{"name":"弹窗提示","route":"/component/tip#alert"},{"name":"底部提示","route":"/component/tip#toast"}]}]},{"name":"数据展示","sub":[{"name":"表格数据","route":"/component/table"},{"name":"列表数据","route":"/component/list"},{"name":"分页控件","sub":[{"name":"加载更多","route":"/component/pager#more"},{"name":"页码跳转","route":"/component/pager#page-num"}]}]},{"name":"样式与布局","sub":[{"name":"布局组件","route":"/component/grid"},{"name":"图标组件","route":"/component/icon"}]},{"name":"过渡动画","sub":[{"name":"放大缩小","route":"/component/transition/zoom"},{"name":"淡入淡出","route":"/component/transition/fade"},{"name":"折叠展开","route":"/component/transition/fold"},{"name":"滑来滑去","route":"/component/transition/slide"},{"name":"涟漪效果","route":"/component/transition/rip"}]},{"name":"其他组件","sub":[{"name":"滚动条","route":"/component/scroller"},{"name":"选项卡","route":"/component/tab"},{"name":"弹出","route":"/component/pop"},{"name":"省略","route":"/component/omit"},{"name":"菜单","route":"/component/menu"}]}]
+module.exports = [{"name":"开始使用","route":"/component/start"},{"name":"表单控件","sub":[{"name":"按钮组件","route":"/component/btn"},{"name":"选择组件","route":"/component/check"},{"name":"下拉选择组件","route":"/component/select"},{"name":"输入组件","route":"/component/input"}]},{"name":"消息提示","sub":[{"name":"弹窗","sub":[{"name":"确认弹窗","route":"/component/modal#confirm"},{"name":"消息弹窗","route":"/component/modal#alert"}]},{"name":"提示","sub":[{"name":"泡泡提示","route":"/component/tip#bubble"},{"name":"弹窗提示","route":"/component/tip#alert"},{"name":"底部提示","route":"/component/tip#toast"}]}]},{"name":"数据展示","sub":[{"name":"表格数据","route":"/component/table"},{"name":"列表数据","route":"/component/list"},{"name":"分页控件","sub":[{"name":"加载更多","route":"/component/pager#more"},{"name":"页码跳转","route":"/component/pager#page-num"}]}]},{"name":"样式与布局","sub":[{"name":"布局组件","route":"/component/grid"},{"name":"图标组件","route":"/component/icon"}]},{"name":"过渡动画","sub":[{"name":"放大缩小","route":"/component/motion/zoom"},{"name":"淡入淡出","route":"/component/motion/fade"},{"name":"折叠展开","route":"/component/motion/fold"},{"name":"滑来滑去","route":"/component/motion/slide"},{"name":"涟漪效果","route":"/component/motion/rip"}]},{"name":"其他组件","sub":[{"name":"滚动条","route":"/component/scroller"},{"name":"选项卡","route":"/component/tab"},{"name":"弹出","route":"/component/pop"},{"name":"省略","route":"/component/omit"},{"name":"菜单","route":"/component/menu"}]}]
 
 /***/ }),
 /* 191 */
@@ -35805,7 +35941,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input 组件样式\r\n */\n.z-input {\n  display: inline-block;\n  vertical-align: middle;\n  width: 170px;\n  position: relative; }\n  .z-input:hover .z-input-wrap {\n    border-color: #999999; }\n    .z-input:hover .z-input-wrap > .z-input-wrap-border {\n      border-color: #999999; }\n  .z-input:hover.z-input-type-area .z-input-wrap {\n    border: #999999 1px solid; }\n    .z-input:hover.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border: #999999 1px solid; }\n  .z-input.z-input-type-area .z-input-wrap {\n    border: #d6d6d6 1px solid;\n    border-radius: 3px; }\n    .z-input.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border-radius: 3px;\n      border: transparent 1px solid; }\n  .z-input .z-input-limit-txt {\n    padding: 8px 0;\n    text-align: right; }\n  .z-input .z-input-wrap {\n    position: relative;\n    border-bottom: #d6d6d6 1px solid;\n    background-color: #fff;\n    box-sizing: border-box;\n    transition: all 100ms ease-out; }\n    .z-input .z-input-wrap::after {\n      content: '';\n      position: absolute;\n      width: 0;\n      height: 2px;\n      left: 0;\n      right: 0;\n      margin: 0 auto;\n      bottom: -1px;\n      background-color: transparent;\n      z-index: 1;\n      -webkit-transform: scaleX(0);\n              transform: scaleX(0);\n      transition: all 300ms ease-out; }\n    .z-input .z-input-wrap > .z-input-wrap-border {\n      border-top-left-radius: 3px;\n      border-top-right-radius: 3px;\n      border-bottom: transparent 1px solid;\n      transition: all 100ms ease-out; }\n    .z-input .z-input-wrap.z-input-error-border {\n      border: #ef5350 1px solid; }\n    .z-input .z-input-wrap.z-input-editting::after {\n      width: 100%;\n      background-color: #ef5350;\n      -webkit-transform: scaleX(1);\n              transform: scaleX(1); }\n    .z-input .z-input-wrap .z-input-hide {\n      display: none; }\n    .z-input .z-input-wrap .z-input-edit-box-start > .z-input-icon-stage {\n      line-height: 34px;\n      padding-left: 8px; }\n    .z-input .z-input-wrap .z-input-edit-box > input,\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      border: none;\n      width: 100%;\n      font: inherit;\n      color: inherit; }\n      .z-input .z-input-wrap .z-input-edit-box > input:focus,\n      .z-input .z-input-wrap .z-input-edit-box > textarea:focus {\n        outline-style: none;\n        border-style: none; }\n    .z-input .z-input-wrap .z-input-edit-box > input {\n      box-sizing: border-box;\n      background-color: transparent; }\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      box-sizing: border-box;\n      resize: none; }\n  .z-input .z-input-danger-tip {\n    color: #ef5350;\n    margin-top: 4px;\n    font-size: 12px; }\n\n.z-input.z-input-theme-primary .z-input-wrap .z-input-edit-box > input,\n.z-input.z-input-theme-primary .z-input-wrap .z-input-edit-box > textarea, .z-input.z-input-theme-fill .z-input-wrap .z-input-edit-box > input,\n.z-input.z-input-theme-fill .z-input-wrap .z-input-edit-box > textarea {\n  padding: 7.5px; }\n\n.z-input.z-input-theme-primary .z-input-wrap .z-input-auto-completion, .z-input.z-input-theme-fill .z-input-wrap .z-input-auto-completion {\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px; }\n\n.z-input.z-input-theme-primary .z-input-danger-tip, .z-input.z-input-theme-fill .z-input-danger-tip {\n  position: absolute;\n  top: 41px;\n  width: 100%;\n  background: #fff;\n  border: #ef5350 1px solid;\n  padding: 8px;\n  z-index: 1; }\n  .z-input.z-input-theme-primary .z-input-danger-tip::after, .z-input.z-input-theme-primary .z-input-danger-tip::before, .z-input.z-input-theme-fill .z-input-danger-tip::after, .z-input.z-input-theme-fill .z-input-danger-tip::before {\n    content: \"\\25C6\";\n    position: absolute;\n    top: -11px;\n    left: 0;\n    right: 0;\n    margin: auto;\n    width: 22px;\n    height: 20px;\n    font-size: 33px;\n    line-height: 20px; }\n  .z-input.z-input-theme-primary .z-input-danger-tip::after, .z-input.z-input-theme-fill .z-input-danger-tip::after {\n    top: -9px;\n    color: #fff; }\n\n.z-input.z-input-theme-fill {\n  width: 100%; }\n\n@media only screen and (max-width: 767px) {\n  .z-input {\n    width: 100%; } }\n\n.z-input.z-input-ui-bootstrap .z-input-wrap {\n  border: #d6d6d6 1px solid;\n  border-radius: 3px; }\n  .z-input.z-input-ui-bootstrap .z-input-wrap::after {\n    display: none; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input 组件样式\r\n */\n.z-input {\n  display: inline-block;\n  vertical-align: middle;\n  width: 170px;\n  position: relative; }\n  .z-input:hover .z-input-wrap {\n    border-color: #999999; }\n    .z-input:hover .z-input-wrap > .z-input-wrap-border {\n      border-color: #999999; }\n  .z-input:hover.z-input-type-area .z-input-wrap {\n    border: #999999 1px solid; }\n    .z-input:hover.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border: #999999 1px solid; }\n  .z-input.z-input-type-area .z-input-wrap {\n    border: #d6d6d6 1px solid;\n    border-radius: 3px; }\n    .z-input.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border-radius: 3px;\n      border: transparent 1px solid; }\n  .z-input .z-input-limit-txt {\n    padding: 8px 0;\n    text-align: right; }\n  .z-input .z-input-wrap {\n    position: relative;\n    border-bottom: #d6d6d6 1px solid;\n    background-color: #fff;\n    box-sizing: border-box;\n    transition: all 100ms ease-out; }\n    .z-input .z-input-wrap::after {\n      content: '';\n      position: absolute;\n      width: 0;\n      height: 2px;\n      left: 0;\n      right: 0;\n      margin: 0 auto;\n      bottom: -1px;\n      background-color: transparent;\n      z-index: 1;\n      -webkit-transform: scaleX(0);\n              transform: scaleX(0);\n      transition: all 300ms ease-out; }\n    .z-input .z-input-wrap > .z-input-wrap-border {\n      border-top-left-radius: 3px;\n      border-top-right-radius: 3px;\n      border-bottom: transparent 1px solid;\n      padding: 0 8px;\n      transition: all 100ms ease-out; }\n    .z-input .z-input-wrap.z-input-error-border {\n      border: #ef5350 1px solid; }\n    .z-input .z-input-wrap.z-input-editting::after {\n      width: 100%;\n      background-color: #ef5350;\n      -webkit-transform: scaleX(1);\n              transform: scaleX(1); }\n    .z-input .z-input-wrap .z-input-hide {\n      display: none; }\n    .z-input .z-input-wrap .z-input-edit-box-start > .z-input-icon-stage {\n      line-height: 34px;\n      padding-left: 8px; }\n    .z-input .z-input-wrap .z-input-edit-box > input,\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      -webkit-transform: rotate(0);\n              transform: rotate(0);\n      border: none;\n      width: 100%;\n      font: inherit;\n      color: inherit; }\n      .z-input .z-input-wrap .z-input-edit-box > input:focus,\n      .z-input .z-input-wrap .z-input-edit-box > textarea:focus {\n        outline-style: none;\n        border-style: none; }\n    .z-input .z-input-wrap .z-input-edit-box > input {\n      box-sizing: border-box;\n      background-color: transparent; }\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      box-sizing: border-box;\n      resize: none; }\n  .z-input .z-input-danger-tip {\n    color: #ef5350;\n    margin-top: 4px;\n    font-size: 12px; }\n\n.z-input.z-input-theme-primary .z-input-wrap .z-input-edit-box > input,\n.z-input.z-input-theme-primary .z-input-wrap .z-input-edit-box > textarea, .z-input.z-input-theme-fill .z-input-wrap .z-input-edit-box > input,\n.z-input.z-input-theme-fill .z-input-wrap .z-input-edit-box > textarea {\n  padding: 7.5px; }\n\n.z-input.z-input-theme-primary .z-input-wrap .z-input-auto-completion, .z-input.z-input-theme-fill .z-input-wrap .z-input-auto-completion {\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px; }\n\n.z-input.z-input-theme-primary .z-input-danger-tip, .z-input.z-input-theme-fill .z-input-danger-tip {\n  position: absolute;\n  top: 41px;\n  width: 100%;\n  background: #fff;\n  border: #ef5350 1px solid;\n  padding: 8px;\n  z-index: 1; }\n  .z-input.z-input-theme-primary .z-input-danger-tip::after, .z-input.z-input-theme-primary .z-input-danger-tip::before, .z-input.z-input-theme-fill .z-input-danger-tip::after, .z-input.z-input-theme-fill .z-input-danger-tip::before {\n    content: \"\\25C6\";\n    position: absolute;\n    top: -11px;\n    left: 0;\n    right: 0;\n    margin: auto;\n    width: 22px;\n    height: 20px;\n    font-size: 33px;\n    line-height: 20px; }\n  .z-input.z-input-theme-primary .z-input-danger-tip::after, .z-input.z-input-theme-fill .z-input-danger-tip::after {\n    top: -9px;\n    color: #fff; }\n\n.z-input.z-input-theme-fill {\n  width: 100%; }\n\n@media only screen and (max-width: 767px) {\n  .z-input {\n    width: 100%; } }\n\n.z-input.z-input-ui-bootstrap .z-input-wrap {\n  border: #d6d6d6 1px solid;\n  border-radius: 3px; }\n  .z-input.z-input-ui-bootstrap .z-input-wrap::after {\n    display: none; }\n", ""]);
 
 // exports
 
@@ -38812,24 +38948,24 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _transition = __webpack_require__(64);
+var _motion = __webpack_require__(64);
 
-var _transition2 = _interopRequireDefault(_transition);
+var _motion2 = _interopRequireDefault(_motion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * 展开菜单的动画
- *
- * @prop height - 被过渡的元素高度
- * @prop slideLength - 被过渡的元素向下滑动的距离
- *
- */
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * 展开菜单的动画
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @prop height - 被过渡的元素高度
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @prop slideLength - 被过渡的元素向下滑动的距离
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            */
 
 exports.default = {
   name: 'MotionMenuFold',
 
-  mixins: [_base2.default, _transition2.default],
+  mixins: [_base2.default, _motion2.default],
 
   props: {
     height: Number,
@@ -38837,7 +38973,7 @@ exports.default = {
   },
 
   data: function data() {
-    this.transiting = false; // 是否正在执行过渡动画
+    this.moving = false; // 是否正在执行过渡动画
 
     return {
       transitionHeight: 0
@@ -38865,6 +39001,65 @@ exports.default = {
       if (this.height === undefined) {
         this.transitionHeight = (0, _prop.prop)(this.$el).offsetHeight;
       }
+    },
+
+
+    /**
+     * 重新调整菜单的动画
+     */
+    adjustMotion: function adjustMotion() {
+      var _this = this;
+
+      return new Promise(function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resolve, reject) {
+          var el;
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  try {
+                    _this.$emit('beforeEnter');
+                    el = _this.$el;
+
+
+                    Object.assign(el.style, {
+                      overflow: 'hidden',
+                      transition: _this.transition
+                    });
+
+                    setTimeout(function () {
+                      Object.assign(el.style, {
+                        display: '',
+                        height: _this.transitionHeight + 'px',
+                        top: _this.slideLength + 'px'
+                      });
+
+                      setTimeout(function () {
+                        Object.assign(el.style, {
+                          overflow: '',
+                          opacity: '',
+                          'transition': ''
+                        });
+                      }, _this.time);
+                    }, 10);
+
+                    resolve();
+                  } catch (error) {
+                    reject(error);
+                  }
+
+                case 1:
+                case 'end':
+                  return _context.stop();
+              }
+            }
+          }, _callee, _this);
+        }));
+
+        return function (_x, _x2) {
+          return _ref.apply(this, arguments);
+        };
+      }());
     },
 
 
@@ -38897,7 +39092,7 @@ exports.default = {
       });
     },
     entering: function entering() {
-      var _this = this;
+      var _this2 = this;
 
       var el = this.$el;
       // HACK: trigger browser reflow
@@ -38914,7 +39109,7 @@ exports.default = {
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
           return resolve();
-        }, _this.time);
+        }, _this2.time);
       });
     },
     afterEnter: function afterEnter() {
@@ -38947,7 +39142,7 @@ exports.default = {
       return this.leaveing();
     },
     leaveing: function leaveing() {
-      var _this2 = this;
+      var _this3 = this;
 
       var el = this.$el;
       var height = el.offsetHeight;
@@ -38965,7 +39160,7 @@ exports.default = {
           el.style.display = 'none';
 
           return resolve();
-        }, _this2.time);
+        }, _this3.time);
       });
     },
     afterLeave: function afterLeave() {
@@ -39005,9 +39200,11 @@ var _tip = __webpack_require__(19);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _prop = __webpack_require__(36);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * menu.api
+ */
 
 exports.default = {
   methods: {
@@ -39025,7 +39222,7 @@ exports.default = {
      */
     clickParent: function clickParent() {
       if (this.panelDisplay) {
-        return this.togglePanelDisplay(false);
+        return this._togglePanelDisplay(false);
       }
     },
 
@@ -39069,7 +39266,7 @@ exports.default = {
       setTimeout(function () {
         _this.clicking = false;
 
-        return _this.togglePanelDisplay();
+        return _this._togglePanelDisplay();
       }, 100);
     },
 
@@ -39083,75 +39280,8 @@ exports.default = {
       }
 
       if (event.keyCode === _keyCode2.default.enter) {
-        this.togglePanelDisplay();
+        this._togglePanelDisplay();
       }
-    },
-
-
-    /**
-     * 下拉框的显示操作
-     *
-     * @param {Boolean} optVal - 操作状态,
-     *                        （false: 隐藏， true: 显示，undefined： 切换显示状态）
-     *
-     * @return {Object} - this组件
-     */
-    togglePanelDisplay: function togglePanelDisplay() {
-      var _this2 = this;
-
-      var optVal = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : !this.panelDisplay;
-
-      if (this.togglingMenu) {
-        return false;
-      }
-
-      this.togglingMenu = true;
-
-      setTimeout(function () {
-        _this2.togglingMenu = false;
-      }, 300);
-
-      var menuHub = this.$store.state.comp.menu;
-
-      var getMenuHeight = function getMenuHeight(vm) {
-        (0, _prop.handleEleDisplay)({
-          element: vm.$refs.panel,
-          cb: function cb(element) {
-            if (vm.height === 'auto') {
-              var scrollerComp = vm.$refs.scroller;
-              scrollerComp._initScroller();
-
-              vm.menuHeight = scrollerComp.scrollerHeight;
-            } else {
-              vm.menuHeight = vm.height;
-            }
-          }
-        });
-      };
-
-      var transite = function transite(state, vm) {
-        if (state) {
-          getMenuHeight(vm);
-
-          vm.panelDisplay = true;
-          vm.$refs.motion.enter();
-        } else {
-          getMenuHeight(vm);
-
-          vm.panelDisplay = false;
-          vm.$refs.motion.leave();
-        }
-      };
-
-      // Object.keys(menuHub).forEach((item) => {
-      //   const menuVm = menuHub[item]
-
-      //   if (menuVm.panelDisplay && item !== this.uid) {
-      //     transite(false, menuVm)
-      //   }
-      // })
-
-      return this._adjustTriggerPoiStyle(transite(optVal, this));
     },
 
 
@@ -39160,7 +39290,7 @@ exports.default = {
      * @return {Object} this - 组件
      */
     spread: function spread() {
-      return this.togglePanelDisplay(true);
+      return this._togglePanelDisplay(true);
     },
 
 
@@ -39169,7 +39299,7 @@ exports.default = {
      * @return {Object} this - 组件
      */
     fold: function fold() {
-      return this.togglePanelDisplay(false);
+      return this._togglePanelDisplay(false);
     },
 
 
@@ -39178,12 +39308,18 @@ exports.default = {
      * @return {Object} this - 组件
      */
     toggle: function toggle() {
-      return this.togglePanelDisplay();
+      return this._togglePanelDisplay();
+    },
+
+
+    /**
+     * 调整菜单动画
+     */
+    adjust: function adjust(cb) {
+      this.$refs.motion.adjustMotion();
     }
   }
-}; /**
-    * menu.api
-    */
+};
 
 /***/ }),
 /* 520 */
@@ -39307,7 +39443,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.z-select > .z-select-selected-box .z-select-init-text, .z-select.z-select-theme-primary.z-select-multiple-stage .z-select-opt-li > span {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n/**\r\n * menu 组件样式\r\n */\n.z-select {\n  display: inline-block;\n  position: relative;\n  box-sizing: border-box;\n  width: 170px;\n  background-color: #fff;\n  cursor: default; }\n  .z-select > .z-select-read-only {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    z-index: 5;\n    opacity: 0; }\n  .z-select > .z-select-selected-box {\n    display: inline-block;\n    position: relative;\n    padding: 8px 30px 8px 16px;\n    border-bottom-left-radius: 0;\n    border-bottom-right-radius: 0;\n    min-height: 36px;\n    width: 100%;\n    box-sizing: border-box;\n    vertical-align: middle; }\n    .z-select > .z-select-selected-box .z-select-init-text,\n    .z-select > .z-select-selected-box .z-select-init-text-input {\n      width: 100%;\n      outline: none;\n      border: none; }\n    .z-select > .z-select-selected-box .z-select-init-text {\n      font-size: 14px; }\n      .z-select > .z-select-selected-box .z-select-init-text.z-select-default-text {\n        color: #999; }\n    .z-select > .z-select-selected-box .z-select-init-text-input {\n      position: absolute;\n      top: 0;\n      left: 0;\n      height: 0;\n      opacity: 0; }\n    .z-select > .z-select-selected-box .z-select-caret-down-icon {\n      position: absolute;\n      right: 10px;\n      top: 11px;\n      height: 13px; }\n  .z-select > .z-select-menu {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%; }\n  .z-select .z-select-panel {\n    width: 170px;\n    overflow: hidden;\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    border-bottom-right-radius: 3px;\n    border-bottom-left-radius: 3px;\n    z-index: 2;\n    transition: top 300ms ease, height 300ms ease;\n    will-change: top, height; }\n    .z-select .z-select-panel .z-select-tag-opt > .z-select-ele {\n      background-color: #fff;\n      padding: 8px; }\n    .z-select .z-select-panel .z-select-opt-comp {\n      position: static;\n      display: block; }\n    .z-select .z-select-panel .z-select-search-input {\n      box-sizing: border-box;\n      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);\n      background-color: #fff;\n      border-bottom: 1px solid #d6d6d6;\n      display: inline-block;\n      width: 100%; }\n      .z-select .z-select-panel .z-select-search-input > .z-input {\n        width: auto;\n        padding: 0 8px; }\n  .z-select.z-select-multiple {\n    position: relative;\n    width: 250px;\n    height: auto;\n    min-height: 36px; }\n    .z-select.z-select-multiple .z-select-init-text.z-select-opacity {\n      opacity: 0;\n      position: absolute;\n      top: 0;\n      left: 0; }\n    .z-select.z-select-multiple > .z-select-selected-box > .z-select-scroller > .z-scroller-box > .z-select-multiple {\n      margin-right: 24px; }\n    .z-select.z-select-multiple > .z-select-selected-box {\n      transition: height 300ms ease; }\n      .z-select.z-select-multiple > .z-select-selected-box .z-select-multiple-selected-ul > li {\n        background-color: #e6e6e6;\n        display: inline-block;\n        margin: 4.5px 3px;\n        padding: 3px; }\n        .z-select.z-select-multiple > .z-select-selected-box .z-select-multiple-selected-ul > li:hover {\n          background-color: #d6d6d6; }\n    .z-select.z-select-multiple .z-select-panel,\n    .z-select.z-select-multiple .z-select-opt-comp {\n      width: 250px; }\n\n.z-select.z-select-theme-primary {\n  vertical-align: middle;\n  border-radius: 3px; }\n  .z-select.z-select-theme-primary.z-select-multiple-stage .z-select-opt-li > span {\n    display: inline-block;\n    vertical-align: middle;\n    width: calc(100% - 25px); }\n  .z-select.z-select-theme-primary.z-select-selecting .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-theme-primary.z-select-focusing .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-theme-primary > .z-select-selected-box::after {\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    content: '';\n    opacity: 0;\n    transition: opacity 300ms ease-out;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .z-select.z-select-theme-primary .z-select-opt-comp {\n    width: 100%;\n    border-top: none;\n    border-top-left-radius: 0;\n    border-top-right-radius: 0;\n    border: none; }\n    .z-select.z-select-theme-primary .z-select-opt-comp > .z-select-opt-li:first-child {\n      border-top: #f0f0f0 1px solid; }\n\n@media only screen and (max-width: 767px) {\n  .z-select {\n    width: 100%; } }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.z-select > .z-select-selected-box .z-select-init-text, .z-select.z-select-theme-primary.z-select-multiple-stage .z-select-opt-li > span {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n/**\r\n * menu 组件样式\r\n */\n.z-select {\n  display: inline-block;\n  position: relative;\n  box-sizing: border-box;\n  width: 170px;\n  background-color: #fff;\n  cursor: default; }\n  .z-select > .z-select-read-only {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    z-index: 5;\n    opacity: 0; }\n  .z-select > .z-select-selected-box {\n    display: inline-block;\n    position: relative;\n    padding: 8px 30px 8px 16px;\n    border-bottom-left-radius: 0;\n    border-bottom-right-radius: 0;\n    min-height: 36px;\n    width: 100%;\n    box-sizing: border-box;\n    vertical-align: middle; }\n    .z-select > .z-select-selected-box .z-select-init-text,\n    .z-select > .z-select-selected-box .z-select-init-text-input {\n      width: 100%;\n      outline: none;\n      border: none;\n      cursor: default; }\n    .z-select > .z-select-selected-box .z-select-init-text {\n      font-size: 14px; }\n      .z-select > .z-select-selected-box .z-select-init-text.z-select-default-text {\n        color: #999; }\n    .z-select > .z-select-selected-box .z-select-init-text-input {\n      position: absolute;\n      top: 0;\n      left: 0;\n      opacity: 0;\n      height: 0;\n      padding: 0; }\n    .z-select > .z-select-selected-box .z-select-caret-down-icon {\n      position: absolute;\n      right: 10px;\n      top: 11px;\n      height: 13px; }\n  .z-select > .z-select-menu {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%; }\n  .z-select .z-select-panel {\n    overflow: hidden;\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    border-bottom-right-radius: 3px;\n    border-bottom-left-radius: 3px;\n    z-index: 2; }\n    .z-select .z-select-panel .z-select-tag-opt > .z-select-ele {\n      background-color: #fff;\n      padding: 8px; }\n    .z-select .z-select-panel .z-select-opt-comp {\n      position: static;\n      display: block; }\n    .z-select .z-select-panel .z-select-search-input {\n      box-sizing: border-box;\n      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);\n      background-color: #fff;\n      border-bottom: 1px solid #d6d6d6;\n      display: inline-block;\n      width: 100%; }\n  .z-select.z-select-multiple {\n    position: relative;\n    width: 250px;\n    height: auto;\n    min-height: 36px; }\n    .z-select.z-select-multiple .z-select-init-text.z-select-opacity {\n      opacity: 0;\n      position: absolute;\n      top: 0;\n      left: 0;\n      height: 0;\n      padding: 0; }\n    .z-select.z-select-multiple > .z-select-selected-box > .z-select-scroller > .z-scroller-box > .z-select-multiple {\n      margin-right: 24px; }\n    .z-select.z-select-multiple > .z-select-selected-box {\n      transition: height 300ms ease;\n      will-change: height; }\n      .z-select.z-select-multiple > .z-select-selected-box .z-select-multiple-selected-ul > li {\n        background-color: #e6e6e6;\n        display: inline-block;\n        margin: 4.5px 3px;\n        padding: 3px; }\n        .z-select.z-select-multiple > .z-select-selected-box .z-select-multiple-selected-ul > li:hover {\n          background-color: #d6d6d6; }\n    .z-select.z-select-multiple .z-select-panel,\n    .z-select.z-select-multiple .z-select-opt-comp {\n      width: 100%; }\n\n.z-select.z-select-theme-primary {\n  vertical-align: middle;\n  border-radius: 3px; }\n  .z-select.z-select-theme-primary.z-select-multiple-stage .z-select-opt-li > span {\n    display: inline-block;\n    vertical-align: middle;\n    width: calc(100% - 25px); }\n  .z-select.z-select-theme-primary.z-select-selecting .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-theme-primary.z-select-focusing .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-theme-primary > .z-select-selected-box::after {\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    content: '';\n    opacity: 0;\n    transition: opacity 300ms ease-out;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1; }\n  .z-select.z-select-theme-primary .z-select-opt-comp {\n    border-top: none;\n    border-top-left-radius: 0;\n    border-top-right-radius: 0;\n    border: none; }\n    .z-select.z-select-theme-primary .z-select-opt-comp > .z-select-opt-li:first-child {\n      border-top: #f0f0f0 1px solid; }\n\n@media only screen and (max-width: 767px) {\n  .z-select {\n    width: 100%; } }\n", ""]);
 
 // exports
 
@@ -39544,7 +39680,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li .z-select-opt-li-text, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li .z-select-opt-li-text {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n/**\r\n * select-opt 组件样式\r\n */\n.z-select-opt-ul {\n  display: none;\n  position: absolute;\n  top: 0;\n  left: 162px;\n  width: 170px;\n  background-color: #fff; }\n  .z-select-opt-ul .z-select-opt-li {\n    position: relative;\n    box-sizing: border-box;\n    width: 100%;\n    text-align: left;\n    cursor: default; }\n    .z-select-opt-ul .z-select-opt-li:first-child {\n      padding-top: 8px; }\n    .z-select-opt-ul .z-select-opt-li:last-child {\n      padding-bottom: 8px; }\n    .z-select-opt-ul .z-select-opt-li:hover > .z-select-opt-ul {\n      display: block; }\n    .z-select-opt-ul .z-select-opt-li.default-txt {\n      color: #999; }\n    .z-select-opt-ul .z-select-opt-li.classify-title {\n      font-weight: bold; }\n  .z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li {\n    padding: 8px 16px; }\n    .z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li:hover, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li:hover {\n      background-color: #f5f5f5; }\n    .z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li:hover.z-select-opt-classify-title, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li:hover.z-select-opt-classify-title {\n      background-color: transparent; }\n    .z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li .z-select-opt-li-check, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li .z-select-opt-li-check {\n      line-height: 1; }\n    .z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li .z-select-opt-li-text, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li .z-select-opt-li-text {\n      display: inline-block;\n      vertical-align: middle;\n      width: 100%;\n      padding: 0 8px;\n      box-sizing: border-box; }\n\n@media only screen and (max-width: 767px) {\n  .z-select-opt-ul {\n    width: 100%; } }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li .z-select-opt-li-text, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li .z-select-opt-li-text {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n/**\r\n * select-opt 组件样式\r\n */\n.z-select-opt-ul {\n  display: none;\n  background-color: #fff; }\n  .z-select-opt-ul .z-select-opt-li {\n    position: relative;\n    box-sizing: border-box;\n    width: 100%;\n    text-align: left;\n    cursor: default; }\n    .z-select-opt-ul .z-select-opt-li:first-child {\n      padding-top: 8px; }\n    .z-select-opt-ul .z-select-opt-li:last-child {\n      padding-bottom: 8px; }\n    .z-select-opt-ul .z-select-opt-li:hover > .z-select-opt-ul {\n      display: block; }\n    .z-select-opt-ul .z-select-opt-li.default-txt {\n      color: #999; }\n    .z-select-opt-ul .z-select-opt-li.classify-title {\n      font-weight: bold; }\n  .z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li {\n    padding: 8px 16px; }\n    .z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li:hover, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li:hover {\n      background-color: #f5f5f5; }\n    .z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li:hover.z-select-opt-classify-title, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li:hover.z-select-opt-classify-title {\n      background-color: transparent; }\n    .z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li .z-select-opt-li-check, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li .z-select-opt-li-check {\n      line-height: 1; }\n    .z-select-opt-ul.z-select-opt-theme-primary .z-select-opt-li .z-select-opt-li-text, .z-select-opt-ul.z-select-opt-theme-fill .z-select-opt-li .z-select-opt-li-text {\n      display: inline-block;\n      vertical-align: middle;\n      width: 100%;\n      padding: 0 8px;\n      box-sizing: border-box; }\n\n@media only screen and (max-width: 767px) {\n  .z-select-opt-ul {\n    width: 100%; } }\n", ""]);
 
 // exports
 
@@ -39563,11 +39699,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function (h) {
   var _this = this;
 
-  var menuOptEle = [];
+  var selectOptEle = [];
   var scopedSlots = {};
 
   if (this.$parent.multiple && this.$parent.selectAll) {
-    menuOptEle.push(h('div', {
+    selectOptEle.push(h('div', {
       class: [this.xclass('li')],
       on: {
         click: this.$parent.selectAllOption
@@ -39669,7 +39805,7 @@ exports.default = function (h) {
     })]);
   };
 
-  menuOptEle.push(h('list', {
+  selectOptEle.push(h('list', {
     class: this.xclass('list'),
     props: {
       auto: true,
@@ -39688,7 +39824,7 @@ exports.default = function (h) {
 
   return h('div', {
     class: [_defineProperty({}, this.xclass('search-option-wrap'), this.$parent.searchFilter), this.xclass('ul'), this.xclass(this.compClass)]
-  }, menuOptEle);
+  }, selectOptEle);
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
@@ -39724,7 +39860,8 @@ exports.default = function (h) {
     }), h('input', {
       attrs: {
         placeholder: this.defaultTxt,
-        readOnly: true
+        readonly: true,
+        tabindex: -1
       },
       class: [this.defaultValClassName(this.value), this.xclass('init-text'), _defineProperty({}, this.xclass('opacity'), !this.initTxtDisplay)]
     }));
@@ -39746,15 +39883,16 @@ exports.default = function (h) {
     selectedBoxChildren.push(h('scroller', {
       class: [this.xclass('scroller')],
       props: {
-        height: 100
+        height: 100,
+        width: '100%'
       },
-      ref: 'scroller'
-    }, [h('ul', {
-      class: [this.compPrefix + '-ul', this.xclass('multiple-selected-ul')],
       directives: [{
         name: 'show',
         value: !this.initTxtDisplay
-      }]
+      }],
+      ref: 'scroller'
+    }, [h('ul', {
+      class: [this.compPrefix + '-ul', this.xclass('multiple-selected-ul')]
     }, [liELe])]));
   } else {
     selectedBoxChildren.push(h('input', {
@@ -39767,6 +39905,7 @@ exports.default = function (h) {
       class: [this.defaultValClassName(this.value), this.xclass('init-text')],
       attrs: {
         placeholder: '请选择',
+        tabindex: -1,
         readOnly: true,
         value: this.text
       }
@@ -39828,7 +39967,10 @@ exports.default = function (h) {
       ref: 'option',
       scopedSlots: scopedSlots
     }), h('div', {
-      class: [this.xclass('option-slot'), this.compPrefix + '-hide']
+      class: [this.xclass('option-slot')],
+      style: {
+        display: 'none'
+      }
     }, this.$slots.default));
   }
 
@@ -39858,7 +40000,7 @@ exports.default = function (h) {
     props: {
       noTrig: true,
       noCoverTrig: true,
-      width: 170,
+      width: this.menuWidth,
       trigHeight: this.selectedHeight
     },
     ref: 'menu'
@@ -40004,9 +40146,7 @@ exports.default = {
 
 
     /**
-     * 移除 多选下拉框 已选的值
-     *
-     * @param {String, Number} - 多选下拉框的值
+     * 点击移除多选下拉框已选的值
      */
     clickMultiSelected: function clickMultiSelected(event, index) {
       event.stopPropagation();
@@ -40021,7 +40161,7 @@ exports.default = {
      */
     clickParent: function clickParent() {
       if (this.menuDisplay) {
-        return this.toggleMenuDisplay(false);
+        return this.toggle(false);
       }
     },
 
@@ -40033,10 +40173,6 @@ exports.default = {
      */
     blur: function blur() {
       this.focusing = false;
-
-      if (!this.multiple) {
-        return this.toggleMenuDisplay(false);
-      }
     },
 
 
@@ -40058,7 +40194,7 @@ exports.default = {
     click: function click(event) {
       event.stopPropagation();
 
-      return this.toggleMenuDisplay();
+      return this.toggle();
     },
 
 
@@ -40071,79 +40207,8 @@ exports.default = {
       }
 
       if (event.keyCode === _keyCode2.default.enter) {
-        this.toggleMenuDisplay();
+        this.toggle();
       }
-    },
-
-
-    /**
-     * 下拉框的显示操作
-     *
-     * @param {Boolean} optVal - 操作状态,
-     *                        （false: 隐藏， true: 显示，undefined： 切换显示状态）
-     *
-     * @return {Object} - this组件
-     */
-    toggleMenuDisplay: function toggleMenuDisplay() {
-      var _this = this;
-
-      var optVal = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : !this.menuDisplay;
-
-      if (this.togglingMenu) {
-        return false;
-      }
-
-      this.togglingMenu = true;
-
-      setTimeout(function () {
-        _this.togglingMenu = false;
-      }, 300);
-
-      var menuHub = this.$store.state.comp.select;
-
-      var getMenuHeight = function getMenuHeight(vm) {
-        (0, _prop.handleEleDisplay)({
-          element: vm.$refs.menu.$refs.panel,
-          cb: function cb(element) {
-            var scrollerComp = vm.$refs.option.$refs.list.$refs.scroller;
-            scrollerComp.initScroller();
-
-            vm.menuHeight = scrollerComp.scrollerHeight;
-          }
-        });
-      };
-
-      var transite = function transite(state, vm) {
-        if (state) {
-          getMenuHeight(vm);
-
-          vm.menuDisplay = true;
-
-          // 等 menu 组件的 height 的值更新了才能正确的展开 menu 组件
-          _this.$nextTick(function () {
-            vm.$refs.menu.spread();
-          });
-        } else {
-          getMenuHeight(vm);
-
-          vm.menuDisplay = false;
-          vm.$refs.menu.fold();
-        }
-      };
-
-      Object.keys(menuHub).forEach(function (item) {
-        var menuVm = menuHub[item];
-
-        if (menuVm.menuDisplay && item !== _this.uid) {
-          transite(false, menuVm);
-        }
-      });
-
-      return this._adjustSelectedPoiStyle({
-        cb: function cb() {
-          return transite(optVal, _this);
-        }
-      });
     },
 
 
@@ -40164,11 +40229,50 @@ exports.default = {
 
 
     /**
+     * 切换隐藏显示菜单，会将同一个应用内的所有下拉组件都隐藏
+     */
+    toggle: function toggle() {
+      var _this = this;
+
+      if (this.togglingMenu) {
+        return false;
+      }
+
+      this.togglingMenu = true;
+
+      setTimeout(function () {
+        _this.togglingMenu = false;
+      }, 300);
+
+      var menuHub = this.$store.state.comp.select;
+
+      Object.keys(menuHub).forEach(function (item) {
+        var menuVm = menuHub[item];
+
+        if (menuVm.menuDisplay && item !== _this.uid) {
+          _this._menuMotion(false, menuVm);
+        }
+      });
+
+      return this._menuMotion();
+    },
+
+
+    /**
      * 展開下拉框
      * @return {Object} this - 组件
      */
     spread: function spread() {
-      return this.toggleMenuDisplay(true);
+      return this.toggle(true);
+    },
+
+
+    /**
+     * 折叠下拉框
+     * @return {Object} this - 组件
+     */
+    fold: function fold() {
+      return this.toggle(false);
     }
   }
 }; /**
@@ -43109,6 +43213,11 @@ pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E直接传入 i
 }, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
+pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E用直观的标签声明下拉框的数据\u003C\u002Fp\u003E\u003Cz-select\u003E\u003Cz-select-ele value=\"1\"\u003E{{ testName }}\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"2\"\u003E按钮\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"3\"\u003E测试3\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"4\"\u003E测试4\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"5\"\u003E测试5\u003C\u002Fz-select-ele\u003E\u003C\u002Fz-select\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-select>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="1">{{ testName }}</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="2">按钮</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="3">测试222</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="4">测试3</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="5">测试4</z-select-ele>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+}
+}, 'tag', '添加子标签');
+pug_mixins["section"].call({
+block: function(){
 pug_html = pug_html + "\u003Cz-select select-all :classify=\"[{key: &quot;recent&quot;,text: &quot;最近&quot;}, {key: &quot;hot&quot;,text: &quot;热门&quot;}]\" :classify-opt=\"classifyOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select') ? "" : pug_interp)) + "\n  :select-all=\"true\"\n  :classify=\"[{\n    key: 'recent',\n    text: '最近'\n  }, {\n    key: 'hot',\n    text: '热门'\n  }]\"\n" + (pug.escape(null == (pug_interp = '  :classify-opt="classifyOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'classify', '分类下拉选择');
@@ -45043,7 +45152,7 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv class=\"component-transition\"\u003E\u003Crouter-view\u003E\u003C\u002Frouter-view\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Edisplay\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Eboolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E*false | true\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E默认一开始是隐藏（进来之前的状态）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Espeed\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Eslow | *normal | fast\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E过渡的速度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Edisplay\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Eboolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E*false | true\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E默认一开始是隐藏（进来之前的状态）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Espeed\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Estring\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Eslow | *normal | fast\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E过渡的速度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Esync\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E*false | true\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E调用多次动画时，动画与动画之间是否时同步\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
 }
 }, 'transitionProps', '公共的 props');
 pug_mixins["section"].call({
@@ -45907,4 +46016,4 @@ module.exports = {"en":{"btn":{},"column":{},"check":{},"form":{},"input":{},"ic
 
 /***/ })
 ],[192]);
-//# sourceMappingURL=app.afef4553334262c05a6b.js.map
+//# sourceMappingURL=app.724342dbb0db30ae5855.js.map
