@@ -12627,17 +12627,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(490);
+__webpack_require__(494);
 
 var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _Scroller = __webpack_require__(492);
+var _Scroller = __webpack_require__(496);
 
 var _Scroller2 = _interopRequireDefault(_Scroller);
 
-var _ScrollerRender = __webpack_require__(493);
+var _ScrollerRender = __webpack_require__(497);
 
 var _ScrollerRender2 = _interopRequireDefault(_ScrollerRender);
 
@@ -13455,17 +13455,17 @@ var _src = __webpack_require__(425);
 
 var _src2 = _interopRequireDefault(_src);
 
-var _zhCn = __webpack_require__(543);
+var _zhCn = __webpack_require__(547);
 
 var _zhCn2 = _interopRequireDefault(_zhCn);
 
-var _config = __webpack_require__(544);
+var _config = __webpack_require__(548);
 
-var _alert = __webpack_require__(545);
+var _alert = __webpack_require__(549);
 
 var _alert2 = _interopRequireDefault(_alert);
 
-var _confirm = __webpack_require__(546);
+var _confirm = __webpack_require__(550);
 
 var _confirm2 = _interopRequireDefault(_confirm);
 
@@ -14357,7 +14357,11 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(474);
 
-var _Input = __webpack_require__(476);
+__webpack_require__(476);
+
+__webpack_require__(478);
+
+var _Input = __webpack_require__(480);
 
 var _Input2 = _interopRequireDefault(_Input);
 
@@ -14369,7 +14373,7 @@ var _type = __webpack_require__(89);
 
 var _type2 = _interopRequireDefault(_type);
 
-var _validate = __webpack_require__(477);
+var _validate = __webpack_require__(481);
 
 var _validate2 = _interopRequireDefault(_validate);
 
@@ -14381,7 +14385,7 @@ var _form = __webpack_require__(70);
 
 var _form2 = _interopRequireDefault(_form);
 
-var _Input3 = __webpack_require__(478);
+var _Input3 = __webpack_require__(482);
 
 var _Input4 = _interopRequireDefault(_Input3);
 
@@ -14404,6 +14408,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
                                                                                                                                                                                                                    * input 组件
                                                                                                                                                                                                                    *
+                                                                                                                                                                                                                   * @prop block - 将宽度设置为和父元素一样
                                                                                                                                                                                                                    * @prop hidden - 设置为隐藏域
                                                                                                                                                                                                                    * @prop initVal - 设置当前输入框的值
                                                                                                                                                                                                                    * @prop number - 输入框的数字指定为 nmuber 类型
@@ -14458,90 +14463,73 @@ exports.default = {
   store: _store2.default,
 
   props: {
+    block: {
+      type: Boolean,
+      default: false
+    },
     hidden: {
       type: Boolean,
       default: false
     },
-
     initVal: {
       type: [String, Number],
       default: ''
     },
-
     number: {
       type: Boolean,
       default: false
     },
-
     placeholder: {
       type: String,
       default: ''
     },
-
     param: {
       type: String,
       default: ''
     },
-
     readOnly: {
       type: Boolean,
       default: false
     },
-
     row: {
       type: Number,
       default: 4
     },
-
     textLengthTip: {
       type: Boolean,
       default: false
     },
-
     type: {
       type: String,
       default: 'field'
     },
-
     required: {
       type: Boolean,
       default: true
     },
-
     errorMessage: {
       type: String,
       default: ''
     },
-
     errorTipType: {
       type: String,
       default: 'tip'
     },
-
     formatMessage: String,
-
     min: Number,
-
     max: Number,
-
     minNum: Number,
-
     maxNum: Number,
-
     regex: String,
-
     verifiedType: String,
-
     completion: {
       type: Boolean,
       default: false
     },
-
     headerSpan: {
       type: Number,
       default: 1
     },
-
     footerSpan: {
       type: Number,
       default: 1
@@ -14549,40 +14537,29 @@ exports.default = {
   },
 
   data: function data() {
-    // 组件名字
-    this.compName = 'input';
+    this.compName = 'input'; // 组件名字
 
     return {
-      // 输入框的当前的值
-      value: this.number ? this._switchNum(this.initVal) : this.initVal,
-      // 输入框是否处于 focus 状态
-      focusing: false,
-      // 是否处于 keyup 状态
-      keyuping: false,
-      // 错误信息提示信息
-      dangerTip: '',
-      // 数据类型的名称
-      dataTypeName: '',
-      // 是否验证通过
-      verified: true,
-      // 冒泡的错误提示显示状态
-      bubbleDisplay: false,
-      // 当前输入框值的长度
-      inputTextLength: 0,
-      // 错误提示框的显示状态
-      errorBorderDisplay: false
+      value: this.number ? this._switchNum(this.initVal) : this.initVal, // 输入框的当前的值
+      focusing: false, // 输入框是否处于 focus 状态
+      keyuping: false, // 是否处于 keyup 状态
+      dangerTip: '', // 错误信息提示信息
+      dataTypeName: '', // 数据类型的名称
+      verified: true, // 是否验证通过
+      bubbleDisplay: false, // 冒泡的错误提示显示状态
+      inputTextLength: 0, // 当前输入框值的长度
+      errorBorderDisplay: false // 错误提示框的显示状态
     };
   },
 
 
   computed: {
-    // 组件类名的前缀
     cPrefix: function cPrefix() {
+      // 组件类名的前缀
       return this.compPrefix + '-input';
     },
-
-    // 格式不对的报错信息
     _formatMessage: function _formatMessage() {
+      // 格式不对的报错信息
       return this.errorMessage ? this.errorMessage + '格式不对' : this.dataTypeName + '格式不对';
     },
     dangerTipDisplay: function dangerTipDisplay() {
@@ -14597,17 +14574,15 @@ exports.default = {
     inputHub: function inputHub() {
       return this.$store.getters[_type2.default.input.get];
     },
-
-    // 组件 stage 的 class 名字
     stageClass: function stageClass() {
+      // 组件 stage 的 class 名字
       return [_defineProperty({}, this.cPrefix + '-textarea-stage', this.isTextarea)];
     },
     wrapClass: function wrapClass() {
       return [this.xclass('wrap'), _defineProperty({}, this.cPrefix + '-editting', this.focusing), _defineProperty({}, this.cPrefix + '-error-border', this.errorBorderDisplay)];
     },
-
-    // input 的阑珊的格数
     inputBoxCol: function inputBoxCol() {
+      // input 的阑珊的格数
       var slotHead = this.$slots.header;
       var slotTail = this.$slots.footer;
 
@@ -19378,11 +19353,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(482);
+__webpack_require__(486);
 
-__webpack_require__(484);
+__webpack_require__(488);
 
-var _Modal = __webpack_require__(486);
+var _Modal = __webpack_require__(490);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -19390,7 +19365,7 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _Modal3 = __webpack_require__(489);
+var _Modal3 = __webpack_require__(493);
 
 var _Modal4 = _interopRequireDefault(_Modal3);
 
@@ -19861,7 +19836,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(509);
+__webpack_require__(513);
 
 var _Btn = __webpack_require__(61);
 
@@ -19887,7 +19862,7 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _Page = __webpack_require__(511);
+var _Page = __webpack_require__(515);
 
 var _Page2 = _interopRequireDefault(_Page);
 
@@ -20179,9 +20154,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(515);
+__webpack_require__(519);
 
-var _List = __webpack_require__(517);
+var _List = __webpack_require__(521);
 
 var _List2 = _interopRequireDefault(_List);
 
@@ -20213,7 +20188,7 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _List3 = __webpack_require__(518);
+var _List3 = __webpack_require__(522);
 
 var _List4 = _interopRequireDefault(_List3);
 
@@ -21653,9 +21628,9 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-__webpack_require__(503);
+__webpack_require__(507);
 
-var _FoldRender = __webpack_require__(505);
+var _FoldRender = __webpack_require__(509);
 
 var _FoldRender2 = _interopRequireDefault(_FoldRender);
 
@@ -21994,13 +21969,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(522);
+__webpack_require__(526);
 
 var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _Menu = __webpack_require__(524);
+var _Menu = __webpack_require__(528);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
@@ -22032,7 +22007,7 @@ var _Input = __webpack_require__(65);
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _Motion = __webpack_require__(525);
+var _Motion = __webpack_require__(529);
 
 var _Motion2 = _interopRequireDefault(_Motion);
 
@@ -22048,7 +22023,7 @@ var _form = __webpack_require__(70);
 
 var _form2 = _interopRequireDefault(_form);
 
-var _Menu3 = __webpack_require__(526);
+var _Menu3 = __webpack_require__(530);
 
 var _Menu4 = _interopRequireDefault(_Menu3);
 
@@ -22340,9 +22315,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(527);
+__webpack_require__(531);
 
-var _ShiftRender = __webpack_require__(529);
+var _ShiftRender = __webpack_require__(533);
 
 var _ShiftRender2 = _interopRequireDefault(_ShiftRender);
 
@@ -26404,13 +26379,13 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-__webpack_require__(479);
+__webpack_require__(483);
 
 var _Icon = __webpack_require__(18);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _Bubble = __webpack_require__(481);
+var _Bubble = __webpack_require__(485);
 
 var _Bubble2 = _interopRequireDefault(_Bubble);
 
@@ -26690,11 +26665,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(498);
+__webpack_require__(502);
 
-__webpack_require__(500);
+__webpack_require__(504);
 
-var _NavRender = __webpack_require__(502);
+var _NavRender = __webpack_require__(506);
 
 var _NavRender2 = _interopRequireDefault(_NavRender);
 
@@ -26915,9 +26890,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(506);
+__webpack_require__(510);
 
-var _OmitRender = __webpack_require__(508);
+var _OmitRender = __webpack_require__(512);
 
 var _OmitRender2 = _interopRequireDefault(_OmitRender);
 
@@ -27063,9 +27038,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(512);
+__webpack_require__(516);
 
-var _Search = __webpack_require__(514);
+var _Search = __webpack_require__(518);
 
 var _Search2 = _interopRequireDefault(_Search);
 
@@ -27283,9 +27258,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(519);
+__webpack_require__(523);
 
-var _Table = __webpack_require__(521);
+var _Table = __webpack_require__(525);
 
 var _Table2 = _interopRequireDefault(_Table);
 
@@ -27812,17 +27787,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-__webpack_require__(530);
+__webpack_require__(534);
 
 var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _SelectOpt = __webpack_require__(532);
+var _SelectOpt = __webpack_require__(536);
 
 var _SelectOpt2 = _interopRequireDefault(_SelectOpt);
 
-var _Select = __webpack_require__(536);
+var _Select = __webpack_require__(540);
 
 var _Select2 = _interopRequireDefault(_Select);
 
@@ -27862,7 +27837,7 @@ var _Menu = __webpack_require__(134);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _MenuTrig = __webpack_require__(537);
+var _MenuTrig = __webpack_require__(541);
 
 var _MenuTrig2 = _interopRequireDefault(_MenuTrig);
 
@@ -27874,7 +27849,7 @@ var _form = __webpack_require__(70);
 
 var _form2 = _interopRequireDefault(_form);
 
-var _Select3 = __webpack_require__(538);
+var _Select3 = __webpack_require__(542);
 
 var _Select4 = _interopRequireDefault(_Select3);
 
@@ -28699,13 +28674,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(539);
+__webpack_require__(543);
 
 var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _TabRender = __webpack_require__(541);
+var _TabRender = __webpack_require__(545);
 
 var _TabRender2 = _interopRequireDefault(_TabRender);
 
@@ -28713,7 +28688,7 @@ var _Shift = __webpack_require__(135);
 
 var _Shift2 = _interopRequireDefault(_Shift);
 
-var _url = __webpack_require__(542);
+var _url = __webpack_require__(546);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34648,7 +34623,7 @@ var _route = __webpack_require__(406);
 
 var _route2 = _interopRequireDefault(_route);
 
-var _App = __webpack_require__(637);
+var _App = __webpack_require__(641);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -34656,7 +34631,7 @@ var _vue2do = __webpack_require__(60);
 
 var _vue2do2 = _interopRequireDefault(_vue2do);
 
-var _enUS = __webpack_require__(653);
+var _enUS = __webpack_require__(657);
 
 var _enUS2 = _interopRequireDefault(_enUS);
 
@@ -35303,11 +35278,11 @@ var _Welcome = __webpack_require__(408);
 
 var _Welcome2 = _interopRequireDefault(_Welcome);
 
-var _Component = __webpack_require__(547);
+var _Component = __webpack_require__(551);
 
 var _Component2 = _interopRequireDefault(_Component);
 
-var _componentChildren = __webpack_require__(551);
+var _componentChildren = __webpack_require__(555);
 
 var _componentChildren2 = _interopRequireDefault(_componentChildren);
 
@@ -35453,7 +35428,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.welcome .wel
 
 var pug = __webpack_require__(8);
 
-function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"welcome\"\u003E\u003Cdiv class=\"welcome-bg\"\u003E\u003Ch3 class=\"z-css-text-center z-css-m-t-double\"\u003Ewelcome to\u003C\u002Fh3\u003E\u003Ch2 class=\"z-css-text-center z-css-m-t-double\"\u003Evue2do\u003C\u002Fh2\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"welcome-container\"\u003E\u003Cz-row align=\"start\" justify=\"justify\"\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E响应\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E适配任何设备，在移动端有更好的用户体验。\n支持五种尺寸的设备，让你不再担心适配不同设备的尺寸带来的烦恼。\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E灵活\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E组件和组件之间可以灵活组合，能满足任何需求。\n组件的功能丰富，能随意搭配成需要的功能\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E样式\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E内置多种 UI 规范和主题，让组件不再单调，为您提供更多的样式选择，\n现支持谷歌的 material UI、bootstrap UI、苹果的 OS UI 和微软的 metro UI。\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"welcome\"\u003E\u003Cdiv class=\"welcome-bg\"\u003E\u003Ch3 class=\"z-css-text-center z-css-m-t-double\"\u003Ewelcome to\u003C\u002Fh3\u003E\u003Ch2 class=\"z-css-text-center z-css-m-t-double\"\u003Evue2do\u003C\u002Fh2\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"welcome-container\"\u003E\u003Cz-row align=\"start\" justify=\"justify\"\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E响应\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E适配任何设备，在移动端有更好的用户体验。\n支持五种尺寸的设备，让你不再担心适配不同设备的尺寸带来的烦恼。\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E灵活\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E组件和组件之间可以灵活组合，能满足任何需求。\n组件的功能丰富，能随意搭配成需要的功能\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E样式\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E内置多种 UI 规范和主题，让组件不再单调，为您提供更多的样式选择。\n将会支持谷歌的 material UI、bootstrap UI、苹果的 OS UI 和微软的 metro UI。\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
 /***/ }),
@@ -35894,7 +35869,7 @@ var _Message = __webpack_require__(92);
 
 var _Message2 = _interopRequireDefault(_Message);
 
-var _Code = __webpack_require__(494);
+var _Code = __webpack_require__(498);
 
 var _Code2 = _interopRequireDefault(_Code);
 
@@ -37744,13 +37719,103 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input 组件样式\r\n */\n.z-input {\n  display: inline-block;\n  vertical-align: middle;\n  width: 170px;\n  position: relative; }\n  .z-input:hover .z-input-wrap {\n    border-color: #999999; }\n    .z-input:hover .z-input-wrap > .z-input-wrap-border {\n      border-color: #999999; }\n  .z-input:hover.z-input-type-area .z-input-wrap {\n    border: #999999 1px solid; }\n    .z-input:hover.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border: #999999 1px solid; }\n  .z-input.z-input-type-area .z-input-wrap {\n    border: #d6d6d6 1px solid;\n    border-radius: 3px; }\n    .z-input.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border-radius: 3px;\n      border: transparent 1px solid; }\n  .z-input .z-input-limit-txt {\n    padding: 8px 0;\n    text-align: right; }\n  .z-input .z-input-wrap {\n    position: relative;\n    border-bottom: #d6d6d6 1px solid;\n    background-color: #fff;\n    box-sizing: border-box;\n    transition: all 100ms ease-out; }\n    .z-input .z-input-wrap::after {\n      content: '';\n      position: absolute;\n      width: 0;\n      height: 2px;\n      left: 0;\n      right: 0;\n      margin: 0 auto;\n      bottom: -1px;\n      background-color: transparent;\n      z-index: 1;\n      -webkit-transform: scaleX(0);\n              transform: scaleX(0);\n      transition: all 300ms ease-out; }\n    .z-input .z-input-wrap > .z-input-wrap-border {\n      border-top-left-radius: 3px;\n      border-top-right-radius: 3px;\n      border-bottom: transparent 1px solid;\n      padding: 0 8px;\n      transition: all 100ms ease-out; }\n    .z-input .z-input-wrap.z-input-error-border {\n      border: #ef5350 1px solid; }\n    .z-input .z-input-wrap.z-input-editting::after {\n      width: 100%;\n      background-color: #ef5350;\n      -webkit-transform: scaleX(1);\n              transform: scaleX(1); }\n    .z-input .z-input-wrap .z-input-hide {\n      display: none; }\n    .z-input .z-input-wrap .z-input-edit-box-start > .z-input-icon-stage {\n      line-height: 34px;\n      padding-left: 8px; }\n    .z-input .z-input-wrap .z-input-edit-box > input,\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      -webkit-transform: rotate(0);\n              transform: rotate(0);\n      border: none;\n      width: 100%;\n      font: inherit;\n      color: inherit; }\n      .z-input .z-input-wrap .z-input-edit-box > input:focus,\n      .z-input .z-input-wrap .z-input-edit-box > textarea:focus {\n        outline-style: none;\n        border-style: none; }\n    .z-input .z-input-wrap .z-input-edit-box > input {\n      box-sizing: border-box;\n      background-color: transparent; }\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      box-sizing: border-box;\n      resize: none; }\n  .z-input .z-input-danger-tip {\n    color: #ef5350;\n    margin-top: 4px;\n    font-size: 12px; }\n\n.z-input.z-input-theme-primary .z-input-wrap .z-input-edit-box > input,\n.z-input.z-input-theme-primary .z-input-wrap .z-input-edit-box > textarea, .z-input.z-input-theme-fill .z-input-wrap .z-input-edit-box > input,\n.z-input.z-input-theme-fill .z-input-wrap .z-input-edit-box > textarea {\n  padding: 7.5px; }\n\n.z-input.z-input-theme-primary .z-input-wrap .z-input-auto-completion, .z-input.z-input-theme-fill .z-input-wrap .z-input-auto-completion {\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px; }\n\n.z-input.z-input-theme-primary .z-input-danger-tip, .z-input.z-input-theme-fill .z-input-danger-tip {\n  position: absolute;\n  top: 41px;\n  width: 100%;\n  background: #fff;\n  border: #ef5350 1px solid;\n  padding: 8px;\n  z-index: 1; }\n  .z-input.z-input-theme-primary .z-input-danger-tip::after, .z-input.z-input-theme-primary .z-input-danger-tip::before, .z-input.z-input-theme-fill .z-input-danger-tip::after, .z-input.z-input-theme-fill .z-input-danger-tip::before {\n    content: \"\\25C6\";\n    position: absolute;\n    top: -11px;\n    left: 0;\n    right: 0;\n    margin: auto;\n    width: 22px;\n    height: 20px;\n    font-size: 33px;\n    line-height: 20px; }\n  .z-input.z-input-theme-primary .z-input-danger-tip::after, .z-input.z-input-theme-fill .z-input-danger-tip::after {\n    top: -9px;\n    color: #fff; }\n\n.z-input.z-input-theme-fill {\n  width: 100%; }\n\n@media only screen and (max-width: 767px) {\n  .z-input {\n    width: 100%; } }\n\n.z-input.z-input-ui-bootstrap .z-input-wrap {\n  border: #d6d6d6 1px solid;\n  border-radius: 3px; }\n  .z-input.z-input-ui-bootstrap .z-input-wrap::after {\n    display: none; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input 组件样式\r\n */\n.z-input {\n  display: inline-block;\n  vertical-align: middle;\n  width: 170px;\n  position: relative; }\n  .z-input.z-input-type-area .z-input-wrap {\n    border: #d6d6d6 1px solid;\n    border-radius: 3px; }\n    .z-input.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border-radius: 3px;\n      border: transparent 1px solid; }\n  .z-input .z-input-limit-txt {\n    padding: 8px 0;\n    text-align: right; }\n  .z-input .z-input-wrap {\n    position: relative;\n    border-bottom: #d6d6d6 1px solid;\n    background-color: #fff;\n    box-sizing: border-box;\n    transition: all 100ms ease-out; }\n    .z-input .z-input-wrap.z-input-error-border {\n      outline: #ef5350 1px solid; }\n    .z-input .z-input-wrap .z-input-edit-box-start > .z-input-icon-stage {\n      line-height: 34px;\n      padding-left: 8px; }\n    .z-input .z-input-wrap .z-input-edit-box > input,\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      -webkit-transform: rotate(0);\n              transform: rotate(0);\n      border: none;\n      width: 100%;\n      font: inherit;\n      color: inherit;\n      padding: 7.5px; }\n      .z-input .z-input-wrap .z-input-edit-box > input:focus,\n      .z-input .z-input-wrap .z-input-edit-box > textarea:focus {\n        outline: none;\n        border: none; }\n    .z-input .z-input-wrap .z-input-edit-box > input {\n      box-sizing: border-box;\n      background-color: transparent; }\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      box-sizing: border-box;\n      resize: none; }\n  .z-input .z-input-tip {\n    margin-top: 4px;\n    font-size: 12px;\n    color: #999999; }\n    .z-input .z-input-tip-danger {\n      color: #ef5350; }\n\n@media only screen and (max-width: 767px) {\n  .z-input {\n    width: 100%; } }\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 476 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(477);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(2)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.material.scss", function() {
+			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.material.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 477 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input material UI 组件样式\r\n */\n.z-input.z-input-ui-material:hover .z-input-wrap {\n  border-color: #999999; }\n  .z-input.z-input-ui-material:hover .z-input-wrap > .z-input-wrap-border {\n    border-color: #999999; }\n\n.z-input.z-input-ui-material:hover.z-input-type-area .z-input-wrap {\n  border: #999999 1px solid; }\n  .z-input.z-input-ui-material:hover.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n    border: #999999 1px solid; }\n\n.z-input.z-input-ui-material .z-input-wrap::after {\n  content: '';\n  position: absolute;\n  width: 0;\n  height: 2px;\n  left: 0;\n  right: 0;\n  margin: 0 auto;\n  bottom: -1px;\n  background-color: transparent;\n  z-index: 1;\n  -webkit-transform: scaleX(0);\n          transform: scaleX(0);\n  transition: all 300ms ease-out; }\n\n.z-input.z-input-ui-material .z-input-wrap.z-input-error-border {\n  outline: none; }\n\n.z-input.z-input-ui-material .z-input-wrap.z-input-editting::after {\n  width: 100%;\n  background-color: #ef5350;\n  -webkit-transform: scaleX(1);\n          transform: scaleX(1); }\n\n.z-input.z-input-ui-material .z-input-wrap > .z-input-wrap-border {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n  border-bottom: transparent 1px solid;\n  transition: all 100ms ease-out; }\n\n.z-input.z-input-ui-material .z-input-wrap .z-input-auto-completion {\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px; }\n\n.z-input.z-input-ui-material .z-input-tip-danger {\n  position: absolute;\n  top: 41px;\n  width: 100%;\n  background: #fff;\n  border: #ef5350 1px solid;\n  padding: 8px;\n  z-index: 1; }\n  .z-input.z-input-ui-material .z-input-tip-danger::after, .z-input.z-input-ui-material .z-input-tip-danger::before {\n    content: \"\\25C6\";\n    position: absolute;\n    top: -11px;\n    left: 0;\n    right: 0;\n    margin: auto;\n    width: 22px;\n    height: 20px;\n    font-size: 33px;\n    line-height: 20px; }\n  .z-input.z-input-ui-material .z-input-tip-danger::after {\n    top: -9px;\n    color: #fff; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 478 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(479);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(2)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.bootstrap.scss", function() {
+			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.bootstrap.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 479 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input bootstrap UI 组件样式\r\n */\n.z-input.z-input-ui-bootstrap.z-input-ui-bootstrap .z-input-wrap {\n  border: #d6d6d6 1px solid;\n  border-radius: 3px; }\n  .z-input.z-input-ui-bootstrap.z-input-ui-bootstrap .z-input-wrap.z-input-editting {\n    border-color: #2196f3;\n    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.4); }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37857,7 +37922,7 @@ exports.default = function (h) {
       name: 'fade'
     }
   }, [h('div', {
-    class: [this.xclass('danger-tip')],
+    class: [this.xclass('tip-danger')],
     directives: [{
       name: 'show',
       value: this.dangerTipDisplay
@@ -37872,7 +37937,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 477 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37948,7 +38013,7 @@ exports.default = function (verifedType) {
 };
 
 /***/ }),
-/* 478 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38150,13 +38215,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 479 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(480);
+var content = __webpack_require__(484);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -38181,7 +38246,7 @@ if(false) {
 }
 
 /***/ }),
-/* 480 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -38195,7 +38260,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * tip 组件样式\r\n */\
 
 
 /***/ }),
-/* 481 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38253,13 +38318,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 482 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(483);
+var content = __webpack_require__(487);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -38284,7 +38349,7 @@ if(false) {
 }
 
 /***/ }),
-/* 483 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -38298,13 +38363,13 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\
 
 
 /***/ }),
-/* 484 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(485);
+var content = __webpack_require__(489);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -38329,7 +38394,7 @@ if(false) {
 }
 
 /***/ }),
-/* 485 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -38343,7 +38408,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\
 
 
 /***/ }),
-/* 486 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38429,11 +38494,11 @@ exports.default = function (h) {
   }, [modalChildren])]);
 };
 
-var _ModalHeader = __webpack_require__(487);
+var _ModalHeader = __webpack_require__(491);
 
 var _ModalHeader2 = _interopRequireDefault(_ModalHeader);
 
-var _ModalFooter = __webpack_require__(488);
+var _ModalFooter = __webpack_require__(492);
 
 var _ModalFooter2 = _interopRequireDefault(_ModalFooter);
 
@@ -38444,7 +38509,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 487 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38507,7 +38572,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 488 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38548,7 +38613,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 489 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38783,13 +38848,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 490 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(491);
+var content = __webpack_require__(495);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -38814,7 +38879,7 @@ if(false) {
 }
 
 /***/ }),
-/* 491 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -38828,7 +38893,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * scroller 组件样式\r\
 
 
 /***/ }),
-/* 492 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39069,7 +39134,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 493 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39127,7 +39192,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 494 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39137,9 +39202,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(495);
+__webpack_require__(499);
 
-var _CodeRender = __webpack_require__(497);
+var _CodeRender = __webpack_require__(501);
 
 var _CodeRender2 = _interopRequireDefault(_CodeRender);
 
@@ -39213,13 +39278,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 495 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(496);
+var content = __webpack_require__(500);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39244,7 +39309,7 @@ if(false) {
 }
 
 /***/ }),
-/* 496 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39258,7 +39323,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * code 组件样式\r\n */
 
 
 /***/ }),
-/* 497 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39315,13 +39380,13 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 498 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(499);
+var content = __webpack_require__(503);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39346,7 +39411,7 @@ if(false) {
 }
 
 /***/ }),
-/* 499 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39360,13 +39425,13 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * nav 组件样式\r\n */\
 
 
 /***/ }),
-/* 500 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(501);
+var content = __webpack_require__(505);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39391,7 +39456,7 @@ if(false) {
 }
 
 /***/ }),
-/* 501 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39405,7 +39470,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * nav 组件样式\r\n */\
 
 
 /***/ }),
-/* 502 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39545,13 +39610,13 @@ function foldContent(h, foldList) {
 }
 
 /***/ }),
-/* 503 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(504);
+var content = __webpack_require__(508);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39576,7 +39641,7 @@ if(false) {
 }
 
 /***/ }),
-/* 504 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39590,7 +39655,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * fold 组件样式\r\n */
 
 
 /***/ }),
-/* 505 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39664,13 +39729,13 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 506 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(507);
+var content = __webpack_require__(511);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39695,7 +39760,7 @@ if(false) {
 }
 
 /***/ }),
-/* 507 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39709,7 +39774,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/*\r\n * omit 组件样式\r\n */\
 
 
 /***/ }),
-/* 508 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39745,13 +39810,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 509 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(510);
+var content = __webpack_require__(514);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39776,7 +39841,7 @@ if(false) {
 }
 
 /***/ }),
-/* 510 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39790,7 +39855,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * page 组件样式\r\n */
 
 
 /***/ }),
-/* 511 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39940,13 +40005,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 512 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(513);
+var content = __webpack_require__(517);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39971,7 +40036,7 @@ if(false) {
 }
 
 /***/ }),
-/* 513 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39985,7 +40050,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n.z-search .z-search-match .z-searc
 
 
 /***/ }),
-/* 514 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40040,13 +40105,13 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 515 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(516);
+var content = __webpack_require__(520);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -40071,7 +40136,7 @@ if(false) {
 }
 
 /***/ }),
-/* 516 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -40085,7 +40150,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * list 组件样式\r\n */
 
 
 /***/ }),
-/* 517 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40206,7 +40271,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 518 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40427,13 +40492,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 519 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(520);
+var content = __webpack_require__(524);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -40458,7 +40523,7 @@ if(false) {
 }
 
 /***/ }),
-/* 520 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -40472,7 +40537,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * table 组件样式\r\n *
 
 
 /***/ }),
-/* 521 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40599,13 +40664,13 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 522 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(523);
+var content = __webpack_require__(527);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -40630,7 +40695,7 @@ if(false) {
 }
 
 /***/ }),
-/* 523 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -40644,7 +40709,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * menu 组件样式\r\n */
 
 
 /***/ }),
-/* 524 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40733,7 +40798,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 525 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40985,7 +41050,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 526 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41125,13 +41190,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 527 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(528);
+var content = __webpack_require__(532);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -41156,7 +41221,7 @@ if(false) {
 }
 
 /***/ }),
-/* 528 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -41170,7 +41235,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * scroller 组件样式\r\
 
 
 /***/ }),
-/* 529 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41207,13 +41272,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 530 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(531);
+var content = __webpack_require__(535);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -41238,7 +41303,7 @@ if(false) {
 }
 
 /***/ }),
-/* 531 */
+/* 535 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -41252,7 +41317,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n.z-select > .z-select-selected-box
 
 
 /***/ }),
-/* 532 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41262,13 +41327,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(533);
+__webpack_require__(537);
 
 var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _SelectOpt = __webpack_require__(535);
+var _SelectOpt = __webpack_require__(539);
 
 var _SelectOpt2 = _interopRequireDefault(_SelectOpt);
 
@@ -41444,13 +41509,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 533 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(534);
+var content = __webpack_require__(538);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -41475,7 +41540,7 @@ if(false) {
 }
 
 /***/ }),
-/* 534 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -41489,7 +41554,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n.z-select-opt-ul.z-select-opt-them
 
 
 /***/ }),
-/* 535 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41635,7 +41700,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 536 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41817,7 +41882,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 537 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41851,7 +41916,7 @@ exports.default = {
     */
 
 /***/ }),
-/* 538 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42083,13 +42148,13 @@ exports.default = {
     */
 
 /***/ }),
-/* 539 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(540);
+var content = __webpack_require__(544);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -42114,7 +42179,7 @@ if(false) {
 }
 
 /***/ }),
-/* 540 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -42128,7 +42193,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n.z-tab > .z-tab-shift > .z-shift-u
 
 
 /***/ }),
-/* 541 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42206,7 +42271,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 542 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42248,13 +42313,13 @@ var search = function search(urlSearch) {
 exports.search = search;
 
 /***/ }),
-/* 543 */
+/* 547 */
 /***/ (function(module, exports) {
 
 module.exports = {"btn":{},"column":{},"check":{},"form":{},"input":{},"icon":{},"loading":{},"page":{},"pop":{},"list":{},"scroller":{},"select":{},"selectEle":{},"shift":{},"shiftEle":{},"tab":{},"tabEle":{},"row":{},"table":{"emptyData":"暂无数据"}}
 
 /***/ }),
-/* 544 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42302,7 +42367,7 @@ var set = {
 exports.set = set;
 
 /***/ }),
-/* 545 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42423,7 +42488,7 @@ createAlert();
 exports.default = alert;
 
 /***/ }),
-/* 546 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42544,7 +42609,7 @@ createConfirm();
 exports.default = confirm;
 
 /***/ }),
-/* 547 */
+/* 551 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42554,9 +42619,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(548);
+__webpack_require__(552);
 
-var _Component = __webpack_require__(550);
+var _Component = __webpack_require__(554);
 
 var _Component2 = _interopRequireDefault(_Component);
 
@@ -42656,13 +42721,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 548 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(549);
+var content = __webpack_require__(553);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -42687,7 +42752,7 @@ if(false) {
 }
 
 /***/ }),
-/* 549 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -42701,7 +42766,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.p-component 
 
 
 /***/ }),
-/* 550 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -42710,7 +42775,7 @@ function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_ht
 module.exports = template;
 
 /***/ }),
-/* 551 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42720,83 +42785,83 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _total = __webpack_require__(552);
+var _total = __webpack_require__(556);
 
 var _total2 = _interopRequireDefault(_total);
 
-var _Btn = __webpack_require__(556);
+var _Btn = __webpack_require__(560);
 
 var _Btn2 = _interopRequireDefault(_Btn);
 
-var _Start = __webpack_require__(560);
+var _Start = __webpack_require__(564);
 
 var _Start2 = _interopRequireDefault(_Start);
 
-var _Select = __webpack_require__(564);
+var _Select = __webpack_require__(568);
 
 var _Select2 = _interopRequireDefault(_Select);
 
-var _Menu = __webpack_require__(568);
+var _Menu = __webpack_require__(572);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _Check = __webpack_require__(572);
+var _Check = __webpack_require__(576);
 
 var _Check2 = _interopRequireDefault(_Check);
 
-var _Input = __webpack_require__(576);
+var _Input = __webpack_require__(580);
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _Icon = __webpack_require__(580);
+var _Icon = __webpack_require__(584);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _Modal = __webpack_require__(582);
+var _Modal = __webpack_require__(586);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
-var _Omit = __webpack_require__(586);
+var _Omit = __webpack_require__(590);
 
 var _Omit2 = _interopRequireDefault(_Omit);
 
-var _Pop = __webpack_require__(590);
+var _Pop = __webpack_require__(594);
 
 var _Pop2 = _interopRequireDefault(_Pop);
 
-var _Tip = __webpack_require__(594);
+var _Tip = __webpack_require__(598);
 
 var _Tip2 = _interopRequireDefault(_Tip);
 
-var _Table = __webpack_require__(598);
+var _Table = __webpack_require__(602);
 
 var _Table2 = _interopRequireDefault(_Table);
 
-var _Tab = __webpack_require__(602);
+var _Tab = __webpack_require__(606);
 
 var _Tab2 = _interopRequireDefault(_Tab);
 
-var _List = __webpack_require__(606);
+var _List = __webpack_require__(610);
 
 var _List2 = _interopRequireDefault(_List);
 
-var _Page = __webpack_require__(610);
+var _Page = __webpack_require__(614);
 
 var _Page2 = _interopRequireDefault(_Page);
 
-var _Grid = __webpack_require__(614);
+var _Grid = __webpack_require__(618);
 
 var _Grid2 = _interopRequireDefault(_Grid);
 
-var _Scroller = __webpack_require__(618);
+var _Scroller = __webpack_require__(622);
 
 var _Scroller2 = _interopRequireDefault(_Scroller);
 
-var _Motion = __webpack_require__(622);
+var _Motion = __webpack_require__(626);
 
 var _Motion2 = _interopRequireDefault(_Motion);
 
-var _motionChildren = __webpack_require__(626);
+var _motionChildren = __webpack_require__(630);
 
 var _motionChildren2 = _interopRequireDefault(_motionChildren);
 
@@ -42917,7 +42982,7 @@ exports.default = [{
 }];
 
 /***/ }),
-/* 552 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42927,9 +42992,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(553);
+__webpack_require__(557);
 
-var _total = __webpack_require__(555);
+var _total = __webpack_require__(559);
 
 var _total2 = _interopRequireDefault(_total);
 
@@ -43018,13 +43083,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 553 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(554);
+var content = __webpack_require__(558);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43049,7 +43114,7 @@ if(false) {
 }
 
 /***/ }),
-/* 554 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -43063,13 +43128,13 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.welcome {\n 
 
 
 /***/ }),
-/* 555 */
+/* 559 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"welcome\">\r\n  <article class=\"example-article\">\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"z-btn-component\">\r\n        <a href=\"#z-btn-component\">按钮组件</a>\r\n      </h1>\r\n      <z-btn>提交</z-btn>\r\n      <z-btn kind=\"success\">成功</z-btn>\r\n      <z-btn kind=\"warning\">提交</z-btn>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"select-component\">\r\n        <a href=\"#select-component\">下拉框组件</a>\r\n      </h1>\r\n      <z-menu\r\n          :multiple=\"true\"\r\n          :search=\"true\"\r\n          :select-all=\"true\"\r\n          :init-val=\"initVal\">\r\n        <z-menu-ele value=\"1\">{{ testName }}</z-menu-ele>\r\n        <z-menu-ele value=\"2\">测试2</z-menu-ele>\r\n        <z-menu-ele value=\"3\">测试222</z-menu-ele>\r\n        <z-menu-ele value=\"4\">测试3</z-menu-ele>\r\n        <z-menu-ele value=\"5\">测试4</z-menu-ele>\r\n      </z-menu>\r\n\r\n      <z-menu\r\n          :multiple=\"true\"\r\n          :search=\"true\"\r\n          :select-all=\"true\"\r\n          :init-val=\"[1, 3]\"\r\n          :classify=\"[{\r\n            key: 'recent',\r\n            text: '最近'\r\n          }, {\r\n            key: 'hot',\r\n            text: '热门'\r\n          }]\"\r\n          :classify-opt=\"classifyOpt\"></z-menu>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"form-component\">\r\n        <a href=\"#form-component\">表单组件</a>\r\n      </h1>\r\n\r\n      <z-form slot=\"1\" ref=\"formArea\">\r\n          <z-row :gap=\"10\">\r\n            <z-col :span=\"6\">test2: </z-col>\r\n            <z-col :span=\"6\">\r\n              <z-menu\r\n                  :init-opt=\"dropMenuOpt\"\r\n                  :init-val=\"2\"\r\n                  :opt-processor=\"optProcessor\"\r\n                  query-name=\"test3\"></z-menu>\r\n            </z-col>\r\n          </z-row>\r\n\r\n          <z-row :gap=\"10\">\r\n            <z-col :span=\"6\">name: </z-col>\r\n            <z-col :span=\"6\">\r\n              <z-input\r\n                  number\r\n                  init-val=\"test-input\"\r\n                  query-name=\"name\">\r\n              </z-input>\r\n            </z-col>\r\n          </z-row>\r\n\r\n          <z-row :gap=\"10\">\r\n            <z-col :offset=\"6\">\r\n              <z-btn ref=\"submit\" @click=\"submit\">提交</z-btn>\r\n            </z-col>\r\n          </z-row>\r\n        </z-form>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"list-component\">\r\n        <a href=\"#list-component\">列表组件</a>\r\n      </h1>\r\n      <z-list\r\n          page-type=\"more\"\r\n          page-trigger=\"click\"\r\n          scroller-auto-hide\r\n          auto\r\n          pager\r\n          :page-size=\"7\"\r\n          :item=\"dropMenuOpt\"\r\n          class=\"z-css-m-t\">\r\n        <template slot-scope=\"props\">\r\n          <div>{{ props.item.text }}</div>\r\n        </template>\r\n      </z-list>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"table-component\">\r\n        <a href=\"#table-component\">表格组件</a>\r\n      </h1>\r\n      <z-table\r\n          auto\r\n          :thead=\"['test', 'name', 'en']\"\r\n          :tbody=\"dropMenuOpt\">\r\n        <template slot=\"thead\" v-for=\"item in ['test', 'name', 'en']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <template slot=\"tbody\" slot-scope=\"props\">\r\n          <z-table-col>{{ props.item.text }}</z-table-col>\r\n          <z-table-col>{{ props.item.name }}</z-table-col>\r\n          <z-table-col>{{ props.item.en }}</z-table-col>\r\n        </template>\r\n      </z-table>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"layout-component\">\r\n        <a href=\"#layout-component\">布局组件</a>\r\n      </h1>\r\n      <z-row :gap=\"10\">\r\n        <z-col :span=\"6\" :m=4 :xs=\"12\">name: </z-col>\r\n        <z-col :span=\"4\" :m=\"4\" :s=\"8\">\r\n          <z-input\r\n              number\r\n              init-val=\"test-input\"\r\n              query-name=\"test\">\r\n          </z-input>\r\n        </z-col>\r\n        <z-col :span=\"2\" :m=\"4\" :s=\"4\">\r\n          <z-input init-val=\"test-input\" query-name=\"test\"></z-input>\r\n        </z-col>\r\n      </z-row>\r\n      <z-row :gap=\"10\">\r\n        <z-col :grid=\"{xs: 10, s: 8}\" :m=\"4\" :xs=\"12\" :span=\"6\">test1: </z-col>\r\n        <z-col :span=\"6\">\r\n          <z-menu\r\n              @click=\"clickIcon\"\r\n              query-name=\"test2\"\r\n              init-val=\"2\">\r\n            <z-menu-ele value=\"1\">{{ testName }}</z-menu-ele>\r\n            <z-menu-ele value=\"2\">测试2</z-menu-ele>\r\n          </z-menu>\r\n        </z-col>\r\n      </z-row>\r\n\r\n      <z-row :gap=\"10\">\r\n        <z-col :push=\"6\" :span=\"6\">test3: </z-col>\r\n        <z-col :pull=\"6\" :span=\"6\">test3: </z-col>\r\n      </z-row>\r\n      <z-row :gap=\"10\">\r\n        <z-col :span=\"12\" :offset=\"6\">\r\n          <z-btn ref=\"submit\" @click=\"submit\">提交</z-btn>\r\n        </z-col>\r\n      </z-row>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"shift-component\">\r\n        <a href=\"#shift-component\">切换组件</a>\r\n      </h1>\r\n\r\n      <z-shift ref=\"shift\" :index=\"1\">\r\n\r\n\r\n      </z-shift>\r\n\r\n      <z-pop ref=\"pop\">sadf</z-pop>\r\n      <z-btn @click=\"next\">next</z-btn>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"tab-component\">\r\n        <a href=\"#tab-component\">选项卡组件</a>\r\n      </h1>\r\n\r\n      <article>\r\n        <h3>可以嵌套自定义组件</h3>\r\n        <z-tab slot=\"2\">\r\n          <z-tab-ele slot=\"1\" value=\"1\" text=\"tab1\">\r\n            <z-btn @click=\"next\">tab1</z-btn>\r\n          </z-tab-ele>\r\n          <z-tab-ele slot=\"2\" value=\"2\" text=\"tab2\">\r\n            <z-btn @click=\"next\">tab2</z-btn>\r\n          </z-tab-ele>\r\n        </z-tab>\r\n      </article>\r\n\r\n      <article>\r\n        <h3>传入初始化数据</h3>\r\n        <z-tab\r\n            slot=\"3\"\r\n            :init-opt=\"[{\r\n              value: 1,\r\n              text: 'tab-1-1'\r\n            }, {\r\n              value: 2,\r\n              text: 'tab-1-2'\r\n            }, {\r\n              value: 3,\r\n              text: 'tab-1-3'\r\n            }]\"></z-tab>\r\n      </article>\r\n    </section>\r\n  </article>\r\n</div>";
 
 /***/ }),
-/* 556 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43079,9 +43144,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(557);
+__webpack_require__(561);
 
-var _Btn = __webpack_require__(559);
+var _Btn = __webpack_require__(563);
 
 var _Btn2 = _interopRequireDefault(_Btn);
 
@@ -43106,13 +43171,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 557 */
+/* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(558);
+var content = __webpack_require__(562);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43137,7 +43202,7 @@ if(false) {
 }
 
 /***/ }),
-/* 558 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -43151,7 +43216,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 559 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -43212,7 +43277,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 560 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43222,9 +43287,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(561);
+__webpack_require__(565);
 
-var _Start = __webpack_require__(563);
+var _Start = __webpack_require__(567);
 
 var _Start2 = _interopRequireDefault(_Start);
 
@@ -43249,144 +43314,6 @@ exports.default = {
 };
 
 /***/ }),
-/* 561 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(562);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(2)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Start.scss", function() {
-			var newContent = require("!!../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Start.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 562 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/***/ }),
-/* 563 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var pug = __webpack_require__(8);
-
-function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
-var block = (this && this.block), attributes = (this && this.attributes) || {};
-pug_html = pug_html + "\u003Csection\u003E\u003Crouter-link" + (" class=\"anchor-title\""+" tag=\"h1\""+pug.attr(":to", 'anchorLink("' + name + '")', true, true)) + "\u003E\u003Cspan @click=\"goAnchor\"\u003E" + (pug.escape(null == (pug_interp = title) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E\u003C\u002Frouter-link\u003E";
-if (block) {
-block && block();
-}
-else {
-pug_html = pug_html + "\u003Cp\u003E暂无内容\u003C\u002Fp\u003E";
-}
-pug_html = pug_html + "\u003C\u002Fsection\u003E";
-};
-pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cp\u003E在终端安装\u003C\u002Fp\u003E\u003Cz-code\u003Enpm i vue2do -S\u003C\u002Fz-code\u003E\u003Cp\u003E全部加载\u003C\u002Fp\u003E\u003Cz-code\u003Eimport Vue from 'vue'\nimport vue2do from 'vue2do'\n\nVue.use(vue2do)\u003C\u002Fz-code\u003E\u003Cp\u003E局部加载\u003C\u002Fp\u003E\u003Cz-code\u003Eimport {\n  select,\n  input\n  \u002F\u002F ...\n} from 'vue2do'\n\nVue.component('select', select)\nVue.component('yourPrefix' + input.compName, input)\u003C\u002Fz-code\u003E";
-}
-}, 'start', '开始使用');
-pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
-module.exports = template;
-
-/***/ }),
-/* 564 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-__webpack_require__(565);
-
-var _Select = __webpack_require__(567);
-
-var _Select2 = _interopRequireDefault(_Select);
-
-var _mixin = __webpack_require__(10);
-
-var _mixin2 = _interopRequireDefault(_mixin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  name: 'PageCompSelect',
-
-  template: (0, _Select2.default)(),
-
-  mixins: [_mixin2.default],
-
-  data: function data() {
-    return {
-      testName: 'test',
-      dropMenuOpt: [],
-      classifyOpt: {
-        recent: [{
-          value: 1,
-          text: 'test1'
-        }],
-        hot: [{
-          value: 1,
-          text: 'test1'
-        }, {
-          value: 2,
-          text: 'test2'
-        }, {
-          value: 3,
-          text: 'test3'
-        }]
-      },
-      initVal: []
-    };
-  },
-
-
-  computed: {
-    selectOpt: function selectOpt() {
-      this.testOpt.unshift({
-        value: -1,
-        text: '请选择'
-      });
-
-      return this.testOpt;
-    }
-  }
-};
-
-/***/ }),
 /* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -43407,8 +43334,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Select.scss", function() {
-			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Select.scss");
+		module.hot.accept("!!../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Start.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Start.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -43451,39 +43378,9 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E直接传入 init-opt\u003C\u002Fp\u003E\u003Cz-select :init-opt=\"selectOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select :init-opt="selectOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cp\u003E在终端安装\u003C\u002Fp\u003E\u003Cz-code\u003Enpm i vue2do -S\u003C\u002Fz-code\u003E\u003Cp\u003E全部加载\u003C\u002Fp\u003E\u003Cz-code\u003Eimport Vue from 'vue'\nimport vue2do from 'vue2do'\n\nVue.use(vue2do)\u003C\u002Fz-code\u003E\u003Cp\u003E局部加载\u003C\u002Fp\u003E\u003Cz-code\u003Eimport {\n  select,\n  input\n  \u002F\u002F ...\n} from 'vue2do'\n\nVue.component('select', select)\nVue.component('yourPrefix' + input.compName, input)\u003C\u002Fz-code\u003E";
 }
 }, 'start', '开始使用');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E用直观的标签声明下拉框的数据\u003C\u002Fp\u003E\u003Cz-select\u003E\u003Cz-select-ele value=\"1\"\u003E{{ testName }}\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"2\"\u003E按钮\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"3\"\u003E测试3\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"4\"\u003E测试4\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"5\"\u003E测试5\u003C\u002Fz-select-ele\u003E\u003C\u002Fz-select\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-select>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="1">{{ testName }}</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="2">按钮</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="3">测试222</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="4">测试3</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="5">测试4</z-select-ele>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
-}
-}, 'tag', '添加子标签');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-select select-all :classify=\"[{key: &quot;recent&quot;,text: &quot;最近&quot;}, {key: &quot;hot&quot;,text: &quot;热门&quot;}]\" :classify-opt=\"classifyOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select') ? "" : pug_interp)) + "\n  :select-all=\"true\"\n  :classify=\"[{\n    key: 'recent',\n    text: '最近'\n  }, {\n    key: 'hot',\n    text: '热门'\n  }]\"\n" + (pug.escape(null == (pug_interp = '  :classify-opt="classifyOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
-}
-}, 'classify', '分类下拉选择');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-select multiple :init-opt=\"selectOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select') ? "" : pug_interp)) + "\n  multiple\n  " + (pug.escape(null == (pug_interp = ':init-opt="selectOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
-}
-}, 'multiple', '多选下拉框');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-select search :init-opt=\"selectOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select search :init-opt="selectOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
-}
-}, 'search', '搜索功能');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-select :init-val=\"2\" :init-opt=\"selectOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select :init-val="2" :init-opt="selectOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
-}
-}, 'init', '指定选定下拉选项');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003EclassifyOpt\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E分类下拉框的数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003EdefaultVal\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E按钮种类，默认值 -1\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003EinitVal\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E默认第一个显示的值\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003EinitOpt\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E下拉框的 option 数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Eparam\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E搜索参数名 (组件作为表单控时候的搜索参数名)\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003Estore\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EAll\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E储存实例化的信息\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003EerrorMessage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E没选的时候显示的错误信息\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003Emax\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E多选下拉框最多选择几个（默认是 0）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"9\"\u003E\u003Cz-table-col\u003Emin\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E多选下拉框至少选择几个（默认是 0）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"10\"\u003E\u003Cz-table-col\u003Erequired\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E必须选择下拉框的值（默认是 false）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"11\"\u003E\u003Cz-table-col\u003EreadOnly\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E只读（默认是 false）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"12\"\u003E\u003Cz-table-col\u003EtxtName\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E指定读取 下拉框 optionItems 的 text 值的 key 的名字\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"13\"\u003E\u003Cz-table-col\u003EvalName\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E指定读取下拉框 optionItems 的 value 值的 key 的名字\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"14\"\u003E\u003Cz-table-col\u003Eclassify\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E有值（数组类型）就开启标题下拉框 option 分类模式\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"15\"\u003E\u003Cz-table-col\u003Emultiple\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E开启多选\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"16\"\u003E\u003Cz-table-col\u003Esearch\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E开启搜索过滤（默认为 false）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"17\"\u003E\u003Cz-table-col\u003EselectAll\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动全选的功能（默认是 false）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"18\"\u003E\u003Cz-table-col\u003EselectAllTxt\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E全选选项的名字\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
-}
-}, 'props', 'props 数据类型');
 pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
@@ -43500,9 +43397,9 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(569);
 
-var _Menu = __webpack_require__(571);
+var _Select = __webpack_require__(571);
 
-var _Menu2 = _interopRequireDefault(_Menu);
+var _Select2 = _interopRequireDefault(_Select);
 
 var _mixin = __webpack_require__(10);
 
@@ -43511,9 +43408,9 @@ var _mixin2 = _interopRequireDefault(_mixin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'PageCompMenu',
+  name: 'PageCompSelect',
 
-  template: (0, _Menu2.default)(),
+  template: (0, _Select2.default)(),
 
   mixins: [_mixin2.default],
 
@@ -43575,8 +43472,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Menu.scss", function() {
-			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Menu.scss");
+		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Select.scss", function() {
+			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Select.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -43619,17 +43516,37 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-menu\u003E\u003Cz-menu-ele value=\"1\"\u003E{{ testName }}\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"2\"\u003E\u003Cz-btn\u003E按钮\u003C\u002Fz-btn\u003E\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"3\"\u003E测试3\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"4\"\u003E测试4\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"5\"\u003E测试5\u003C\u002Fz-menu-ele\u003E\u003C\u002Fz-menu\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-menu>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="1">{{ testName }}</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="2">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-btn>按钮</z-btn>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="3">测试222</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="4">测试3</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="5">测试4</z-menu-ele>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-menu>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E直接传入 init-opt\u003C\u002Fp\u003E\u003Cz-select :init-opt=\"selectOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select :init-opt="selectOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E使用自定义的触发器，并且不遮盖触发器\u003C\u002Fp\u003E\u003Cz-menu noCoverTrig\u003E\u003Cz-btn slot=\"trigger\" type=\"flat\"\u003E菜单\u003C\u002Fz-btn\u003E\u003Cz-menu-ele value=\"1\"\u003E{{ testName }}\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"2\"\u003E\u003Cz-btn\u003E按钮\u003C\u002Fz-btn\u003E\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"3\"\u003E测试3\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"4\"\u003E测试4\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"5\"\u003E测试5\u003C\u002Fz-menu-ele\u003E\u003C\u002Fz-menu\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-menu noCoverTrig>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-trig slot="trigger"><z-btn type="flat" /></z-menu-trig>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="1">{{ testName }}</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="2">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-btn>按钮</z-btn>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="3">测试222</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="4">测试3</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="5">测试4</z-menu-ele>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-menu>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E用直观的标签声明下拉框的数据\u003C\u002Fp\u003E\u003Cz-select\u003E\u003Cz-select-ele value=\"1\"\u003E{{ testName }}\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"2\"\u003E按钮\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"3\"\u003E测试3\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"4\"\u003E测试4\u003C\u002Fz-select-ele\u003E\u003Cz-select-ele value=\"5\"\u003E测试5\u003C\u002Fz-select-ele\u003E\u003C\u002Fz-select\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-select>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="1">{{ testName }}</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="2">按钮</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="3">测试222</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="4">测试3</z-select-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-select-ele value="5">测试4</z-select-ele>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'start', '开始使用');
+}, 'tag', '添加子标签');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Estore\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E储存实例化的信息\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003EnoCoverTrig\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E菜单展开是不遮挡触发器，TODO： pc 上默认是不遮挡的，mobile 是默认遮挡的\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003EnoTrig\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E不使用组件自带的菜单触发器\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Eheight\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E菜单高度，1、auto：根据菜单内容的高度，2、数字：输入数字就是自定义的像素高度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Ewidth\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E菜单宽度，1、auto：根据菜单内容的宽度，2、数字：输入数字就是自定义的像素高度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003EtrigHeight\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E菜单触发器的高度，1、auto：根据菜单内容的高度，2、数字：输入数字就是自定义的像素高度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+pug_html = pug_html + "\u003Cz-select select-all :classify=\"[{key: &quot;recent&quot;,text: &quot;最近&quot;}, {key: &quot;hot&quot;,text: &quot;热门&quot;}]\" :classify-opt=\"classifyOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select') ? "" : pug_interp)) + "\n  :select-all=\"true\"\n  :classify=\"[{\n    key: 'recent',\n    text: '最近'\n  }, {\n    key: 'hot',\n    text: '热门'\n  }]\"\n" + (pug.escape(null == (pug_interp = '  :classify-opt="classifyOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+}
+}, 'classify', '分类下拉选择');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-select multiple :init-opt=\"selectOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select') ? "" : pug_interp)) + "\n  multiple\n  " + (pug.escape(null == (pug_interp = ':init-opt="selectOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+}
+}, 'multiple', '多选下拉框');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-select search :init-opt=\"selectOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select search :init-opt="selectOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+}
+}, 'search', '搜索功能');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-select :init-val=\"2\" :init-opt=\"selectOpt\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select :init-val="2" :init-opt="selectOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+}
+}, 'init', '指定选定下拉选项');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003EclassifyOpt\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E分类下拉框的数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003EdefaultVal\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E按钮种类，默认值 -1\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003EinitVal\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E默认第一个显示的值\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003EinitOpt\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E下拉框的 option 数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Eparam\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E搜索参数名 (组件作为表单控时候的搜索参数名)\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003Estore\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EAll\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E储存实例化的信息\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003EerrorMessage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E没选的时候显示的错误信息\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003Emax\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E多选下拉框最多选择几个（默认是 0）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"9\"\u003E\u003Cz-table-col\u003Emin\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E多选下拉框至少选择几个（默认是 0）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"10\"\u003E\u003Cz-table-col\u003Erequired\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E必须选择下拉框的值（默认是 false）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"11\"\u003E\u003Cz-table-col\u003EreadOnly\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E只读（默认是 false）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"12\"\u003E\u003Cz-table-col\u003EtxtName\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E指定读取 下拉框 optionItems 的 text 值的 key 的名字\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"13\"\u003E\u003Cz-table-col\u003EvalName\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E指定读取下拉框 optionItems 的 value 值的 key 的名字\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"14\"\u003E\u003Cz-table-col\u003Eclassify\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E有值（数组类型）就开启标题下拉框 option 分类模式\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"15\"\u003E\u003Cz-table-col\u003Emultiple\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E开启多选\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"16\"\u003E\u003Cz-table-col\u003Esearch\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E开启搜索过滤（默认为 false）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"17\"\u003E\u003Cz-table-col\u003EselectAll\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动全选的功能（默认是 false）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"18\"\u003E\u003Cz-table-col\u003EselectAllTxt\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E全选选项的名字\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
 }
 }, 'props', 'props 数据类型');
 pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
@@ -43648,9 +43565,9 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(573);
 
-var _Check = __webpack_require__(575);
+var _Menu = __webpack_require__(575);
 
-var _Check2 = _interopRequireDefault(_Check);
+var _Menu2 = _interopRequireDefault(_Menu);
 
 var _mixin = __webpack_require__(10);
 
@@ -43659,16 +43576,46 @@ var _mixin2 = _interopRequireDefault(_mixin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'PageCompCheck',
+  name: 'PageCompMenu',
 
-  template: (0, _Check2.default)(),
+  template: (0, _Menu2.default)(),
 
   mixins: [_mixin2.default],
 
   data: function data() {
     return {
-      testName: 'test'
+      testName: 'test',
+      dropMenuOpt: [],
+      classifyOpt: {
+        recent: [{
+          value: 1,
+          text: 'test1'
+        }],
+        hot: [{
+          value: 1,
+          text: 'test1'
+        }, {
+          value: 2,
+          text: 'test2'
+        }, {
+          value: 3,
+          text: 'test3'
+        }]
+      },
+      initVal: []
     };
+  },
+
+
+  computed: {
+    selectOpt: function selectOpt() {
+      this.testOpt.unshift({
+        value: -1,
+        text: '请选择'
+      });
+
+      return this.testOpt;
+    }
   }
 };
 
@@ -43693,8 +43640,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Check.scss", function() {
-			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Check.scss");
+		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Menu.scss", function() {
+			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Menu.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -43719,6 +43666,124 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 /* 575 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var pug = __webpack_require__(8);
+
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
+var block = (this && this.block), attributes = (this && this.attributes) || {};
+pug_html = pug_html + "\u003Csection\u003E\u003Crouter-link" + (" class=\"anchor-title\""+" tag=\"h1\""+pug.attr(":to", 'anchorLink("' + name + '")', true, true)) + "\u003E\u003Cspan @click=\"goAnchor\"\u003E" + (pug.escape(null == (pug_interp = title) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E\u003C\u002Frouter-link\u003E";
+if (block) {
+block && block();
+}
+else {
+pug_html = pug_html + "\u003Cp\u003E暂无内容\u003C\u002Fp\u003E";
+}
+pug_html = pug_html + "\u003C\u002Fsection\u003E";
+};
+pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-menu\u003E\u003Cz-menu-ele value=\"1\"\u003E{{ testName }}\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"2\"\u003E\u003Cz-btn\u003E按钮\u003C\u002Fz-btn\u003E\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"3\"\u003E测试3\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"4\"\u003E测试4\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"5\"\u003E测试5\u003C\u002Fz-menu-ele\u003E\u003C\u002Fz-menu\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-menu>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="1">{{ testName }}</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="2">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-btn>按钮</z-btn>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="3">测试222</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="4">测试3</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="5">测试4</z-menu-ele>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-menu>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+}
+}, 'start', '开始使用');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E使用自定义的触发器，并且不遮盖触发器\u003C\u002Fp\u003E\u003Cz-menu noCoverTrig\u003E\u003Cz-btn slot=\"trigger\" type=\"flat\"\u003E菜单\u003C\u002Fz-btn\u003E\u003Cz-menu-ele value=\"1\"\u003E{{ testName }}\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"2\"\u003E\u003Cz-btn\u003E按钮\u003C\u002Fz-btn\u003E\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"3\"\u003E测试3\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"4\"\u003E测试4\u003C\u002Fz-menu-ele\u003E\u003Cz-menu-ele value=\"5\"\u003E测试5\u003C\u002Fz-menu-ele\u003E\u003C\u002Fz-menu\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-menu noCoverTrig>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-trig slot="trigger"><z-btn type="flat" /></z-menu-trig>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="1">{{ testName }}</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="2">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-btn>按钮</z-btn>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="3">测试222</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="4">测试3</z-menu-ele>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-menu-ele value="5">测试4</z-menu-ele>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-menu>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+}
+}, 'start', '开始使用');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Estore\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E储存实例化的信息\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003EnoCoverTrig\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E菜单展开是不遮挡触发器，TODO： pc 上默认是不遮挡的，mobile 是默认遮挡的\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003EnoTrig\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E( *false | true )\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E不使用组件自带的菜单触发器\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Eheight\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E菜单高度，1、auto：根据菜单内容的高度，2、数字：输入数字就是自定义的像素高度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Ewidth\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E菜单宽度，1、auto：根据菜单内容的宽度，2、数字：输入数字就是自定义的像素高度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003EtrigHeight\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E菜单触发器的高度，1、auto：根据菜单内容的高度，2、数字：输入数字就是自定义的像素高度\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'props', 'props 数据类型');
+pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
+module.exports = template;
+
+/***/ }),
+/* 576 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+__webpack_require__(577);
+
+var _Check = __webpack_require__(579);
+
+var _Check2 = _interopRequireDefault(_Check);
+
+var _mixin = __webpack_require__(10);
+
+var _mixin2 = _interopRequireDefault(_mixin);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  name: 'PageCompCheck',
+
+  template: (0, _Check2.default)(),
+
+  mixins: [_mixin2.default],
+
+  data: function data() {
+    return {
+      testName: 'test'
+    };
+  }
+};
+
+/***/ }),
+/* 577 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(578);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(2)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Check.scss", function() {
+			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Check.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 578 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -43764,7 +43829,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 576 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43774,9 +43839,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(577);
+__webpack_require__(581);
 
-var _Input = __webpack_require__(579);
+var _Input = __webpack_require__(583);
 
 var _Input2 = _interopRequireDefault(_Input);
 
@@ -43806,27 +43871,17 @@ exports.default = {
     clickVerifyInput: function clickVerifyInput() {
       var verified = this.$refs.verifyInput.validate();
     }
-  },
-
-  mounted: function mounted() {
-    var _this = this;
-
-    this.$refs.startInput && this.$refs.startInput.val('dedd');
-
-    setTimeout(function () {
-      _this.$refs.startInput && _this.$refs.startInput.val('');
-    }, 2000);
   }
 };
 
 /***/ }),
-/* 577 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(578);
+var content = __webpack_require__(582);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43851,7 +43906,7 @@ if(false) {
 }
 
 /***/ }),
-/* 578 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -43865,7 +43920,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 579 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -43921,7 +43976,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 580 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43931,7 +43986,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Icon = __webpack_require__(581);
+var _Icon = __webpack_require__(585);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
@@ -43956,7 +44011,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 581 */
+/* 585 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -43987,7 +44042,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 582 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43997,9 +44052,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(583);
+__webpack_require__(587);
 
-var _Modal = __webpack_require__(585);
+var _Modal = __webpack_require__(589);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -44056,13 +44111,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 583 */
+/* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(584);
+var content = __webpack_require__(588);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -44087,7 +44142,7 @@ if(false) {
 }
 
 /***/ }),
-/* 584 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -44101,7 +44156,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 585 */
+/* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44162,7 +44217,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 586 */
+/* 590 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44172,9 +44227,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(587);
+__webpack_require__(591);
 
-var _Omit = __webpack_require__(589);
+var _Omit = __webpack_require__(593);
 
 var _Omit2 = _interopRequireDefault(_Omit);
 
@@ -44199,13 +44254,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 587 */
+/* 591 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(588);
+var content = __webpack_require__(592);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -44230,7 +44285,7 @@ if(false) {
 }
 
 /***/ }),
-/* 588 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -44244,7 +44299,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 589 */
+/* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44275,7 +44330,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 590 */
+/* 594 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44285,9 +44340,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(591);
+__webpack_require__(595);
 
-var _Pop = __webpack_require__(593);
+var _Pop = __webpack_require__(597);
 
 var _Pop2 = _interopRequireDefault(_Pop);
 
@@ -44328,13 +44383,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 591 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(592);
+var content = __webpack_require__(596);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -44359,7 +44414,7 @@ if(false) {
 }
 
 /***/ }),
-/* 592 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -44373,7 +44428,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 593 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44414,7 +44469,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 594 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44424,9 +44479,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(595);
+__webpack_require__(599);
 
-var _Tip = __webpack_require__(597);
+var _Tip = __webpack_require__(601);
 
 var _Tip2 = _interopRequireDefault(_Tip);
 
@@ -44508,124 +44563,6 @@ exports.default = {
 };
 
 /***/ }),
-/* 595 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(596);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(2)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Tip.scss", function() {
-			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Tip.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 596 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/***/ }),
-/* 597 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var pug = __webpack_require__(8);
-
-function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
-var block = (this && this.block), attributes = (this && this.attributes) || {};
-pug_html = pug_html + "\u003Csection\u003E\u003Crouter-link" + (" class=\"anchor-title\""+" tag=\"h1\""+pug.attr(":to", 'anchorLink("' + name + '")', true, true)) + "\u003E\u003Cspan @click=\"goAnchor\"\u003E" + (pug.escape(null == (pug_interp = title) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E\u003C\u002Frouter-link\u003E";
-if (block) {
-block && block();
-}
-else {
-pug_html = pug_html + "\u003Cp\u003E暂无内容\u003C\u002Fp\u003E";
-}
-pug_html = pug_html + "\u003C\u002Fsection\u003E";
-};
-pug_html = pug_html + "\u003Cdiv class=\"component-pop\"\u003E\u003Carticle class=\"example-article\"\u003E";
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-btn @click=\"tip\"\u003E提示\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = 'import { tip } from "vue2do"') ? "" : pug_interp)) + "\n\n" + (pug.escape(null == (pug_interp = '<z-btn @click="tip">') ? "" : pug_interp)) + "\n  提示\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
-}
-}, 'start', '弹窗');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-btn @click=\"toast\"\u003Etoast\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = 'import { toast } from "vue2do"') ? "" : pug_interp)) + "\n\n" + (pug.escape(null == (pug_interp = '<z-btn @click="toast">') ? "" : pug_interp)) + "\n  toast\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
-}
-}, 'start', '底部弹出提示（toast）');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-btn @click.native=\"bubble\" v-bubble=\"bubbleTip\"\u003E泡泡提示\u003C\u002Fz-btn\u003E\u003Cz-bubble ref=\"bubble\" v-click-parent=\"clickParent\"\u003E\u003Cp\u003E泡泡提示\u003C\u002Fp\u003E\u003C\u002Fz-bubble\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-btn @click="toast">') ? "" : pug_interp)) + "\n  泡泡提示\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '<z-btn @click="toast">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>泡泡提示</p>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
-}
-}, 'bubble', '泡泡提示');
-pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
-module.exports = template;
-
-/***/ }),
-/* 598 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-__webpack_require__(599);
-
-var _Table = __webpack_require__(601);
-
-var _Table2 = _interopRequireDefault(_Table);
-
-var _mixin = __webpack_require__(10);
-
-var _mixin2 = _interopRequireDefault(_mixin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  name: 'PageCompTable',
-
-  template: (0, _Table2.default)(),
-
-  mixins: [_mixin2.default],
-
-  data: function data() {
-    return {
-      testName: 'test'
-    };
-  }
-};
-
-/***/ }),
 /* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44646,8 +44583,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Table.scss", function() {
-			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Table.scss");
+		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Tip.scss", function() {
+			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Tip.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -44687,27 +44624,22 @@ pug_html = pug_html + "\u003Cp\u003E暂无内容\u003C\u002Fp\u003E";
 }
 pug_html = pug_html + "\u003C\u002Fsection\u003E";
 };
-pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
+pug_html = pug_html + "\u003Cdiv class=\"component-pop\"\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-table\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Edisplay\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E布尔值\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Etrue\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E分页的显示状态\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Edisplay2\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E布\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Efalse\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E分页的显示状态\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Edisplay3\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E布尔值\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Etrue\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E撒旦发\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-table>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<') ? "" : pug_interp)) + "template slot=\"thead\" v-for=\"item in ['名字', '类型', '可选值', '说明']\"" + (pug.escape(null == (pug_interp = '>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ item }}</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</template>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-table-row slot="1">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>display</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>布尔值</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>true</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>分页的显示状态</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-table-row>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-table-row slot="2">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>display2</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>布尔值</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>false</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col></z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-table-row>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-table-row slot="3">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>display3</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>布尔值</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>true</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>显示</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-table-row>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-table>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-btn @click=\"tip\"\u003E提示\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = 'import { tip } from "vue2do"') ? "" : pug_interp)) + "\n\n" + (pug.escape(null == (pug_interp = '<z-btn @click="tip">') ? "" : pug_interp)) + "\n  提示\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'start', '开始使用');
+}, 'start', '弹窗');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-table auto list pager :page-size=\"11\" :thead=\"[&quot;test&quot;, &quot;name&quot;, &quot;en&quot;]\" :tbody=\"testOpt\"\u003E\u003Ctemplate slot=\"thead\"\u003E\u003Cz-table-col max-width=\"30%\"\u003Etest\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Ename\u003C\u002Fz-table-col\u003E\u003Cz-table-col max-width=\"100px\"\u003Een\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Ctemplate slot=\"tbody\" slot-scope=\"props\"\u003E\u003Cz-table-col\u003E{{ props.item.text }}\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E{{ props.item.name }}\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E{{ props.item.en }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003C\u002Fz-table\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-table') ? "" : pug_interp)) + "\n    auto\n    list\n    pager\n    :pageSize=\"10\"\n    :thead=\"['test', 'name', 'en']\"\n    " + (pug.escape(null == (pug_interp = ':tbody="testOpt">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<template slot="thead">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col max-width="30%">test</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>name</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col max-width="100px">en</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</template>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<template slot="tbody" slot-scope="props">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ props.item.text }}</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ props.item.name }}</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ props.item.en }}</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</template>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-table>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-btn @click=\"toast\"\u003Etoast\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = 'import { toast } from "vue2do"') ? "" : pug_interp)) + "\n\n" + (pug.escape(null == (pug_interp = '<z-btn @click="toast">') ? "" : pug_interp)) + "\n  toast\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'list', '展示列表化的表格数据');
+}, 'start', '底部弹出提示（toast）');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Eauto\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E根据传入的列表数据生成分页数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Eborder\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(*none | all | row | col)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E表格的边界线的类型，\u003C\u002Fp\u003E\n（none：默认是不要边界线，all：横竖都要，row：只要行与行之间要，col：只要列与列之间要）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Epage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E分页数据（没传的话，默认将传的列表数据（item）作为分页数据）\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Ecurrent - 当前页码\u003C\u002Fli\u003E\u003Cli\u003Etotal - 总共页码\u003C\u002Fli\u003E\u003Cli\u003Elength - 数据总长度\u003C\u002Fli\u003E\u003Cli\u003Esize - 每页展示的数据长度\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Epager\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动分页功能\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Elist\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E默认是不以列表化的表格数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003Ethead\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E表头标题数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003Etbody\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E列表标题数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003EpageSize\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E将列表数据（item）分为每页多少条数据, 默认为 5。\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"9\"\u003E\u003Cz-table-col\u003EscrollerAutoHide\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动滚动条自动隐藏\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+pug_html = pug_html + "\u003Cz-btn @click.native=\"bubble\" v-bubble=\"bubbleTip\"\u003E泡泡提示\u003C\u002Fz-btn\u003E\u003Cz-bubble ref=\"bubble\" v-click-parent=\"clickParent\"\u003E\u003Cp\u003E泡泡提示\u003C\u002Fp\u003E\u003C\u002Fz-bubble\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-btn @click="toast">') ? "" : pug_interp)) + "\n  泡泡提示\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '<z-btn @click="toast">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>泡泡提示</p>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
-}, 'props', 'props 数据类型');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;返回值类型&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003EswitchPage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E换页触发事件, 返回值说明：\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003EcurrentPage: 当前页码\u003C\u002Fli\u003E\u003Cli\u003Eemitter: 派送事件的 viewModel\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
-}
-}, 'events', 'events 事件');
+}, 'bubble', '泡泡提示');
 pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
@@ -44724,9 +44656,9 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(603);
 
-var _Tab = __webpack_require__(605);
+var _Table = __webpack_require__(605);
 
-var _Tab2 = _interopRequireDefault(_Tab);
+var _Table2 = _interopRequireDefault(_Table);
 
 var _mixin = __webpack_require__(10);
 
@@ -44735,9 +44667,9 @@ var _mixin2 = _interopRequireDefault(_mixin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'PageCompTab',
+  name: 'PageCompTable',
 
-  template: (0, _Tab2.default)(),
+  template: (0, _Table2.default)(),
 
   mixins: [_mixin2.default],
 
@@ -44769,8 +44701,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Tab.scss", function() {
-			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Tab.scss");
+		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Table.scss", function() {
+			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Table.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -44813,19 +44745,24 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-tab query :init-opt=\"testOpt.slice(0, 2)\"\u003E\u003C\u002Fz-tab\u003E\u003Cz-code type=\"html\"\u003E" + (pug.escape(null == (pug_interp = '<z-tab query :init-opt="testOpt"></z-tab>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E\u003Cz-code type=\"js\"\u003E...\n  data() {\n    return {\n      testOpt: [{\n        value: 0,\n        text: 'test-0'\n      }, {\n        value: 1,\n        text: 'test-1'\n      }]\n    }\n  },\n...\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-table\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Edisplay\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E布尔值\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Etrue\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E分页的显示状态\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Edisplay2\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E布\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Efalse\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E分页的显示状态\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Edisplay3\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E布尔值\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Etrue\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E撒旦发\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-table>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<') ? "" : pug_interp)) + "template slot=\"thead\" v-for=\"item in ['名字', '类型', '可选值', '说明']\"" + (pug.escape(null == (pug_interp = '>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ item }}</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</template>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-table-row slot="1">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>display</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>布尔值</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>true</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>分页的显示状态</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-table-row>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-table-row slot="2">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>display2</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>布尔值</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>false</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col></z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-table-row>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-table-row slot="3">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>display3</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>布尔值</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>true</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>显示</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-table-row>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-table>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"(item, index) in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col :max-width=\"index === 3 ? &quot;23px&quot; : &quot;&quot;\"\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003EinitOpt\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Etab 的初始选项\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003EinitVal\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E初始化 tab 的当前 value 值\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Equery\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E*false | true\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E开启根据网址的 search 参数来选择选项卡\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+pug_html = pug_html + "\u003Cz-table auto list pager :page-size=\"11\" :thead=\"[&quot;test&quot;, &quot;name&quot;, &quot;en&quot;]\" :tbody=\"testOpt\"\u003E\u003Ctemplate slot=\"thead\"\u003E\u003Cz-table-col max-width=\"30%\"\u003Etest\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Ename\u003C\u002Fz-table-col\u003E\u003Cz-table-col max-width=\"100px\"\u003Een\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Ctemplate slot=\"tbody\" slot-scope=\"props\"\u003E\u003Cz-table-col\u003E{{ props.item.text }}\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E{{ props.item.name }}\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E{{ props.item.en }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003C\u002Fz-table\u003E\u003Cz-code v-pre\u003E" + (pug.escape(null == (pug_interp = '<z-table') ? "" : pug_interp)) + "\n    auto\n    list\n    pager\n    :pageSize=\"10\"\n    :thead=\"['test', 'name', 'en']\"\n    " + (pug.escape(null == (pug_interp = ':tbody="testOpt">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<template slot="thead">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col max-width="30%">test</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>name</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col max-width="100px">en</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</template>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<template slot="tbody" slot-scope="props">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ props.item.text }}</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ props.item.name }}</z-table-col>') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-table-col>{{ props.item.en }}</z-table-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</template>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-table>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+}
+}, 'list', '展示列表化的表格数据');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Eauto\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E根据传入的列表数据生成分页数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Eborder\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(*none | all | row | col)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E表格的边界线的类型，\u003C\u002Fp\u003E\n（none：默认是不要边界线，all：横竖都要，row：只要行与行之间要，col：只要列与列之间要）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Epage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E分页数据（没传的话，默认将传的列表数据（item）作为分页数据）\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Ecurrent - 当前页码\u003C\u002Fli\u003E\u003Cli\u003Etotal - 总共页码\u003C\u002Fli\u003E\u003Cli\u003Elength - 数据总长度\u003C\u002Fli\u003E\u003Cli\u003Esize - 每页展示的数据长度\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Epager\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动分页功能\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Elist\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E默认是不以列表化的表格数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003Ethead\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E表头标题数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003Etbody\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E列表标题数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003EpageSize\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E将列表数据（item）分为每页多少条数据, 默认为 5。\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"9\"\u003E\u003Cz-table-col\u003EscrollerAutoHide\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动滚动条自动隐藏\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
 }
 }, 'props', 'props 数据类型');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;返回值类型&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Eclick\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E点击事件, 以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 事件宿主\u003C\u002Fli\u003E\u003Cli\u003Evalue - 当前选项卡的值\u003C\u002Fli\u003E\u003Cli\u003Etext - 当前选项卡的文本\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;返回值类型&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003EswitchPage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E换页触发事件, 返回值说明：\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003EcurrentPage: 当前页码\u003C\u002Fli\u003E\u003Cli\u003Eemitter: 派送事件的 viewModel\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
 }
-}, 'events', 'events 组件事件');
+}, 'events', 'events 事件');
 pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
@@ -44842,9 +44779,9 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(607);
 
-var _List = __webpack_require__(609);
+var _Tab = __webpack_require__(609);
 
-var _List2 = _interopRequireDefault(_List);
+var _Tab2 = _interopRequireDefault(_Tab);
 
 var _mixin = __webpack_require__(10);
 
@@ -44853,9 +44790,9 @@ var _mixin2 = _interopRequireDefault(_mixin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'PageCompList',
+  name: 'PageCompTab',
 
-  template: (0, _List2.default)(),
+  template: (0, _Tab2.default)(),
 
   mixins: [_mixin2.default],
 
@@ -44887,8 +44824,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./List.scss", function() {
-			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./List.scss");
+		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Tab.scss", function() {
+			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Tab.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -44906,13 +44843,131 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".component-list .z-list-li {\n  white-space: nowrap; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
 
 /***/ }),
 /* 609 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var pug = __webpack_require__(8);
+
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
+var block = (this && this.block), attributes = (this && this.attributes) || {};
+pug_html = pug_html + "\u003Csection\u003E\u003Crouter-link" + (" class=\"anchor-title\""+" tag=\"h1\""+pug.attr(":to", 'anchorLink("' + name + '")', true, true)) + "\u003E\u003Cspan @click=\"goAnchor\"\u003E" + (pug.escape(null == (pug_interp = title) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E\u003C\u002Frouter-link\u003E";
+if (block) {
+block && block();
+}
+else {
+pug_html = pug_html + "\u003Cp\u003E暂无内容\u003C\u002Fp\u003E";
+}
+pug_html = pug_html + "\u003C\u002Fsection\u003E";
+};
+pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-tab query :init-opt=\"testOpt.slice(0, 2)\"\u003E\u003C\u002Fz-tab\u003E\u003Cz-code type=\"html\"\u003E" + (pug.escape(null == (pug_interp = '<z-tab query :init-opt="testOpt"></z-tab>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E\u003Cz-code type=\"js\"\u003E...\n  data() {\n    return {\n      testOpt: [{\n        value: 0,\n        text: 'test-0'\n      }, {\n        value: 1,\n        text: 'test-1'\n      }]\n    }\n  },\n...\u003C\u002Fz-code\u003E";
+}
+}, 'start', '开始使用');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"(item, index) in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col :max-width=\"index === 3 ? &quot;23px&quot; : &quot;&quot;\"\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003EinitOpt\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003Etab 的初始选项\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003EinitVal\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString, Number\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E初始化 tab 的当前 value 值\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Equery\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E*false | true\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E开启根据网址的 search 参数来选择选项卡\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'props', 'props 数据类型');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;返回值类型&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Eclick\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E点击事件, 以下的为返回值说明\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Eemitter - 事件宿主\u003C\u002Fli\u003E\u003Cli\u003Evalue - 当前选项卡的值\u003C\u002Fli\u003E\u003Cli\u003Etext - 当前选项卡的文本\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'events', 'events 组件事件');
+pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
+module.exports = template;
+
+/***/ }),
+/* 610 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+__webpack_require__(611);
+
+var _List = __webpack_require__(613);
+
+var _List2 = _interopRequireDefault(_List);
+
+var _mixin = __webpack_require__(10);
+
+var _mixin2 = _interopRequireDefault(_mixin);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  name: 'PageCompList',
+
+  template: (0, _List2.default)(),
+
+  mixins: [_mixin2.default],
+
+  data: function data() {
+    return {
+      testName: 'test'
+    };
+  }
+};
+
+/***/ }),
+/* 611 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(612);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(2)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./List.scss", function() {
+			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./List.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 612 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".component-list .z-list-li {\n  white-space: nowrap; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44948,7 +45003,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 610 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44958,9 +45013,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(611);
+__webpack_require__(615);
 
-var _Page = __webpack_require__(613);
+var _Page = __webpack_require__(617);
 
 var _Page2 = _interopRequireDefault(_Page);
 
@@ -44988,13 +45043,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 611 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(612);
+var content = __webpack_require__(616);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -45019,92 +45074,6 @@ if(false) {
 }
 
 /***/ }),
-/* 612 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/***/ }),
-/* 613 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"component-page\">\r\n  <article class=\"example-article\">\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('basic')\">\r\n        <span @click=\"goAnchor\">基本用法</span>\r\n      </router-link>\r\n\r\n      <p class=\"section-description\">默认是点击数字的分页形式</p>\r\n\r\n      <z-page :data=\"{\r\n        length: 24,\r\n        size: 5,\r\n        total: 5,\r\n        current: 2\r\n      }\"></z-page>\r\n\r\n      <z-code v-pre>&ltz-page :data=\"{\r\n  length: 24,\r\n  size: 5,\r\n  total: 5,\r\n  current: 2\r\n}\">&lt/z-page&gt</z-code>\r\n    </section>\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('more')\">\r\n        <span @click=\"goAnchor\">加载更多的分页形式</span>\r\n      </router-link>\r\n\r\n      <z-page auto :data=\"pageData\" type=\"more\"></z-page>\r\n\r\n      <z-code v-pre>&ltz-page auto :data=\"pageData\" type=\"more\"&gt&lt/z-page&gt</z-code>\r\n    </section>\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('auto')\">\r\n        <span @click=\"goAnchor\">自动计算分页数据</span>\r\n      </router-link>\r\n\r\n      <z-page auto :data=\"{\r\n        length: 24,\r\n        size: 5\r\n      }\"></z-page>\r\n\r\n      <z-code v-pre>&ltz-page auto :data=\"{\r\n  length: 24,\r\n  size: 5\r\n}\"&gt&lt/z-page&gt</z-code>\r\n    </section>\r\n\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :list=\"false\"\r\n          :to=\"anchorLink('props')\">\r\n        <span @click=\"goAnchor\">props 数据类型</span>\r\n      </router-link>\r\n\r\n      <z-table\r\n          border=\"row\"\r\n          auto\r\n          :pageSize=\"10\">\r\n        <template slot=\"thead\" v-for=\"item in ['名字', '类型', '可选值', '说明']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <z-table-row slot=\"1\">\r\n          <z-table-col>auto</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>(*false | true)</z-table-col>\r\n          <z-table-col>分页的显示状态</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"2\">\r\n          <z-table-col>display</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>(*false | true)</z-table-col>\r\n          <z-table-col>分页的显示状态</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"3\">\r\n          <z-table-col>data</z-table-col>\r\n          <z-table-col>Object</z-table-col>\r\n          <z-table-col>——</z-table-col>\r\n          <z-table-col>\r\n            <p>分页数据</p>\r\n            <ul>\r\n              <li>length：一共有几条数据</li>\r\n              <li>total：一共有多少页</li>\r\n              <li>size：每页几条数据</li>\r\n              <li>current：当前的页码</li>\r\n            </ul>\r\n          </z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"4\">\r\n          <z-table-col>onePageDisplay</z-table-col>\r\n          <z-table-col>布尔值</z-table-col>\r\n          <z-table-col>(*false | true)</z-table-col>\r\n          <z-table-col>分页总页数为 1 时是否显示</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"5\">\r\n          <z-table-col>size</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>（s | *m | l）</z-table-col>\r\n          <z-table-col>分页外观尺寸大小</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"6\">\r\n          <z-table-col>type</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>（more | *num）</z-table-col>\r\n          <z-table-col>\r\n            <p>分页类型</p>\r\n            <ul>\r\n              <li>more：加载更多</li>\r\n              <li>num：数字标注（默认）</li>\r\n            </ul>\r\n          </z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"7\">\r\n          <z-table-col>loadMoreText</z-table-col>\r\n          <z-table-col>String</z-table-col>\r\n          <z-table-col>——</z-table-col>\r\n          <z-table-col>\r\n            加载更多的提示文字\r\n          </z-table-col>\r\n        </z-table-row>\r\n      </z-table>\r\n    </section>\r\n\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :list=\"false\"\r\n          :to=\"anchorLink('events')\">\r\n        <span @click=\"goAnchor\">events 事件</span>\r\n      </router-link>\r\n\r\n      <z-table\r\n          border=\"row\"\r\n          auto\r\n          :pageSize=\"10\">\r\n        <template slot=\"thead\" v-for=\"item in ['名字', '返回值类型', '说明']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <z-table-row slot=\"1\">\r\n          <z-table-col>switch</z-table-col>\r\n          <z-table-col>Number</z-table-col>\r\n          <z-table-col>切换页码触发的事件</z-table-col>\r\n        </z-table-row>\r\n      </z-table>\r\n    </section>\r\n\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :list=\"false\"\r\n          :to=\"anchorLink('slots')\">\r\n        <span @click=\"goAnchor\">slots 内容分发</span>\r\n      </router-link>\r\n\r\n      <z-table\r\n          border=\"row\"\r\n          auto\r\n          :pageSize=\"10\">\r\n        <template slot=\"thead\" v-for=\"item in ['名字', '返回值类型', '说明']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <z-table-row slot=\"1\">\r\n          <z-table-col>loadMore</z-table-col>\r\n          <z-table-col>分页类型为加载更多时的，在按钮处的内容分发</z-table-col>\r\n        </z-table-row>\r\n      </z-table>\r\n    </section>\r\n  </article>\r\n</div>";
-
-/***/ }),
-/* 614 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-__webpack_require__(615);
-
-var _Grid = __webpack_require__(617);
-
-var _Grid2 = _interopRequireDefault(_Grid);
-
-var _mixin = __webpack_require__(10);
-
-var _mixin2 = _interopRequireDefault(_mixin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  template: (0, _Grid2.default)(),
-
-  mixins: [_mixin2.default],
-
-  data: function data() {
-    return {
-      testName: 'test'
-    };
-  }
-};
-
-/***/ }),
-/* 615 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(616);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(2)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Grid.scss", function() {
-			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Grid.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
 /* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45120,39 +45089,9 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 /* 617 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-var pug = __webpack_require__(8);
-
-function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
-var block = (this && this.block), attributes = (this && this.attributes) || {};
-pug_html = pug_html + "\u003Csection\u003E\u003Crouter-link" + (" class=\"anchor-title\""+" tag=\"h1\""+pug.attr(":to", 'anchorLink("' + name + '")', true, true)) + "\u003E\u003Cspan @click=\"goAnchor\"\u003E" + (pug.escape(null == (pug_interp = title) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E\u003C\u002Frouter-link\u003E";
-if (block) {
-block && block();
-}
-else {
-pug_html = pug_html + "\u003Cp\u003E暂无内容\u003C\u002Fp\u003E";
-}
-pug_html = pug_html + "\u003C\u002Fsection\u003E";
-};
-pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-row :gap=\"10\"\u003E\u003Cz-col :l=\"4\" :xs=\"12\"\u003Ename:\u003C\u002Fz-col\u003E\u003Cz-col :l=\"4\" :xs=\"8\"\u003E\u003Cz-input number init-val=\"test-input\"\u003E\u003C\u002Fz-input\u003E\u003C\u002Fz-col\u003E\u003Cz-col :l=\"4\" :xs=\"4\"\u003E测试1\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003Cz-row :gap=\"10\"\u003E\u003Cz-col :l=\"4\" :xs=\"12\"\u003Etest1:\u003C\u002Fz-col\u003E\u003Cz-col :l=\"8\" :xs=\"12\"\u003E\u003Cz-input init-val=\"test2-input\"\u003E\u003C\u002Fz-input\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-row :gap="10">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="12">name: </z-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="8">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-input') ? "" : pug_interp)) + "\n        number\n        " + (pug.escape(null == (pug_interp = 'init-val="test-input"') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '</z-input>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="4">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-input init-val="test-input" query-name="test"></z-input>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-col>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-row>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '<z-row :gap="10">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="12">test1: </z-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="8" :xs="12">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-input') ? "" : pug_interp)) + "\n        " + (pug.escape(null == (pug_interp = 'init-val="test2-input"') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '</z-input>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-col>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-row>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
-}
-}, 'start', '开始使用');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Ealign\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(start, end, *center)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在行上垂直方向上的对齐方式，对应 flex 的 align-items 属性\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Egap\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E每列的间隔是多少（px）-- 草案\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Ejustify\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(start, end, center, *justify)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在行上的水平空间的对齐方式，对应 flex 的 justify-content 属性\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Ewrap\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(nowrap | wrap)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义列的换行模式，对应 flex 的 flex-wrap 属性（nowrap | wrap）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
-}
-}, 'rowProps', 'row 的 props 数据类型');
-pug_mixins["section"].call({
-block: function(){
-pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"(item, index) in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col :max-width=\"index === 3 ? &quot;30%&quot; : &quot;&quot;\"\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Egap\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义间隔的宽度（px），覆盖行设置的间隔 (5, 10, 20, 30, 40, 50)\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Epull\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在 x 反方向偏移的栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Epush\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在 x 正方向偏移的栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Eoffset\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列离开头的栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Espan\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在行上的水平跨度（采用 12 栏栅格）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003Exs\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E加小型设备的水平跨度栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003Es\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E小型设备的水平跨度栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003Em\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E中型设备的水平跨度栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"9\"\u003E\u003Cz-table-col\u003El\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E大型设备的水平跨度栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"10\"\u003E\u003Cz-table-col\u003Exl\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E加大型设备的水平跨度栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"11\"\u003E\u003Cz-table-col\u003Egrid\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E集合所有设备水平跨度的栅格数，例如\u003C\u002Fp\u003E\n{xs: 4, l: 8, span: 9}\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
-}
-}, 'colProps', 'col 的 props 数据类型');
-pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
-module.exports = template;
+module.exports = "<div class=\"component-page\">\r\n  <article class=\"example-article\">\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('basic')\">\r\n        <span @click=\"goAnchor\">基本用法</span>\r\n      </router-link>\r\n\r\n      <p class=\"section-description\">默认是点击数字的分页形式</p>\r\n\r\n      <z-page :data=\"{\r\n        length: 24,\r\n        size: 5,\r\n        total: 5,\r\n        current: 2\r\n      }\"></z-page>\r\n\r\n      <z-code v-pre>&ltz-page :data=\"{\r\n  length: 24,\r\n  size: 5,\r\n  total: 5,\r\n  current: 2\r\n}\">&lt/z-page&gt</z-code>\r\n    </section>\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('more')\">\r\n        <span @click=\"goAnchor\">加载更多的分页形式</span>\r\n      </router-link>\r\n\r\n      <z-page auto :data=\"pageData\" type=\"more\"></z-page>\r\n\r\n      <z-code v-pre>&ltz-page auto :data=\"pageData\" type=\"more\"&gt&lt/z-page&gt</z-code>\r\n    </section>\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('auto')\">\r\n        <span @click=\"goAnchor\">自动计算分页数据</span>\r\n      </router-link>\r\n\r\n      <z-page auto :data=\"{\r\n        length: 24,\r\n        size: 5\r\n      }\"></z-page>\r\n\r\n      <z-code v-pre>&ltz-page auto :data=\"{\r\n  length: 24,\r\n  size: 5\r\n}\"&gt&lt/z-page&gt</z-code>\r\n    </section>\r\n\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :list=\"false\"\r\n          :to=\"anchorLink('props')\">\r\n        <span @click=\"goAnchor\">props 数据类型</span>\r\n      </router-link>\r\n\r\n      <z-table\r\n          border=\"row\"\r\n          auto\r\n          :pageSize=\"10\">\r\n        <template slot=\"thead\" v-for=\"item in ['名字', '类型', '可选值', '说明']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <z-table-row slot=\"1\">\r\n          <z-table-col>auto</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>(*false | true)</z-table-col>\r\n          <z-table-col>分页的显示状态</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"2\">\r\n          <z-table-col>display</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>(*false | true)</z-table-col>\r\n          <z-table-col>分页的显示状态</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"3\">\r\n          <z-table-col>data</z-table-col>\r\n          <z-table-col>Object</z-table-col>\r\n          <z-table-col>——</z-table-col>\r\n          <z-table-col>\r\n            <p>分页数据</p>\r\n            <ul>\r\n              <li>length：一共有几条数据</li>\r\n              <li>total：一共有多少页</li>\r\n              <li>size：每页几条数据</li>\r\n              <li>current：当前的页码</li>\r\n            </ul>\r\n          </z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"4\">\r\n          <z-table-col>onePageDisplay</z-table-col>\r\n          <z-table-col>布尔值</z-table-col>\r\n          <z-table-col>(*false | true)</z-table-col>\r\n          <z-table-col>分页总页数为 1 时是否显示</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"5\">\r\n          <z-table-col>size</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>（s | *m | l）</z-table-col>\r\n          <z-table-col>分页外观尺寸大小</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"6\">\r\n          <z-table-col>type</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>（more | *num）</z-table-col>\r\n          <z-table-col>\r\n            <p>分页类型</p>\r\n            <ul>\r\n              <li>more：加载更多</li>\r\n              <li>num：数字标注（默认）</li>\r\n            </ul>\r\n          </z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"7\">\r\n          <z-table-col>loadMoreText</z-table-col>\r\n          <z-table-col>String</z-table-col>\r\n          <z-table-col>——</z-table-col>\r\n          <z-table-col>\r\n            加载更多的提示文字\r\n          </z-table-col>\r\n        </z-table-row>\r\n      </z-table>\r\n    </section>\r\n\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :list=\"false\"\r\n          :to=\"anchorLink('events')\">\r\n        <span @click=\"goAnchor\">events 事件</span>\r\n      </router-link>\r\n\r\n      <z-table\r\n          border=\"row\"\r\n          auto\r\n          :pageSize=\"10\">\r\n        <template slot=\"thead\" v-for=\"item in ['名字', '返回值类型', '说明']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <z-table-row slot=\"1\">\r\n          <z-table-col>switch</z-table-col>\r\n          <z-table-col>Number</z-table-col>\r\n          <z-table-col>切换页码触发的事件</z-table-col>\r\n        </z-table-row>\r\n      </z-table>\r\n    </section>\r\n\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :list=\"false\"\r\n          :to=\"anchorLink('slots')\">\r\n        <span @click=\"goAnchor\">slots 内容分发</span>\r\n      </router-link>\r\n\r\n      <z-table\r\n          border=\"row\"\r\n          auto\r\n          :pageSize=\"10\">\r\n        <template slot=\"thead\" v-for=\"item in ['名字', '返回值类型', '说明']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <z-table-row slot=\"1\">\r\n          <z-table-col>loadMore</z-table-col>\r\n          <z-table-col>分页类型为加载更多时的，在按钮处的内容分发</z-table-col>\r\n        </z-table-row>\r\n      </z-table>\r\n    </section>\r\n  </article>\r\n</div>";
 
 /***/ }),
 /* 618 */
@@ -45167,9 +45106,9 @@ Object.defineProperty(exports, "__esModule", {
 
 __webpack_require__(619);
 
-var _Scroller = __webpack_require__(621);
+var _Grid = __webpack_require__(621);
 
-var _Scroller2 = _interopRequireDefault(_Scroller);
+var _Grid2 = _interopRequireDefault(_Grid);
 
 var _mixin = __webpack_require__(10);
 
@@ -45178,9 +45117,7 @@ var _mixin2 = _interopRequireDefault(_mixin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'PageCompScroller',
-
-  template: (0, _Scroller2.default)(),
+  template: (0, _Grid2.default)(),
 
   mixins: [_mixin2.default],
 
@@ -45212,8 +45149,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Scroller.scss", function() {
-			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Scroller.scss");
+		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Grid.scss", function() {
+			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Grid.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -45256,6 +45193,124 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
+pug_html = pug_html + "\u003Cz-row :gap=\"10\"\u003E\u003Cz-col :l=\"4\" :xs=\"12\"\u003Ename:\u003C\u002Fz-col\u003E\u003Cz-col :l=\"4\" :xs=\"8\"\u003E\u003Cz-input number init-val=\"test-input\"\u003E\u003C\u002Fz-input\u003E\u003C\u002Fz-col\u003E\u003Cz-col :l=\"4\" :xs=\"4\"\u003E测试1\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003Cz-row :gap=\"10\"\u003E\u003Cz-col :l=\"4\" :xs=\"12\"\u003Etest1:\u003C\u002Fz-col\u003E\u003Cz-col :l=\"8\" :xs=\"12\"\u003E\u003Cz-input init-val=\"test2-input\"\u003E\u003C\u002Fz-input\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-row :gap="10">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="12">name: </z-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="8">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-input') ? "" : pug_interp)) + "\n        number\n        " + (pug.escape(null == (pug_interp = 'init-val="test-input"') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '</z-input>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="4">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-input init-val="test-input" query-name="test"></z-input>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-col>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-row>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '<z-row :gap="10">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="4" :xs="12">test1: </z-col>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-col :l="8" :xs="12">') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '<z-input') ? "" : pug_interp)) + "\n        " + (pug.escape(null == (pug_interp = 'init-val="test2-input"') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = '</z-input>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '</z-col>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-row>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+}
+}, 'start', '开始使用');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Ealign\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(start, end, *center)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在行上垂直方向上的对齐方式，对应 flex 的 align-items 属性\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Egap\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E每列的间隔是多少（px）-- 草案\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Ejustify\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(start, end, center, *justify)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在行上的水平空间的对齐方式，对应 flex 的 justify-content 属性\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Ewrap\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(nowrap | wrap)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义列的换行模式，对应 flex 的 flex-wrap 属性（nowrap | wrap）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'rowProps', 'row 的 props 数据类型');
+pug_mixins["section"].call({
+block: function(){
+pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"(item, index) in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col :max-width=\"index === 3 ? &quot;30%&quot; : &quot;&quot;\"\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Egap\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义间隔的宽度（px），覆盖行设置的间隔 (5, 10, 20, 30, 40, 50)\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Epull\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在 x 反方向偏移的栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Epush\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在 x 正方向偏移的栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Eoffset\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列离开头的栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Espan\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E定义了列在行上的水平跨度（采用 12 栏栅格）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003Exs\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E加小型设备的水平跨度栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003Es\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E小型设备的水平跨度栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003Em\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E中型设备的水平跨度栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"9\"\u003E\u003Cz-table-col\u003El\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E大型设备的水平跨度栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"10\"\u003E\u003Cz-table-col\u003Exl\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E加大型设备的水平跨度栅格数\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"11\"\u003E\u003Cz-table-col\u003Egrid\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(1~12)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E集合所有设备水平跨度的栅格数，例如\u003C\u002Fp\u003E\n{xs: 4, l: 8, span: 9}\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+}
+}, 'colProps', 'col 的 props 数据类型');
+pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
+module.exports = template;
+
+/***/ }),
+/* 622 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+__webpack_require__(623);
+
+var _Scroller = __webpack_require__(625);
+
+var _Scroller2 = _interopRequireDefault(_Scroller);
+
+var _mixin = __webpack_require__(10);
+
+var _mixin2 = _interopRequireDefault(_mixin);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  name: 'PageCompScroller',
+
+  template: (0, _Scroller2.default)(),
+
+  mixins: [_mixin2.default],
+
+  data: function data() {
+    return {
+      testName: 'test'
+    };
+  }
+};
+
+/***/ }),
+/* 623 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(624);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(2)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Scroller.scss", function() {
+			var newContent = require("!!../../../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Scroller.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 624 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 625 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var pug = __webpack_require__(8);
+
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_mixins["section"] = pug_interp = function(name, title){
+var block = (this && this.block), attributes = (this && this.attributes) || {};
+pug_html = pug_html + "\u003Csection\u003E\u003Crouter-link" + (" class=\"anchor-title\""+" tag=\"h1\""+pug.attr(":to", 'anchorLink("' + name + '")', true, true)) + "\u003E\u003Cspan @click=\"goAnchor\"\u003E" + (pug.escape(null == (pug_interp = title) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E\u003C\u002Frouter-link\u003E";
+if (block) {
+block && block();
+}
+else {
+pug_html = pug_html + "\u003Cp\u003E暂无内容\u003C\u002Fp\u003E";
+}
+pug_html = pug_html + "\u003C\u002Fsection\u003E";
+};
+pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
+pug_mixins["section"].call({
+block: function(){
 pug_html = pug_html + "\u003Cz-scroller height=\"150\"\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003C\u002Fz-scroller\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-scroller height="150">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-scroller>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'start', '开始使用');
@@ -45273,7 +45328,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 622 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45283,9 +45338,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(623);
+__webpack_require__(627);
 
-var _Motion = __webpack_require__(625);
+var _Motion = __webpack_require__(629);
 
 var _Motion2 = _interopRequireDefault(_Motion);
 
@@ -45341,13 +45396,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 623 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(624);
+var content = __webpack_require__(628);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -45372,7 +45427,7 @@ if(false) {
 }
 
 /***/ }),
-/* 624 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -45386,7 +45441,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.component-tr
 
 
 /***/ }),
-/* 625 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45417,7 +45472,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 626 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45427,23 +45482,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Zoom = __webpack_require__(627);
+var _Zoom = __webpack_require__(631);
 
 var _Zoom2 = _interopRequireDefault(_Zoom);
 
-var _Slide = __webpack_require__(629);
+var _Slide = __webpack_require__(633);
 
 var _Slide2 = _interopRequireDefault(_Slide);
 
-var _Fade = __webpack_require__(631);
+var _Fade = __webpack_require__(635);
 
 var _Fade2 = _interopRequireDefault(_Fade);
 
-var _Rip = __webpack_require__(633);
+var _Rip = __webpack_require__(637);
 
 var _Rip2 = _interopRequireDefault(_Rip);
 
-var _Fold = __webpack_require__(635);
+var _Fold = __webpack_require__(639);
 
 var _Fold2 = _interopRequireDefault(_Fold);
 
@@ -45482,7 +45537,7 @@ exports.default = [{
 }];
 
 /***/ }),
-/* 627 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45492,7 +45547,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Zoom = __webpack_require__(628);
+var _Zoom = __webpack_require__(632);
 
 var _Zoom2 = _interopRequireDefault(_Zoom);
 
@@ -45527,7 +45582,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 628 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45553,7 +45608,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 629 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45563,7 +45618,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Slide = __webpack_require__(630);
+var _Slide = __webpack_require__(634);
 
 var _Slide2 = _interopRequireDefault(_Slide);
 
@@ -45598,7 +45653,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 630 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45624,7 +45679,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 631 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45634,7 +45689,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Fade = __webpack_require__(632);
+var _Fade = __webpack_require__(636);
 
 var _Fade2 = _interopRequireDefault(_Fade);
 
@@ -45669,7 +45724,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 632 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45695,7 +45750,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 633 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45705,7 +45760,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Rip = __webpack_require__(634);
+var _Rip = __webpack_require__(638);
 
 var _Rip2 = _interopRequireDefault(_Rip);
 
@@ -45737,7 +45792,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 634 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45763,7 +45818,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 635 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45773,7 +45828,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Fold = __webpack_require__(636);
+var _Fold = __webpack_require__(640);
 
 var _Fold2 = _interopRequireDefault(_Fold);
 
@@ -45808,7 +45863,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 636 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45834,7 +45889,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 637 */
+/* 641 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45844,13 +45899,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(638);
+__webpack_require__(642);
 
-var _App = __webpack_require__(640);
+var _App = __webpack_require__(644);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _store = __webpack_require__(641);
+var _store = __webpack_require__(645);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -45858,17 +45913,17 @@ var _type = __webpack_require__(192);
 
 var _type2 = _interopRequireDefault(_type);
 
-var _LayoutHeader = __webpack_require__(643);
+var _LayoutHeader = __webpack_require__(647);
 
 var _LayoutHeader2 = _interopRequireDefault(_LayoutHeader);
 
-var _LayoutFooter = __webpack_require__(648);
+var _LayoutFooter = __webpack_require__(652);
 
 var _LayoutFooter2 = _interopRequireDefault(_LayoutFooter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(652);
+__webpack_require__(656);
 
 exports.default = {
   name: 'app',
@@ -45924,13 +45979,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 638 */
+/* 642 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(639);
+var content = __webpack_require__(643);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -45955,7 +46010,7 @@ if(false) {
 }
 
 /***/ }),
-/* 639 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -45969,7 +46024,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.app-containe
 
 
 /***/ }),
-/* 640 */
+/* 644 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45978,7 +46033,7 @@ function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_ht
 module.exports = template;
 
 /***/ }),
-/* 641 */
+/* 645 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45997,7 +46052,7 @@ var _vuex = __webpack_require__(171);
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
-var _common = __webpack_require__(642);
+var _common = __webpack_require__(646);
 
 var _common2 = _interopRequireDefault(_common);
 
@@ -46016,7 +46071,7 @@ exports.default = commonStore;
 exports.common = commonStore;
 
 /***/ }),
-/* 642 */
+/* 646 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46060,7 +46115,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 643 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46070,9 +46125,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(644);
+__webpack_require__(648);
 
-var _LayoutHeader = __webpack_require__(646);
+var _LayoutHeader = __webpack_require__(650);
 
 var _LayoutHeader2 = _interopRequireDefault(_LayoutHeader);
 
@@ -46089,7 +46144,7 @@ exports.default = {
 
   data: function data() {
     return {
-      logoUrl: __webpack_require__(647),
+      logoUrl: __webpack_require__(651),
       menuOpt: [{
         'name': '组件',
         'route': '/component/start'
@@ -46117,13 +46172,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 644 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(645);
+var content = __webpack_require__(649);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -46148,7 +46203,7 @@ if(false) {
 }
 
 /***/ }),
-/* 645 */
+/* 649 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -46162,7 +46217,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.header-layou
 
 
 /***/ }),
-/* 646 */
+/* 650 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -46171,13 +46226,13 @@ function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_ht
 module.exports = template;
 
 /***/ }),
-/* 647 */
+/* 651 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAADtCAYAAADurKT6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzQ4QzI3QjA4OTcxMUU3QTUzOEE1RjhBN0FEQ0Q3RiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzQ4QzI3QzA4OTcxMUU3QTUzOEE1RjhBN0FEQ0Q3RiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRDNDhDMjc5MDg5NzExRTdBNTM4QTVGOEE3QURDRDdGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDNDhDMjdBMDg5NzExRTdBNTM4QTVGOEE3QURDRDdGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+2FwMGgAAB9BJREFUeNrs3YmO2zoQRFHT8P//cYYvEyQPiqPV2sjuU8AgjjctvF0sSpRcfvz48SDqVc/nc/T5r6+v+vv1MvXZl91HHan+/rdMwb5F4KfewH9/XD4B/1evsGNFqvagi6CfYm0R/LnXnwetWO1oh1Gfbr/59bm8f3TseV+RctMOWfPegquuoT9Er5s2oGzcyDLxuB68booiGPDf7v8dfcZ6gVcjG1pacAJFEdflj3L+enEx1MYbSGE0DvyU+7/snEvWtZy4nAL4cU3Fnf933AdneCMfRSkdb2sB/LTzjxWDk1zTjVVmgKodgFYyA7+qKLj+7LZO/fW4/lctqzkNT3QNH3N+g8xy8Pc9Wi8A8NMaiEuvsJ8ReyhfYYSbKvL/dGftSxn168iP3UBZJfNTKg2P8291fqfyKQT4Mj+lAX5smgP4KTT4c/N7PoFf9KEuos3SxDbOTzEHswuXMH7L0R4K5/ZrXH+P84s+1JyG83fWOL/YQz3qn3izFXzwU6/6685tn4C/F37Rh5pw/0/AP2LAWxp1hB4b0k22duT8reAfAX/zbtBJodSJda8KY7adPwY/IvxHFEptqFBFy5PAzw7/p8AtXSheV8aauhJu7n+SOTja89kOH/7Nvf4Y+fcf99rZ0CUh7PWI7Qb/tQPZMnhu+HhNEdSZAirJwD9E4L+3KNYUwVgBvUNQk/QI9chtA//17j8F8ZaeoGwAJdo+PKyowd/G+GHJ2TNn/VPAB/89XfZSDNrSC2Qc7II/YMONOX5Z8dnoBXBafAN/Ww1ZJsYI5WwQsrk++NttwKnIM/e8/Qb+MN340O2nzhVUhgH+qI05l/nfi8A8IPCHLpq68TWuD/7mGnUPqBnO5l6yPeDvt3jM8gR/SvePfOizgJ+WiiZaAZTHxfHNxSz3g1x2fkfvBXDbeIXziwpp1xv8fWf/ngvg9vUFf4yC6e2X4psoVPDHcn9uD34CPvi5v5gDfsXC7cEPaOCDX57ODD7421T98P0V+ODP4uAF+ODn/sAHv/xuncHP/YEPfu5P4NczKFLwd+b+tfH14/yUzvVDxDLwc/+04xHw9zcIrsAHf0b3Bz745Xzggz9b5AE++Lk+8MFPwAc/1wc++IEPfPAT8MHP9YEPfuADH/xE4G/a9a9w42bvpnaF/DhFu+DXk6FPL/DnEujFnpSuD3zwpwIf8GJP6oijAMCfxvXBDv7uXLqCXubP6PrAB39K8MUc8BucEvizuX6mnyIFP/APA1+PAf5uow7HB39K1wc++FOCT+AneR/8XJ/AD3wCP/AJ/CTvg5/rE/iJwE8EfpGHwG+wS+AHPoE/TuQB/sFyATu35/wEfPBTK5EH+ODn+AT+LK4PfANebk+cP4PrAx/8wCfwizoE/sCuD3zwA5/AD3wCv4xP4I/l+sAHP/AJ/KIOgT+w6wMf/MAn8BOBP6jr+9Vz8KcFvwIf/AqFwG+QS+AHPoE/pIAPftmdwC/uEPiBT+CX8wn8cj6BX9wh8AOfwC/qEPgNcul8ZbxRretwifMT+Lk+1wc/AR/8XJ/AL+5ABPxE4Of6BP4cOd84AfwGuAR+4BP4icAfSwa54Bd5CPzZVPUE4M/o+kVPAn4CPfjBSuDPIxkf/FyfwA98An8i8IsoBP5sOb/OFJfeBfwhXR/Y4E8dd4pCAH9W8EEP/pQD3Lrx/wT+EOAT+IFP4CcFCH7QEfiBT+AHPoE/Kvjm8IA/teMrAPCHVxGzqDX464XLKRueVyDgDxV3KsDBnw18uZ6agb8GXx6BvzkQ9QDgTwm+HoBug79n8BQN+MFD4Ac+gT+BysM1v+AP6vqOAIG/W/DLzvfWgbvPzf/h/gH0CgD98J47deO6jUFcF5ZVH3oIzh9An4BcZgqHwH85wHcVwEMBgP/uAW694PPu3gx+mhhvEPhPh6E0WgAE/uYjzlnL5f7gDxdpxB/wN+/MV2zH3LkEBZAc/igNXxaeE4HAH1Z1BfB1pkCcAEsGf7TGLju32VGgJPBHdLk/+b7MAF1GxgHO/iaNPb273dKd3IazPsdee0wUBwWFfwmA3rN+2dDLDXsL05+Dwx+5UcuE2z9GYs5UgSiARLEnWt6fyvVLvcUjQQSqvW/Pc+fGR8j5a7ZzakZnGYk7ZUUhRdgn3RfB86CNz9ATjEWhOhKH6iPmJZB1RQ/YVSHsvYwxepYtExn+/bn3QlgTkXq5HLIe9JkSAf5Mrr802J0qhDVF0HoB1Ju+75T98fX19dfyn89ned28Q3qMPEu93fD9ZUPBRIX+1OX/hPq22BNdZSLLr4l7n9xJIivw1w50f7r+Vvgzu/5cL7A249aGCiDtOYc/4G+BvyYb6K7dH3WmCMbmBa3tLQrI2xzwOlu5HrKpAlg6OmT/nuz6a+GvwD+8MEx/uBn8X89tBJ+OHUy79PHOgtjhYophf48A+kbhn4s7wKew8C+Bz7WoK72f4V0Te4oBL2Vy/rkjEMCnsPDPnaQh6hf0jYc6RRxK4/wiDqVx/SH8QKdU4P+B/xPwjQUo3IB3rfQU1LXrf+v1WL5LGVFIvTbGGkURV6GuIVhy/Tn41+yg2lmjnNF4Zcd3lgPWozReRE2b5etgKGuAgXFp5DsjHFS4tBDWuP1R8EdtMDq3EI4sgvIT+Fucn+isxHCJuYKfWo5HpyaJ/wQYANZhS2MSpvy0AAAAAElFTkSuQmCC"
 
 /***/ }),
-/* 648 */
+/* 652 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46187,9 +46242,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(649);
+__webpack_require__(653);
 
-var _LayoutFooter = __webpack_require__(651);
+var _LayoutFooter = __webpack_require__(655);
 
 var _LayoutFooter2 = _interopRequireDefault(_LayoutFooter);
 
@@ -46202,13 +46257,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 649 */
+/* 653 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(650);
+var content = __webpack_require__(654);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -46233,7 +46288,7 @@ if(false) {
 }
 
 /***/ }),
-/* 650 */
+/* 654 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -46247,7 +46302,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.footer-layou
 
 
 /***/ }),
-/* 651 */
+/* 655 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -46256,17 +46311,17 @@ function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_ht
 module.exports = template;
 
 /***/ }),
-/* 652 */
+/* 656 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "favicon.ico";
 
 /***/ }),
-/* 653 */
+/* 657 */
 /***/ (function(module, exports) {
 
 module.exports = {"en-US":{"btn":{},"column":{},"check":{},"form":{},"input":{},"icon":{},"loading":{},"page":{},"pop":{},"list":{},"scroller":{},"select":{},"selectEle":{},"shift":{},"shiftEle":{},"tab":{},"tabEle":{},"row":{},"table":{"emptyData":"empty data"}}}
 
 /***/ })
 ],[193]);
-//# sourceMappingURL=app.ea7112fb65d976328350.js.map
+//# sourceMappingURL=app.cd8fcfe499cadc3b6c41.js.map
