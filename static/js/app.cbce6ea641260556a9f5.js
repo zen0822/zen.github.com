@@ -6,10 +6,10 @@ webpackJsonp([0],[
 
 
 var global = __webpack_require__(5);
-var core = __webpack_require__(30);
-var hide = __webpack_require__(21);
-var redefine = __webpack_require__(22);
-var ctx = __webpack_require__(27);
+var core = __webpack_require__(31);
+var hide = __webpack_require__(20);
+var redefine = __webpack_require__(21);
+var ctx = __webpack_require__(28);
 var PROTOTYPE = 'prototype';
 
 var $export = function $export(type, name, source) {
@@ -188,7 +188,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(402);
+var	fixUrls = __webpack_require__(403);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -514,7 +514,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(433);
+var _index = __webpack_require__(432);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -522,11 +522,11 @@ var _store = __webpack_require__(41);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _type = __webpack_require__(62);
+var _type = __webpack_require__(61);
 
 var _type2 = _interopRequireDefault(_type);
 
-var _prop = __webpack_require__(36);
+var _prop = __webpack_require__(27);
 
 var _attr = __webpack_require__(90);
 
@@ -535,9 +535,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
                                                                                                                                                                                                                    * base 混入
                                                                                                                                                                                                                    *
-                                                                                                                                                                                                                   * @prop id - 实例的唯一标识符
-                                                                                                                                                                                                                   * @prop name - 实例的中文名字
-                                                                                                                                                                                                                   * @prop theme - 主题 (primary | success | warning | danger | default | orange | blue)
+                                                                                                                                                                                                                   * @prop id - 用户定义的唯一标识符
+                                                                                                                                                                                                                   * @prop name - 用户定义的实例名字
+                                                                                                                                                                                                                   * @prop theme - 主题 (primary | success | warning | danger | orange | blue | light | dark)
                                                                                                                                                                                                                    * @prop ui - ui 规范 (material | bootstrap | metro |apple)
                                                                                                                                                                                                                    */
 
@@ -546,17 +546,17 @@ exports.default = {
 
   props: {
     id: [String, Number],
-
-    name: String,
-
+    name: {
+      type: String,
+      default: ''
+    },
     theme: {
       type: String,
       default: _index2.default.defaultTheme,
       validator: function validator(val) {
-        return ['primary', 'default', 'success', 'danger', 'default', 'blue', 'orange'].includes(val);
+        return ['primary', 'grey', 'warning', 'success', 'danger', 'blue', 'orange', 'light', 'dark'].includes(val);
       }
     },
-
     ui: {
       type: String,
       default: _index2.default.defaultUI,
@@ -579,7 +579,7 @@ exports.default = {
     },
     themeClass: function themeClass() {
       // 主题的类名
-      return this.theme ? 'theme-' + this.theme : '';
+      return 'theme-' + this.theme;
     },
     compClass: function compClass() {
       // 组件比加 class
@@ -1067,7 +1067,7 @@ function pug_rethrow(err, filename, lineno, str){
     throw err;
   }
   try {
-    str = str || __webpack_require__(412).readFileSync(filename, 'utf8')
+    str = str || __webpack_require__(413).readFileSync(filename, 'utf8')
   } catch (ex) {
     pug_rethrow(err, null, lineno)
   }
@@ -1179,8 +1179,8 @@ module.exports = !__webpack_require__(6)(function () {
 
 
 var anObject = __webpack_require__(4);
-var IE8_DOM_DEFINE = __webpack_require__(136);
-var toPrimitive = __webpack_require__(31);
+var IE8_DOM_DEFINE = __webpack_require__(137);
+var toPrimitive = __webpack_require__(32);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(12) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -1203,7 +1203,7 @@ exports.f = __webpack_require__(12) ? Object.defineProperty : function definePro
 
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(33);
+var toInteger = __webpack_require__(34);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -11003,7 +11003,7 @@ function getOuterHTML(el) {
 Vue$3.compile = compileToFunctions;
 
 exports.default = Vue$3;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(74), __webpack_require__(403).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(74), __webpack_require__(404).setImmediate))
 
 /***/ }),
 /* 16 */
@@ -11013,7 +11013,7 @@ exports.default = Vue$3;
 
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(32);
+var defined = __webpack_require__(33);
 module.exports = function (it) {
   return Object(defined(it));
 };
@@ -11041,106 +11041,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(439);
-
-__webpack_require__(440);
-
 var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _IconRender = __webpack_require__(442);
-
-var _IconRender2 = _interopRequireDefault(_IconRender);
-
-var _base = __webpack_require__(3);
-
-var _base2 = _interopRequireDefault(_base);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// iconfont 的 svg 图标文件
-var TYPE_ALI = 'ali'; /**
-                       * icon 组件
-                       *
-                       * @prop theme - 主题
-                       * @prop size - 大小
-                       * @prop color - 颜色 16 进制
-                       * @prop type - 字符图标类型 (字符图标的 class 名的前缀，用户自己引入的字符图标的前缀)
-                       * @prop kind - 图标的种类（ex：fa-circle -> kind='circle'，ali-fold -> kind='fold')
-                       *
-                       */
-
-var TYPE_FA = 'fa';
-
-exports.default = {
-  name: 'Icon',
-
-  render: _IconRender2.default,
-
-  mixins: [_base2.default],
-
-  props: {
-    color: {
-      type: String,
-      default: ''
-    },
-
-    size: {
-      type: String,
-      default: 'xs',
-      validator: function validator(val) {
-        return ['xs', 's', 'm', 'l', 'xl'].includes(val.toLowerCase());
-      }
-    },
-
-    type: {
-      type: String,
-      default: TYPE_ALI
-    },
-
-    kind: {
-      type: String,
-      require: true
-    }
-  },
-
-  computed: {
-    cPrefix: function cPrefix() {
-      // 组件类名的前缀
-      return this.compPrefix + '-icon';
-    },
-    sizeClass: function sizeClass() {
-      return this.compPrefix + '-icon-size-' + this.size.toLowerCase();
-    },
-    isAli: function isAli() {
-      return this.type === 'ali';
-    },
-    typeClass: function typeClass() {
-      return this.isAli ? this.compPrefix + '-icon-' + this.type : this.type;
-    },
-    nameClass: function nameClass() {
-      return this.isAli ? 'ali-icon-' + this.kind : 'fa-' + this.kind;
-    }
-  }
-};
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _vue = __webpack_require__(15);
-
-var _vue2 = _interopRequireDefault(_vue);
-
-var _vueRouter = __webpack_require__(69);
+var _vueRouter = __webpack_require__(67);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -11152,7 +11057,7 @@ var _store = __webpack_require__(41);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _type = __webpack_require__(62);
+var _type = __webpack_require__(61);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -11250,7 +11155,7 @@ createTip();
 exports.default = tip;
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11262,7 +11167,7 @@ module.exports = function (it, key) {
 };
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11278,21 +11183,21 @@ module.exports = __webpack_require__(12) ? function (object, key, value) {
 };
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var global = __webpack_require__(5);
-var hide = __webpack_require__(21);
-var has = __webpack_require__(20);
+var hide = __webpack_require__(20);
+var has = __webpack_require__(19);
 var SRC = __webpack_require__(46)('src');
 var TO_STRING = 'toString';
 var $toString = Function[TO_STRING];
 var TPL = ('' + $toString).split(TO_STRING);
 
-__webpack_require__(30).inspectSource = function (it) {
+__webpack_require__(31).inspectSource = function (it) {
   return $toString.call(it);
 };
 
@@ -11317,7 +11222,7 @@ __webpack_require__(30).inspectSource = function (it) {
 });
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11325,7 +11230,7 @@ __webpack_require__(30).inspectSource = function (it) {
 
 var $export = __webpack_require__(0);
 var fails = __webpack_require__(6);
-var defined = __webpack_require__(32);
+var defined = __webpack_require__(33);
 var quot = /"/g;
 // B.2.3.2.1 CreateHTML(string, tag, attribute, value)
 var createHTML = function createHTML(string, tag, attribute, value) {
@@ -11344,6 +11249,101 @@ module.exports = function (NAME, exec) {
 };
 
 /***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+__webpack_require__(438);
+
+__webpack_require__(439);
+
+var _vue = __webpack_require__(15);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _IconRender = __webpack_require__(441);
+
+var _IconRender2 = _interopRequireDefault(_IconRender);
+
+var _base = __webpack_require__(3);
+
+var _base2 = _interopRequireDefault(_base);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// iconfont 的 svg 图标文件
+var TYPE_ALI = 'ali'; /**
+                       * icon 组件
+                       *
+                       * @prop theme - 主题
+                       * @prop size - 大小
+                       * @prop color - 颜色 16 进制
+                       * @prop type - 字符图标类型 (字符图标的 class 名的前缀，用户自己引入的字符图标的前缀)
+                       * @prop kind - 图标的种类（ex：fa-circle -> kind='circle'，ali-fold -> kind='fold')
+                       *
+                       */
+
+var TYPE_FA = 'fa';
+
+exports.default = {
+  name: 'Icon',
+
+  render: _IconRender2.default,
+
+  mixins: [_base2.default],
+
+  props: {
+    color: {
+      type: String,
+      default: ''
+    },
+
+    size: {
+      type: String,
+      default: 'xs',
+      validator: function validator(val) {
+        return ['xs', 's', 'm', 'l', 'xl'].includes(val.toLowerCase());
+      }
+    },
+
+    type: {
+      type: String,
+      default: TYPE_ALI
+    },
+
+    kind: {
+      type: String,
+      require: true
+    }
+  },
+
+  computed: {
+    cPrefix: function cPrefix() {
+      // 组件类名的前缀
+      return this.compPrefix + '-icon';
+    },
+    sizeClass: function sizeClass() {
+      return this.compPrefix + '-icon-size-' + this.size.toLowerCase();
+    },
+    isAli: function isAli() {
+      return this.type === 'ali';
+    },
+    typeClass: function typeClass() {
+      return this.isAli ? this.compPrefix + '-icon-' + this.type : this.type;
+    },
+    nameClass: function nameClass() {
+      return this.isAli ? 'ali-icon-' + this.kind : 'fa-' + this.kind;
+    }
+  }
+};
+
+/***/ }),
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11351,8 +11351,8 @@ module.exports = function (NAME, exec) {
 
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(66);
-var defined = __webpack_require__(32);
+var IObject = __webpack_require__(64);
+var defined = __webpack_require__(33);
 module.exports = function (it) {
   return IObject(defined(it));
 };
@@ -11364,12 +11364,12 @@ module.exports = function (it) {
 "use strict";
 
 
-var pIE = __webpack_require__(67);
+var pIE = __webpack_require__(65);
 var createDesc = __webpack_require__(45);
 var toIObject = __webpack_require__(24);
-var toPrimitive = __webpack_require__(31);
-var has = __webpack_require__(20);
-var IE8_DOM_DEFINE = __webpack_require__(136);
+var toPrimitive = __webpack_require__(32);
+var has = __webpack_require__(19);
+var IE8_DOM_DEFINE = __webpack_require__(137);
 var gOPD = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(12) ? gOPD : function getOwnPropertyDescriptor(O, P) {
@@ -11389,7 +11389,7 @@ exports.f = __webpack_require__(12) ? gOPD : function getOwnPropertyDescriptor(O
 
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(20);
+var has = __webpack_require__(19);
 var toObject = __webpack_require__(16);
 var IE_PROTO = __webpack_require__(100)('IE_PROTO');
 var ObjectProto = Object.prototype;
@@ -11404,200 +11404,6 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 /***/ }),
 /* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// optional / simple context binding
-var aFunction = __webpack_require__(17);
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1:
-      return function (a) {
-        return fn.call(that, a);
-      };
-    case 2:
-      return function (a, b) {
-        return fn.call(that, a, b);
-      };
-    case 3:
-      return function (a, b, c) {
-        return fn.call(that, a, b, c);
-      };
-  }
-  return function () /* ...args */{
-    return fn.apply(that, arguments);
-  };
-};
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var toString = {}.toString;
-
-module.exports = function (it) {
-  return toString.call(it).slice(8, -1);
-};
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var fails = __webpack_require__(6);
-
-module.exports = function (method, arg) {
-  return !!method && fails(function () {
-    // eslint-disable-next-line no-useless-call
-    arg ? method.call(null, function () {/* empty */}, 1) : method.call(null);
-  });
-};
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var core = module.exports = { version: '2.5.3' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(7);
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (it, S) {
-  if (!isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 7.2.1 RequireObjectCoercible(argument)
-module.exports = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on  " + it);
-  return it;
-};
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 7.1.4 ToInteger
-var ceil = Math.ceil;
-var floor = Math.floor;
-module.exports = function (it) {
-  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-};
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(0);
-var core = __webpack_require__(30);
-var fails = __webpack_require__(6);
-module.exports = function (KEY, exec) {
-  var fn = (core.Object || {})[KEY] || Object[KEY];
-  var exp = {};
-  exp[KEY] = exec(fn);
-  $export($export.S + $export.F * fails(function () {
-    fn(1);
-  }), 'Object', exp);
-};
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 0 -> Array#forEach
-// 1 -> Array#map
-// 2 -> Array#filter
-// 3 -> Array#some
-// 4 -> Array#every
-// 5 -> Array#find
-// 6 -> Array#findIndex
-var ctx = __webpack_require__(27);
-var IObject = __webpack_require__(66);
-var toObject = __webpack_require__(16);
-var toLength = __webpack_require__(14);
-var asc = __webpack_require__(117);
-module.exports = function (TYPE, $create) {
-  var IS_MAP = TYPE == 1;
-  var IS_FILTER = TYPE == 2;
-  var IS_SOME = TYPE == 3;
-  var IS_EVERY = TYPE == 4;
-  var IS_FIND_INDEX = TYPE == 6;
-  var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
-  var create = $create || asc;
-  return function ($this, callbackfn, that) {
-    var O = toObject($this);
-    var self = IObject(O);
-    var f = ctx(callbackfn, that, 3);
-    var length = toLength(self.length);
-    var index = 0;
-    var result = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined;
-    var val, res;
-    for (; length > index; index++) {
-      if (NO_HOLES || index in self) {
-        val = self[index];
-        res = f(val, index, O);
-        if (TYPE) {
-          if (IS_MAP) result[index] = res; // map
-          else if (res) switch (TYPE) {
-              case 3:
-                return true; // some
-              case 5:
-                return val; // find
-              case 6:
-                return index; // findIndex
-              case 2:
-                result.push(val); // filter
-            } else if (IS_EVERY) return false; // every
-        }
-      }
-    }return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : result;
-  };
-};
-
-/***/ }),
-/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11708,7 +11514,9 @@ var client = function client(el) {}
 
 
 /**
- * 相对于网页（包括卷去的页面）的相关特性
+ * 相对于网页的相关特性
+ * TODO: 考虑 body 和 html 有 padding、margin 和 border 的情况
+ * TODO: 考虑包括卷去的页面
  *
  * @param {*} el - dom 节点
  *
@@ -11749,6 +11557,200 @@ exports.prop = prop;
 exports.handleEleDisplay = handleEleDisplay;
 
 /***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// optional / simple context binding
+var aFunction = __webpack_require__(17);
+module.exports = function (fn, that, length) {
+  aFunction(fn);
+  if (that === undefined) return fn;
+  switch (length) {
+    case 1:
+      return function (a) {
+        return fn.call(that, a);
+      };
+    case 2:
+      return function (a, b) {
+        return fn.call(that, a, b);
+      };
+    case 3:
+      return function (a, b, c) {
+        return fn.call(that, a, b, c);
+      };
+  }
+  return function () /* ...args */{
+    return fn.apply(that, arguments);
+  };
+};
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var toString = {}.toString;
+
+module.exports = function (it) {
+  return toString.call(it).slice(8, -1);
+};
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var fails = __webpack_require__(6);
+
+module.exports = function (method, arg) {
+  return !!method && fails(function () {
+    // eslint-disable-next-line no-useless-call
+    arg ? method.call(null, function () {/* empty */}, 1) : method.call(null);
+  });
+};
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var core = module.exports = { version: '2.5.3' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 7.1.1 ToPrimitive(input [, PreferredType])
+var isObject = __webpack_require__(7);
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function (it, S) {
+  if (!isObject(it)) return it;
+  var fn, val;
+  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  throw TypeError("Can't convert object to primitive value");
+};
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 7.2.1 RequireObjectCoercible(argument)
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on  " + it);
+  return it;
+};
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 7.1.4 ToInteger
+var ceil = Math.ceil;
+var floor = Math.floor;
+module.exports = function (it) {
+  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
+};
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// most Object methods by ES6 should accept primitives
+var $export = __webpack_require__(0);
+var core = __webpack_require__(31);
+var fails = __webpack_require__(6);
+module.exports = function (KEY, exec) {
+  var fn = (core.Object || {})[KEY] || Object[KEY];
+  var exp = {};
+  exp[KEY] = exec(fn);
+  $export($export.S + $export.F * fails(function () {
+    fn(1);
+  }), 'Object', exp);
+};
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 0 -> Array#forEach
+// 1 -> Array#map
+// 2 -> Array#filter
+// 3 -> Array#some
+// 4 -> Array#every
+// 5 -> Array#find
+// 6 -> Array#findIndex
+var ctx = __webpack_require__(28);
+var IObject = __webpack_require__(64);
+var toObject = __webpack_require__(16);
+var toLength = __webpack_require__(14);
+var asc = __webpack_require__(117);
+module.exports = function (TYPE, $create) {
+  var IS_MAP = TYPE == 1;
+  var IS_FILTER = TYPE == 2;
+  var IS_SOME = TYPE == 3;
+  var IS_EVERY = TYPE == 4;
+  var IS_FIND_INDEX = TYPE == 6;
+  var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
+  var create = $create || asc;
+  return function ($this, callbackfn, that) {
+    var O = toObject($this);
+    var self = IObject(O);
+    var f = ctx(callbackfn, that, 3);
+    var length = toLength(self.length);
+    var index = 0;
+    var result = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined;
+    var val, res;
+    for (; length > index; index++) {
+      if (NO_HOLES || index in self) {
+        val = self[index];
+        res = f(val, index, O);
+        if (TYPE) {
+          if (IS_MAP) result[index] = res; // map
+          else if (res) switch (TYPE) {
+              case 3:
+                return true; // some
+              case 5:
+                return val; // find
+              case 6:
+                return index; // findIndex
+              case 2:
+                result.push(val); // filter
+            } else if (IS_EVERY) return false; // every
+        }
+      }
+    }return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : result;
+  };
+};
+
+/***/ }),
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11764,18 +11766,18 @@ if (__webpack_require__(12)) {
   var $export = __webpack_require__(0);
   var $typed = __webpack_require__(85);
   var $buffer = __webpack_require__(123);
-  var ctx = __webpack_require__(27);
+  var ctx = __webpack_require__(28);
   var anInstance = __webpack_require__(53);
   var propertyDesc = __webpack_require__(45);
-  var hide = __webpack_require__(21);
+  var hide = __webpack_require__(20);
   var redefineAll = __webpack_require__(55);
-  var toInteger = __webpack_require__(33);
+  var toInteger = __webpack_require__(34);
   var toLength = __webpack_require__(14);
-  var toIndex = __webpack_require__(162);
+  var toIndex = __webpack_require__(163);
   var toAbsoluteIndex = __webpack_require__(49);
-  var toPrimitive = __webpack_require__(31);
-  var has = __webpack_require__(20);
-  var classof = __webpack_require__(68);
+  var toPrimitive = __webpack_require__(32);
+  var has = __webpack_require__(19);
+  var classof = __webpack_require__(66);
   var isObject = __webpack_require__(7);
   var toObject = __webpack_require__(16);
   var isArrayIter = __webpack_require__(114);
@@ -11785,7 +11787,7 @@ if (__webpack_require__(12)) {
   var getIterFn = __webpack_require__(116);
   var uid = __webpack_require__(46);
   var wks = __webpack_require__(9);
-  var createArrayMethod = __webpack_require__(35);
+  var createArrayMethod = __webpack_require__(36);
   var createArrayIncludes = __webpack_require__(76);
   var speciesConstructor = __webpack_require__(83);
   var ArrayIterators = __webpack_require__(119);
@@ -11793,7 +11795,7 @@ if (__webpack_require__(12)) {
   var $iterDetect = __webpack_require__(80);
   var setSpecies = __webpack_require__(52);
   var arrayFill = __webpack_require__(118);
-  var arrayCopyWithin = __webpack_require__(152);
+  var arrayCopyWithin = __webpack_require__(153);
   var $DP = __webpack_require__(13);
   var $GOPD = __webpack_require__(25);
   var dP = $DP.f;
@@ -12246,10 +12248,10 @@ if (__webpack_require__(12)) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var Map = __webpack_require__(157);
+var Map = __webpack_require__(158);
 var $export = __webpack_require__(0);
 var shared = __webpack_require__(75)('metadata');
-var store = shared.store || (shared.store = new (__webpack_require__(160))());
+var store = shared.store || (shared.store = new (__webpack_require__(161))());
 
 var getOrCreateMetadataMap = function getOrCreateMetadataMap(target, targetKey, create) {
   var targetMetadata = store.get(target);
@@ -12311,7 +12313,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var META = __webpack_require__(46)('meta');
 var isObject = __webpack_require__(7);
-var has = __webpack_require__(20);
+var has = __webpack_require__(19);
 var setDesc = __webpack_require__(13).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
@@ -12373,7 +12375,7 @@ var meta = module.exports = {
 // 22.1.3.31 Array.prototype[@@unscopables]
 var UNSCOPABLES = __webpack_require__(9)('unscopables');
 var ArrayProto = Array.prototype;
-if (ArrayProto[UNSCOPABLES] == undefined) __webpack_require__(21)(ArrayProto, UNSCOPABLES, {});
+if (ArrayProto[UNSCOPABLES] == undefined) __webpack_require__(20)(ArrayProto, UNSCOPABLES, {});
 module.exports = function (key) {
   ArrayProto[UNSCOPABLES][key] = true;
 };
@@ -12394,19 +12396,19 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuex = __webpack_require__(171);
+var _vuex = __webpack_require__(172);
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
-var _common = __webpack_require__(434);
+var _common = __webpack_require__(433);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _hub = __webpack_require__(435);
+var _hub = __webpack_require__(434);
 
 var _hub2 = _interopRequireDefault(_hub);
 
-var _comp = __webpack_require__(436);
+var _comp = __webpack_require__(435);
 
 var _comp2 = _interopRequireDefault(_comp);
 
@@ -12437,9 +12439,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(453);
+__webpack_require__(452);
 
-var _ColRender = __webpack_require__(455);
+var _ColRender = __webpack_require__(454);
 
 var _ColRender2 = _interopRequireDefault(_ColRender);
 
@@ -12544,9 +12546,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(456);
+__webpack_require__(455);
 
-var _RowRender = __webpack_require__(458);
+var _RowRender = __webpack_require__(457);
 
 var _RowRender2 = _interopRequireDefault(_RowRender);
 
@@ -12627,59 +12629,63 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(494);
+__webpack_require__(496);
 
 var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _Scroller = __webpack_require__(496);
+var _Scroller = __webpack_require__(498);
 
 var _Scroller2 = _interopRequireDefault(_Scroller);
 
-var _ScrollerRender = __webpack_require__(497);
+var _ScrollerRender = __webpack_require__(499);
 
 var _ScrollerRender2 = _interopRequireDefault(_ScrollerRender);
 
-var _MotionFade = __webpack_require__(95);
+var _prop = __webpack_require__(27);
+
+var _MotionFade = __webpack_require__(73);
 
 var _MotionFade2 = _interopRequireDefault(_MotionFade);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // 滚动一次的滚动区域走的像素大小
-var SCROLL_PIXEL = 10; /**
-                        * scroller 组件 滚动条
-                        *
-                        * @prop height - 滚动区域的高度(auto | { Number }px | 100% })，
-                        *                auto：根据滚动内容的高度
-                        *                { Number }：自定义像素高度
-                        *                100%：根据父元素的高度
-                        * @prop width - 滚动区域的宽度(auto | {Number}px | 100%)，同上
-                        * @prop autoHide - 自动隐藏滚动条
-                        *
-                        * @event scrollY - 滚动事件
-                        *                  return isBottom - 滚动条是否到低
-                        *                         isTop - 滚动条是否到顶
-                        *                         top - 滚动条到滚动区域的顶部的当前距离
-                        *                         offset - 滚动条离滚动区域的顶部的距离
-                        * @event scrollX - 滚动事件
-                        *                  return isRight - 滚动条是否到结束的地方
-                        *                         isLeft - 滚动条是否到开始的地方
-                        *                         left - 滚动条到滚动区域的最左边的当前距离
-                        *                         offset - 滚动条离滚动区域的顶部的距离
-                        * @event yBarChange - y-bar 滚动条改变
-                        *                  return isBottom - 滚动条是否到低
-                        *                         isTop - 滚动条是否到顶
-                        *                         top - 滚动条到滚动区域的顶部的当前距离
-                        *                         offset - 滚动条离滚动区域的顶部的距离
-                        * @event xBarChange - x-bar 滚动条改变
-                        *                  return isRight - 滚动条是否到结束的地方
-                        *                         isLeft - 滚动条是否到开始的地方
-                        *                         left - 滚动条到滚动区域的最左边的当前距离
-                        *                         offset - 滚动条离滚动区域的顶部的距离
-                        * @event scrollerChange - 滚动区域的高度/宽度变化
-                        */
+/**
+ * scroller 组件 滚动条
+ *
+ * @prop height - 滚动区域的高度(auto | { Number }px | 100% })，
+ *                auto：根据滚动内容的高度
+ *                { Number }：自定义像素高度
+ *                100%：根据父元素的高度
+ * @prop width - 滚动区域的宽度(auto | {Number}px | 100%)，同上
+ * @prop autoHide - 自动隐藏滚动条
+ *
+ * @event scrollY - 滚动事件
+ *                  return isBottom - 滚动条是否到低
+ *                         isTop - 滚动条是否到顶
+ *                         top - 滚动条到滚动区域的顶部的当前距离
+ *                         offset - 滚动条离滚动区域的顶部的距离
+ * @event scrollX - 滚动事件
+ *                  return isRight - 滚动条是否到结束的地方
+ *                         isLeft - 滚动条是否到开始的地方
+ *                         left - 滚动条到滚动区域的最左边的当前距离
+ *                         offset - 滚动条离滚动区域的顶部的距离
+ * @event yBarChange - y-bar 滚动条改变
+ *                  return isBottom - 滚动条是否到低
+ *                         isTop - 滚动条是否到顶
+ *                         top - 滚动条到滚动区域的顶部的当前距离
+ *                         offset - 滚动条离滚动区域的顶部的距离
+ * @event xBarChange - x-bar 滚动条改变
+ *                  return isRight - 滚动条是否到结束的地方
+ *                         isLeft - 滚动条是否到开始的地方
+ *                         left - 滚动条到滚动区域的最左边的当前距离
+ *                         offset - 滚动条离滚动区域的顶部的距离
+ * @event scrollerChange - 滚动区域的高度/宽度变化
+ */
+
+var SCROLL_PIXEL = 10;
 
 exports.default = {
   name: 'Scroller',
@@ -12837,6 +12843,9 @@ exports.default = {
     },
     barLeft: function barLeft(val) {
       this.triggerScroll('x');
+    },
+    'yComputed.barDisplay': function yComputedBarDisplay(val) {
+      val ? this.$refs.bar.enter() : this.$refs.bar.leave();
     }
   },
 
@@ -12854,6 +12863,14 @@ exports.default = {
     _binder: function _binder() {
       document.addEventListener('mousemove', this.scrollerMouseMove);
       document.addEventListener('mouseup', this.scrollerMouseUp);
+    },
+
+
+    /**
+     * '1.435px' => 1.44
+     */
+    _getNumFromStr: function _getNumFromStr(str) {
+      return Math.round(parseFloat(str));
     },
 
 
@@ -12957,43 +12974,89 @@ exports.default = {
           boxLength = _ref.boxLength,
           length = _ref.length;
 
+      var $el = this.$el;
       var scrollerContainBox = false; // 滚动区域是否大过滚动内容
       var barPositionName = 'bar' + (type === 'y' ? 'Top' : 'Left'); // 滚动条位置名字
       var boxPositionName = 'box' + (type === 'y' ? 'Top' : 'Left'); // 滚动内容位置名字
       var scrollerLength = 0; // 滚动区域的高度/宽度
-      var lengthType = type === 'y' ? 'height' : 'width';
-      var parentLength = 0; // 滚动区域的父元素
       var boxL = -1; // 需要重新赋值给 box 的 高度/宽度 像素
 
-      // 滚动区域的 宽度/高度 需要被滚动内容撑大，
-      // 并且需要检查父元素的 宽度/高度 之后，
-      // 才能正确断言滚动区域的 宽度/高度
-      this.$el.style[lengthType] = boxLength + 'px';
-      var $elParent = this.$el.parentElement;
-      var parentStyle = getComputedStyle($elParent);
-
-      var paddingLength = 0;
-      var borderLength = 0;
-
-      if (type === 'y') {
-        paddingLength = paddingLength + Math.round(parseFloat(parentStyle.paddingTop)) + Math.round(parseFloat(parentStyle.paddingBottom));
-        borderLength = borderLength + Math.round(parseFloat(parentStyle.borderTopWidth)) + Math.round(parseFloat(parentStyle.borderBottomWidth));
-      } else {
-        paddingLength = paddingLength + Math.round(parseFloat(parentStyle.paddingLeft)) + Math.round(parseFloat(parentStyle.paddingRight));
-        borderLength = borderLength + Math.round(parseFloat(parentStyle.borderLeftWidth)) + Math.round(parseFloat(parentStyle.borderRightWidth));
-      }
-
-      parentLength = Math.round(parseFloat(parentStyle[lengthType])) - paddingLength - borderLength;
-
       if (length === '100%') {
-        // 因为有些滚动内容的高度/宽度是 100%的，所以
-        // 需要判断之前的滚动区域的高度/宽度是否
+        // TODO：优化计算次数
+
+        var lengthType = type === 'y' ? 'height' : 'width';
+        var offsetLengthType = type === 'y' ? 'offsetHeight' : 'offsetWidth';
+        var parentLength = 0; // 滚动区域的父元素减去除自身的子元素的高度/宽度
+
+        // 滚动区域的 宽度/高度 需要被滚动内容撑大，
+        // 并且需要检查父元素的 宽度/高度 之后，
+        // 才能正确断言滚动区域的 宽度/高度
+        $el.style[lengthType] = boxLength + 'px';
+        var $elOffset = (0, _prop.offset)($el);
+        var $elParent = $el.parentElement;
+        var $elParentChildren = Array.from($elParent.children);
+        var parentStyle = getComputedStyle($elParent);
+        var parentL = $elParent[offsetLengthType];
+
+        var otherChildrenLength = 0;
+        var paddingLength = 0;
+        var borderLength = 0;
+
+        // 计算 border 和 padding 宽度/高度
+        if (type === 'y') {
+          paddingLength = this._getNumFromStr(parentStyle.paddingTop) + this._getNumFromStr(parentStyle.paddingBottom);
+          borderLength = this._getNumFromStr(parentStyle.borderTopWidth) + this._getNumFromStr(parentStyle.borderBottomWidth);
+        } else {
+          paddingLength = this._getNumFromStr(parentStyle.paddingLeft) + this._getNumFromStr(parentStyle.paddingRight);
+          borderLength = this._getNumFromStr(parentStyle.borderLeftWidth) + this._getNumFromStr(parentStyle.borderRightWidth);
+        }
+
+        // 计算是否有子元素的高度/宽度是撑大了父元素
+        $elParentChildren.forEach(function (item) {
+          var itemStyle = getComputedStyle(item);
+          var itemStyleDisplay = itemStyle.display;
+          var itemStylePosition = itemStyle.position;
+          var itemOffset = (0, _prop.offset)(item);
+
+          // 脱离文档流的不计算(relative 例外)
+          // 脱离文本流的不计算
+          // 等于自身元素的不计算
+          // 隐藏的不计算
+          if (item === $el || itemStyle.float !== 'none' || itemStyleDisplay === 'none' || itemStylePosition !== 'static' && itemStylePosition !== 'relative') {
+            return false;
+          }
+
+          // 当计算宽度的时候，子元素在组件的左右两边不计算
+          // 当计算高度的时候，子元素在组件的上下两边不计算
+          if (type === 'x') {
+            if (itemStyleDisplay !== 'inline-block') {
+              return false;
+            }
+
+            if (itemOffset.top > $elOffset.top + boxLength || $elOffset.top > itemOffset.top + item.offsetHeight) {
+              return false;
+            }
+          } else {
+            if (itemOffset.left > $elOffset.left + boxLength || $elOffset.left > itemOffset.left + item.offsetWidth) {
+              return false;
+            }
+          }
+
+          otherChildrenLength += item[offsetLengthType];
+        });
+
+        // 减去 border、 padding 和其他子元素的宽度/高度
+        parentLength = parentL - paddingLength - borderLength - otherChildrenLength;
+
+        // 父元素大于滚动内容
         if (parentLength >= boxLength) {
           boxL = parentLength;
+          scrollerLength = parentLength;
+        } else {
+          scrollerLength = parentLength;
         }
 
         scrollerContainBox = parentLength >= boxLength;
-        scrollerLength = parentLength;
       } else if (length === 'auto') {
         scrollerContainBox = true;
         scrollerLength = boxLength;
@@ -13183,7 +13246,7 @@ module.exports = false;
 
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(138);
+var $keys = __webpack_require__(139);
 var enumBugKeys = __webpack_require__(101);
 
 module.exports = Object.keys || function keys(O) {
@@ -13197,7 +13260,7 @@ module.exports = Object.keys || function keys(O) {
 "use strict";
 
 
-var toInteger = __webpack_require__(33);
+var toInteger = __webpack_require__(34);
 var max = Math.max;
 var min = Math.min;
 module.exports = function (index, length) {
@@ -13214,7 +13277,7 @@ module.exports = function (index, length) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(4);
-var dPs = __webpack_require__(139);
+var dPs = __webpack_require__(140);
 var enumBugKeys = __webpack_require__(101);
 var IE_PROTO = __webpack_require__(100)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
@@ -13263,7 +13326,7 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(138);
+var $keys = __webpack_require__(139);
 var hiddenKeys = __webpack_require__(101).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
@@ -13312,8 +13375,8 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 "use strict";
 
 
-var ctx = __webpack_require__(27);
-var call = __webpack_require__(150);
+var ctx = __webpack_require__(28);
+var call = __webpack_require__(151);
 var isArrayIter = __webpack_require__(114);
 var anObject = __webpack_require__(4);
 var toLength = __webpack_require__(14);
@@ -13347,7 +13410,7 @@ _exports.RETURN = RETURN;
 "use strict";
 
 
-var redefine = __webpack_require__(22);
+var redefine = __webpack_require__(21);
 module.exports = function (target, src, safe) {
   for (var key in src) {
     redefine(target, key, src[key], safe);
@@ -13362,7 +13425,7 @@ module.exports = function (target, src, safe) {
 
 
 var def = __webpack_require__(13).f;
-var has = __webpack_require__(20);
+var has = __webpack_require__(19);
 var TAG = __webpack_require__(9)('toStringTag');
 
 module.exports = function (it, tag, stat) {
@@ -13377,7 +13440,7 @@ module.exports = function (it, tag, stat) {
 
 
 var $export = __webpack_require__(0);
-var defined = __webpack_require__(32);
+var defined = __webpack_require__(33);
 var fails = __webpack_require__(6);
 var spaces = __webpack_require__(104);
 var space = '[' + spaces + ']';
@@ -13441,47 +13504,45 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.set = exports.MotionZoom = exports.MotionSlide = exports.MotionRip = exports.MotionFold = exports.MotionFade = exports.TableRow = exports.TableCol = exports.Table = exports.TabEle = exports.Tab = exports.ShiftEle = exports.Shift = exports.SelectEle = exports.Select = exports.Search = exports.Scroller = exports.Row = exports.Fold = exports.Pop = exports.Page = exports.Omit = exports.Nav = exports.Modal = exports.MenuEle = exports.Menu = exports.Message = exports.List = exports.Loading = exports.Icon = exports.Input = exports.FoldContent = exports.FoldTitle = exports.Form = exports.Col = exports.Check = exports.Btn = exports.Bubble = exports.toast = exports.tip = exports.confirm = exports.alert = undefined;
 
-__webpack_require__(413);
+__webpack_require__(414);
 
-__webpack_require__(417);
+__webpack_require__(418);
 
-__webpack_require__(419);
+__webpack_require__(420);
 
-__webpack_require__(421);
+__webpack_require__(422);
 
-__webpack_require__(423);
-
-var _src = __webpack_require__(425);
+var _src = __webpack_require__(424);
 
 var _src2 = _interopRequireDefault(_src);
 
-var _zhCn = __webpack_require__(547);
+var _zhCn = __webpack_require__(548);
 
 var _zhCn2 = _interopRequireDefault(_zhCn);
 
-var _config = __webpack_require__(548);
+var _config = __webpack_require__(549);
 
-var _alert = __webpack_require__(549);
+var _alert = __webpack_require__(550);
 
 var _alert2 = _interopRequireDefault(_alert);
 
-var _confirm = __webpack_require__(550);
+var _confirm = __webpack_require__(551);
 
 var _confirm2 = _interopRequireDefault(_confirm);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _toast = __webpack_require__(190);
+var _toast = __webpack_require__(191);
 
 var _toast2 = _interopRequireDefault(_toast);
 
-var _Btn = __webpack_require__(61);
+var _Btn = __webpack_require__(68);
 
 var _Btn2 = _interopRequireDefault(_Btn);
 
-var _Bubble = __webpack_require__(174);
+var _Bubble = __webpack_require__(176);
 
 var _Bubble2 = _interopRequireDefault(_Bubble);
 
@@ -13493,27 +13554,27 @@ var _Check = __webpack_require__(91);
 
 var _Check2 = _interopRequireDefault(_Check);
 
-var _Form = __webpack_require__(173);
+var _Form = __webpack_require__(175);
 
 var _Form2 = _interopRequireDefault(_Form);
 
-var _Fold = __webpack_require__(130);
+var _Fold = __webpack_require__(131);
 
 var _Fold2 = _interopRequireDefault(_Fold);
 
-var _FoldTitle = __webpack_require__(131);
+var _FoldTitle = __webpack_require__(132);
 
 var _FoldTitle2 = _interopRequireDefault(_FoldTitle);
 
-var _FoldContent = __webpack_require__(132);
+var _FoldContent = __webpack_require__(133);
 
 var _FoldContent2 = _interopRequireDefault(_FoldContent);
 
-var _Input = __webpack_require__(65);
+var _Input = __webpack_require__(72);
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
@@ -13521,7 +13582,7 @@ var _List = __webpack_require__(97);
 
 var _List2 = _interopRequireDefault(_List);
 
-var _Loading = __webpack_require__(63);
+var _Loading = __webpack_require__(62);
 
 var _Loading2 = _interopRequireDefault(_Loading);
 
@@ -13529,11 +13590,11 @@ var _Message = __webpack_require__(92);
 
 var _Message2 = _interopRequireDefault(_Message);
 
-var _Menu = __webpack_require__(134);
+var _Menu = __webpack_require__(135);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _MenuEle = __webpack_require__(184);
+var _MenuEle = __webpack_require__(185);
 
 var _MenuEle2 = _interopRequireDefault(_MenuEle);
 
@@ -13541,11 +13602,11 @@ var _Modal = __webpack_require__(94);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
-var _Nav = __webpack_require__(175);
+var _Nav = __webpack_require__(177);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
-var _Omit = __webpack_require__(176);
+var _Omit = __webpack_require__(178);
 
 var _Omit2 = _interopRequireDefault(_Omit);
 
@@ -13565,63 +13626,63 @@ var _Scroller = __webpack_require__(44);
 
 var _Scroller2 = _interopRequireDefault(_Scroller);
 
-var _Search = __webpack_require__(177);
+var _Search = __webpack_require__(179);
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _Select = __webpack_require__(186);
+var _Select = __webpack_require__(187);
 
 var _Select2 = _interopRequireDefault(_Select);
 
-var _SelectEle = __webpack_require__(187);
+var _SelectEle = __webpack_require__(188);
 
 var _SelectEle2 = _interopRequireDefault(_SelectEle);
 
-var _Shift = __webpack_require__(135);
+var _Shift = __webpack_require__(136);
 
 var _Shift2 = _interopRequireDefault(_Shift);
 
-var _ShiftEle = __webpack_require__(185);
+var _ShiftEle = __webpack_require__(186);
 
 var _ShiftEle2 = _interopRequireDefault(_ShiftEle);
 
-var _Tab = __webpack_require__(188);
+var _Tab = __webpack_require__(189);
 
 var _Tab2 = _interopRequireDefault(_Tab);
 
-var _TabEle = __webpack_require__(189);
+var _TabEle = __webpack_require__(190);
 
 var _TabEle2 = _interopRequireDefault(_TabEle);
 
-var _Table = __webpack_require__(179);
+var _Table = __webpack_require__(181);
 
 var _Table2 = _interopRequireDefault(_Table);
 
-var _TableRow = __webpack_require__(180);
+var _TableRow = __webpack_require__(182);
 
 var _TableRow2 = _interopRequireDefault(_TableRow);
 
-var _TableCol = __webpack_require__(181);
+var _TableCol = __webpack_require__(183);
 
 var _TableCol2 = _interopRequireDefault(_TableCol);
 
-var _MotionFade = __webpack_require__(95);
+var _MotionFade = __webpack_require__(73);
 
 var _MotionFade2 = _interopRequireDefault(_MotionFade);
 
-var _MotionFold = __webpack_require__(73);
+var _MotionFold = __webpack_require__(95);
 
 var _MotionFold2 = _interopRequireDefault(_MotionFold);
 
-var _MotionRip = __webpack_require__(71);
+var _MotionRip = __webpack_require__(70);
 
 var _MotionRip2 = _interopRequireDefault(_MotionRip);
 
-var _MotionSlide = __webpack_require__(72);
+var _MotionSlide = __webpack_require__(71);
 
 var _MotionSlide2 = _interopRequireDefault(_MotionSlide);
 
-var _MotionZoom = __webpack_require__(129);
+var _MotionZoom = __webpack_require__(130);
 
 var _MotionZoom2 = _interopRequireDefault(_MotionZoom);
 
@@ -13673,326 +13734,12 @@ exports.set = _config.set;
 
 /***/ }),
 /* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-__webpack_require__(426);
-
-__webpack_require__(428);
-
-__webpack_require__(430);
-
-var _Btn = __webpack_require__(432);
-
-var _Btn2 = _interopRequireDefault(_Btn);
-
-var _base = __webpack_require__(3);
-
-var _base2 = _interopRequireDefault(_base);
-
-var _form = __webpack_require__(70);
-
-var _form2 = _interopRequireDefault(_form);
-
-var _Loading = __webpack_require__(63);
-
-var _Loading2 = _interopRequireDefault(_Loading);
-
-var _MotionRip = __webpack_require__(71);
-
-var _MotionRip2 = _interopRequireDefault(_MotionRip);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * btn 组件
- *
- * @prop ban - 禁止点击
- * @prop block - 按钮的宽度是父元素的宽度
- * @prop link - 链接地址
- * @prop radius - 按钮边角得半径尺寸（none | S | M | L）
- * @prop size - 按钮大小
- * @prop submit - 提交按钮
- * @prop type - 按钮类型 (button | flat | float | outline)
- * @prop textDisplay - 是否显示按钮文字
- * @prop value - 按钮名字
- *
- * @event click - 点击btn事件
- * @event keyEnter - focus 时敲击 Enter 键
- * @event focus
- * @event blur
- */
-
-var BTN_TYPE_LINK = 'link';
-var BTN_TYPE_BUTTON = 'button';
-
-var SIZE_S = 'S';
-var SIZE_M = 'M';
-var SIZE_L = 'L';
-
-exports.default = {
-  name: 'Btn',
-
-  mixins: [_base2.default, _form2.default],
-
-  render: _Btn2.default,
-
-  components: {
-    loading: _Loading2.default,
-    'motion-rip': _MotionRip2.default
-  },
-
-  props: {
-    ban: {
-      type: Boolean,
-      default: false
-    },
-    block: {
-      type: Boolean,
-      default: false
-    },
-    kind: {
-      type: String,
-      default: 'primary'
-    },
-    link: String,
-    outline: {
-      type: Boolean,
-      default: false
-    },
-    radius: {
-      type: String,
-      default: 's',
-      validator: function validator(val) {
-        var size = val.toLowerCase();
-
-        return ['none', 's', 'm', 'l'].includes(size);
-      }
-    },
-    type: {
-      type: String,
-      default: BTN_TYPE_BUTTON,
-      validator: function validator(val) {
-        return ['button', 'float', 'flat', 'outline'].includes(val);
-      }
-    },
-    value: {
-      type: String,
-      require: true
-    },
-    size: {
-      type: String,
-      default: SIZE_S,
-      validator: function validator(val) {
-        var size = val.toLowerCase();
-
-        return ['s', 'm', 'l'].includes(size);
-      }
-    },
-    submit: {
-      type: Boolean,
-      require: false
-    },
-    textDisplay: {
-      type: Boolean,
-      default: false
-    }
-  },
-
-  data: function data() {
-    return {
-      banState: false, // 按钮的禁用状态
-      btnValueDisplay: false, // 按钮值显示状态
-      createdLoading: false, // 是否已经创建了按钮的 loading 组件
-      focusing: false, // 正在 focus 中
-      motion: false, // 启动按钮的沦漪效果
-      allowFocus: true, // 允许执行 focus 事件
-      mousePoi: { // 点击按钮的鼠标位置
-        top: 0,
-        left: 0
-      },
-      inTouch: false // 判断是否在触摸屏
-    };
-  },
-
-
-  watch: {
-    ban: function ban(val) {
-      this.banState = val;
-    }
-  },
-
-  computed: {
-    cPrefix: function cPrefix() {
-      return this.compPrefix + '-btn';
-    },
-    isLink: function isLink() {
-      return !this.btnValueDisplay && this.link;
-    },
-    isFloatBtn: function isFloatBtn() {
-      return this.type === 'float';
-    },
-    btnClass: function btnClass() {
-      return this.xclass([this.themeClass, this.uiClass, 'size-' + this.size.toLowerCase(), 'radius-' + this.radius.toLowerCase(), 'type-' + this.type]);
-    }
-  },
-
-  methods: {
-    _setDataOpt: function _setDataOpt() {
-      this.banState = this.ban;
-    },
-    mouseup: function mouseup() {
-      if (this.inTouch) {
-        return false;
-      }
-
-      if (this.banState) {
-        return false;
-      }
-
-      this.allowFocus = true;
-    },
-    mousedown: function mousedown(event) {
-      if (this.inTouch) {
-        return false;
-      }
-
-      if (this.banState) {
-        return false;
-      }
-
-      var el = event.currentTarget;
-
-      this.allowFocus = false;
-
-      if (this.UIMaterial) {
-        this.mousePoi = {
-          x: event.pageX - el.offsetLeft,
-          y: event.pageY - el.offsetTop
-        };
-
-        this.$refs.transition && this.$refs.transition.enter({
-          mousePoi: {
-            x: event.pageX - el.offsetLeft,
-            y: event.pageY - el.offsetTop
-          }
-        });
-      }
-    },
-    focus: function focus(event) {
-      this.focusing = true;
-
-      this.$emit('focus', {
-        event: event,
-        emitter: this
-      });
-
-      if (this.inTouch) {
-        return false;
-      }
-
-      if (this.allowFocus) {
-        this.motion = true;
-      }
-    },
-    blur: function blur(event) {
-      this.focusing = false;
-
-      this.$emit('blur', {
-        event: event,
-        emitter: this
-      });
-
-      this.motion = false;
-    },
-
-
-    /**
-     * 点击按钮
-     * @return {Object} this - 组件
-     */
-    click: function click(event) {
-      if (this.banState) {
-        return false;
-      }
-
-      return this.$emit('click', {
-        event: event,
-        emitter: this
-      });
-    },
-
-
-    /**
-     * keyup 句柄
-     */
-    keyup: function keyup(event) {
-      if (event.keyCode === 13) {
-        return this.$emit('keyEnter', {
-          event: event,
-          emitter: this
-        });
-      }
-    },
-
-
-    /**
-     * 将按钮变为只读操作
-     */
-    banBtn: function banBtn() {
-      this.banState = true;
-    },
-
-
-    /**
-     * 取消按钮只读状态
-     */
-    allowBtn: function allowBtn() {
-      this.banState = false;
-    },
-
-
-    /**
-     * 开启按钮等待功能
-     */
-    openLoading: function openLoading() {
-      var _this = this;
-
-      if (!this.createdLoading) {
-        this.createdLoading = true;
-        this.banBtn();
-      }
-
-      this.$nextTick(function () {
-        _this.$refs.loading.show();
-      });
-    },
-
-
-    /**
-     * 关闭按钮等待功能
-     */
-    classLoading: function classLoading(state) {
-      this.allowBtn();
-      this.$refs.loading.hide();
-    }
-  }
-};
-
-/***/ }),
-/* 62 */
 /***/ (function(module, exports) {
 
 module.exports = {"alert":{"add":"common/alert/add","get":"common/alert/get"},"confirm":{"add":"common/confirm/add","get":"common/confirm/get"},"tip":{"add":"common/tip/add","get":"common/tip/get"},"toast":{"add":"common/toast/add","get":"common/toast/get"},"deviceSize":"common/deviceSize"}
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14002,9 +13749,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(437);
+__webpack_require__(436);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
@@ -14012,7 +13759,7 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _Loading = __webpack_require__(443);
+var _Loading = __webpack_require__(442);
 
 var _Loading2 = _interopRequireDefault(_Loading);
 
@@ -14128,7 +13875,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14138,22 +13885,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+var _uid = __webpack_require__(127);
 
-/**
- * motion 组件的 mixin
- *
- * @prop display - 默认一开始是隐藏（进来之前的状态）
- * @prop speed - 动画速度
- * @prop sync - 调用多次动画时，动画与动画之间是否时同步
- *
- * @event beforeEnter - 进来过渡之前
- * @event enter - 进来过渡期间
- * @event afterEnter - 进来过渡完成
- * @event beforeLeave - 离开过渡之前
- * @event leave - 离开过渡期间
- * @event afterLeave - 离开过渡之后
- */
+var _uid2 = _interopRequireDefault(_uid);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * motion 组件的 mixin
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @prop display - 默认一开始是隐藏（进来之前的状态）
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @prop speed - 动画速度
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @prop sync - 迅速切换动画，进来动画与离开动画之间是否同步进行
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @prop sync - 当处于进来动画，再次调用进来动画是否执行，同离开动画
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @event beforeEnter - 进来过渡之前
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @event enter - 进来过渡期间
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @event afterEnter - 进来过渡完成
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @event beforeLeave - 离开过渡之前
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @event leave - 离开过渡期间
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @event afterLeave - 离开过渡之后
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            */
 
 exports.default = {
   props: {
@@ -14207,6 +13959,12 @@ exports.default = {
         return false;
       }
 
+      this.code = (0, _uid2.default)();
+      var code = this.code;
+      opt = Object.assign({}, opt, {
+        code: code
+      });
+
       return new Promise(function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resolve, reject) {
           return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -14217,37 +13975,58 @@ exports.default = {
 
                   _this.moving = _this.isEntering = true;
 
-                  _context.next = 4;
+                  _context.t0 = code === _this.code;
+
+                  if (!_context.t0) {
+                    _context.next = 6;
+                    break;
+                  }
+
+                  _context.next = 6;
                   return _this.beforeEnter(opt);
 
-                case 4:
-                  _context.next = 6;
+                case 6:
+                  _context.t1 = code === _this.code;
+
+                  if (!_context.t1) {
+                    _context.next = 10;
+                    break;
+                  }
+
+                  _context.next = 10;
                   return _this.entering(opt);
 
-                case 6:
-                  _context.next = 8;
+                case 10:
+                  _context.t2 = code === _this.code;
+
+                  if (!_context.t2) {
+                    _context.next = 14;
+                    break;
+                  }
+
+                  _context.next = 14;
                   return _this.afterEnter(opt);
 
-                case 8:
+                case 14:
 
                   _this.moving = _this.isEntering = false;
 
                   resolve();
-                  _context.next = 15;
+                  _context.next = 21;
                   break;
 
-                case 12:
-                  _context.prev = 12;
-                  _context.t0 = _context['catch'](0);
+                case 18:
+                  _context.prev = 18;
+                  _context.t3 = _context['catch'](0);
 
-                  reject(_context.t0);
+                  reject(_context.t3);
 
-                case 15:
+                case 21:
                 case 'end':
                   return _context.stop();
               }
             }
-          }, _callee, _this, [[0, 12]]);
+          }, _callee, _this, [[0, 18]]);
         }));
 
         return function (_x2, _x3) {
@@ -14271,6 +14050,12 @@ exports.default = {
         return false;
       }
 
+      this.code = (0, _uid2.default)();
+      var code = this.code;
+      opt = Object.assign({}, opt, {
+        code: code
+      });
+
       return new Promise(function () {
         var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(resolve, reject) {
           return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -14281,37 +14066,58 @@ exports.default = {
 
                   _this2.moving = _this2.isLeaving = true;
 
-                  _context2.next = 4;
+                  _context2.t0 = code === _this2.code;
+
+                  if (!_context2.t0) {
+                    _context2.next = 6;
+                    break;
+                  }
+
+                  _context2.next = 6;
                   return _this2.beforeLeave(opt);
 
-                case 4:
-                  _context2.next = 6;
+                case 6:
+                  _context2.t1 = code === _this2.code;
+
+                  if (!_context2.t1) {
+                    _context2.next = 10;
+                    break;
+                  }
+
+                  _context2.next = 10;
                   return _this2.leaveing(opt);
 
-                case 6:
-                  _context2.next = 8;
+                case 10:
+                  _context2.t2 = code === _this2.code;
+
+                  if (!_context2.t2) {
+                    _context2.next = 14;
+                    break;
+                  }
+
+                  _context2.next = 14;
                   return _this2.afterLeave(opt);
 
-                case 8:
+                case 14:
 
                   _this2.moving = _this2.isLeaving = false;
 
                   resolve();
-                  _context2.next = 15;
+                  _context2.next = 21;
                   break;
 
-                case 12:
-                  _context2.prev = 12;
-                  _context2.t0 = _context2['catch'](0);
+                case 18:
+                  _context2.prev = 18;
+                  _context2.t3 = _context2['catch'](0);
 
-                  reject(_context2.t0);
+                  reject(_context2.t3);
 
-                case 15:
+                case 21:
                 case 'end':
                   return _context2.stop();
               }
             }
-          }, _callee2, _this2, [[0, 12]]);
+          }, _callee2, _this2, [[0, 18]]);
         }));
 
         return function (_x5, _x6) {
@@ -14341,7 +14147,28 @@ exports.default = {
     afterLeave: function afterLeave() {
       return this.$emit('afterLeave');
     }
+  },
+
+  created: function created() {
+    this.moving = false; // 当前正在执行动画
+    this.isEntering = false; // 当前执行进来的动画的编号
+    this.isLeaving = false; // 当前执行离开的动画的编号
+    this.code = 0; // 当前执行的动画的编号
   }
+};
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var cof = __webpack_require__(29);
+// eslint-disable-next-line no-prototype-builtins
+module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
+  return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
 /***/ }),
@@ -14351,397 +14178,7 @@ exports.default = {
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-__webpack_require__(474);
-
-__webpack_require__(476);
-
-__webpack_require__(478);
-
-var _Input = __webpack_require__(480);
-
-var _Input2 = _interopRequireDefault(_Input);
-
-var _store = __webpack_require__(41);
-
-var _store2 = _interopRequireDefault(_store);
-
-var _type = __webpack_require__(89);
-
-var _type2 = _interopRequireDefault(_type);
-
-var _validate = __webpack_require__(481);
-
-var _validate2 = _interopRequireDefault(_validate);
-
-var _base = __webpack_require__(3);
-
-var _base2 = _interopRequireDefault(_base);
-
-var _form = __webpack_require__(70);
-
-var _form2 = _interopRequireDefault(_form);
-
-var _Input3 = __webpack_require__(482);
-
-var _Input4 = _interopRequireDefault(_Input3);
-
-var _Row = __webpack_require__(43);
-
-var _Row2 = _interopRequireDefault(_Row);
-
-var _Col = __webpack_require__(42);
-
-var _Col2 = _interopRequireDefault(_Col);
-
-var _data = __webpack_require__(128);
-
-var _tip = __webpack_require__(19);
-
-var _tip2 = _interopRequireDefault(_tip);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
-                                                                                                                                                                                                                   * input 组件
-                                                                                                                                                                                                                   *
-                                                                                                                                                                                                                   * @prop block - 将宽度设置为和父元素一样
-                                                                                                                                                                                                                   * @prop hidden - 设置为隐藏域
-                                                                                                                                                                                                                   * @prop initVal - 设置当前输入框的值
-                                                                                                                                                                                                                   * @prop number - 输入框的数字指定为 nmuber 类型
-                                                                                                                                                                                                                   * @prop placeholder - 占位符
-                                                                                                                                                                                                                   * @prop param - 查询参数名
-                                                                                                                                                                                                                   * @prop readOnly - 只读，不能編輯
-                                                                                                                                                                                                                   * @prop required - 是否为必填，默认否
-                                                                                                                                                                                                                   * @prop row - textarea 的行数
-                                                                                                                                                                                                                   * @prop textLengthTip - 显示当前输入的长度
-                                                                                                                                                                                                                   * @prop type - 输入框类型( field | area )
-                                                                                                                                                                                                                   *
-                                                                                                                                                                                                                   * @prop completion - 是否启用自动搜索补全功能
-                                                                                                                                                                                                                   * @prop errorMessage - input 为空和格式不对的错误信息
-                                                                                                                                                                                                                   * @prop errorTipType - 弹出错误提示的类型（ bubble | tip ）
-                                                                                                                                                                                                                   * @prop formatMessage - 格式错误的提示信息
-                                                                                                                                                                                                                   * @prop min - input，textarea 可输入最小长度（数字）
-                                                                                                                                                                                                                   * @prop max - input，textarea 可输入最大长度（数字）
-                                                                                                                                                                                                                   * @prop minNum - input，textarea 可输入最小数字
-                                                                                                                                                                                                                   * @prop maxNum - input，textarea 可输入最大数字
-                                                                                                                                                                                                                   * @prop regex - 验证值的正则
-                                                                                                                                                                                                                   * @prop verifiedType - 验证值的类型
-                                                                                                                                                                                                                   *
-                                                                                                                                                                                                                   * @prop headerSpan - 输入框头附加项的横向阑珊格
-                                                                                                                                                                                                                   * @prop footerSpan - 输入框尾附加项的横向阑珊格
-                                                                                                                                                                                                                   *
-                                                                                                                                                                                                                   * @event change - input的值改变
-                                                                                                                                                                                                                   * @event blur - input的blur
-                                                                                                                                                                                                                   * @event focus - input的focus
-                                                                                                                                                                                                                   * @event keyup - input的keyup
-                                                                                                                                                                                                                   *
-                                                                                                                                                                                                                   * @slot header
-                                                                                                                                                                                                                   * @slot footer
-                                                                                                                                                                                                                   */
-
-var TYPE_TEXT_AREA = 'area';
-var TYPE_TEXT = 'field';
-var ERROR_MESSAGE_TIP = 'tip';
-var ERROR_MESSAGE_BUBBLE = 'bubble';
-
-exports.default = {
-  name: 'Input',
-
-  render: _Input2.default,
-
-  mixins: [_base2.default, _form2.default, _Input4.default],
-
-  components: {
-    row: _Row2.default,
-    column: _Col2.default
-  },
-
-  store: _store2.default,
-
-  props: {
-    block: {
-      type: Boolean,
-      default: false
-    },
-    hidden: {
-      type: Boolean,
-      default: false
-    },
-    initVal: {
-      type: [String, Number],
-      default: ''
-    },
-    number: {
-      type: Boolean,
-      default: false
-    },
-    placeholder: {
-      type: String,
-      default: ''
-    },
-    param: {
-      type: String,
-      default: ''
-    },
-    readOnly: {
-      type: Boolean,
-      default: false
-    },
-    row: {
-      type: Number,
-      default: 4
-    },
-    textLengthTip: {
-      type: Boolean,
-      default: false
-    },
-    type: {
-      type: String,
-      default: 'field'
-    },
-    required: {
-      type: Boolean,
-      default: true
-    },
-    errorMessage: {
-      type: String,
-      default: ''
-    },
-    errorTipType: {
-      type: String,
-      default: 'tip'
-    },
-    formatMessage: String,
-    min: Number,
-    max: Number,
-    minNum: Number,
-    maxNum: Number,
-    regex: String,
-    verifiedType: String,
-    completion: {
-      type: Boolean,
-      default: false
-    },
-    headerSpan: {
-      type: Number,
-      default: 1
-    },
-    footerSpan: {
-      type: Number,
-      default: 1
-    }
-  },
-
-  data: function data() {
-    this.compName = 'input'; // 组件名字
-
-    return {
-      value: this.number ? this._switchNum(this.initVal) : this.initVal, // 输入框的当前的值
-      focusing: false, // 输入框是否处于 focus 状态
-      keyuping: false, // 是否处于 keyup 状态
-      dangerTip: '', // 错误信息提示信息
-      dataTypeName: '', // 数据类型的名称
-      verified: true, // 是否验证通过
-      bubbleDisplay: false, // 冒泡的错误提示显示状态
-      inputTextLength: 0, // 当前输入框值的长度
-      errorBorderDisplay: false // 错误提示框的显示状态
-    };
-  },
-
-
-  computed: {
-    cPrefix: function cPrefix() {
-      // 组件类名的前缀
-      return this.compPrefix + '-input';
-    },
-    _formatMessage: function _formatMessage() {
-      // 格式不对的报错信息
-      return this.errorMessage ? this.errorMessage + '格式不对' : this.dataTypeName + '格式不对';
-    },
-    dangerTipDisplay: function dangerTipDisplay() {
-      return !!this.dangerTip && this.bubbleDisplay;
-    },
-    isTextarea: function isTextarea() {
-      return this.type === TYPE_TEXT_AREA;
-    },
-    isText: function isText() {
-      return this.type === TYPE_TEXT;
-    },
-    inputHub: function inputHub() {
-      return this.$store.getters[_type2.default.input.get];
-    },
-    stageClass: function stageClass() {
-      // 组件 stage 的 class 名字
-      return [_defineProperty({}, this.cPrefix + '-textarea-stage', this.isTextarea)];
-    },
-    wrapClass: function wrapClass() {
-      return [this.xclass('wrap'), _defineProperty({}, this.cPrefix + '-editting', this.focusing), _defineProperty({}, this.cPrefix + '-error-border', this.errorBorderDisplay)];
-    },
-    inputBoxCol: function inputBoxCol() {
-      // input 的阑珊的格数
-      var slotHead = this.$slots.header;
-      var slotTail = this.$slots.footer;
-
-      if (slotHead && slotTail) {
-        return 12 - this.footerSpan - this.headerSpan;
-      } else if (slotHead) {
-        return 12 - this.headerSpan;
-      } else if (slotTail) {
-        return 12 - this.footerSpan;
-      } else {
-        return 12;
-      }
-    }
-  },
-
-  watch: {
-    initVal: function initVal(val, oldVal) {
-      this.value = val;
-    },
-    value: function value(val, oldVal) {
-      // 限制长度显示
-      this.limitLen = String(val).length;
-
-      if (this.completion && this.$slots.completion) {
-        this.$slots.completion[0].componentInstance.search(val);
-      }
-
-      this._dispatchChange();
-    }
-  },
-
-  methods: {
-    /**
-     * 初始化验证规则
-     * @return {Object} this - 组件
-     */
-    _initVerfication: function _initVerfication() {
-      if (this.regex) {
-        this.regexObj = new RegExp(this.regex);
-
-        return this;
-      }
-
-      var verify = (0, _validate2.default)(this.verifiedType);
-
-      if (verify) {
-        this.regexObj = verify.regex;
-        this.dataTypeName = verify.dataTypeName;
-      }
-
-      return this;
-    },
-
-
-    /**
-     * 初始化验证的提示信息
-     * @return {Object} this - 组件
-     */
-    _initVerfiedMessage: function _initVerfiedMessage() {
-      var errorMessage = this.errorMessage;
-
-      if (errorMessage) {
-        this.emptyMessage = errorMessage;
-        this.lengthMessage = errorMessage;
-
-        return this;
-      }
-
-      this.emptyMessage = this.errorMessage ? this.errorMessage : '不能为空';
-      this.lengthMessage = this.errorMessage ? this.errorMessage : '长度超过限制';
-
-      return this;
-    },
-
-
-    /**
-     * 派送 value 的 change 事件
-     * @return {Object} this - 组件
-     */
-    _dispatchChange: function _dispatchChange() {
-      return this.$emit('change', {
-        emitter: this,
-        value: this.value
-      });
-    },
-
-
-    /**
-     * 验证数据是否为空
-     *
-     * @return {Object} -
-     *                  verified - 验证情况
-     *                  dangerTip - 错误提示
-     */
-    _verifyEmpty: function _verifyEmpty(firstVerify) {
-      var dangerTip = '';
-
-      if (this.required) {
-        if (this.bubbleDisplay) {
-          dangerTip = firstVerify ? '' : '\u8BF7\u8F93\u5165' + this.emptyMessage + '!';
-        } else {
-          dangerTip = '\u8BF7\u8F93\u5165' + this.emptyMessage + '!';
-        }
-
-        return {
-          verified: false,
-          dangerTip: dangerTip
-        };
-      }
-
-      return {
-        verified: true,
-        dangerTip: dangerTip
-      };
-    },
-
-
-    /**
-     * 转换为纯数字 - 超过 16 位存储为字符串
-     */
-    _switchNum: function _switchNum(val) {
-      if (val === 0 || val === '0') {
-        return 0;
-      }
-
-      var strTemp = String(val);
-
-      if (isNaN(strTemp)) {
-        var temp = strTemp;
-
-        strTemp = strTemp.replace(/[^\d.]+/g, '');
-
-        if (temp.indexOf('-') === 0) {
-          strTemp = '-' + strTemp;
-        }
-      }
-
-      if (isNaN(strTemp)) {
-        strTemp = '';
-      }
-
-      if (val.length >= 16) {
-        return strTemp;
-      }
-
-      return Number(strTemp);
-    }
-  },
-
-  created: function created() {
-    this.bubbleDisplay = this.errorTipType !== ERROR_MESSAGE_TIP;
-  },
-  mounted: function mounted() {
-    this._initVerfication();
-    this._initVerfiedMessage();
-
-    this.$store.dispatch(_type2.default.input.add, this);
-  }
-};
+exports.f = {}.propertyIsEnumerable;
 
 /***/ }),
 /* 66 */
@@ -14750,31 +14187,8 @@ exports.default = {
 "use strict";
 
 
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(28);
-// eslint-disable-next-line no-prototype-builtins
-module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
-  return cof(it) == 'String' ? it.split('') : Object(it);
-};
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.f = {}.propertyIsEnumerable;
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 // getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = __webpack_require__(28);
+var cof = __webpack_require__(29);
 var TAG = __webpack_require__(9)('toStringTag');
 // ES3 wrong here
 var ARG = cof(function () {
@@ -14800,7 +14214,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 69 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17261,7 +16675,322 @@ if (inBrowser && window.Vue) {
 exports.default = VueRouter;
 
 /***/ }),
-/* 70 */
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+__webpack_require__(425);
+
+__webpack_require__(427);
+
+__webpack_require__(429);
+
+var _prop = __webpack_require__(27);
+
+var _Btn = __webpack_require__(431);
+
+var _Btn2 = _interopRequireDefault(_Btn);
+
+var _base = __webpack_require__(3);
+
+var _base2 = _interopRequireDefault(_base);
+
+var _form = __webpack_require__(69);
+
+var _form2 = _interopRequireDefault(_form);
+
+var _Loading = __webpack_require__(62);
+
+var _Loading2 = _interopRequireDefault(_Loading);
+
+var _MotionRip = __webpack_require__(70);
+
+var _MotionRip2 = _interopRequireDefault(_MotionRip);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BTN_TYPE_LINK = 'link'; /**
+                             * btn 组件
+                             *
+                             * @prop ban - 禁止点击
+                             * @prop block - 按钮的宽度是父元素的宽度
+                             * @prop link - 链接地址
+                             * @prop radius - 按钮边角得半径尺寸（none | S | M | L）
+                             * @prop size - 按钮大小
+                             * @prop submit - 提交按钮
+                             * @prop type - 按钮类型 (button | flat | float | outline)
+                             * @prop textDisplay - 是否显示按钮文字
+                             * @prop value - 按钮名字
+                             *
+                             * @event click - 点击btn事件
+                             * @event keyEnter - focus 时敲击 Enter 键
+                             * @event focus
+                             * @event blur
+                             */
+
+var BTN_TYPE_BUTTON = 'button';
+
+var SIZE_S = 'S';
+var SIZE_M = 'M';
+var SIZE_L = 'L';
+
+exports.default = {
+  name: 'Btn',
+
+  mixins: [_base2.default, _form2.default],
+
+  render: _Btn2.default,
+
+  components: {
+    loading: _Loading2.default,
+    'motion-rip': _MotionRip2.default
+  },
+
+  props: {
+    ban: {
+      type: Boolean,
+      default: false
+    },
+    block: {
+      type: Boolean,
+      default: false
+    },
+    kind: {
+      type: String,
+      default: 'primary'
+    },
+    link: String,
+    outline: {
+      type: Boolean,
+      default: false
+    },
+    radius: {
+      type: String,
+      default: 's',
+      validator: function validator(val) {
+        var size = val.toLowerCase();
+
+        return ['none', 's', 'm', 'l'].includes(size);
+      }
+    },
+    type: {
+      type: String,
+      default: BTN_TYPE_BUTTON,
+      validator: function validator(val) {
+        return ['button', 'float', 'flat', 'outline'].includes(val);
+      }
+    },
+    value: {
+      type: String,
+      require: true
+    },
+    size: {
+      type: String,
+      default: SIZE_S,
+      validator: function validator(val) {
+        var size = val.toLowerCase();
+
+        return ['s', 'm', 'l'].includes(size);
+      }
+    },
+    submit: {
+      type: Boolean,
+      require: false
+    },
+    textDisplay: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  data: function data() {
+    return {
+      banState: false, // 按钮的禁用状态
+      btnValueDisplay: false, // 按钮值显示状态
+      createdLoading: false, // 是否已经创建了按钮的 loading 组件
+      focusing: false, // 正在 focus 中
+      motion: false, // 启动按钮的沦漪效果
+      allowFocus: true, // 允许执行 focus 事件
+      mousePoi: { // 点击按钮的鼠标位置
+        top: 0,
+        left: 0
+      },
+      inTouch: false // 判断是否在触摸屏
+    };
+  },
+
+
+  watch: {
+    ban: function ban(val) {
+      this.banState = val;
+    }
+  },
+
+  computed: {
+    cPrefix: function cPrefix() {
+      return this.compPrefix + '-btn';
+    },
+    isLink: function isLink() {
+      return !this.btnValueDisplay && this.link;
+    },
+    isFloatBtn: function isFloatBtn() {
+      return this.type === 'float';
+    },
+    btnClass: function btnClass() {
+      return this.xclass([this.themeClass, this.uiClass, 'size-' + this.size.toLowerCase(), 'radius-' + this.radius.toLowerCase(), 'type-' + this.type]);
+    }
+  },
+
+  methods: {
+    _setDataOpt: function _setDataOpt() {
+      this.banState = this.ban;
+    },
+    mouseup: function mouseup(event) {
+      if (this.inTouch) {
+        return false;
+      }
+
+      if (this.banState) {
+        return false;
+      }
+
+      this.allowFocus = true;
+
+      if (event.button === 0) {
+        return this.click();
+      }
+    },
+    mousedown: function mousedown(event) {
+      if (this.inTouch) {
+        return false;
+      }
+
+      if (this.banState) {
+        return false;
+      }
+
+      var el = event.currentTarget;
+
+      this.allowFocus = false;
+
+      if (this.UIMaterial) {
+        var elOffset = (0, _prop.offset)(el);
+
+        this.mousePoi = {
+          x: event.pageX - elOffset.left,
+          y: event.pageY - elOffset.top
+        };
+
+        this.$refs.transition && this.$refs.transition.enter({
+          mousePoi: Object.assign({}, this.mousePoi)
+        });
+      }
+    },
+    focus: function focus(event) {
+      this.focusing = true;
+
+      this.$emit('focus', {
+        event: event,
+        emitter: this
+      });
+
+      if (this.inTouch) {
+        return false;
+      }
+
+      if (this.allowFocus) {
+        this.motion = true;
+      }
+    },
+    blur: function blur(event) {
+      this.focusing = false;
+
+      this.$emit('blur', {
+        event: event,
+        emitter: this
+      });
+
+      this.motion = false;
+    },
+
+
+    /**
+     * keyup 句柄
+     */
+    keyup: function keyup(event) {
+      if (event.keyCode === 13) {
+        this.click();
+
+        return this.$emit('keyEnter', {
+          event: event,
+          emitter: this
+        });
+      }
+    },
+
+
+    /**
+     * click event
+     */
+    click: function click(event) {
+      return this.$emit('click', {
+        event: event,
+        emitter: this
+      });
+    },
+
+
+    /**
+     * 将按钮变为只读操作
+     */
+    banBtn: function banBtn() {
+      this.banState = true;
+    },
+
+
+    /**
+     * 取消按钮只读状态
+     */
+    allowBtn: function allowBtn() {
+      this.banState = false;
+    },
+
+
+    /**
+     * 开启按钮等待功能
+     */
+    openLoading: function openLoading() {
+      var _this = this;
+
+      if (!this.createdLoading) {
+        this.createdLoading = true;
+        this.banBtn();
+      }
+
+      this.$nextTick(function () {
+        _this.$refs.loading.show();
+      });
+    },
+
+
+    /**
+     * 关闭按钮等待功能
+     */
+    classLoading: function classLoading(state) {
+      this.allowBtn();
+      this.$refs.loading.hide();
+    }
+  }
+};
+
+/***/ }),
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17306,7 +17035,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17322,11 +17051,11 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _motion = __webpack_require__(64);
+var _motion = __webpack_require__(63);
 
 var _motion2 = _interopRequireDefault(_motion);
 
-__webpack_require__(444);
+__webpack_require__(443);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17357,8 +17086,11 @@ exports.default = {
 
   methods: {
     beforeEnter: function beforeEnter() {
+      var _this = this;
+
       var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          mousePoi = _ref.mousePoi;
+          mousePoi = _ref.mousePoi,
+          code = _ref.code;
 
       this.$emit('beforeEnter');
 
@@ -17395,14 +17127,14 @@ exports.default = {
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          el.style.display = '';
+          code === _this.code && (el.style.display = '');
 
           return resolve();
         });
       });
     },
     entering: function entering() {
-      var _this = this;
+      var _this2 = this;
 
       var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -17417,7 +17149,7 @@ exports.default = {
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
           return resolve();
-        }, _this.time);
+        }, _this2.time);
       });
     },
     afterEnter: function afterEnter() {
@@ -17426,6 +17158,7 @@ exports.default = {
       var el = this.$el;
 
       el.firstChild.style.transition = el.style.transition = '';
+      el.style.display = '';
 
       (0, _attr.delClass)(el, [this.prefix('motion-rip-comp'), this.prefix('motion-rip-assign'), this.prefix('motion-rip-active')]);
 
@@ -17441,11 +17174,16 @@ exports.default = {
     }, [h('div', {
       class: [this.prefix('motion-rip-spot')]
     })])]);
+  },
+  mounted: function mounted() {
+    if (!this.display) {
+      this.$el.style.display = 'none';
+    }
   }
 };
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17455,7 +17193,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _motion = __webpack_require__(64);
+var _motion = __webpack_require__(63);
 
 var _motion2 = _interopRequireDefault(_motion);
 
@@ -17542,6 +17280,11 @@ exports.default = {
       return this;
     },
     beforeEnter: function beforeEnter() {
+      var _this = this;
+
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref.code;
+
       this.$emit('beforeEnter');
 
       var el = this.$el;
@@ -17554,14 +17297,17 @@ exports.default = {
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          el.style.display = '';
+          code === _this.code && (el.style.display = '');
 
           return resolve();
-        }, 100);
+        }, 78);
       });
     },
     entering: function entering() {
-      var _this = this;
+      var _this2 = this;
+
+      var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref2.code;
 
       var el = this.$el;
       // HACK: trigger browser reflow
@@ -17576,7 +17322,7 @@ exports.default = {
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
           return resolve();
-        }, _this.time);
+        }, _this2.time);
       });
     },
     afterEnter: function afterEnter() {
@@ -17601,7 +17347,10 @@ exports.default = {
       });
     },
     leaveing: function leaveing() {
-      var _this2 = this;
+      var _this3 = this;
+
+      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref3.code;
 
       var el = this.$el;
 
@@ -17613,10 +17362,10 @@ exports.default = {
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          el.style.display = 'none';
+          code === _this3.code && (el.style.display = 'none');
 
           return resolve();
-        }, _this2.time);
+        }, _this3.time);
       });
     },
     afterLeave: function afterLeave() {
@@ -17657,6 +17406,571 @@ exports.default = {
     */
 
 /***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+__webpack_require__(472);
+
+__webpack_require__(474);
+
+__webpack_require__(476);
+
+var _Input = __webpack_require__(478);
+
+var _Input2 = _interopRequireDefault(_Input);
+
+var _store = __webpack_require__(41);
+
+var _store2 = _interopRequireDefault(_store);
+
+var _type = __webpack_require__(89);
+
+var _type2 = _interopRequireDefault(_type);
+
+var _validate = __webpack_require__(479);
+
+var _validate2 = _interopRequireDefault(_validate);
+
+var _base = __webpack_require__(3);
+
+var _base2 = _interopRequireDefault(_base);
+
+var _form = __webpack_require__(69);
+
+var _form2 = _interopRequireDefault(_form);
+
+var _Input3 = __webpack_require__(480);
+
+var _Input4 = _interopRequireDefault(_Input3);
+
+var _Row = __webpack_require__(43);
+
+var _Row2 = _interopRequireDefault(_Row);
+
+var _Col = __webpack_require__(42);
+
+var _Col2 = _interopRequireDefault(_Col);
+
+var _MotionFade = __webpack_require__(73);
+
+var _MotionFade2 = _interopRequireDefault(_MotionFade);
+
+var _data = __webpack_require__(129);
+
+var _dom = __webpack_require__(174);
+
+var _tip = __webpack_require__(18);
+
+var _tip2 = _interopRequireDefault(_tip);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
+                                                                                                                                                                                                                   * input 组件
+                                                                                                                                                                                                                   *
+                                                                                                                                                                                                                   * @prop block - 将宽度设置为和父元素一样
+                                                                                                                                                                                                                   * @prop hidden - 设置为隐藏域
+                                                                                                                                                                                                                   * @prop initVal - 设置当前输入框的值
+                                                                                                                                                                                                                   * @prop label - 输入框的标签
+                                                                                                                                                                                                                   * @prop multiline - 可以输入多行文本（自适应文本高度）
+                                                                                                                                                                                                                   * @prop number - 输入框的数字指定为 nmuber 类型
+                                                                                                                                                                                                                   * @prop placeholder - 占位符
+                                                                                                                                                                                                                   * @prop param - 查询参数名
+                                                                                                                                                                                                                   * @prop readOnly - 只读，不能編輯
+                                                                                                                                                                                                                   * @prop required - 是否为必填，默认否
+                                                                                                                                                                                                                   * @prop row - textarea 的行数
+                                                                                                                                                                                                                   * @prop textLengthTip - 显示当前输入的长度
+                                                                                                                                                                                                                   * @prop type - 输入框类型( field | area )
+                                                                                                                                                                                                                   *
+                                                                                                                                                                                                                   * @prop completion - 是否启用自动搜索补全功能
+                                                                                                                                                                                                                   * @prop helperText - 输入框下的帮助信息
+                                                                                                                                                                                                                   * @prop errorText - 当设置了 regex 时会显示格式错误的提示信息
+                                                                                                                                                                                                                   * @prop errorTipType - 弹出错误提示的类型（ bottom | tip ）
+                                                                                                                                                                                                                   * @prop min - input，textarea 可输入最小长度（数字）
+                                                                                                                                                                                                                   * @prop max - input，textarea 可输入最大长度（数字）
+                                                                                                                                                                                                                   * @prop minNum - input，textarea 可输入最小数字
+                                                                                                                                                                                                                   * @prop maxNum - input，textarea 可输入最大数字
+                                                                                                                                                                                                                   * @prop regex - 验证值的正则
+                                                                                                                                                                                                                   * @prop activeVerify - 主动验证值（否则失去焦点的时候会自动验证值）
+                                                                                                                                                                                                                   * @prop verifiedType - 预设的验证值的类型（错误信息将会加上 name 属性展示）
+                                                                                                                                                                                                                   *
+                                                                                                                                                                                                                   * @prop headerSpan - 输入框头附加项的横向阑珊格
+                                                                                                                                                                                                                   * @prop footerSpan - 输入框尾附加项的横向阑珊格
+                                                                                                                                                                                                                   *
+                                                                                                                                                                                                                   * @event change - input的值改变
+                                                                                                                                                                                                                   * @event blur - input的blur
+                                                                                                                                                                                                                   * @event focus - input的focus
+                                                                                                                                                                                                                   * @event keyup - input的keyup
+                                                                                                                                                                                                                   *
+                                                                                                                                                                                                                   * @slot header
+                                                                                                                                                                                                                   * @slot footer
+                                                                                                                                                                                                                   */
+
+var TYPE_TEXT_AREA = 'area';
+var TYPE_TEXT = 'field';
+var ERROR_MESSAGE_TIP = 'tip';
+var ERROR_MESSAGE_BUBBLE = 'bubble';
+var KEYUP_INTERVAL_TIME = 100;
+
+exports.default = {
+  name: 'Input',
+
+  render: _Input2.default,
+
+  mixins: [_base2.default, _form2.default, _Input4.default],
+
+  components: {
+    row: _Row2.default,
+    column: _Col2.default,
+    'motion-fade': _MotionFade2.default
+  },
+
+  store: _store2.default,
+
+  props: {
+    activeVerify: {
+      type: Boolean,
+      default: false
+    },
+    block: {
+      type: Boolean,
+      default: false
+    },
+    hidden: {
+      type: Boolean,
+      default: false
+    },
+    helperText: {
+      type: String,
+      default: ''
+    },
+    initVal: {
+      type: [String, Number],
+      default: ''
+    },
+    label: {
+      type: String,
+      default: ''
+    },
+    multiline: {
+      type: Boolean,
+      default: false
+    },
+    number: {
+      type: Boolean,
+      default: false
+    },
+    placeholder: {
+      type: String,
+      default: ''
+    },
+    param: {
+      type: String,
+      default: ''
+    },
+    readOnly: {
+      type: Boolean,
+      default: false
+    },
+    row: {
+      type: Number,
+      default: 4
+    },
+    textLengthTip: {
+      type: Boolean,
+      default: false
+    },
+    type: {
+      type: String,
+      default: 'field'
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    errorText: {
+      type: String,
+      default: ''
+    },
+    errorTipType: {
+      type: String,
+      default: 'bottom',
+      validator: function validator(val) {
+        return ['bottom', 'pop'].includes(val);
+      }
+    },
+    min: Number,
+    max: Number,
+    minNum: Number,
+    maxNum: Number,
+    regex: String,
+    verifiedType: String,
+    completion: {
+      type: Boolean,
+      default: false
+    },
+    headerSpan: {
+      type: Number,
+      default: 1
+    },
+    footerSpan: {
+      type: Number,
+      default: 1
+    }
+  },
+
+  data: function data() {
+    this.compName = 'input'; // 组件名字
+
+    return {
+      value: this.number ? this._switchNum(this.initVal) : this.initVal, // 输入框的当前的值
+      focusing: false, // 输入框是否处于 focus 状态
+      keyuping: false, // 是否处于 keyup 状态
+      errorTip: '', // 错误信息提示信息
+      dataTypeName: '', // 数据类型的名称
+      verified: true, // 是否验证通过
+      inputTextLength: 0, // 当前输入框值的长度
+      editBorderActive: false // 在 material 下编辑的边框显示状态
+    };
+  },
+
+
+  computed: {
+    cPrefix: function cPrefix() {
+      // 组件类名的前缀
+      return this.compPrefix + '-input';
+    },
+    formatMessage: function formatMessage() {
+      // 格式不对的报错信息
+      if (this.regex) {
+        return this.errorMsg;
+      } else if (this.verifiedType) {
+        return this.dataTypeName + '\u683C\u5F0F\u4E0D\u5BF9';
+      } else {
+        return this.name + '\u683C\u5F0F\u4E0D\u5BF9';
+      }
+    },
+    placeholderDisplay: function placeholderDisplay() {
+      // 输入框占位符的显示状态
+      var empty = this.value === '' || this.value === undefined;
+
+      if (this.UIMaterial) {
+        if (this.label) {
+          return this.focusing && empty;
+        } else {
+          return empty;
+        }
+      } else {
+        return empty;
+      }
+    },
+    labelDisplay: function labelDisplay() {
+      // 输入框标签显示状态
+      return this.UIMaterial && !!this.label;
+    },
+    labelFloatDisplay: function labelFloatDisplay() {
+      // 输入框标签浮动的状态
+      if (this.focusing) {
+        return true;
+      } else {
+        return !(this.value === '' || this.value === undefined);
+      }
+    },
+    errorTextDisplay: function errorTextDisplay() {
+      // 错误提示的显示状态
+      return !!this.errorTip && this.errorTipType === 'bottom';
+    },
+    errorBorderDisplay: function errorBorderDisplay() {
+      // 错误提示框的显示状态
+      return this.ui === 'bootstrap' && !!this.errorTip;
+    },
+    isTextarea: function isTextarea() {
+      return this.type === TYPE_TEXT_AREA;
+    },
+    isText: function isText() {
+      return this.type === TYPE_TEXT;
+    },
+    inputHub: function inputHub() {
+      return this.$store.getters[_type2.default.input.get];
+    },
+    stageClass: function stageClass() {
+      var _ref;
+
+      // 组件 stage 的 class 名字
+      return [this.cPrefix, this.xclass('type-' + this.type), this.xclass([this.themeClass, this.uiClass]), (_ref = {}, _defineProperty(_ref, this.cPrefix + '-textarea-stage', this.isTextarea), _defineProperty(_ref, this.xclass('label-cover'), this.labelDisplay && !this.labelFloatDisplay), _defineProperty(_ref, this.xclass('block'), this.block), _ref)];
+    },
+    wrapClass: function wrapClass() {
+      return [this.xclass('wrap'), _defineProperty({}, this.cPrefix + '-editting', this.focusing), _defineProperty({}, this.cPrefix + '-error', this.errorTextDisplay), _defineProperty({}, this.cPrefix + '-error-border', this.errorBorderDisplay)];
+    },
+    inputBoxCol: function inputBoxCol() {
+      // input 的阑珊的格数
+      var slotHead = this.$slots.header;
+      var slotTail = this.$slots.footer;
+
+      if (slotHead && slotTail) {
+        return 12 - this.footerSpan - this.headerSpan;
+      } else if (slotHead) {
+        return 12 - this.headerSpan;
+      } else if (slotTail) {
+        return 12 - this.footerSpan;
+      } else {
+        return 12;
+      }
+    }
+  },
+
+  watch: {
+    initVal: function initVal(val, oldVal) {
+      this.value = val;
+    },
+    value: function value(val, oldVal) {
+      var valueLength = String(val).length;
+
+      if (this.textLengthTip) {
+        if (valueLength <= this.max) {
+          this._dispatchChange();
+          this.inputTextLength = valueLength;
+        } else {
+          this.value = val.substr(0, this.max);
+        }
+      } else {
+        this._dispatchChange();
+      }
+
+      if (this.completion && this.$slots.completion) {
+        this.$slots.completion[0].componentInstance.search(val);
+      }
+    },
+    errorTextDisplay: function errorTextDisplay(val) {
+      if (this.tipDisplay) {
+        val ? this.$refs.helperTip.leave() : this.$refs.errorTip.leave();
+      }
+    },
+    placeholderDisplay: function placeholderDisplay(val) {
+      var refPalceholder = this.$refs.palceholder;
+
+      if (!refPalceholder) {
+        return false;
+      }
+
+      val ? refPalceholder.enter() : refPalceholder.leave();
+    }
+  },
+
+  methods: {
+    _binder: function _binder() {
+      var _this = this;
+
+      if (this.tipDisplay) {
+        this.$refs.errorTip.$on('afterLeave', function () {
+          _this.$refs.helperTip.enter();
+        });
+
+        this.$refs.helperTip.$on('afterLeave', function () {
+          _this.$refs.errorTip.enter();
+        });
+      }
+    },
+
+
+    /**
+     * 初始化验证规则
+     * @return {Object} this - 组件
+     */
+    _initVerfication: function _initVerfication() {
+      if (this.regex) {
+        this.regexObj = new RegExp(this.regex);
+
+        return this;
+      }
+
+      var verify = (0, _validate2.default)(this.verifiedType);
+
+      if (verify) {
+        this.regexObj = verify.regex;
+        this.dataTypeName = verify.dataTypeName;
+      }
+
+      return this;
+    },
+
+
+    /**
+     * 派送 value 的 change 事件
+     * @return {Object} this - 组件
+     */
+    _dispatchChange: function _dispatchChange() {
+      return this.$emit('change', {
+        emitter: this,
+        value: this.value
+      });
+    },
+
+
+    /**
+     * 验证数据是否为空
+     *
+     * @return {Object} -
+     *                  verified - 验证情况
+     *                  errorTip - 错误提示
+     */
+    _verifyEmpty: function _verifyEmpty(firstVerify) {
+      var errorTip = '';
+
+      if (this.required) {
+        errorTip = this.name + '\u4E0D\u80FD\u4E3A\u7A7A';
+
+        return {
+          verified: false,
+          errorTip: errorTip
+        };
+      }
+
+      return {
+        verified: true,
+        errorTip: errorTip
+      };
+    },
+
+
+    /**
+     * 转换为纯数字 - 超过 16 位存储为字符串
+     */
+    _switchNum: function _switchNum(val) {
+      if (val === 0 || val === '0') {
+        return 0;
+      }
+
+      var strTemp = String(val);
+
+      if (isNaN(strTemp)) {
+        var temp = strTemp;
+
+        strTemp = strTemp.replace(/[^\d.]+/g, '');
+
+        if (temp.indexOf('-') === 0) {
+          strTemp = '-' + strTemp;
+        }
+      }
+
+      if (isNaN(strTemp)) {
+        strTemp = '';
+      }
+
+      if (val.length >= 16) {
+        return strTemp;
+      }
+
+      return Number(strTemp);
+    },
+
+
+    /**
+     * 输入框 focus 状态触发的方法
+     * @return {Object} this - 组件
+     */
+    _handlerFocus: function _handlerFocus(evt) {
+      this.editBorderActive = true;
+      this.verified = true;
+      this.focusing = true;
+
+      if (this.activeVerify) {
+        this.editBorderActive = true;
+      } else {
+        this.editBorderActive = !this.errorTextDisplay;
+      }
+
+      return this.$emit('focus', {
+        emitter: this,
+        valeu: this.value,
+        event: evt
+      });
+    },
+
+
+    /**
+     * 输入框 blur 状态触发的方法
+     * @return {Object} this - 组件
+     */
+    _handlerBlur: function _handlerBlur(evt) {
+      this.focusing = false;
+
+      if (this.number) {
+        this.value = this._switchNum(this.value);
+      }
+
+      if (this.activeVerify) {
+        this.editBorderActive = false;
+      } else {
+        this.verify();
+
+        this.editBorderActive = this.errorTextDisplay;
+      }
+
+      return this.$emit('blur', {
+        emitter: this,
+        valeu: this.value,
+        event: evt
+      });
+    },
+
+
+    /**
+     * 输入框 keyup 状态触发的方法
+     * @return {Object}
+     */
+    _handlerKeyup: function _handlerKeyup() {
+      var _this2 = this;
+
+      if (this.keyuping) {
+        return false;
+      }
+
+      this.keyuping = true;
+
+      setTimeout(function () {
+        _this2.keyuping = false;
+      }, KEYUP_INTERVAL_TIME);
+    },
+
+
+    /**
+     * input 时间句柄
+     * @return {Object}
+     */
+    _handlerInput: function _handlerInput(event) {
+      var refInput = this.$refs.input;
+
+      this.value = event.currentTarget.value;
+      this.multiline && (this.$refs.pre.innerText = this.value);
+
+      if (this.focusing && this.errorTextDisplay) {
+        this.verify();
+        this.editBorderActive = !this.errorTextDisplay;
+      }
+    }
+  },
+
+  created: function created() {
+    this.placeholderStartedDisplay = this.placeholderDisplay; // 占位符一开始的显示状态
+    // 输入框提示处的显示状态
+    this.tipDisplay = this.helperText || this.required || this.verifiedType || this.regex || this.max || this.min || this.maxNum || this.minNum;
+  },
+  mounted: function mounted() {
+    this._initVerfication();
+
+    this.$store.dispatch(_type2.default.input.add, this);
+  }
+};
+
+/***/ }),
 /* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17667,118 +17981,79 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _attr = __webpack_require__(90);
-
-var _prop = __webpack_require__(36);
-
-var _base = __webpack_require__(3);
-
-var _base2 = _interopRequireDefault(_base);
-
-var _motion = __webpack_require__(64);
+var _motion = __webpack_require__(63);
 
 var _motion2 = _interopRequireDefault(_motion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * fold(折叠) motion component
- *
- * @prop height - 被过渡的元素高度
- *
- */
-
 exports.default = {
-  name: 'MotionFold',
+  name: 'MotionFade',
 
-  mixins: [_base2.default, _motion2.default],
+  mixins: [_motion2.default],
 
   props: {
-    height: Number
-  },
-
-  data: function data() {
-    this.moving = false; // 是否正在执行过渡动画
-
-    return {
-      transitionHeight: 0
-    };
-  },
-
-
-  computed: {
-    transition: function transition() {
-      return 'height ' + this.transitionTime + ' ease-out';
+    opacity: {
+      tyep: Boolean,
+      default: false
     }
   },
 
-  watch: {
-    height: function height(val) {
-      return this.setHeight(val);
+  computed: {
+    transition: function transition() {
+      return 'opacity ' + this.transitionTime + ' ease-out';
     }
   },
 
   methods: {
-    _setDataOpt: function _setDataOpt() {
-      this.transitionHeight = this.height;
-    },
-    _initComp: function _initComp() {
-      if (this.height === undefined) {
-        this.transitionHeight = (0, _prop.prop)(this.$el).offsetHeight;
-      }
-    },
-
-
-    /**
-     * 设置高度
-     *
-     * @param { Number }
-     */
-    setHeight: function setHeight(height) {
-      this.transitionHeight = height;
-    },
     beforeEnter: function beforeEnter() {
+      var _this = this;
+
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref.code;
+
       this.$emit('beforeEnter');
+
       var el = this.$el;
 
       Object.assign(el.style, {
-        'height': 0,
-        'overflow': 'hidden',
-        'transition': this.transition
+        transition: this.transition,
+        opacity: 0
       });
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          el.style.display = '';
+          code === _this.code && (el.style.display = '');
 
           return resolve();
-        }, 10);
+        }, 78);
       });
     },
     entering: function entering() {
-      var _this = this;
+      var _this2 = this;
 
       var el = this.$el;
-      // HACK: trigger browser reflow
-      var height = el.offsetHeight;
-
-      el.style.height = this.transitionHeight + 'px';
 
       this.$emit('entering');
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          return resolve();
-        }, _this.time);
+          Object.assign(el.style, {
+            opacity: _this2.opacity ? '' : 1
+          });
+
+          setTimeout(function () {
+            return resolve();
+          }, _this2.time);
+        }, 10);
       });
     },
     afterEnter: function afterEnter() {
       var el = this.$el;
 
       Object.assign(el.style, {
-        'height': '',
-        'overflow': '',
-        'transition': ''
+        transition: '',
+        opacity: ''
       });
 
       this.$emit('afterEnter');
@@ -17789,43 +18064,43 @@ exports.default = {
       this.$emit('beforeLeave');
 
       Object.assign(el.style, {
-        height: this.transitionHeight + 'px',
-        'overflow': 'hidden'
+        transition: this.transition
       });
 
-      Object.assign(el.style, {
-        'transition': this.transition
-      });
+      if (!this.opacity) {
+        el.style.opacity = 1;
+      }
 
       return this.leaveing();
     },
     leaveing: function leaveing() {
-      var _this2 = this;
+      var _this3 = this;
+
+      var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref2.code;
 
       var el = this.$el;
-      var height = el.offsetHeight;
 
       this.$emit('leaving');
 
       Object.assign(el.style, {
-        'height': 0
+        opacity: 0
       });
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          el.style.display = 'none';
+          code === _this3.code && (el.style.display = 'none');
 
           return resolve();
-        }, _this2.time);
+        }, _this3.time);
       });
     },
     afterLeave: function afterLeave() {
       var el = this.$el;
 
       Object.assign(el.style, {
-        'transition': '',
-        'height': '',
-        overflow: ''
+        transition: '',
+        opacity: ''
       });
 
       return this.$emit('afterLeave');
@@ -17834,8 +18109,18 @@ exports.default = {
 
   render: function render(h) {
     return h('transition', this.$slots.default);
+  },
+  mounted: function mounted() {
+    if (!this.display) {
+      this.$el.style.display = 'none';
+    }
   }
-};
+}; /**
+    * fade motion component
+    *
+    * @prop speed - 淡出速度
+    * @prop opacity - 使用 css 定义的 opacity 淡入淡出
+    */
 
 /***/ }),
 /* 74 */
@@ -17931,7 +18216,7 @@ exports.f = Object.getOwnPropertySymbols;
 
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(28);
+var cof = __webpack_require__(29);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
@@ -17945,7 +18230,7 @@ module.exports = Array.isArray || function isArray(arg) {
 
 // 7.2.8 IsRegExp(argument)
 var isObject = __webpack_require__(7);
-var cof = __webpack_require__(28);
+var cof = __webpack_require__(29);
 var MATCH = __webpack_require__(9)('match');
 module.exports = function (it) {
   var isRegExp;
@@ -18017,10 +18302,10 @@ module.exports = function () {
 "use strict";
 
 
-var hide = __webpack_require__(21);
-var redefine = __webpack_require__(22);
+var hide = __webpack_require__(20);
+var redefine = __webpack_require__(21);
 var fails = __webpack_require__(6);
-var defined = __webpack_require__(32);
+var defined = __webpack_require__(33);
 var wks = __webpack_require__(9);
 
 module.exports = function (KEY, length, exec) {
@@ -18076,7 +18361,7 @@ module.exports = function (O, D) {
 
 var global = __webpack_require__(5);
 var $export = __webpack_require__(0);
-var redefine = __webpack_require__(22);
+var redefine = __webpack_require__(21);
 var redefineAll = __webpack_require__(55);
 var meta = __webpack_require__(39);
 var forOf = __webpack_require__(54);
@@ -18173,7 +18458,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 
 
 var global = __webpack_require__(5);
-var hide = __webpack_require__(21);
+var hide = __webpack_require__(20);
 var uid = __webpack_require__(46);
 var TYPED = uid('typed_array');
 var VIEW = uid('view');
@@ -18245,7 +18530,7 @@ module.exports = function (COLLECTION) {
 
 var $export = __webpack_require__(0);
 var aFunction = __webpack_require__(17);
-var ctx = __webpack_require__(27);
+var ctx = __webpack_require__(28);
 var forOf = __webpack_require__(54);
 
 module.exports = function (COLLECTION) {
@@ -18359,7 +18644,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                                                                                                                                                                                                                                                                                * @prop initVal - 初始化时选中的值，默认为第一项， 是checkbox 則為數組
                                                                                                                                                                                                                                                                                * @prop param - 参数名
                                                                                                                                                                                                                                                                                * @prop initOpt - 复选框数据
-                                                                                                                                                                                                                                                                               * @prop readOnly - 只读
+                                                                                                                                                                                                                                                                               * @prop disabled - 不可选
                                                                                                                                                                                                                                                                                * @prop required - 是否必选
                                                                                                                                                                                                                                                                                * @prop theme - 主题
                                                                                                                                                                                                                                                                                * @prop multiple - 是否为多选
@@ -18375,21 +18660,21 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                                                                                                                                                                                                                                                                                *
                                                                                                                                                                                                                                                                                */
 
-__webpack_require__(446);
+__webpack_require__(445);
 
-__webpack_require__(448);
+__webpack_require__(447);
 
-__webpack_require__(450);
+__webpack_require__(449);
 
 var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _Check = __webpack_require__(452);
+var _Check = __webpack_require__(451);
 
 var _Check2 = _interopRequireDefault(_Check);
 
-var _event = __webpack_require__(172);
+var _event = __webpack_require__(173);
 
 var _event2 = _interopRequireDefault(_event);
 
@@ -18401,15 +18686,15 @@ var _Row = __webpack_require__(43);
 
 var _Row2 = _interopRequireDefault(_Row);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _MotionRip = __webpack_require__(71);
+var _MotionRip = __webpack_require__(70);
 
 var _MotionRip2 = _interopRequireDefault(_MotionRip);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
@@ -18417,15 +18702,15 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _form = __webpack_require__(70);
+var _form = __webpack_require__(69);
 
 var _form2 = _interopRequireDefault(_form);
 
-var _CheckApi = __webpack_require__(470);
+var _CheckApi = __webpack_require__(468);
 
 var _CheckApi2 = _interopRequireDefault(_CheckApi);
 
-var _array = __webpack_require__(127);
+var _array = __webpack_require__(128);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18461,7 +18746,7 @@ var checkCompConfig = {
       type: Boolean,
       default: false
     },
-    readOnly: {
+    disabled: {
       type: Boolean,
       default: false
     },
@@ -18506,8 +18791,7 @@ var checkCompConfig = {
       motion: [], // 启动选择框的沦漪效果
       allowFocus: true, // 允许执行 focus 事件
       dangerTip: '',
-      slotItems: [],
-      checkedAll: false // 是否已经全选
+      slotItems: []
     };
   },
 
@@ -18521,6 +18805,39 @@ var checkCompConfig = {
     },
     isRadio: function isRadio() {
       return !this.multiple;
+    },
+    checkedAll: function checkedAll() {
+      // 是否已经全选
+      if (this.checkAll && this.multiple) {
+        return this.value.length === this.option.length;
+      }
+    },
+    checkIconName: function checkIconName() {
+      switch (this.ui) {
+        case 'bootstrap':
+          return {
+            radio: {
+              uncheck: 'circle',
+              checked: 'circle-check'
+            },
+            checkbox: {
+              uncheck: 'square-bs',
+              checked: 'square-check-bs'
+            }
+          };
+        case 'material':
+        default:
+          return {
+            radio: {
+              uncheck: 'circle-o',
+              checked: 'circle-check-o'
+            },
+            checkbox: {
+              uncheck: 'square-o',
+              checked: 'square-check'
+            }
+          };
+      }
     }
   },
 
@@ -18556,6 +18873,24 @@ var checkCompConfig = {
 
 
     /**
+     * 获取选择框的图标名字
+     *
+     * @param {Boolean} check - 已选的图标
+     * @param {Boolean} multiple - 复选框
+     */
+    _getIconName: function _getIconName() {
+      var check = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      var multiple = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.multiple;
+
+      if (this.multiple) {
+        return check ? this.checkIconName.checkbox.checked : this.checkIconName.checkbox.uncheck;
+      } else {
+        return check ? this.checkIconName.radio.checked : this.checkIconName.radio.uncheck;
+      }
+    },
+
+
+    /**
      * 初始化checkbox
      *
      * @return {Function}
@@ -18567,10 +18902,6 @@ var checkCompConfig = {
           this.text = [];
           this.value = [];
           this.oldValue = [];
-        }
-
-        if (this.checkAll) {
-          this.checkedAll = this.value.length === this.option.length;
         }
 
         this.setText();
@@ -18796,11 +19127,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(459);
+__webpack_require__(458);
 
-__webpack_require__(461);
+__webpack_require__(460);
 
-var _Message = __webpack_require__(463);
+var _Message = __webpack_require__(462);
 
 var _Message2 = _interopRequireDefault(_Message);
 
@@ -18812,15 +19143,7 @@ var _Pop = __webpack_require__(93);
 
 var _Pop2 = _interopRequireDefault(_Pop);
 
-var _Btn = __webpack_require__(61);
-
-var _Btn2 = _interopRequireDefault(_Btn);
-
-var _Icon = __webpack_require__(18);
-
-var _Icon2 = _interopRequireDefault(_Icon);
-
-var _prop = __webpack_require__(36);
+var _prop = __webpack_require__(27);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18848,8 +19171,6 @@ var messageComp = {
   mixins: [_base2.default],
 
   components: {
-    btn: _Btn2.default,
-    icon: _Icon2.default,
     pop: _Pop2.default
   },
 
@@ -19038,11 +19359,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(464);
+__webpack_require__(463);
 
-__webpack_require__(466);
+__webpack_require__(465);
 
-var _Pop = __webpack_require__(468);
+var _Pop = __webpack_require__(467);
 
 var _Pop2 = _interopRequireDefault(_Pop);
 
@@ -19050,11 +19371,11 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _MotionSlide = __webpack_require__(72);
+var _MotionSlide = __webpack_require__(71);
 
 var _MotionSlide2 = _interopRequireDefault(_MotionSlide);
 
-var _dom = __webpack_require__(469);
+var _dom = __webpack_require__(174);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19353,11 +19674,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+__webpack_require__(484);
+
 __webpack_require__(486);
 
 __webpack_require__(488);
 
-var _Modal = __webpack_require__(490);
+__webpack_require__(490);
+
+var _Modal = __webpack_require__(492);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -19365,7 +19690,7 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _Modal3 = __webpack_require__(493);
+var _Modal3 = __webpack_require__(495);
 
 var _Modal4 = _interopRequireDefault(_Modal3);
 
@@ -19373,11 +19698,11 @@ var _Pop = __webpack_require__(93);
 
 var _Pop2 = _interopRequireDefault(_Pop);
 
-var _Btn = __webpack_require__(61);
+var _Btn = __webpack_require__(68);
 
 var _Btn2 = _interopRequireDefault(_Btn);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
@@ -19393,11 +19718,11 @@ var _Col = __webpack_require__(42);
 
 var _Col2 = _interopRequireDefault(_Col);
 
-var _MotionFade = __webpack_require__(95);
+var _MotionFade = __webpack_require__(73);
 
 var _MotionFade2 = _interopRequireDefault(_MotionFade);
 
-var _prop = __webpack_require__(36);
+var _prop = __webpack_require__(27);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19408,6 +19733,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    *                不用确认直接提交的模态框，默认为否
                                                                                                                                                                                                                    * @prop header - 弹窗头部标题
                                                                                                                                                                                                                    * @prop message - 模态框信息
+                                                                                                                                                                                                                   * @prop size - 模态框宽度尺寸（S | M | L）
                                                                                                                                                                                                                    *
                                                                                                                                                                                                                    * @prop okCb - 确定的回调函数，布尔值为 false 则执行默认的回掉函数，否则如果是函数就执行，不是就不执行
                                                                                                                                                                                                                    * @prop noCb - 同上的取消回调函数
@@ -19449,7 +19775,7 @@ var modalComp = {
     scroller: _Scroller2.default,
     row: _Row2.default,
     column: _Col2.default,
-    'fade-transition': _MotionFade2.default
+    'motion-fade': _MotionFade2.default
   },
 
   props: {
@@ -19460,6 +19786,13 @@ var modalComp = {
     type: {
       type: String,
       default: 'simple'
+    },
+    size: {
+      type: String,
+      default: 'S',
+      validator: function validator(val) {
+        return ['s', 'm', 'l'].includes(val.toLowerCase());
+      }
     },
     header: {
       type: String,
@@ -19508,41 +19841,66 @@ var modalComp = {
     height: [Number, String]
   },
 
+  data: function data() {
+    return {
+      pointStart: {
+        x: 0,
+        y: 0
+      },
+      state: {
+        ui: '',
+        theme: ''
+      },
+      isMousedown: false,
+      modalDisplay: false,
+      modalMessage: '',
+      modalHeader: '',
+      showCb: null, // 模态框显示之后的回调函数
+      hideCb: null, // 模态框隐藏之后的回调函数
+      okCbFun: null,
+      noCbFun: null,
+      hasScroller: false // scroller 是否有滚动条
+    };
+  },
+
   computed: {
-    // 组件类名的前缀
     cPrefix: function cPrefix() {
+      // 组件类名的前缀
       return this.compPrefix + '-modal';
     },
-
-    // 组件的 header 的 class 名字
+    uiClass: function uiClass() {
+      return 'ui-' + this.state.ui;
+    },
+    themeClass: function themeClass() {
+      return 'theme-' + this.state.theme;
+    },
+    UIMaterial: function UIMaterial() {
+      return this.state.ui === 'material';
+    },
     headerClass: function headerClass() {
       var _ref;
 
+      // 组件的 header 的 class 名字
       return _ref = {}, _defineProperty(_ref, this.cPrefix + '-no-header', !this.modalHeaderDisplay), _defineProperty(_ref, this.cPrefix + '-no-header-title', !this.modalHeader), _ref;
     },
-
-    // 组件的 footer 的 class 名字
     footerClass: function footerClass() {
+      // 组件的 footer 的 class 名字
       return _defineProperty({}, this.cPrefix + '-no-footer', !this.modalFooterDisplay);
     },
-
-    // 是否是 full modal
     isFull: function isFull() {
+      // 是否是 full modal
       return this.type === 'full';
     },
-
-    // 是否是 simple modal
     isSimple: function isSimple() {
+      // 是否是 simple modal
       return this.type === 'simple';
     },
-
-    // 判断是否在中大型设备并且是 full 模态框
     isBiggerFull: function isBiggerFull() {
+      // 判断是否在中大型设备并且是 full 模态框
       return this.isFull && (this.deviceSize === 'm' || this.deviceSize === 'l' || this.deviceSize === 'xl') || !this.isFull;
     },
-
-    // 模态框的头部显示状态
     modalHeaderDisplay: function modalHeaderDisplay() {
+      // 模态框的头部显示状态
       if (this.headerDisplay !== undefined) {
         return this.headerDisplay;
       }
@@ -19556,9 +19914,8 @@ var modalComp = {
           return !!this.modalHeader;
       }
     },
-
-    // 模态框的尾部显示状态
     modalFooterDisplay: function modalFooterDisplay() {
+      // 模态框的尾部显示状态
       if (this.footerDisplay !== undefined) {
         return this.footerDisplay;
       }
@@ -19575,9 +19932,8 @@ var modalComp = {
           return true;
       }
     },
-
-    // 模态框的内容的高度
     modalHeight: function modalHeight() {
+      // 模态框的内容的高度
       if (this.height) {
         return this.height;
       }
@@ -19591,24 +19947,6 @@ var modalComp = {
           return 120;
       }
     }
-  },
-
-  data: function data() {
-    return {
-      pointStart: {
-        x: 0,
-        y: 0
-      },
-      isMousedown: false,
-      modalDisplay: false,
-      modalMessage: '',
-      modalHeader: '',
-      showCb: null, // 模态框显示之后的回调函数
-      hideCb: null, // 模态框隐藏之后的回调函数
-      okCbFun: null,
-      noCbFun: null,
-      hasScroller: false // scroller 是否有滚动条
-    };
   },
 
   methods: {
@@ -19672,14 +20010,17 @@ var modalComp = {
 
       this.okCbFun = this.okCb;
       this.noCbFun = this.noCb;
+
+      this.state.ui = this.ui;
+      this.state.theme = this.theme;
     },
 
 
     /**
      * 点击模态框背景的句柄
      */
-    _clickBg: function _clickBg() {
-      //
+    _handlerClickBg: function _handlerClickBg() {
+      return this.hide();
     }
   }
 };
@@ -19697,74 +20038,123 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _motion = __webpack_require__(64);
+var _attr = __webpack_require__(90);
+
+var _prop = __webpack_require__(27);
+
+var _base = __webpack_require__(3);
+
+var _base2 = _interopRequireDefault(_base);
+
+var _motion = __webpack_require__(63);
 
 var _motion2 = _interopRequireDefault(_motion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = {
-  name: 'MotionFade',
+/**
+ * fold(折叠) motion component
+ *
+ * @prop height - 被过渡的元素高度
+ *
+ */
 
-  mixins: [_motion2.default],
+exports.default = {
+  name: 'MotionFold',
+
+  mixins: [_base2.default, _motion2.default],
 
   props: {
-    opacity: {
-      tyep: Boolean,
-      default: false
-    }
+    height: Number
   },
+
+  data: function data() {
+    this.moving = false; // 是否正在执行过渡动画
+
+    return {
+      transitionHeight: 0
+    };
+  },
+
 
   computed: {
     transition: function transition() {
-      return 'opacity ' + this.transitionTime + ' ease-out';
+      return 'height ' + this.transitionTime + ' ease-out';
+    }
+  },
+
+  watch: {
+    height: function height(val) {
+      return this.setHeight(val);
     }
   },
 
   methods: {
-    beforeEnter: function beforeEnter() {
-      this.$emit('beforeEnter');
+    _setDataOpt: function _setDataOpt() {
+      this.transitionHeight = this.height;
+    },
+    _initComp: function _initComp() {
+      if (this.height === undefined) {
+        this.transitionHeight = (0, _prop.prop)(this.$el).offsetHeight;
+      }
+    },
 
+
+    /**
+     * 设置高度
+     *
+     * @param { Number }
+     */
+    setHeight: function setHeight(height) {
+      this.transitionHeight = height;
+    },
+    beforeEnter: function beforeEnter() {
+      var _this = this;
+
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref.code;
+
+      this.$emit('beforeEnter');
       var el = this.$el;
 
       Object.assign(el.style, {
-        'transition': this.transition,
-        'opacity': 0
+        height: 0,
+        overflow: 'hidden',
+        'transition': this.transition
       });
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          el.style.display = '';
+          code === _this.code && (el.style.display = '');
 
           return resolve();
-        });
+        }, 218);
       });
     },
     entering: function entering() {
-      var _this = this;
+      var _this2 = this;
 
       var el = this.$el;
+      // HACK: trigger browser reflow
+      var height = el.offsetHeight;
+
+      el.style.height = this.transitionHeight + 'px';
 
       this.$emit('entering');
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          Object.assign(el.style, {
-            'opacity': _this.opacity ? '' : 1
-          });
-
-          setTimeout(function () {
-            return resolve();
-          }, _this.time);
-        }, 10);
+          return resolve();
+        }, _this2.time);
       });
     },
     afterEnter: function afterEnter() {
       var el = this.$el;
 
       Object.assign(el.style, {
-        'transition': '',
-        'opacity': ''
+        height: '',
+        overflow: '',
+        transition: ''
       });
 
       this.$emit('afterEnter');
@@ -19775,40 +20165,43 @@ exports.default = {
       this.$emit('beforeLeave');
 
       Object.assign(el.style, {
-        'transition': this.transition
+        height: this.transitionHeight + 'px',
+        overflow: 'hidden',
+        transition: this.transition
       });
-
-      if (!this.opacity) {
-        el.style.opacity = 1;
-      }
 
       return this.leaveing();
     },
     leaveing: function leaveing() {
-      var _this2 = this;
+      var _this3 = this;
+
+      var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref2.code;
 
       var el = this.$el;
+      var height = el.offsetHeight;
 
       this.$emit('leaving');
 
       Object.assign(el.style, {
-        'opacity': 0
+        height: 0
       });
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          el.style.display = 'none';
+          code === _this3.code && (el.style.display = 'none');
 
           return resolve();
-        }, _this2.time);
+        }, _this3.time);
       });
     },
     afterLeave: function afterLeave() {
       var el = this.$el;
 
       Object.assign(el.style, {
-        'transition': '',
-        'opacity': ''
+        transition: '',
+        height: '',
+        overflow: ''
       });
 
       return this.$emit('afterLeave');
@@ -19817,13 +20210,13 @@ exports.default = {
 
   render: function render(h) {
     return h('transition', this.$slots.default);
+  },
+  mounted: function mounted() {
+    if (!this.display) {
+      this.$el.style.display = 'none';
+    }
   }
-}; /**
-    * fade motion component
-    *
-    * @prop speed - 淡出速度
-    * @prop opacity - 使用 css 定义的 opacity 淡入淡出
-    */
+};
 
 /***/ }),
 /* 96 */
@@ -19836,17 +20229,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(513);
+__webpack_require__(515);
 
-var _Btn = __webpack_require__(61);
+var _Btn = __webpack_require__(68);
 
 var _Btn2 = _interopRequireDefault(_Btn);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _Input = __webpack_require__(65);
+var _Input = __webpack_require__(72);
 
 var _Input2 = _interopRequireDefault(_Input);
 
@@ -19862,7 +20255,7 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _Page = __webpack_require__(515);
+var _Page = __webpack_require__(517);
 
 var _Page2 = _interopRequireDefault(_Page);
 
@@ -20154,21 +20547,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(519);
+__webpack_require__(521);
 
-var _List = __webpack_require__(521);
+var _List = __webpack_require__(523);
 
 var _List2 = _interopRequireDefault(_List);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _Loading = __webpack_require__(63);
+var _Loading = __webpack_require__(62);
 
 var _Loading2 = _interopRequireDefault(_Loading);
 
@@ -20180,7 +20573,7 @@ var _Scroller = __webpack_require__(44);
 
 var _Scroller2 = _interopRequireDefault(_Scroller);
 
-var _MotionSlide = __webpack_require__(72);
+var _MotionSlide = __webpack_require__(71);
 
 var _MotionSlide2 = _interopRequireDefault(_MotionSlide);
 
@@ -20188,15 +20581,15 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _List3 = __webpack_require__(522);
+var _List3 = __webpack_require__(524);
 
 var _List4 = _interopRequireDefault(_List3);
 
-var _list = __webpack_require__(178);
+var _list = __webpack_require__(180);
 
 var _list2 = _interopRequireDefault(_list);
 
-var _util = __webpack_require__(133);
+var _util = __webpack_require__(134);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20438,9 +20831,9 @@ module.exports = function (it) {
 
 
 var global = __webpack_require__(5);
-var core = __webpack_require__(30);
+var core = __webpack_require__(31);
 var LIBRARY = __webpack_require__(47);
-var wksExt = __webpack_require__(137);
+var wksExt = __webpack_require__(138);
 var defineProperty = __webpack_require__(13).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -20499,7 +20892,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
   function (test, buggy, set) {
     try {
-      set = __webpack_require__(27)(Function.call, __webpack_require__(25).f(Object.prototype, '__proto__').set, 2);
+      set = __webpack_require__(28)(Function.call, __webpack_require__(25).f(Object.prototype, '__proto__').set, 2);
       set(test, []);
       buggy = !(test instanceof Array);
     } catch (e) {
@@ -20547,8 +20940,8 @@ module.exports = function (that, target, C) {
 "use strict";
 
 
-var toInteger = __webpack_require__(33);
-var defined = __webpack_require__(32);
+var toInteger = __webpack_require__(34);
+var defined = __webpack_require__(33);
 
 module.exports = function repeat(count) {
   var str = String(defined(this));
@@ -20597,8 +20990,8 @@ module.exports = !$expm1
 "use strict";
 
 
-var toInteger = __webpack_require__(33);
-var defined = __webpack_require__(32);
+var toInteger = __webpack_require__(34);
+var defined = __webpack_require__(33);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -20622,9 +21015,9 @@ module.exports = function (TO_STRING) {
 
 var LIBRARY = __webpack_require__(47);
 var $export = __webpack_require__(0);
-var redefine = __webpack_require__(22);
-var hide = __webpack_require__(21);
-var has = __webpack_require__(20);
+var redefine = __webpack_require__(21);
+var hide = __webpack_require__(20);
+var has = __webpack_require__(19);
 var Iterators = __webpack_require__(58);
 var $iterCreate = __webpack_require__(111);
 var setToStringTag = __webpack_require__(56);
@@ -20715,7 +21108,7 @@ var setToStringTag = __webpack_require__(56);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(21)(IteratorPrototype, __webpack_require__(9)('iterator'), function () {
+__webpack_require__(20)(IteratorPrototype, __webpack_require__(9)('iterator'), function () {
   return this;
 });
 
@@ -20733,7 +21126,7 @@ module.exports = function (Constructor, NAME, next) {
 
 // helper for String#{startsWith, endsWith, includes}
 var isRegExp = __webpack_require__(79);
-var defined = __webpack_require__(32);
+var defined = __webpack_require__(33);
 
 module.exports = function (that, searchString, NAME) {
   if (isRegExp(searchString)) throw TypeError('String#' + NAME + " doesn't accept regex!");
@@ -20797,10 +21190,10 @@ module.exports = function (object, index, value) {
 "use strict";
 
 
-var classof = __webpack_require__(68);
+var classof = __webpack_require__(66);
 var ITERATOR = __webpack_require__(9)('iterator');
 var Iterators = __webpack_require__(58);
-module.exports = __webpack_require__(30).getIteratorMethod = function (it) {
+module.exports = __webpack_require__(31).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR] || it['@@iterator'] || Iterators[classof(it)];
 };
 
@@ -20812,7 +21205,7 @@ module.exports = __webpack_require__(30).getIteratorMethod = function (it) {
 
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var speciesConstructor = __webpack_require__(286);
+var speciesConstructor = __webpack_require__(287);
 
 module.exports = function (original, length) {
   return new (speciesConstructor(original))(length);
@@ -20849,7 +21242,7 @@ module.exports = function fill(value /* , start = 0, end = @length */) {
 
 
 var addToUnscopables = __webpack_require__(40);
-var step = __webpack_require__(153);
+var step = __webpack_require__(154);
 var Iterators = __webpack_require__(58);
 var toIObject = __webpack_require__(24);
 
@@ -20889,8 +21282,8 @@ addToUnscopables('entries');
 "use strict";
 
 
-var ctx = __webpack_require__(27);
-var invoke = __webpack_require__(143);
+var ctx = __webpack_require__(28);
+var invoke = __webpack_require__(144);
 var html = __webpack_require__(102);
 var cel = __webpack_require__(98);
 var global = __webpack_require__(5);
@@ -20933,7 +21326,7 @@ if (!setTask || !clearTask) {
     delete queue[id];
   };
   // Node.js 0.8-
-  if (__webpack_require__(28)(process) == 'process') {
+  if (__webpack_require__(29)(process) == 'process') {
     defer = function defer(id) {
       process.nextTick(ctx(run, id, 1));
     };
@@ -20987,7 +21380,7 @@ var macrotask = __webpack_require__(120).set;
 var Observer = global.MutationObserver || global.WebKitMutationObserver;
 var process = global.process;
 var Promise = global.Promise;
-var isNode = __webpack_require__(28)(process) == 'process';
+var isNode = __webpack_require__(29)(process) == 'process';
 
 module.exports = function () {
   var head, last, notify;
@@ -21086,13 +21479,13 @@ var global = __webpack_require__(5);
 var DESCRIPTORS = __webpack_require__(12);
 var LIBRARY = __webpack_require__(47);
 var $typed = __webpack_require__(85);
-var hide = __webpack_require__(21);
+var hide = __webpack_require__(20);
 var redefineAll = __webpack_require__(55);
 var fails = __webpack_require__(6);
 var anInstance = __webpack_require__(53);
-var toInteger = __webpack_require__(33);
+var toInteger = __webpack_require__(34);
 var toLength = __webpack_require__(14);
-var toIndex = __webpack_require__(162);
+var toIndex = __webpack_require__(163);
 var gOPN = __webpack_require__(51).f;
 var dP = __webpack_require__(13).f;
 var arrayFill = __webpack_require__(118);
@@ -21397,6 +21790,30 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 /**
+ * 产生唯一的 ID
+ */
+
+function S4() {
+  return ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
+}
+
+function uid() {
+  return S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4();
+}
+
+exports.default = uid;
+
+/***/ }),
+/* 128 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
  * to judge whether array is empty
  *
  * @param array
@@ -21420,7 +21837,7 @@ exports.isEmpty = isEmpty;
 exports.unique = unique;
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21452,7 +21869,7 @@ var dataType = function dataType(variable) {
 exports.dataType = dataType;
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21462,7 +21879,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _motion = __webpack_require__(64);
+var _motion = __webpack_require__(63);
 
 var _motion2 = _interopRequireDefault(_motion);
 
@@ -21484,13 +21901,6 @@ exports.default = {
     }
   },
 
-  data: function data() {
-    this.moving = false; // 是否正在执行过渡动画
-
-    return {};
-  },
-
-
   computed: {
     positionType: function positionType() {
       return this.global ? 'fixed' : 'absolute';
@@ -21502,33 +21912,41 @@ exports.default = {
 
   methods: {
     beforeEnter: function beforeEnter() {
+      var _this = this;
+
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref.code;
+
       this.$emit('beforeEnter');
       var el = this.$el;
 
       Object.assign(el.style, {
-        'position': this.positionType,
+        position: this.positionType,
         'transform-origin': this.origin,
-        'transition': this.transition,
-        'transform': 'scale(0)'
+        transition: this.transition,
+        transform: 'scale(0)'
       });
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          el.style.display = '';
+          code === _this.code && (el.style.display = '');
 
           return resolve();
-        }, 10);
+        }, 78);
       });
     },
     entering: function entering() {
-      var _this = this;
+      var _this2 = this;
+
+      var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref2.code;
 
       var el = this.$el;
       // HACK: trigger browser reflow
       var height = el.offsetHeight;
 
       Object.assign(el.style, {
-        'transform': ''
+        transform: ''
       });
 
       this.$emit('entering');
@@ -21536,61 +21954,73 @@ exports.default = {
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
           return resolve();
-        }, _this.time);
+        }, _this2.time);
       });
     },
     afterEnter: function afterEnter() {
+      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref3.code;
+
       var el = this.$el;
 
       Object.assign(el.style, {
-        'position': '',
+        position: '',
         'transform-origin': '',
-        'transition': ''
+        transition: ''
       });
 
       this.$emit('afterEnter');
     },
     beforeLeave: function beforeLeave() {
+      var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref4.code;
+
       var el = this.$el;
 
       this.$emit('beforeLeave');
 
       Object.assign(el.style, {
-        'position': this.positionType,
-        'transform': '',
+        position: this.positionType,
+        transform: '',
         'transform-origin': this.origin,
-        'transition': this.transition
+        transition: this.transition
       });
 
       return this.leaveing();
     },
     leaveing: function leaveing() {
-      var _this2 = this;
+      var _this3 = this;
+
+      var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref5.code;
 
       var el = this.$el;
 
       this.$emit('leaving');
 
       Object.assign(el.style, {
-        'transform': 'scale(0)'
+        transform: 'scale(0)'
       });
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          el.style.display = 'none';
+          code === _this3.code && (el.style.display = 'none');
 
           return resolve();
-        }, _this2.time);
+        }, _this3.time);
       });
     },
     afterLeave: function afterLeave() {
+      var _ref6 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          code = _ref6.code;
+
       var el = this.$el;
 
       Object.assign(el.style, {
-        'position': '',
-        'transform': '',
+        position: '',
+        transform: '',
         'transform-origin': '',
-        'transition': ''
+        transition: ''
       });
 
       return this.$emit('afterLeave');
@@ -21609,12 +22039,12 @@ exports.default = {
     * zoom motion component - 放大缩小效果
     *
     * @prop speed - 淡出速度
-    * @prop origin - 放大缩小的起始位置 (同 css 里的属性 transform-origin)
+    * @prop origin - 放大缩小的起始位置 (同 css 里的属性 'transform-origin')
     * @prop global - 元素的位置是否是以可视界面的相对定位 (fixed)，默认为否（绝对定位 absolute）
     */
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21628,9 +22058,9 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-__webpack_require__(507);
+__webpack_require__(509);
 
-var _FoldRender = __webpack_require__(509);
+var _FoldRender = __webpack_require__(511);
 
 var _FoldRender2 = _interopRequireDefault(_FoldRender);
 
@@ -21638,15 +22068,15 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _MotionFold = __webpack_require__(73);
+var _MotionFold = __webpack_require__(95);
 
 var _MotionFold2 = _interopRequireDefault(_MotionFold);
 
-var _prop = __webpack_require__(36);
+var _prop = __webpack_require__(27);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21659,29 +22089,25 @@ var Fold = {
 
   components: {
     icon: _Icon2.default,
-    'fold-transition': _MotionFold2.default
+    'motion-fold': _MotionFold2.default
   },
 
   props: {
     initIndex: Number,
-
     initOpt: {
       type: Array,
       default: function _default() {
         return [];
       }
     },
-
     spreadAll: {
       type: Boolean,
       default: false
     },
-
     only: {
       type: Boolean,
       default: false
     },
-
     type: {
       type: String,
       default: 'horizontal'
@@ -21690,16 +22116,11 @@ var Fold = {
 
   data: function data() {
     return {
-      // 折叠板的有效 slot 信息
-      foldChildren: [],
-      // 当前展开的面板
-      currentIndex: 1,
-      // 前一个打开的面板
-      preIndex: 1,
-      // 折叠版数据
-      foldData: [],
-      // 过渡动画的元素高度
-      transitionChildHeight: 0
+      foldChildren: [], // 折叠板的有效 slot 信息
+      currentIndex: 1, // 当前展开的面板
+      preIndex: 1, // 前一个打开的面板
+      foldData: [], // 折叠版数据
+      transitionChildHeight: 0 // 过渡动画的元素高度
     };
   },
 
@@ -21774,6 +22195,10 @@ var Fold = {
             };
           }
         }
+
+        _this.$nextTick(function () {
+          return _this.switch(index + 1, foldData[index].folding);
+        });
       });
 
       this.foldChildren = foldChildren;
@@ -21825,6 +22250,8 @@ var Fold = {
         return false;
       }
 
+      $transition.$el.style.height = 'auto';
+      $transition.$el.style.width = 'auto';
       var transitionHeight = this.elementProp($transition.$el).offsetHeight;
       $transition.setHeight(transitionHeight);
 
@@ -21850,7 +22277,7 @@ var Fold = {
     *
     * @prop initOpt - 折叠版的初始化数据
     * @prop initIndex - 当前展开的折叠板
-    * @prop spread-all - 展开全部
+    * @prop spreadAll - 展开全部
     * @prop only - 开启一次只能展开一个面板功能
     * @prop type - 布局类型
     *
@@ -21859,7 +22286,7 @@ var Fold = {
 exports.default = Fold;
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21892,7 +22319,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21925,7 +22352,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21959,7 +22386,7 @@ var findGrandpa = function findGrandpa(parent, grandpaName) {
 exports.findGrandpa = findGrandpa;
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21969,13 +22396,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(526);
+__webpack_require__(528);
 
 var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _Menu = __webpack_require__(528);
+var _Menu = __webpack_require__(530);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
@@ -21991,23 +22418,19 @@ var _type3 = __webpack_require__(126);
 
 var _type4 = _interopRequireDefault(_type3);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _Btn = __webpack_require__(61);
+var _Btn = __webpack_require__(68);
 
 var _Btn2 = _interopRequireDefault(_Btn);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _Input = __webpack_require__(65);
-
-var _Input2 = _interopRequireDefault(_Input);
-
-var _Motion = __webpack_require__(529);
+var _Motion = __webpack_require__(531);
 
 var _Motion2 = _interopRequireDefault(_Motion);
 
@@ -22019,25 +22442,46 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _form = __webpack_require__(70);
+var _form = __webpack_require__(69);
 
 var _form2 = _interopRequireDefault(_form);
 
-var _Menu3 = __webpack_require__(530);
+var _Menu3 = __webpack_require__(532);
 
 var _Menu4 = _interopRequireDefault(_Menu3);
 
-var _uid = __webpack_require__(183);
+var _uid = __webpack_require__(127);
 
 var _uid2 = _interopRequireDefault(_uid);
 
-var _data = __webpack_require__(128);
+var _data = __webpack_require__(129);
 
-var _prop = __webpack_require__(36);
+var _prop = __webpack_require__(27);
 
-var _array = __webpack_require__(127);
+var _array = __webpack_require__(128);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * menu 组件
+ *
+ * @prop store - 储存实例化的信息
+ * @prop noCoverTrig - 菜单展开是不遮挡触发器，TODO： pc 上默认是不遮挡的，mobile 是默认遮挡的
+ * @prop noTrig - 不使用组件自带的菜单触发器
+ * @prop height - 菜单高度，默认是 auto
+ *                1、auto：根据菜单内容的高度
+ *                2、数字：输入数字就是自定义的像素高度
+ * @prop width - 菜单宽度，默认是 170
+ *               1、auto：根据 trigger 的宽度
+ *               2、数字：输入数字就是自定义的像素宽度
+ * @prop trigHeight - 菜单触发器的高度，默认是 auto
+ *                    1、auto：根据菜单内容的宽度
+ *                    2、数字：输入数字就是自定义的像素高度
+ *
+ * @event afterSpread - 展开之后的事件
+ * @event afterFold - 折叠之后的事件
+ * @event scrollerChange - 滚动组件发生变化
+ */
 
 exports.default = {
   name: 'Menu',
@@ -22049,7 +22493,6 @@ exports.default = {
   store: _store2.default,
 
   components: {
-    'input-box': _Input2.default,
     btn: _Btn2.default,
     motion: _Motion2.default,
     icon: _Icon2.default,
@@ -22058,22 +22501,18 @@ exports.default = {
 
   props: {
     store: Object,
-
     ban: {
       type: Boolean,
       default: false
     },
-
     noTrig: {
       type: Boolean,
       default: false
     },
-
     noCoverTrig: {
       type: Boolean,
       default: false
     },
-
     height: {
       type: [Number, String],
       default: 'auto',
@@ -22087,7 +22526,6 @@ exports.default = {
         }
       }
     },
-
     width: {
       type: [String, Number],
       default: 170,
@@ -22101,7 +22539,6 @@ exports.default = {
         }
       }
     },
-
     trigHeight: {
       type: [String, Number],
       default: 'auto',
@@ -22272,40 +22709,11 @@ exports.default = {
         return this._adjustTriggerPoiStyle(transite(optVal, this));
       }
     }
-  },
-
-  created: function created() {
-    this.uid = (0, _uid2.default)();
-
-    this.$store.dispatch(_type4.default.common.add, {
-      vm: this,
-      name: this.compName,
-      id: this.uid
-    });
   }
-}; /**
-    * menu 组件
-    *
-    * @prop store - 储存实例化的信息
-    * @prop noCoverTrig - 菜单展开是不遮挡触发器，TODO： pc 上默认是不遮挡的，mobile 是默认遮挡的
-    * @prop noTrig - 不使用组件自带的菜单触发器
-    * @prop height - 菜单高度，默认是 auto
-    *                1、auto：根据菜单内容的高度
-    *                2、数字：输入数字就是自定义的像素高度
-    * @prop width - 菜单宽度，默认是 170
-    *               1、auto：根据 trigger 的宽度
-    *               2、数字：输入数字就是自定义的像素宽度
-    * @prop trigHeight - 菜单触发器的高度，默认是 auto
-    *                    1、auto：根据菜单内容的宽度
-    *                    2、数字：输入数字就是自定义的像素高度
-    *
-    * @event afterSpread - 展开之后的事件
-    * @event afterFold - 折叠之后的事件
-    * @event scrollerChange - 滚动组件发生变化
-    */
+};
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22315,9 +22723,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(531);
+__webpack_require__(533);
 
-var _ShiftRender = __webpack_require__(533);
+var _ShiftRender = __webpack_require__(535);
 
 var _ShiftRender2 = _interopRequireDefault(_ShiftRender);
 
@@ -22471,7 +22879,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22484,7 +22892,7 @@ module.exports = !__webpack_require__(12) && !__webpack_require__(6)(function ()
 });
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22493,13 +22901,13 @@ module.exports = !__webpack_require__(12) && !__webpack_require__(6)(function ()
 exports.f = __webpack_require__(9);
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var has = __webpack_require__(20);
+var has = __webpack_require__(19);
 var toIObject = __webpack_require__(24);
 var arrayIndexOf = __webpack_require__(76)(false);
 var IE_PROTO = __webpack_require__(100)('IE_PROTO');
@@ -22520,7 +22928,7 @@ module.exports = function (object, names) {
 };
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22542,7 +22950,7 @@ module.exports = __webpack_require__(12) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22570,7 +22978,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22579,9 +22987,9 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 var getKeys = __webpack_require__(48);
 var gOPS = __webpack_require__(77);
-var pIE = __webpack_require__(67);
+var pIE = __webpack_require__(65);
 var toObject = __webpack_require__(16);
-var IObject = __webpack_require__(66);
+var IObject = __webpack_require__(64);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
@@ -22616,7 +23024,7 @@ module.exports = !$assign || __webpack_require__(6)(function () {
 } : $assign;
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22624,7 +23032,7 @@ module.exports = !$assign || __webpack_require__(6)(function () {
 
 var aFunction = __webpack_require__(17);
 var isObject = __webpack_require__(7);
-var invoke = __webpack_require__(143);
+var invoke = __webpack_require__(144);
 var arraySlice = [].slice;
 var factories = {};
 
@@ -22649,7 +23057,7 @@ module.exports = Function.bind || function bind(that /* , ...args */) {
 };
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22673,7 +23081,7 @@ module.exports = function (fn, args, that) {
 };
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22690,7 +23098,7 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
 } : $parseInt;
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22706,20 +23114,20 @@ module.exports = 1 / $parseFloat(__webpack_require__(104) + '-0') !== -Infinity 
 } : $parseFloat;
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var cof = __webpack_require__(28);
+var cof = __webpack_require__(29);
 module.exports = function (it, msg) {
   if (typeof it != 'number' && cof(it) != 'Number') throw TypeError(msg);
   return +it;
 };
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22733,7 +23141,7 @@ module.exports = function isInteger(it) {
 };
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22745,7 +23153,7 @@ module.exports = Math.log1p || function log1p(x) {
 };
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22776,7 +23184,7 @@ module.exports = Math.fround || function fround(x) {
 };
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22796,7 +23204,7 @@ module.exports = function (iterator, fn, value, entries) {
 };
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22804,7 +23212,7 @@ module.exports = function (iterator, fn, value, entries) {
 
 var aFunction = __webpack_require__(17);
 var toObject = __webpack_require__(16);
-var IObject = __webpack_require__(66);
+var IObject = __webpack_require__(64);
 var toLength = __webpack_require__(14);
 
 module.exports = function (that, callbackfn, aLen, memo, isRight) {
@@ -22833,7 +23241,7 @@ module.exports = function (that, callbackfn, aLen, memo, isRight) {
 };
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22865,7 +23273,7 @@ module.exports = [].copyWithin || function copyWithin(target /* = 0 */, start /*
 };
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22876,7 +23284,7 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22889,7 +23297,7 @@ if (__webpack_require__(12) && /./g.flags != 'g') __webpack_require__(13).f(RegE
 });
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22904,7 +23312,7 @@ module.exports = function (exec) {
 };
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22924,13 +23332,13 @@ module.exports = function (C, x) {
 };
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var strong = __webpack_require__(158);
+var strong = __webpack_require__(159);
 var validate = __webpack_require__(59);
 var MAP = 'Map';
 
@@ -22952,7 +23360,7 @@ module.exports = __webpack_require__(84)(MAP, function (get) {
 }, strong, true);
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22961,11 +23369,11 @@ module.exports = __webpack_require__(84)(MAP, function (get) {
 var dP = __webpack_require__(13).f;
 var create = __webpack_require__(50);
 var redefineAll = __webpack_require__(55);
-var ctx = __webpack_require__(27);
+var ctx = __webpack_require__(28);
 var anInstance = __webpack_require__(53);
 var forOf = __webpack_require__(54);
 var $iterDefine = __webpack_require__(110);
-var step = __webpack_require__(153);
+var step = __webpack_require__(154);
 var setSpecies = __webpack_require__(52);
 var DESCRIPTORS = __webpack_require__(12);
 var fastKey = __webpack_require__(39).fastKey;
@@ -23106,13 +23514,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var strong = __webpack_require__(158);
+var strong = __webpack_require__(159);
 var validate = __webpack_require__(59);
 var SET = 'Set';
 
@@ -23129,17 +23537,17 @@ module.exports = __webpack_require__(84)(SET, function (get) {
 }, strong);
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var each = __webpack_require__(35)(0);
-var redefine = __webpack_require__(22);
+var each = __webpack_require__(36)(0);
+var redefine = __webpack_require__(21);
 var meta = __webpack_require__(39);
-var assign = __webpack_require__(141);
-var weak = __webpack_require__(161);
+var assign = __webpack_require__(142);
+var weak = __webpack_require__(162);
 var isObject = __webpack_require__(7);
 var fails = __webpack_require__(6);
 var validate = __webpack_require__(59);
@@ -23197,7 +23605,7 @@ if (fails(function () {
 }
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23209,8 +23617,8 @@ var anObject = __webpack_require__(4);
 var isObject = __webpack_require__(7);
 var anInstance = __webpack_require__(53);
 var forOf = __webpack_require__(54);
-var createArrayMethod = __webpack_require__(35);
-var $has = __webpack_require__(20);
+var createArrayMethod = __webpack_require__(36);
+var $has = __webpack_require__(19);
 var validate = __webpack_require__(59);
 var arrayFind = createArrayMethod(5);
 var arrayFindIndex = createArrayMethod(6);
@@ -23287,14 +23695,14 @@ module.exports = {
 };
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // https://tc39.github.io/ecma262/#sec-toindex
-var toInteger = __webpack_require__(33);
+var toInteger = __webpack_require__(34);
 var toLength = __webpack_require__(14);
 module.exports = function (it) {
   if (it === undefined) return 0;
@@ -23305,7 +23713,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23323,7 +23731,7 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
 };
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23333,7 +23741,7 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
 var isArray = __webpack_require__(78);
 var isObject = __webpack_require__(7);
 var toLength = __webpack_require__(14);
-var ctx = __webpack_require__(27);
+var ctx = __webpack_require__(28);
 var IS_CONCAT_SPREADABLE = __webpack_require__(9)('isConcatSpreadable');
 
 function flattenIntoArray(target, original, source, sourceLen, start, depth, mapper, thisArg) {
@@ -23369,7 +23777,7 @@ function flattenIntoArray(target, original, source, sourceLen, start, depth, map
 module.exports = flattenIntoArray;
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23378,7 +23786,7 @@ module.exports = flattenIntoArray;
 // https://github.com/tc39/proposal-string-pad-start-end
 var toLength = __webpack_require__(14);
 var repeat = __webpack_require__(106);
-var defined = __webpack_require__(32);
+var defined = __webpack_require__(33);
 
 module.exports = function (that, maxLength, fillString, left) {
   var S = String(defined(that));
@@ -23393,7 +23801,7 @@ module.exports = function (that, maxLength, fillString, left) {
 };
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23401,7 +23809,7 @@ module.exports = function (that, maxLength, fillString, left) {
 
 var getKeys = __webpack_require__(48);
 var toIObject = __webpack_require__(24);
-var isEnum = __webpack_require__(67).f;
+var isEnum = __webpack_require__(65).f;
 module.exports = function (isEntries) {
   return function (it) {
     var O = toIObject(it);
@@ -23419,15 +23827,15 @@ module.exports = function (isEntries) {
 };
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var classof = __webpack_require__(68);
-var from = __webpack_require__(168);
+var classof = __webpack_require__(66);
+var from = __webpack_require__(169);
 module.exports = function (NAME) {
   return function toJSON() {
     if (classof(this) != NAME) throw TypeError(NAME + "#toJSON isn't generic");
@@ -23436,7 +23844,7 @@ module.exports = function (NAME) {
 };
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23451,7 +23859,7 @@ module.exports = function (iter, ITERATOR) {
 };
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23475,7 +23883,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 };
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25040,7 +25448,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 exports.default = VueI18n;
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26006,13 +26414,56 @@ exports.createNamespacedHelpers = createNamespacedHelpers;
 exports.default = index_esm;
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports) {
 
 module.exports = {"select":{"option":{"change":"selectOptChange"}},"input":{"focus":"focusInput","blur":"blurInput","keyup":"keyupInput","change":"changeInput","completion":{"click":"clickCompletion"}},"tab":{"change":"tabChange"},"checkbox":{"change":"checkboxChange"},"btn":{"click":"clickBtn"},"scroller":{"change":{"height":"changeHeight","bar":{"y":"changeYBar","x":"changeXBar"}},"scroll":{"y":"scrollY","x":"scrollX"}},"common":{"searchTool":{"change":"searchQueryChange"}}}
 
 /***/ }),
-/* 173 */
+/* 174 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * 判断是否有滚动条
+ *
+ * @param {DOMElement} el - dom 元素
+ * @param {string} type - 默认是垂直方向的滚动条（可选 x: 水平方向，y：垂直方向）
+ */
+var hasScroller = function hasScroller() {
+  var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.body;
+  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'y';
+
+  var style = window.getComputedStyle(el);
+
+  if (style.getPropertyValue('overflow') === 'hidden') {
+    return false;
+  }
+
+  if (type === 'y') {
+    if (style.getPropertyValue('overflow-y') === 'hidden') {
+      return false;
+    }
+
+    return el.scrollHeight > window.innerHeight;
+  } else {
+    if (style.getPropertyValue('overflow-x') === 'hidden') {
+      return false;
+    }
+
+    return el.scrollWidth > window.innerWidth;
+  }
+};
+
+exports.hasScroller = hasScroller;
+
+/***/ }),
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26022,9 +26473,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(471);
+__webpack_require__(469);
 
-var _Form = __webpack_require__(473);
+var _Form = __webpack_require__(471);
 
 var _Form2 = _interopRequireDefault(_Form);
 
@@ -26032,7 +26483,7 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
@@ -26365,7 +26816,7 @@ var formComp = {
 exports.default = formComp;
 
 /***/ }),
-/* 174 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26379,13 +26830,13 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-__webpack_require__(483);
+__webpack_require__(481);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _Bubble = __webpack_require__(485);
+var _Bubble = __webpack_require__(483);
 
 var _Bubble2 = _interopRequireDefault(_Bubble);
 
@@ -26393,11 +26844,11 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _MotionZoom = __webpack_require__(129);
+var _MotionZoom = __webpack_require__(130);
 
 var _MotionZoom2 = _interopRequireDefault(_MotionZoom);
 
-var _prop = __webpack_require__(36);
+var _prop = __webpack_require__(27);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26655,7 +27106,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 175 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26665,11 +27116,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(502);
-
 __webpack_require__(504);
 
-var _NavRender = __webpack_require__(506);
+__webpack_require__(506);
+
+var _NavRender = __webpack_require__(508);
 
 var _NavRender2 = _interopRequireDefault(_NavRender);
 
@@ -26677,27 +27128,27 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _Fold = __webpack_require__(130);
+var _Fold = __webpack_require__(131);
 
 var _Fold2 = _interopRequireDefault(_Fold);
 
-var _FoldTitle = __webpack_require__(131);
+var _FoldTitle = __webpack_require__(132);
 
 var _FoldTitle2 = _interopRequireDefault(_FoldTitle);
 
-var _FoldContent = __webpack_require__(132);
+var _FoldContent = __webpack_require__(133);
 
 var _FoldContent2 = _interopRequireDefault(_FoldContent);
 
-var _MotionFold = __webpack_require__(73);
+var _MotionFold = __webpack_require__(95);
 
 var _MotionFold2 = _interopRequireDefault(_MotionFold);
 
-var _MotionSlide = __webpack_require__(72);
+var _MotionSlide = __webpack_require__(71);
 
 var _MotionSlide2 = _interopRequireDefault(_MotionSlide);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
@@ -26737,11 +27188,11 @@ exports.default = {
   render: _NavRender2.default,
 
   components: {
-    'fold': _Fold2.default,
+    fold: _Fold2.default,
     'fold-title': _FoldTitle2.default,
     'fold-content': _FoldContent2.default,
-    'fold-transition': _MotionFold2.default,
-    'slide-transition': _MotionSlide2.default,
+    'motion-fold': _MotionFold2.default,
+    'motion-slide': _MotionSlide2.default,
     row: _Row2.default,
     column: _Col2.default,
     icon: _Icon2.default
@@ -26749,44 +27200,35 @@ exports.default = {
 
   props: {
     animate: String,
-
     autoSwitch: {
       type: Boolean,
       default: true
     },
-
     initOpt: Array,
-
     gap: {
       type: Number,
       default: 0
     },
-
     kind: {
       type: String,
       default: 'center'
     },
-
     only: {
       type: Boolean,
       default: false
     },
-
     spreadAll: {
       type: Boolean,
       default: false
     },
-
     type: {
       type: String,
       default: 'horizontal'
     },
-
     trigger: {
       type: String,
       default: 'no'
     },
-
     title: {
       type: String,
       default: ''
@@ -26825,6 +27267,9 @@ exports.default = {
       }
 
       this.changeByDeviceSize(val);
+    },
+    isStageActive: function isStageActive(val) {
+      val ? this.$refs.transition.enter() : this.$refs.transition.leave();
     }
   },
 
@@ -26880,7 +27325,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 176 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26890,9 +27335,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(510);
+__webpack_require__(512);
 
-var _OmitRender = __webpack_require__(512);
+var _OmitRender = __webpack_require__(514);
 
 var _OmitRender2 = _interopRequireDefault(_OmitRender);
 
@@ -27028,7 +27473,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 177 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27038,9 +27483,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(516);
+__webpack_require__(518);
 
-var _Search = __webpack_require__(518);
+var _Search = __webpack_require__(520);
 
 var _Search2 = _interopRequireDefault(_Search);
 
@@ -27048,11 +27493,11 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _Input = __webpack_require__(65);
+var _Input = __webpack_require__(72);
 
 var _Input2 = _interopRequireDefault(_Input);
 
@@ -27169,7 +27614,7 @@ var searchComp = {
 exports.default = searchComp;
 
 /***/ }),
-/* 178 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27183,7 +27628,7 @@ var _Scroller = __webpack_require__(44);
 
 var _Scroller2 = _interopRequireDefault(_Scroller);
 
-var _Loading = __webpack_require__(63);
+var _Loading = __webpack_require__(62);
 
 var _Loading2 = _interopRequireDefault(_Loading);
 
@@ -27248,7 +27693,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 179 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27258,13 +27703,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(523);
+__webpack_require__(525);
 
-var _Table = __webpack_require__(525);
+var _Table = __webpack_require__(527);
 
 var _Table2 = _interopRequireDefault(_Table);
 
-var _Loading = __webpack_require__(63);
+var _Loading = __webpack_require__(62);
 
 var _Loading2 = _interopRequireDefault(_Loading);
 
@@ -27272,15 +27717,15 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _list = __webpack_require__(178);
+var _list = __webpack_require__(180);
 
 var _list2 = _interopRequireDefault(_list);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _util = __webpack_require__(133);
+var _util = __webpack_require__(134);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27317,43 +27762,40 @@ var Table = {
       type: Boolean,
       default: false
     },
-
+    scrollerAutoHide: {
+      type: Boolean,
+      default: false
+    },
     border: {
       type: String,
       default: 'none'
     },
-
     list: {
       type: Boolean,
       default: false
     },
-
     thead: {
       type: Array,
       default: function _default() {
         return [];
       }
     },
-
     tbody: {
       type: Array,
       default: function _default() {
         return [];
       }
     },
-
     page: {
       type: Object,
       default: function _default() {
         return {};
       }
     },
-
     pager: {
       type: Boolean,
       default: false
     },
-
     pageSize: {
       type: Number,
       default: 5
@@ -27508,7 +27950,7 @@ var Table = {
 exports.default = Table;
 
 /***/ }),
-/* 180 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27544,7 +27986,7 @@ var tableRowComp = {
 exports.default = tableRowComp;
 
 /***/ }),
-/* 181 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27558,7 +28000,7 @@ var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _util = __webpack_require__(133);
+var _util = __webpack_require__(134);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27672,37 +28114,13 @@ var tableColComp = {
 exports.default = tableColComp;
 
 /***/ }),
-/* 182 */
+/* 184 */
 /***/ (function(module, exports) {
 
 module.exports = {"backspace":8,"ctrl":17,"enter":13,"tab":9,"shift":16,"up":38,"down":40,"left":37,"right":39}
 
 /***/ }),
-/* 183 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * 产生唯一的 ID
- */
-
-function S4() {
-  return ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
-}
-
-function uid() {
-  return S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4();
-}
-
-exports.default = uid;
-
-/***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27736,7 +28154,7 @@ exports.default = {
     */
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27775,7 +28193,7 @@ exports.default = {
     */
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27787,17 +28205,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-__webpack_require__(534);
+__webpack_require__(536);
 
 var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _SelectOpt = __webpack_require__(536);
+var _SelectOpt = __webpack_require__(538);
 
 var _SelectOpt2 = _interopRequireDefault(_SelectOpt);
 
-var _Select = __webpack_require__(540);
+var _Select = __webpack_require__(542);
 
 var _Select2 = _interopRequireDefault(_Select);
 
@@ -27813,15 +28231,15 @@ var _type3 = __webpack_require__(126);
 
 var _type4 = _interopRequireDefault(_type3);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _Input = __webpack_require__(65);
+var _Input = __webpack_require__(72);
 
 var _Input2 = _interopRequireDefault(_Input);
 
@@ -27833,39 +28251,31 @@ var _Scroller = __webpack_require__(44);
 
 var _Scroller2 = _interopRequireDefault(_Scroller);
 
-var _Menu = __webpack_require__(134);
+var _Menu = __webpack_require__(135);
 
 var _Menu2 = _interopRequireDefault(_Menu);
-
-var _MenuTrig = __webpack_require__(541);
-
-var _MenuTrig2 = _interopRequireDefault(_MenuTrig);
 
 var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _form = __webpack_require__(70);
+var _form = __webpack_require__(69);
 
 var _form2 = _interopRequireDefault(_form);
 
-var _Select3 = __webpack_require__(542);
+var _Select3 = __webpack_require__(543);
 
 var _Select4 = _interopRequireDefault(_Select3);
 
-var _MotionFold = __webpack_require__(73);
+var _prop = __webpack_require__(27);
 
-var _MotionFold2 = _interopRequireDefault(_MotionFold);
-
-var _prop = __webpack_require__(36);
-
-var _uid = __webpack_require__(183);
+var _uid = __webpack_require__(127);
 
 var _uid2 = _interopRequireDefault(_uid);
 
-var _data = __webpack_require__(128);
+var _data = __webpack_require__(129);
 
-var _array = __webpack_require__(127);
+var _array = __webpack_require__(128);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27913,10 +28323,8 @@ exports.default = {
 
   components: {
     'menu-comp': _Menu2.default,
-    'menu-trig': _MenuTrig2.default,
     'select-opt': _SelectOpt2.default,
     'input-box': _Input2.default,
-    'fold-transition': _MotionFold2.default,
     icon: _Icon2.default,
     check: _Check2.default,
     scroller: _Scroller2.default
@@ -27929,80 +28337,62 @@ exports.default = {
         return [];
       }
     },
-
     param: {
       type: String,
       default: ''
     },
-
     initVal: [Number, Array, String],
-
     multiple: {
       type: Boolean,
       default: false
     },
-
     store: Object,
-
     max: {
       type: Number,
       default: 0
     },
-
     min: {
       type: Number,
       default: 0
     },
-
     defaultVal: {
       type: [Number, String],
       default: -1
     },
-
     defaultTxt: {
       type: [Number, String],
       default: '请选择'
     },
-
     required: {
       type: Boolean,
       default: false
     },
-
     errorMessage: {
       type: String,
       default: ''
     },
-
     valName: {
       type: String,
       default: 'value'
     },
-
     txtName: {
       type: String,
       default: 'text'
     },
-
     search: {
       type: Boolean,
       default: false
     },
-
     classify: Array,
-
     readOnly: {
       type: Boolean,
       default: false
     },
-
     classifyOpt: Object,
-
     selectAll: {
       type: Boolean,
       default: false
     },
-
     selectAllTxt: {
       type: String,
       default: '全选'
@@ -28630,7 +29020,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28664,7 +29054,7 @@ exports.default = {
     */
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28674,21 +29064,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(543);
+__webpack_require__(544);
 
 var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _TabRender = __webpack_require__(545);
+var _TabRender = __webpack_require__(546);
 
 var _TabRender2 = _interopRequireDefault(_TabRender);
 
-var _Shift = __webpack_require__(135);
+var _Shift = __webpack_require__(136);
 
 var _Shift2 = _interopRequireDefault(_Shift);
 
-var _url = __webpack_require__(546);
+var _url = __webpack_require__(547);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28819,7 +29209,7 @@ exports.default = {
     */
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28855,7 +29245,7 @@ exports.default = {
     */
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28869,7 +29259,7 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(69);
+var _vueRouter = __webpack_require__(67);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -28881,7 +29271,7 @@ var _store = __webpack_require__(41);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _type = __webpack_require__(62);
+var _type = __webpack_require__(61);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -28908,7 +29298,6 @@ var createToast = function createToast() {
     name: 'toast',
     mixins: [_base2.default],
     computed: {
-      // 组件类名的前缀
       cPrefix: function cPrefix() {
         return this.compPrefix + '-toast';
       }
@@ -28983,37 +29372,37 @@ createToast();
 exports.default = toast;
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports) {
 
 module.exports = [{"name":"开始使用","route":"/component/start"},{"name":"表单控件","sub":[{"name":"按钮组件","route":"/component/btn"},{"name":"选择组件","route":"/component/check"},{"name":"下拉选择组件","route":"/component/select"},{"name":"输入组件","route":"/component/input"}]},{"name":"消息提示","sub":[{"name":"弹窗","sub":[{"name":"确认弹窗","route":"/component/modal#confirm"},{"name":"消息弹窗","route":"/component/modal#alert"}]},{"name":"提示","sub":[{"name":"泡泡提示","route":"/component/tip#bubble"},{"name":"弹窗提示","route":"/component/tip#alert"},{"name":"底部提示","route":"/component/tip#toast"}]}]},{"name":"数据展示","sub":[{"name":"表格数据","route":"/component/table"},{"name":"列表数据","route":"/component/list"},{"name":"分页控件","sub":[{"name":"加载更多","route":"/component/pager#more"},{"name":"页码跳转","route":"/component/pager#page-num"}]}]},{"name":"样式与布局","sub":[{"name":"布局组件","route":"/component/grid"},{"name":"图标组件","route":"/component/icon"}]},{"name":"过渡动画","sub":[{"name":"放大缩小","route":"/component/motion/zoom"},{"name":"淡入淡出","route":"/component/motion/fade"},{"name":"折叠展开","route":"/component/motion/fold"},{"name":"滑来滑去","route":"/component/motion/slide"},{"name":"涟漪效果","route":"/component/motion/rip"}]},{"name":"其他组件","sub":[{"name":"滚动条","route":"/component/scroller"},{"name":"选项卡","route":"/component/tab"},{"name":"弹出","route":"/component/pop"},{"name":"省略","route":"/component/omit"},{"name":"菜单","route":"/component/menu"}]}]
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports) {
 
 module.exports = {"window":{"add":"common/window/add","get":"common/window/get"}}
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(194);
-module.exports = __webpack_require__(397);
+__webpack_require__(195);
+module.exports = __webpack_require__(398);
 
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-__webpack_require__(195);
+__webpack_require__(196);
 
-__webpack_require__(392);
+__webpack_require__(393);
 
-__webpack_require__(394);
+__webpack_require__(395);
 
 if (global._babelPolyfill) {
   throw new Error("only one instance of babel-polyfill is allowed");
@@ -29038,14 +29427,13 @@ define(String.prototype, "padRight", "".padEnd);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(74)))
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(196);
-__webpack_require__(198);
+__webpack_require__(197);
 __webpack_require__(199);
 __webpack_require__(200);
 __webpack_require__(201);
@@ -29060,7 +29448,7 @@ __webpack_require__(209);
 __webpack_require__(210);
 __webpack_require__(211);
 __webpack_require__(212);
-__webpack_require__(214);
+__webpack_require__(213);
 __webpack_require__(215);
 __webpack_require__(216);
 __webpack_require__(217);
@@ -29121,16 +29509,16 @@ __webpack_require__(271);
 __webpack_require__(272);
 __webpack_require__(273);
 __webpack_require__(274);
-__webpack_require__(276);
+__webpack_require__(275);
 __webpack_require__(277);
-__webpack_require__(279);
+__webpack_require__(278);
 __webpack_require__(280);
 __webpack_require__(281);
 __webpack_require__(282);
 __webpack_require__(283);
 __webpack_require__(284);
 __webpack_require__(285);
-__webpack_require__(287);
+__webpack_require__(286);
 __webpack_require__(288);
 __webpack_require__(289);
 __webpack_require__(290);
@@ -29143,19 +29531,19 @@ __webpack_require__(296);
 __webpack_require__(297);
 __webpack_require__(298);
 __webpack_require__(299);
-__webpack_require__(119);
 __webpack_require__(300);
+__webpack_require__(119);
 __webpack_require__(301);
-__webpack_require__(154);
 __webpack_require__(302);
+__webpack_require__(155);
 __webpack_require__(303);
 __webpack_require__(304);
 __webpack_require__(305);
 __webpack_require__(306);
-__webpack_require__(157);
-__webpack_require__(159);
-__webpack_require__(160);
 __webpack_require__(307);
+__webpack_require__(158);
+__webpack_require__(160);
+__webpack_require__(161);
 __webpack_require__(308);
 __webpack_require__(309);
 __webpack_require__(310);
@@ -29240,10 +29628,11 @@ __webpack_require__(388);
 __webpack_require__(389);
 __webpack_require__(390);
 __webpack_require__(391);
-module.exports = __webpack_require__(30);
+__webpack_require__(392);
+module.exports = __webpack_require__(31);
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29253,27 +29642,27 @@ module.exports = __webpack_require__(30);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var global = __webpack_require__(5);
-var has = __webpack_require__(20);
+var has = __webpack_require__(19);
 var DESCRIPTORS = __webpack_require__(12);
 var $export = __webpack_require__(0);
-var redefine = __webpack_require__(22);
+var redefine = __webpack_require__(21);
 var META = __webpack_require__(39).KEY;
 var $fails = __webpack_require__(6);
 var shared = __webpack_require__(75);
 var setToStringTag = __webpack_require__(56);
 var uid = __webpack_require__(46);
 var wks = __webpack_require__(9);
-var wksExt = __webpack_require__(137);
+var wksExt = __webpack_require__(138);
 var wksDefine = __webpack_require__(99);
-var enumKeys = __webpack_require__(197);
+var enumKeys = __webpack_require__(198);
 var isArray = __webpack_require__(78);
 var anObject = __webpack_require__(4);
 var isObject = __webpack_require__(7);
 var toIObject = __webpack_require__(24);
-var toPrimitive = __webpack_require__(31);
+var toPrimitive = __webpack_require__(32);
 var createDesc = __webpack_require__(45);
 var _create = __webpack_require__(50);
-var gOPNExt = __webpack_require__(140);
+var gOPNExt = __webpack_require__(141);
 var $GOPD = __webpack_require__(25);
 var $DP = __webpack_require__(13);
 var $keys = __webpack_require__(48);
@@ -29403,7 +29792,7 @@ if (!USE_NATIVE) {
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
   __webpack_require__(51).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(67).f = $propertyIsEnumerable;
+  __webpack_require__(65).f = $propertyIsEnumerable;
   __webpack_require__(77).f = $getOwnPropertySymbols;
 
   if (DESCRIPTORS && !__webpack_require__(47)) {
@@ -29484,7 +29873,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(21)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(20)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -29493,7 +29882,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29502,7 +29891,7 @@ setToStringTag(global.JSON, 'JSON', true);
 // all enumerable object keys, includes symbols
 var getKeys = __webpack_require__(48);
 var gOPS = __webpack_require__(77);
-var pIE = __webpack_require__(67);
+var pIE = __webpack_require__(65);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -29518,7 +29907,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29529,7 +29918,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', { create: __webpack_require__(50) });
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29540,7 +29929,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F * !__webpack_require__(12), 'Object', { defineProperty: __webpack_require__(13).f });
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29548,10 +29937,10 @@ $export($export.S + $export.F * !__webpack_require__(12), 'Object', { defineProp
 
 var $export = __webpack_require__(0);
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export($export.S + $export.F * !__webpack_require__(12), 'Object', { defineProperties: __webpack_require__(139) });
+$export($export.S + $export.F * !__webpack_require__(12), 'Object', { defineProperties: __webpack_require__(140) });
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29561,26 +29950,9 @@ $export($export.S + $export.F * !__webpack_require__(12), 'Object', { defineProp
 var toIObject = __webpack_require__(24);
 var $getOwnPropertyDescriptor = __webpack_require__(25).f;
 
-__webpack_require__(34)('getOwnPropertyDescriptor', function () {
+__webpack_require__(35)('getOwnPropertyDescriptor', function () {
   return function getOwnPropertyDescriptor(it, key) {
     return $getOwnPropertyDescriptor(toIObject(it), key);
-  };
-});
-
-/***/ }),
-/* 202 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = __webpack_require__(16);
-var $getPrototypeOf = __webpack_require__(26);
-
-__webpack_require__(34)('getPrototypeOf', function () {
-  return function getPrototypeOf(it) {
-    return $getPrototypeOf(toObject(it));
   };
 });
 
@@ -29591,13 +29963,13 @@ __webpack_require__(34)('getPrototypeOf', function () {
 "use strict";
 
 
-// 19.1.2.14 Object.keys(O)
+// 19.1.2.9 Object.getPrototypeOf(O)
 var toObject = __webpack_require__(16);
-var $keys = __webpack_require__(48);
+var $getPrototypeOf = __webpack_require__(26);
 
-__webpack_require__(34)('keys', function () {
-  return function keys(it) {
-    return $keys(toObject(it));
+__webpack_require__(35)('getPrototypeOf', function () {
+  return function getPrototypeOf(it) {
+    return $getPrototypeOf(toObject(it));
   };
 });
 
@@ -29608,9 +29980,14 @@ __webpack_require__(34)('keys', function () {
 "use strict";
 
 
-// 19.1.2.7 Object.getOwnPropertyNames(O)
-__webpack_require__(34)('getOwnPropertyNames', function () {
-  return __webpack_require__(140).f;
+// 19.1.2.14 Object.keys(O)
+var toObject = __webpack_require__(16);
+var $keys = __webpack_require__(48);
+
+__webpack_require__(35)('keys', function () {
+  return function keys(it) {
+    return $keys(toObject(it));
+  };
 });
 
 /***/ }),
@@ -29620,14 +29997,9 @@ __webpack_require__(34)('getOwnPropertyNames', function () {
 "use strict";
 
 
-// 19.1.2.5 Object.freeze(O)
-var isObject = __webpack_require__(7);
-var meta = __webpack_require__(39).onFreeze;
-
-__webpack_require__(34)('freeze', function ($freeze) {
-  return function freeze(it) {
-    return $freeze && isObject(it) ? $freeze(meta(it)) : it;
-  };
+// 19.1.2.7 Object.getOwnPropertyNames(O)
+__webpack_require__(35)('getOwnPropertyNames', function () {
+  return __webpack_require__(141).f;
 });
 
 /***/ }),
@@ -29637,13 +30009,13 @@ __webpack_require__(34)('freeze', function ($freeze) {
 "use strict";
 
 
-// 19.1.2.17 Object.seal(O)
+// 19.1.2.5 Object.freeze(O)
 var isObject = __webpack_require__(7);
 var meta = __webpack_require__(39).onFreeze;
 
-__webpack_require__(34)('seal', function ($seal) {
-  return function seal(it) {
-    return $seal && isObject(it) ? $seal(meta(it)) : it;
+__webpack_require__(35)('freeze', function ($freeze) {
+  return function freeze(it) {
+    return $freeze && isObject(it) ? $freeze(meta(it)) : it;
   };
 });
 
@@ -29654,13 +30026,13 @@ __webpack_require__(34)('seal', function ($seal) {
 "use strict";
 
 
-// 19.1.2.15 Object.preventExtensions(O)
+// 19.1.2.17 Object.seal(O)
 var isObject = __webpack_require__(7);
 var meta = __webpack_require__(39).onFreeze;
 
-__webpack_require__(34)('preventExtensions', function ($preventExtensions) {
-  return function preventExtensions(it) {
-    return $preventExtensions && isObject(it) ? $preventExtensions(meta(it)) : it;
+__webpack_require__(35)('seal', function ($seal) {
+  return function seal(it) {
+    return $seal && isObject(it) ? $seal(meta(it)) : it;
   };
 });
 
@@ -29671,12 +30043,13 @@ __webpack_require__(34)('preventExtensions', function ($preventExtensions) {
 "use strict";
 
 
-// 19.1.2.12 Object.isFrozen(O)
+// 19.1.2.15 Object.preventExtensions(O)
 var isObject = __webpack_require__(7);
+var meta = __webpack_require__(39).onFreeze;
 
-__webpack_require__(34)('isFrozen', function ($isFrozen) {
-  return function isFrozen(it) {
-    return isObject(it) ? $isFrozen ? $isFrozen(it) : false : true;
+__webpack_require__(35)('preventExtensions', function ($preventExtensions) {
+  return function preventExtensions(it) {
+    return $preventExtensions && isObject(it) ? $preventExtensions(meta(it)) : it;
   };
 });
 
@@ -29687,12 +30060,12 @@ __webpack_require__(34)('isFrozen', function ($isFrozen) {
 "use strict";
 
 
-// 19.1.2.13 Object.isSealed(O)
+// 19.1.2.12 Object.isFrozen(O)
 var isObject = __webpack_require__(7);
 
-__webpack_require__(34)('isSealed', function ($isSealed) {
-  return function isSealed(it) {
-    return isObject(it) ? $isSealed ? $isSealed(it) : false : true;
+__webpack_require__(35)('isFrozen', function ($isFrozen) {
+  return function isFrozen(it) {
+    return isObject(it) ? $isFrozen ? $isFrozen(it) : false : true;
   };
 });
 
@@ -29703,12 +30076,12 @@ __webpack_require__(34)('isSealed', function ($isSealed) {
 "use strict";
 
 
-// 19.1.2.11 Object.isExtensible(O)
+// 19.1.2.13 Object.isSealed(O)
 var isObject = __webpack_require__(7);
 
-__webpack_require__(34)('isExtensible', function ($isExtensible) {
-  return function isExtensible(it) {
-    return isObject(it) ? $isExtensible ? $isExtensible(it) : true : false;
+__webpack_require__(35)('isSealed', function ($isSealed) {
+  return function isSealed(it) {
+    return isObject(it) ? $isSealed ? $isSealed(it) : false : true;
   };
 });
 
@@ -29719,10 +30092,14 @@ __webpack_require__(34)('isExtensible', function ($isExtensible) {
 "use strict";
 
 
-// 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(0);
+// 19.1.2.11 Object.isExtensible(O)
+var isObject = __webpack_require__(7);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(141) });
+__webpack_require__(35)('isExtensible', function ($isExtensible) {
+  return function isExtensible(it) {
+    return isObject(it) ? $isExtensible ? $isExtensible(it) : true : false;
+  };
+});
 
 /***/ }),
 /* 212 */
@@ -29731,12 +30108,24 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(141) });
 "use strict";
 
 
-// 19.1.3.10 Object.is(value1, value2)
+// 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(0);
-$export($export.S, 'Object', { is: __webpack_require__(213) });
+
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(142) });
 
 /***/ }),
 /* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 19.1.3.10 Object.is(value1, value2)
+var $export = __webpack_require__(0);
+$export($export.S, 'Object', { is: __webpack_require__(214) });
+
+/***/ }),
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29749,7 +30138,7 @@ module.exports = Object.is || function is(x, y) {
 };
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29760,24 +30149,24 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(103).set });
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 19.1.3.6 Object.prototype.toString()
 
-var classof = __webpack_require__(68);
+var classof = __webpack_require__(66);
 var test = {};
 test[__webpack_require__(9)('toStringTag')] = 'z';
 if (test + '' != '[object z]') {
-  __webpack_require__(22)(Object.prototype, 'toString', function toString() {
+  __webpack_require__(21)(Object.prototype, 'toString', function toString() {
     return '[object ' + classof(this) + ']';
   }, true);
 }
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29786,10 +30175,10 @@ if (test + '' != '[object z]') {
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Function', { bind: __webpack_require__(142) });
+$export($export.P, 'Function', { bind: __webpack_require__(143) });
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29813,7 +30202,7 @@ NAME in FProto || __webpack_require__(12) && dP(FProto, NAME, {
 });
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29834,18 +30223,6 @@ if (!(HAS_INSTANCE in FunctionProto)) __webpack_require__(13).f(FunctionProto, H
   } });
 
 /***/ }),
-/* 219 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $export = __webpack_require__(0);
-var $parseInt = __webpack_require__(144);
-// 18.2.5 parseInt(string, radix)
-$export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt });
-
-/***/ }),
 /* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -29853,9 +30230,9 @@ $export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt }
 
 
 var $export = __webpack_require__(0);
-var $parseFloat = __webpack_require__(145);
-// 18.2.4 parseFloat(string)
-$export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $parseFloat });
+var $parseInt = __webpack_require__(145);
+// 18.2.5 parseInt(string, radix)
+$export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt });
 
 /***/ }),
 /* 221 */
@@ -29864,11 +30241,23 @@ $export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $pars
 "use strict";
 
 
+var $export = __webpack_require__(0);
+var $parseFloat = __webpack_require__(146);
+// 18.2.4 parseFloat(string)
+$export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $parseFloat });
+
+/***/ }),
+/* 222 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var global = __webpack_require__(5);
-var has = __webpack_require__(20);
-var cof = __webpack_require__(28);
+var has = __webpack_require__(19);
+var cof = __webpack_require__(29);
 var inheritIfRequired = __webpack_require__(105);
-var toPrimitive = __webpack_require__(31);
+var toPrimitive = __webpack_require__(32);
 var fails = __webpack_require__(6);
 var gOPN = __webpack_require__(51).f;
 var gOPD = __webpack_require__(25).f;
@@ -29932,19 +30321,19 @@ if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
   }
   $Number.prototype = proto;
   proto.constructor = $Number;
-  __webpack_require__(22)(global, NUMBER, $Number);
+  __webpack_require__(21)(global, NUMBER, $Number);
 }
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var $export = __webpack_require__(0);
-var toInteger = __webpack_require__(33);
-var aNumberValue = __webpack_require__(146);
+var toInteger = __webpack_require__(34);
+var aNumberValue = __webpack_require__(147);
 var repeat = __webpack_require__(106);
 var $toFixed = 1.0.toFixed;
 var floor = Math.floor;
@@ -30052,7 +30441,7 @@ $export($export.P + $export.F * (!!$toFixed && (0.00008.toFixed(3) !== '0.000' |
 });
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30060,7 +30449,7 @@ $export($export.P + $export.F * (!!$toFixed && (0.00008.toFixed(3) !== '0.000' |
 
 var $export = __webpack_require__(0);
 var $fails = __webpack_require__(6);
-var aNumberValue = __webpack_require__(146);
+var aNumberValue = __webpack_require__(147);
 var $toPrecision = 1.0.toPrecision;
 
 $export($export.P + $export.F * ($fails(function () {
@@ -30077,7 +30466,7 @@ $export($export.P + $export.F * ($fails(function () {
 });
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30089,7 +30478,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { EPSILON: Math.pow(2, -52) });
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30106,7 +30495,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30115,10 +30504,10 @@ $export($export.S, 'Number', {
 // 20.1.2.3 Number.isInteger(number)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Number', { isInteger: __webpack_require__(147) });
+$export($export.S, 'Number', { isInteger: __webpack_require__(148) });
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30135,7 +30524,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30143,7 +30532,7 @@ $export($export.S, 'Number', {
 
 // 20.1.2.5 Number.isSafeInteger(number)
 var $export = __webpack_require__(0);
-var isInteger = __webpack_require__(147);
+var isInteger = __webpack_require__(148);
 var abs = Math.abs;
 
 $export($export.S, 'Number', {
@@ -30153,7 +30542,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30165,7 +30554,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { MAX_SAFE_INTEGER: 0x1fffffffffffff });
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30177,18 +30566,6 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { MIN_SAFE_INTEGER: -0x1fffffffffffff });
 
 /***/ }),
-/* 231 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $export = __webpack_require__(0);
-var $parseFloat = __webpack_require__(145);
-// 20.1.2.12 Number.parseFloat(string)
-$export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { parseFloat: $parseFloat });
-
-/***/ }),
 /* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30196,9 +30573,9 @@ $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { 
 
 
 var $export = __webpack_require__(0);
-var $parseInt = __webpack_require__(144);
-// 20.1.2.13 Number.parseInt(string, radix)
-$export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { parseInt: $parseInt });
+var $parseFloat = __webpack_require__(146);
+// 20.1.2.12 Number.parseFloat(string)
+$export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { parseFloat: $parseFloat });
 
 /***/ }),
 /* 233 */
@@ -30207,9 +30584,21 @@ $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { pars
 "use strict";
 
 
+var $export = __webpack_require__(0);
+var $parseInt = __webpack_require__(145);
+// 20.1.2.13 Number.parseInt(string, radix)
+$export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { parseInt: $parseInt });
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 // 20.2.2.3 Math.acosh(x)
 var $export = __webpack_require__(0);
-var log1p = __webpack_require__(148);
+var log1p = __webpack_require__(149);
 var sqrt = Math.sqrt;
 var $acosh = Math.acosh;
 
@@ -30224,7 +30613,7 @@ $export($export.S + $export.F * !($acosh
 });
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30242,7 +30631,7 @@ function asinh(x) {
 $export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', { asinh: asinh });
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30260,7 +30649,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
 });
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30277,7 +30666,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30293,7 +30682,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30310,7 +30699,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30323,7 +30712,7 @@ var $expm1 = __webpack_require__(108);
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', { expm1: $expm1 });
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30332,10 +30721,10 @@ $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', { expm1: $expm1 
 // 20.2.2.16 Math.fround(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { fround: __webpack_require__(149) });
+$export($export.S, 'Math', { fround: __webpack_require__(150) });
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30369,7 +30758,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30394,7 +30783,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30410,7 +30799,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30419,10 +30808,10 @@ $export($export.S, 'Math', {
 // 20.2.2.20 Math.log1p(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { log1p: __webpack_require__(148) });
+$export($export.S, 'Math', { log1p: __webpack_require__(149) });
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30438,7 +30827,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30450,7 +30839,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { sign: __webpack_require__(107) });
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30471,7 +30860,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30491,7 +30880,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30507,7 +30896,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30536,7 +30925,7 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
 });
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30562,7 +30951,7 @@ $export($export.S, 'String', {
 });
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30576,7 +30965,7 @@ __webpack_require__(57)('trim', function ($trim) {
 });
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30600,7 +30989,7 @@ __webpack_require__(110)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30616,7 +31005,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30641,7 +31030,7 @@ $export($export.P + $export.F * __webpack_require__(113)(ENDS_WITH), 'String', {
 });
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30659,7 +31048,7 @@ $export($export.P + $export.F * __webpack_require__(113)(INCLUDES), 'String', {
 });
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30673,7 +31062,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30696,30 +31085,16 @@ $export($export.P + $export.F * __webpack_require__(113)(STARTS_WITH), 'String',
 });
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // B.2.3.2 String.prototype.anchor(name)
 
-__webpack_require__(23)('anchor', function (createHTML) {
+__webpack_require__(22)('anchor', function (createHTML) {
   return function anchor(name) {
     return createHTML(this, 'a', 'name', name);
-  };
-});
-
-/***/ }),
-/* 260 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// B.2.3.3 String.prototype.big()
-
-__webpack_require__(23)('big', function (createHTML) {
-  return function big() {
-    return createHTML(this, 'big', '', '');
   };
 });
 
@@ -30729,11 +31104,11 @@ __webpack_require__(23)('big', function (createHTML) {
 
 "use strict";
 
-// B.2.3.4 String.prototype.blink()
+// B.2.3.3 String.prototype.big()
 
-__webpack_require__(23)('blink', function (createHTML) {
-  return function blink() {
-    return createHTML(this, 'blink', '', '');
+__webpack_require__(22)('big', function (createHTML) {
+  return function big() {
+    return createHTML(this, 'big', '', '');
   };
 });
 
@@ -30743,11 +31118,11 @@ __webpack_require__(23)('blink', function (createHTML) {
 
 "use strict";
 
-// B.2.3.5 String.prototype.bold()
+// B.2.3.4 String.prototype.blink()
 
-__webpack_require__(23)('bold', function (createHTML) {
-  return function bold() {
-    return createHTML(this, 'b', '', '');
+__webpack_require__(22)('blink', function (createHTML) {
+  return function blink() {
+    return createHTML(this, 'blink', '', '');
   };
 });
 
@@ -30757,11 +31132,11 @@ __webpack_require__(23)('bold', function (createHTML) {
 
 "use strict";
 
-// B.2.3.6 String.prototype.fixed()
+// B.2.3.5 String.prototype.bold()
 
-__webpack_require__(23)('fixed', function (createHTML) {
-  return function fixed() {
-    return createHTML(this, 'tt', '', '');
+__webpack_require__(22)('bold', function (createHTML) {
+  return function bold() {
+    return createHTML(this, 'b', '', '');
   };
 });
 
@@ -30771,11 +31146,11 @@ __webpack_require__(23)('fixed', function (createHTML) {
 
 "use strict";
 
-// B.2.3.7 String.prototype.fontcolor(color)
+// B.2.3.6 String.prototype.fixed()
 
-__webpack_require__(23)('fontcolor', function (createHTML) {
-  return function fontcolor(color) {
-    return createHTML(this, 'font', 'color', color);
+__webpack_require__(22)('fixed', function (createHTML) {
+  return function fixed() {
+    return createHTML(this, 'tt', '', '');
   };
 });
 
@@ -30785,11 +31160,11 @@ __webpack_require__(23)('fontcolor', function (createHTML) {
 
 "use strict";
 
-// B.2.3.8 String.prototype.fontsize(size)
+// B.2.3.7 String.prototype.fontcolor(color)
 
-__webpack_require__(23)('fontsize', function (createHTML) {
-  return function fontsize(size) {
-    return createHTML(this, 'font', 'size', size);
+__webpack_require__(22)('fontcolor', function (createHTML) {
+  return function fontcolor(color) {
+    return createHTML(this, 'font', 'color', color);
   };
 });
 
@@ -30799,11 +31174,11 @@ __webpack_require__(23)('fontsize', function (createHTML) {
 
 "use strict";
 
-// B.2.3.9 String.prototype.italics()
+// B.2.3.8 String.prototype.fontsize(size)
 
-__webpack_require__(23)('italics', function (createHTML) {
-  return function italics() {
-    return createHTML(this, 'i', '', '');
+__webpack_require__(22)('fontsize', function (createHTML) {
+  return function fontsize(size) {
+    return createHTML(this, 'font', 'size', size);
   };
 });
 
@@ -30813,11 +31188,11 @@ __webpack_require__(23)('italics', function (createHTML) {
 
 "use strict";
 
-// B.2.3.10 String.prototype.link(url)
+// B.2.3.9 String.prototype.italics()
 
-__webpack_require__(23)('link', function (createHTML) {
-  return function link(url) {
-    return createHTML(this, 'a', 'href', url);
+__webpack_require__(22)('italics', function (createHTML) {
+  return function italics() {
+    return createHTML(this, 'i', '', '');
   };
 });
 
@@ -30827,11 +31202,11 @@ __webpack_require__(23)('link', function (createHTML) {
 
 "use strict";
 
-// B.2.3.11 String.prototype.small()
+// B.2.3.10 String.prototype.link(url)
 
-__webpack_require__(23)('small', function (createHTML) {
-  return function small() {
-    return createHTML(this, 'small', '', '');
+__webpack_require__(22)('link', function (createHTML) {
+  return function link(url) {
+    return createHTML(this, 'a', 'href', url);
   };
 });
 
@@ -30841,11 +31216,11 @@ __webpack_require__(23)('small', function (createHTML) {
 
 "use strict";
 
-// B.2.3.12 String.prototype.strike()
+// B.2.3.11 String.prototype.small()
 
-__webpack_require__(23)('strike', function (createHTML) {
-  return function strike() {
-    return createHTML(this, 'strike', '', '');
+__webpack_require__(22)('small', function (createHTML) {
+  return function small() {
+    return createHTML(this, 'small', '', '');
   };
 });
 
@@ -30855,11 +31230,11 @@ __webpack_require__(23)('strike', function (createHTML) {
 
 "use strict";
 
-// B.2.3.13 String.prototype.sub()
+// B.2.3.12 String.prototype.strike()
 
-__webpack_require__(23)('sub', function (createHTML) {
-  return function sub() {
-    return createHTML(this, 'sub', '', '');
+__webpack_require__(22)('strike', function (createHTML) {
+  return function strike() {
+    return createHTML(this, 'strike', '', '');
   };
 });
 
@@ -30869,16 +31244,30 @@ __webpack_require__(23)('sub', function (createHTML) {
 
 "use strict";
 
+// B.2.3.13 String.prototype.sub()
+
+__webpack_require__(22)('sub', function (createHTML) {
+  return function sub() {
+    return createHTML(this, 'sub', '', '');
+  };
+});
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 // B.2.3.14 String.prototype.sup()
 
-__webpack_require__(23)('sup', function (createHTML) {
+__webpack_require__(22)('sup', function (createHTML) {
   return function sup() {
     return createHTML(this, 'sup', '', '');
   };
 });
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30892,7 +31281,7 @@ $export($export.S, 'Date', { now: function now() {
   } });
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30900,7 +31289,7 @@ $export($export.S, 'Date', { now: function now() {
 
 var $export = __webpack_require__(0);
 var toObject = __webpack_require__(16);
-var toPrimitive = __webpack_require__(31);
+var toPrimitive = __webpack_require__(32);
 
 $export($export.P + $export.F * __webpack_require__(6)(function () {
   return new Date(NaN).toJSON() !== null || Date.prototype.toJSON.call({ toISOString: function toISOString() {
@@ -30916,7 +31305,7 @@ $export($export.P + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30924,7 +31313,7 @@ $export($export.P + $export.F * __webpack_require__(6)(function () {
 
 // 20.3.4.36 / 15.9.5.43 Date.prototype.toISOString()
 var $export = __webpack_require__(0);
-var toISOString = __webpack_require__(275);
+var toISOString = __webpack_require__(276);
 
 // PhantomJS / old WebKit has a broken implementations
 $export($export.P + $export.F * (Date.prototype.toISOString !== toISOString), 'Date', {
@@ -30932,7 +31321,7 @@ $export($export.P + $export.F * (Date.prototype.toISOString !== toISOString), 'D
 });
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30962,7 +31351,7 @@ module.exports = fails(function () {
 } : $toISOString;
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30974,24 +31363,12 @@ var TO_STRING = 'toString';
 var $toString = DateProto[TO_STRING];
 var getTime = DateProto.getTime;
 if (new Date(NaN) + '' != INVALID_DATE) {
-  __webpack_require__(22)(DateProto, TO_STRING, function toString() {
+  __webpack_require__(21)(DateProto, TO_STRING, function toString() {
     var value = getTime.call(this);
     // eslint-disable-next-line no-self-compare
     return value === value ? $toString.call(this) : INVALID_DATE;
   });
 }
-
-/***/ }),
-/* 277 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var TO_PRIMITIVE = __webpack_require__(9)('toPrimitive');
-var proto = Date.prototype;
-
-if (!(TO_PRIMITIVE in proto)) __webpack_require__(21)(proto, TO_PRIMITIVE, __webpack_require__(278));
 
 /***/ }),
 /* 278 */
@@ -31000,8 +31377,20 @@ if (!(TO_PRIMITIVE in proto)) __webpack_require__(21)(proto, TO_PRIMITIVE, __web
 "use strict";
 
 
+var TO_PRIMITIVE = __webpack_require__(9)('toPrimitive');
+var proto = Date.prototype;
+
+if (!(TO_PRIMITIVE in proto)) __webpack_require__(20)(proto, TO_PRIMITIVE, __webpack_require__(279));
+
+/***/ }),
+/* 279 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var anObject = __webpack_require__(4);
-var toPrimitive = __webpack_require__(31);
+var toPrimitive = __webpack_require__(32);
 var NUMBER = 'number';
 
 module.exports = function (hint) {
@@ -31010,7 +31399,7 @@ module.exports = function (hint) {
 };
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31022,16 +31411,16 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Array', { isArray: __webpack_require__(78) });
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var ctx = __webpack_require__(27);
+var ctx = __webpack_require__(28);
 var $export = __webpack_require__(0);
 var toObject = __webpack_require__(16);
-var call = __webpack_require__(150);
+var call = __webpack_require__(151);
 var isArrayIter = __webpack_require__(114);
 var toLength = __webpack_require__(14);
 var createProperty = __webpack_require__(115);
@@ -31068,7 +31457,7 @@ $export($export.S + $export.F * !__webpack_require__(80)(function (iter) {
 });
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31095,7 +31484,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31107,14 +31496,14 @@ var toIObject = __webpack_require__(24);
 var arrayJoin = [].join;
 
 // fallback for not array-like strings
-$export($export.P + $export.F * (__webpack_require__(66) != Object || !__webpack_require__(29)(arrayJoin)), 'Array', {
+$export($export.P + $export.F * (__webpack_require__(64) != Object || !__webpack_require__(30)(arrayJoin)), 'Array', {
   join: function join(separator) {
     return arrayJoin.call(toIObject(this), separator === undefined ? ',' : separator);
   }
 });
 
 /***/ }),
-/* 283 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31122,7 +31511,7 @@ $export($export.P + $export.F * (__webpack_require__(66) != Object || !__webpack
 
 var $export = __webpack_require__(0);
 var html = __webpack_require__(102);
-var cof = __webpack_require__(28);
+var cof = __webpack_require__(29);
 var toAbsoluteIndex = __webpack_require__(49);
 var toLength = __webpack_require__(14);
 var arraySlice = [].slice;
@@ -31148,7 +31537,7 @@ $export($export.P + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 284 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31168,7 +31557,7 @@ $export($export.P + $export.F * (fails(function () {
   // V8 bug
   test.sort(null);
   // Old WebKit
-}) || !__webpack_require__(29)($sort)), 'Array', {
+}) || !__webpack_require__(30)($sort)), 'Array', {
   // 22.1.3.25 Array.prototype.sort(comparefn)
   sort: function sort(comparefn) {
     return comparefn === undefined ? $sort.call(toObject(this)) : $sort.call(toObject(this), aFunction(comparefn));
@@ -31176,15 +31565,15 @@ $export($export.P + $export.F * (fails(function () {
 });
 
 /***/ }),
-/* 285 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var $export = __webpack_require__(0);
-var $forEach = __webpack_require__(35)(0);
-var STRICT = __webpack_require__(29)([].forEach, true);
+var $forEach = __webpack_require__(36)(0);
+var STRICT = __webpack_require__(30)([].forEach, true);
 
 $export($export.P + $export.F * !STRICT, 'Array', {
   // 22.1.3.10 / 15.4.4.18 Array.prototype.forEach(callbackfn [, thisArg])
@@ -31194,7 +31583,7 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 });
 
 /***/ }),
-/* 286 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31218,23 +31607,6 @@ module.exports = function (original) {
 };
 
 /***/ }),
-/* 287 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $export = __webpack_require__(0);
-var $map = __webpack_require__(35)(1);
-
-$export($export.P + $export.F * !__webpack_require__(29)([].map, true), 'Array', {
-  // 22.1.3.15 / 15.4.4.19 Array.prototype.map(callbackfn [, thisArg])
-  map: function map(callbackfn /* , thisArg */) {
-    return $map(this, callbackfn, arguments[1]);
-  }
-});
-
-/***/ }),
 /* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31242,12 +31614,12 @@ $export($export.P + $export.F * !__webpack_require__(29)([].map, true), 'Array',
 
 
 var $export = __webpack_require__(0);
-var $filter = __webpack_require__(35)(2);
+var $map = __webpack_require__(36)(1);
 
-$export($export.P + $export.F * !__webpack_require__(29)([].filter, true), 'Array', {
-  // 22.1.3.7 / 15.4.4.20 Array.prototype.filter(callbackfn [, thisArg])
-  filter: function filter(callbackfn /* , thisArg */) {
-    return $filter(this, callbackfn, arguments[1]);
+$export($export.P + $export.F * !__webpack_require__(30)([].map, true), 'Array', {
+  // 22.1.3.15 / 15.4.4.19 Array.prototype.map(callbackfn [, thisArg])
+  map: function map(callbackfn /* , thisArg */) {
+    return $map(this, callbackfn, arguments[1]);
   }
 });
 
@@ -31259,12 +31631,12 @@ $export($export.P + $export.F * !__webpack_require__(29)([].filter, true), 'Arra
 
 
 var $export = __webpack_require__(0);
-var $some = __webpack_require__(35)(3);
+var $filter = __webpack_require__(36)(2);
 
-$export($export.P + $export.F * !__webpack_require__(29)([].some, true), 'Array', {
-  // 22.1.3.23 / 15.4.4.17 Array.prototype.some(callbackfn [, thisArg])
-  some: function some(callbackfn /* , thisArg */) {
-    return $some(this, callbackfn, arguments[1]);
+$export($export.P + $export.F * !__webpack_require__(30)([].filter, true), 'Array', {
+  // 22.1.3.7 / 15.4.4.20 Array.prototype.filter(callbackfn [, thisArg])
+  filter: function filter(callbackfn /* , thisArg */) {
+    return $filter(this, callbackfn, arguments[1]);
   }
 });
 
@@ -31276,12 +31648,12 @@ $export($export.P + $export.F * !__webpack_require__(29)([].some, true), 'Array'
 
 
 var $export = __webpack_require__(0);
-var $every = __webpack_require__(35)(4);
+var $some = __webpack_require__(36)(3);
 
-$export($export.P + $export.F * !__webpack_require__(29)([].every, true), 'Array', {
-  // 22.1.3.5 / 15.4.4.16 Array.prototype.every(callbackfn [, thisArg])
-  every: function every(callbackfn /* , thisArg */) {
-    return $every(this, callbackfn, arguments[1]);
+$export($export.P + $export.F * !__webpack_require__(30)([].some, true), 'Array', {
+  // 22.1.3.23 / 15.4.4.17 Array.prototype.some(callbackfn [, thisArg])
+  some: function some(callbackfn /* , thisArg */) {
+    return $some(this, callbackfn, arguments[1]);
   }
 });
 
@@ -31293,12 +31665,12 @@ $export($export.P + $export.F * !__webpack_require__(29)([].every, true), 'Array
 
 
 var $export = __webpack_require__(0);
-var $reduce = __webpack_require__(151);
+var $every = __webpack_require__(36)(4);
 
-$export($export.P + $export.F * !__webpack_require__(29)([].reduce, true), 'Array', {
-  // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
-  reduce: function reduce(callbackfn /* , initialValue */) {
-    return $reduce(this, callbackfn, arguments.length, arguments[1], false);
+$export($export.P + $export.F * !__webpack_require__(30)([].every, true), 'Array', {
+  // 22.1.3.5 / 15.4.4.16 Array.prototype.every(callbackfn [, thisArg])
+  every: function every(callbackfn /* , thisArg */) {
+    return $every(this, callbackfn, arguments[1]);
   }
 });
 
@@ -31310,12 +31682,12 @@ $export($export.P + $export.F * !__webpack_require__(29)([].reduce, true), 'Arra
 
 
 var $export = __webpack_require__(0);
-var $reduce = __webpack_require__(151);
+var $reduce = __webpack_require__(152);
 
-$export($export.P + $export.F * !__webpack_require__(29)([].reduceRight, true), 'Array', {
-  // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
-  reduceRight: function reduceRight(callbackfn /* , initialValue */) {
-    return $reduce(this, callbackfn, arguments.length, arguments[1], true);
+$export($export.P + $export.F * !__webpack_require__(30)([].reduce, true), 'Array', {
+  // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
+  reduce: function reduce(callbackfn /* , initialValue */) {
+    return $reduce(this, callbackfn, arguments.length, arguments[1], false);
   }
 });
 
@@ -31327,16 +31699,12 @@ $export($export.P + $export.F * !__webpack_require__(29)([].reduceRight, true), 
 
 
 var $export = __webpack_require__(0);
-var $indexOf = __webpack_require__(76)(false);
-var $native = [].indexOf;
-var NEGATIVE_ZERO = !!$native && 1 / [1].indexOf(1, -0) < 0;
+var $reduce = __webpack_require__(152);
 
-$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(29)($native)), 'Array', {
-  // 22.1.3.11 / 15.4.4.14 Array.prototype.indexOf(searchElement [, fromIndex])
-  indexOf: function indexOf(searchElement /* , fromIndex = 0 */) {
-    return NEGATIVE_ZERO
-    // convert -0 to +0
-    ? $native.apply(this, arguments) || 0 : $indexOf(this, searchElement, arguments[1]);
+$export($export.P + $export.F * !__webpack_require__(30)([].reduceRight, true), 'Array', {
+  // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
+  reduceRight: function reduceRight(callbackfn /* , initialValue */) {
+    return $reduce(this, callbackfn, arguments.length, arguments[1], true);
   }
 });
 
@@ -31348,13 +31716,34 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(29)($nati
 
 
 var $export = __webpack_require__(0);
+var $indexOf = __webpack_require__(76)(false);
+var $native = [].indexOf;
+var NEGATIVE_ZERO = !!$native && 1 / [1].indexOf(1, -0) < 0;
+
+$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(30)($native)), 'Array', {
+  // 22.1.3.11 / 15.4.4.14 Array.prototype.indexOf(searchElement [, fromIndex])
+  indexOf: function indexOf(searchElement /* , fromIndex = 0 */) {
+    return NEGATIVE_ZERO
+    // convert -0 to +0
+    ? $native.apply(this, arguments) || 0 : $indexOf(this, searchElement, arguments[1]);
+  }
+});
+
+/***/ }),
+/* 295 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $export = __webpack_require__(0);
 var toIObject = __webpack_require__(24);
-var toInteger = __webpack_require__(33);
+var toInteger = __webpack_require__(34);
 var toLength = __webpack_require__(14);
 var $native = [].lastIndexOf;
 var NEGATIVE_ZERO = !!$native && 1 / [1].lastIndexOf(1, -0) < 0;
 
-$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(29)($native)), 'Array', {
+$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(30)($native)), 'Array', {
   // 22.1.3.14 / 15.4.4.15 Array.prototype.lastIndexOf(searchElement [, fromIndex])
   lastIndexOf: function lastIndexOf(searchElement /* , fromIndex = @[*-1] */) {
     // convert -0 to +0
@@ -31371,7 +31760,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(29)($nati
 });
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31380,12 +31769,12 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(29)($nati
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Array', { copyWithin: __webpack_require__(152) });
+$export($export.P, 'Array', { copyWithin: __webpack_require__(153) });
 
 __webpack_require__(40)('copyWithin');
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31399,7 +31788,7 @@ $export($export.P, 'Array', { fill: __webpack_require__(118) });
 __webpack_require__(40)('fill');
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31407,7 +31796,7 @@ __webpack_require__(40)('fill');
 // 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
 
 var $export = __webpack_require__(0);
-var $find = __webpack_require__(35)(5);
+var $find = __webpack_require__(36)(5);
 var KEY = 'find';
 var forced = true;
 // Shouldn't skip holes
@@ -31422,7 +31811,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(40)(KEY);
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31430,7 +31819,7 @@ __webpack_require__(40)(KEY);
 // 22.1.3.9 Array.prototype.findIndex(predicate, thisArg = undefined)
 
 var $export = __webpack_require__(0);
-var $find = __webpack_require__(35)(6);
+var $find = __webpack_require__(36)(6);
 var KEY = 'findIndex';
 var forced = true;
 // Shouldn't skip holes
@@ -31445,7 +31834,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(40)(KEY);
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31454,7 +31843,7 @@ __webpack_require__(40)(KEY);
 __webpack_require__(52)('Array');
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31500,19 +31889,19 @@ if (__webpack_require__(12) && (!CORRECT_NEW || __webpack_require__(6)(function 
     proxy(keys[i++]);
   }proto.constructor = $RegExp;
   $RegExp.prototype = proto;
-  __webpack_require__(22)(global, 'RegExp', $RegExp);
+  __webpack_require__(21)(global, 'RegExp', $RegExp);
 }
 
 __webpack_require__(52)('RegExp');
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(154);
+__webpack_require__(155);
 var anObject = __webpack_require__(4);
 var $flags = __webpack_require__(81);
 var DESCRIPTORS = __webpack_require__(12);
@@ -31520,7 +31909,7 @@ var TO_STRING = 'toString';
 var $toString = /./[TO_STRING];
 
 var define = function define(fn) {
-  __webpack_require__(22)(RegExp.prototype, TO_STRING, fn, true);
+  __webpack_require__(21)(RegExp.prototype, TO_STRING, fn, true);
 };
 
 // 21.2.5.14 RegExp.prototype.toString()
@@ -31539,7 +31928,7 @@ if (__webpack_require__(6)(function () {
 }
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31558,7 +31947,7 @@ __webpack_require__(82)('match', 1, function (defined, MATCH, $match) {
 });
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31577,7 +31966,7 @@ __webpack_require__(82)('replace', 2, function (defined, REPLACE, $replace) {
 });
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31596,7 +31985,7 @@ __webpack_require__(82)('search', 1, function (defined, SEARCH, $search) {
 });
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31668,7 +32057,7 @@ __webpack_require__(82)('split', 2, function (defined, SPLIT, $split) {
 });
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31676,8 +32065,8 @@ __webpack_require__(82)('split', 2, function (defined, SPLIT, $split) {
 
 var LIBRARY = __webpack_require__(47);
 var global = __webpack_require__(5);
-var ctx = __webpack_require__(27);
-var classof = __webpack_require__(68);
+var ctx = __webpack_require__(28);
+var classof = __webpack_require__(66);
 var $export = __webpack_require__(0);
 var isObject = __webpack_require__(7);
 var aFunction = __webpack_require__(17);
@@ -31687,8 +32076,8 @@ var speciesConstructor = __webpack_require__(83);
 var task = __webpack_require__(120).set;
 var microtask = __webpack_require__(121)();
 var newPromiseCapabilityModule = __webpack_require__(122);
-var perform = __webpack_require__(155);
-var promiseResolve = __webpack_require__(156);
+var perform = __webpack_require__(156);
+var promiseResolve = __webpack_require__(157);
 var PROMISE = 'Promise';
 var TypeError = global.TypeError;
 var process = global.process;
@@ -31883,7 +32272,7 @@ if (!USE_NATIVE) {
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
 __webpack_require__(56)($Promise, PROMISE);
 __webpack_require__(52)(PROMISE);
-Wrapper = __webpack_require__(30)[PROMISE];
+Wrapper = __webpack_require__(31)[PROMISE];
 
 // statics
 $export($export.S + $export.F * !USE_NATIVE, PROMISE, {
@@ -31947,13 +32336,13 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(80)(function
 });
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var weak = __webpack_require__(161);
+var weak = __webpack_require__(162);
 var validate = __webpack_require__(59);
 var WEAK_SET = 'WeakSet';
 
@@ -31970,7 +32359,7 @@ __webpack_require__(84)(WEAK_SET, function (get) {
 }, weak, false, true);
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32023,7 +32412,7 @@ $export($export.P + $export.U + $export.F * __webpack_require__(6)(function () {
 __webpack_require__(52)(ARRAY_BUFFER);
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32035,7 +32424,7 @@ $export($export.G + $export.W + $export.F * !__webpack_require__(85).ABV, {
 });
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32048,7 +32437,7 @@ __webpack_require__(37)('Int8', 1, function (init) {
 });
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32061,7 +32450,7 @@ __webpack_require__(37)('Uint8', 1, function (init) {
 });
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32074,7 +32463,7 @@ __webpack_require__(37)('Uint8', 1, function (init) {
 }, true);
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32087,7 +32476,7 @@ __webpack_require__(37)('Int16', 2, function (init) {
 });
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32100,7 +32489,7 @@ __webpack_require__(37)('Uint16', 2, function (init) {
 });
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32113,7 +32502,7 @@ __webpack_require__(37)('Int32', 4, function (init) {
 });
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32126,7 +32515,7 @@ __webpack_require__(37)('Uint32', 4, function (init) {
 });
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32139,7 +32528,7 @@ __webpack_require__(37)('Float32', 4, function (init) {
 });
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32152,7 +32541,7 @@ __webpack_require__(37)('Float64', 8, function (init) {
 });
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32176,7 +32565,7 @@ $export($export.S + $export.F * !__webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32189,7 +32578,7 @@ var aFunction = __webpack_require__(17);
 var anObject = __webpack_require__(4);
 var isObject = __webpack_require__(7);
 var fails = __webpack_require__(6);
-var bind = __webpack_require__(142);
+var bind = __webpack_require__(143);
 var rConstruct = (__webpack_require__(5).Reflect || {}).construct;
 
 // MS Edge supports only 2 arguments and argumentsList argument is optional
@@ -32236,7 +32625,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 });
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32246,7 +32635,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 var dP = __webpack_require__(13);
 var $export = __webpack_require__(0);
 var anObject = __webpack_require__(4);
-var toPrimitive = __webpack_require__(31);
+var toPrimitive = __webpack_require__(32);
 
 // MS Edge has broken Reflect.defineProperty - throwing instead of returning false
 $export($export.S + $export.F * __webpack_require__(6)(function () {
@@ -32267,7 +32656,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function () {
 });
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32286,7 +32675,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 323 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32321,7 +32710,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32330,7 +32719,7 @@ $export($export.S, 'Reflect', {
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
 var gOPD = __webpack_require__(25);
 var getPrototypeOf = __webpack_require__(26);
-var has = __webpack_require__(20);
+var has = __webpack_require__(19);
 var $export = __webpack_require__(0);
 var isObject = __webpack_require__(7);
 var anObject = __webpack_require__(4);
@@ -32346,7 +32735,7 @@ function get(target, propertyKey /* , receiver */) {
 $export($export.S, 'Reflect', { get: get });
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32364,7 +32753,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 326 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32382,7 +32771,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 327 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32398,7 +32787,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 328 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32417,7 +32806,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 329 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32426,10 +32815,10 @@ $export($export.S, 'Reflect', {
 // 26.1.11 Reflect.ownKeys(target)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Reflect', { ownKeys: __webpack_require__(163) });
+$export($export.S, 'Reflect', { ownKeys: __webpack_require__(164) });
 
 /***/ }),
-/* 330 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32453,7 +32842,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 331 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32463,7 +32852,7 @@ $export($export.S, 'Reflect', {
 var dP = __webpack_require__(13);
 var gOPD = __webpack_require__(25);
 var getPrototypeOf = __webpack_require__(26);
-var has = __webpack_require__(20);
+var has = __webpack_require__(19);
 var $export = __webpack_require__(0);
 var createDesc = __webpack_require__(45);
 var anObject = __webpack_require__(4);
@@ -32492,7 +32881,7 @@ function set(target, propertyKey, V /* , receiver */) {
 $export($export.S, 'Reflect', { set: set });
 
 /***/ }),
-/* 332 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32515,7 +32904,7 @@ if (setProto) $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 333 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32534,7 +32923,7 @@ $export($export.P, 'Array', {
 __webpack_require__(40)('includes');
 
 /***/ }),
-/* 334 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32542,7 +32931,7 @@ __webpack_require__(40)('includes');
 // https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatMap
 
 var $export = __webpack_require__(0);
-var flattenIntoArray = __webpack_require__(164);
+var flattenIntoArray = __webpack_require__(165);
 var toObject = __webpack_require__(16);
 var toLength = __webpack_require__(14);
 var aFunction = __webpack_require__(17);
@@ -32563,7 +32952,7 @@ $export($export.P, 'Array', {
 __webpack_require__(40)('flatMap');
 
 /***/ }),
-/* 335 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32571,10 +32960,10 @@ __webpack_require__(40)('flatMap');
 // https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatten
 
 var $export = __webpack_require__(0);
-var flattenIntoArray = __webpack_require__(164);
+var flattenIntoArray = __webpack_require__(165);
 var toObject = __webpack_require__(16);
 var toLength = __webpack_require__(14);
-var toInteger = __webpack_require__(33);
+var toInteger = __webpack_require__(34);
 var arraySpeciesCreate = __webpack_require__(117);
 
 $export($export.P, 'Array', {
@@ -32591,7 +32980,7 @@ $export($export.P, 'Array', {
 __webpack_require__(40)('flatten');
 
 /***/ }),
-/* 336 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32608,7 +32997,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32616,7 +33005,7 @@ $export($export.P, 'String', {
 // https://github.com/tc39/proposal-string-pad-start-end
 
 var $export = __webpack_require__(0);
-var $pad = __webpack_require__(165);
+var $pad = __webpack_require__(166);
 var userAgent = __webpack_require__(124);
 
 // https://github.com/zloirock/core-js/issues/280
@@ -32627,7 +33016,7 @@ $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAge
 });
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32635,7 +33024,7 @@ $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAge
 // https://github.com/tc39/proposal-string-pad-start-end
 
 var $export = __webpack_require__(0);
-var $pad = __webpack_require__(165);
+var $pad = __webpack_require__(166);
 var userAgent = __webpack_require__(124);
 
 // https://github.com/zloirock/core-js/issues/280
@@ -32646,7 +33035,7 @@ $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAge
 });
 
 /***/ }),
-/* 339 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32660,7 +33049,7 @@ __webpack_require__(57)('trimLeft', function ($trim) {
 }, 'trimStart');
 
 /***/ }),
-/* 340 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32674,7 +33063,7 @@ __webpack_require__(57)('trimRight', function ($trim) {
 }, 'trimEnd');
 
 /***/ }),
-/* 341 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32682,7 +33071,7 @@ __webpack_require__(57)('trimRight', function ($trim) {
 // https://tc39.github.io/String.prototype.matchAll/
 
 var $export = __webpack_require__(0);
-var defined = __webpack_require__(32);
+var defined = __webpack_require__(33);
 var toLength = __webpack_require__(14);
 var isRegExp = __webpack_require__(79);
 var getFlags = __webpack_require__(81);
@@ -32711,7 +33100,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 342 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32720,7 +33109,7 @@ $export($export.P, 'String', {
 __webpack_require__(99)('asyncIterator');
 
 /***/ }),
-/* 343 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32729,7 +33118,7 @@ __webpack_require__(99)('asyncIterator');
 __webpack_require__(99)('observable');
 
 /***/ }),
-/* 344 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32737,7 +33126,7 @@ __webpack_require__(99)('observable');
 
 // https://github.com/tc39/proposal-object-getownpropertydescriptors
 var $export = __webpack_require__(0);
-var ownKeys = __webpack_require__(163);
+var ownKeys = __webpack_require__(164);
 var toIObject = __webpack_require__(24);
 var gOPD = __webpack_require__(25);
 var createProperty = __webpack_require__(115);
@@ -32759,23 +33148,6 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 345 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// https://github.com/tc39/proposal-object-values-entries
-var $export = __webpack_require__(0);
-var $values = __webpack_require__(166)(false);
-
-$export($export.S, 'Object', {
-  values: function values(it) {
-    return $values(it);
-  }
-});
-
-/***/ }),
 /* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -32784,7 +33156,24 @@ $export($export.S, 'Object', {
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(0);
-var $entries = __webpack_require__(166)(true);
+var $values = __webpack_require__(167)(false);
+
+$export($export.S, 'Object', {
+  values: function values(it) {
+    return $values(it);
+  }
+});
+
+/***/ }),
+/* 347 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// https://github.com/tc39/proposal-object-values-entries
+var $export = __webpack_require__(0);
+var $entries = __webpack_require__(167)(true);
 
 $export($export.S, 'Object', {
   entries: function entries(it) {
@@ -32793,7 +33182,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 347 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32812,7 +33201,7 @@ __webpack_require__(12) && $export($export.P + __webpack_require__(86), 'Object'
 });
 
 /***/ }),
-/* 348 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32831,7 +33220,7 @@ __webpack_require__(12) && $export($export.P + __webpack_require__(86), 'Object'
 });
 
 /***/ }),
-/* 349 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32839,7 +33228,7 @@ __webpack_require__(12) && $export($export.P + __webpack_require__(86), 'Object'
 
 var $export = __webpack_require__(0);
 var toObject = __webpack_require__(16);
-var toPrimitive = __webpack_require__(31);
+var toPrimitive = __webpack_require__(32);
 var getPrototypeOf = __webpack_require__(26);
 var getOwnPropertyDescriptor = __webpack_require__(25).f;
 
@@ -32856,7 +33245,7 @@ __webpack_require__(12) && $export($export.P + __webpack_require__(86), 'Object'
 });
 
 /***/ }),
-/* 350 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32864,7 +33253,7 @@ __webpack_require__(12) && $export($export.P + __webpack_require__(86), 'Object'
 
 var $export = __webpack_require__(0);
 var toObject = __webpack_require__(16);
-var toPrimitive = __webpack_require__(31);
+var toPrimitive = __webpack_require__(32);
 var getPrototypeOf = __webpack_require__(26);
 var getOwnPropertyDescriptor = __webpack_require__(25).f;
 
@@ -32881,18 +33270,6 @@ __webpack_require__(12) && $export($export.P + __webpack_require__(86), 'Object'
 });
 
 /***/ }),
-/* 351 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var $export = __webpack_require__(0);
-
-$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(167)('Map') });
-
-/***/ }),
 /* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -32902,10 +33279,22 @@ $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(167)('Map') 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(0);
 
-$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(167)('Set') });
+$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(168)('Map') });
 
 /***/ }),
 /* 353 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// https://github.com/DavidBruant/Map-Set.prototype.toJSON
+var $export = __webpack_require__(0);
+
+$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(168)('Set') });
+
+/***/ }),
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32915,7 +33304,7 @@ $export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(167)('Set') 
 __webpack_require__(87)('Map');
 
 /***/ }),
-/* 354 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32925,7 +33314,7 @@ __webpack_require__(87)('Map');
 __webpack_require__(87)('Set');
 
 /***/ }),
-/* 355 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32935,7 +33324,7 @@ __webpack_require__(87)('Set');
 __webpack_require__(87)('WeakMap');
 
 /***/ }),
-/* 356 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32945,7 +33334,7 @@ __webpack_require__(87)('WeakMap');
 __webpack_require__(87)('WeakSet');
 
 /***/ }),
-/* 357 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32955,7 +33344,7 @@ __webpack_require__(87)('WeakSet');
 __webpack_require__(88)('Map');
 
 /***/ }),
-/* 358 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32965,7 +33354,7 @@ __webpack_require__(88)('Map');
 __webpack_require__(88)('Set');
 
 /***/ }),
-/* 359 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32975,7 +33364,7 @@ __webpack_require__(88)('Set');
 __webpack_require__(88)('WeakMap');
 
 /***/ }),
-/* 360 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32983,18 +33372,6 @@ __webpack_require__(88)('WeakMap');
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.from
 __webpack_require__(88)('WeakSet');
-
-/***/ }),
-/* 361 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// https://github.com/tc39/proposal-global
-var $export = __webpack_require__(0);
-
-$export($export.G, { global: __webpack_require__(5) });
 
 /***/ }),
 /* 362 */
@@ -33006,7 +33383,7 @@ $export($export.G, { global: __webpack_require__(5) });
 // https://github.com/tc39/proposal-global
 var $export = __webpack_require__(0);
 
-$export($export.S, 'System', { global: __webpack_require__(5) });
+$export($export.G, { global: __webpack_require__(5) });
 
 /***/ }),
 /* 363 */
@@ -33015,9 +33392,21 @@ $export($export.S, 'System', { global: __webpack_require__(5) });
 "use strict";
 
 
+// https://github.com/tc39/proposal-global
+var $export = __webpack_require__(0);
+
+$export($export.S, 'System', { global: __webpack_require__(5) });
+
+/***/ }),
+/* 364 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 // https://github.com/ljharb/proposal-is-error
 var $export = __webpack_require__(0);
-var cof = __webpack_require__(28);
+var cof = __webpack_require__(29);
 
 $export($export.S, 'Error', {
   isError: function isError(it) {
@@ -33026,7 +33415,7 @@ $export($export.S, 'Error', {
 });
 
 /***/ }),
-/* 364 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33042,7 +33431,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 365 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33054,7 +33443,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { DEG_PER_RAD: Math.PI / 180 });
 
 /***/ }),
-/* 366 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33071,7 +33460,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 367 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33079,8 +33468,8 @@ $export($export.S, 'Math', {
 
 // https://rwaldron.github.io/proposal-math-extensions/
 var $export = __webpack_require__(0);
-var scale = __webpack_require__(169);
-var fround = __webpack_require__(149);
+var scale = __webpack_require__(170);
+var fround = __webpack_require__(150);
 
 $export($export.S, 'Math', {
   fscale: function fscale(x, inLow, inHigh, outLow, outHigh) {
@@ -33089,7 +33478,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 368 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33108,7 +33497,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 369 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33127,7 +33516,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 370 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33151,7 +33540,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 371 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33163,7 +33552,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { RAD_PER_DEG: 180 / Math.PI });
 
 /***/ }),
-/* 372 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33180,7 +33569,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 373 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33189,10 +33578,10 @@ $export($export.S, 'Math', {
 // https://rwaldron.github.io/proposal-math-extensions/
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { scale: __webpack_require__(169) });
+$export($export.S, 'Math', { scale: __webpack_require__(170) });
 
 /***/ }),
-/* 374 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33216,7 +33605,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 375 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33231,7 +33620,7 @@ $export($export.S, 'Math', { signbit: function signbit(x) {
   } });
 
 /***/ }),
-/* 376 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33239,10 +33628,10 @@ $export($export.S, 'Math', { signbit: function signbit(x) {
 
 
 var $export = __webpack_require__(0);
-var core = __webpack_require__(30);
+var core = __webpack_require__(31);
 var global = __webpack_require__(5);
 var speciesConstructor = __webpack_require__(83);
-var promiseResolve = __webpack_require__(156);
+var promiseResolve = __webpack_require__(157);
 
 $export($export.P + $export.R, 'Promise', { 'finally': function _finally(onFinally) {
     var C = speciesConstructor(this, core.Promise || global.Promise);
@@ -33259,7 +33648,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function _finally(onFinal
   } });
 
 /***/ }),
-/* 377 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33268,7 +33657,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function _finally(onFinal
 
 var $export = __webpack_require__(0);
 var newPromiseCapability = __webpack_require__(122);
-var perform = __webpack_require__(155);
+var perform = __webpack_require__(156);
 
 $export($export.S, 'Promise', { 'try': function _try(callbackfn) {
     var promiseCapability = newPromiseCapability.f(this);
@@ -33278,7 +33667,7 @@ $export($export.S, 'Promise', { 'try': function _try(callbackfn) {
   } });
 
 /***/ }),
-/* 378 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33294,7 +33683,7 @@ metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValu
   } });
 
 /***/ }),
-/* 379 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33317,7 +33706,7 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /* , 
   } });
 
 /***/ }),
-/* 380 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33342,14 +33731,14 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , target
   } });
 
 /***/ }),
-/* 381 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Set = __webpack_require__(159);
-var from = __webpack_require__(168);
+var Set = __webpack_require__(160);
+var from = __webpack_require__(169);
 var metadata = __webpack_require__(38);
 var anObject = __webpack_require__(4);
 var getPrototypeOf = __webpack_require__(26);
@@ -33369,7 +33758,7 @@ metadata.exp({ getMetadataKeys: function getMetadataKeys(target /* , targetKey *
   } });
 
 /***/ }),
-/* 382 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33385,7 +33774,7 @@ metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /* , 
   } });
 
 /***/ }),
-/* 383 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33401,7 +33790,7 @@ metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targe
   } });
 
 /***/ }),
-/* 384 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33425,7 +33814,7 @@ metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /* , target
   } });
 
 /***/ }),
-/* 385 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33441,7 +33830,7 @@ metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , 
   } });
 
 /***/ }),
-/* 386 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33460,7 +33849,7 @@ $metadata.exp({ metadata: function metadata(metadataKey, metadataValue) {
   } });
 
 /***/ }),
-/* 387 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33470,7 +33859,7 @@ $metadata.exp({ metadata: function metadata(metadataKey, metadataValue) {
 var $export = __webpack_require__(0);
 var microtask = __webpack_require__(121)();
 var process = __webpack_require__(5).process;
-var isNode = __webpack_require__(28)(process) == 'process';
+var isNode = __webpack_require__(29)(process) == 'process';
 
 $export($export.G, {
   asap: function asap(fn) {
@@ -33480,7 +33869,7 @@ $export($export.G, {
 });
 
 /***/ }),
-/* 388 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33489,14 +33878,14 @@ $export($export.G, {
 
 var $export = __webpack_require__(0);
 var global = __webpack_require__(5);
-var core = __webpack_require__(30);
+var core = __webpack_require__(31);
 var microtask = __webpack_require__(121)();
 var OBSERVABLE = __webpack_require__(9)('observable');
 var aFunction = __webpack_require__(17);
 var anObject = __webpack_require__(4);
 var anInstance = __webpack_require__(53);
 var redefineAll = __webpack_require__(55);
-var hide = __webpack_require__(21);
+var hide = __webpack_require__(20);
 var forOf = __webpack_require__(54);
 var RETURN = forOf.RETURN;
 
@@ -33696,7 +34085,7 @@ $export($export.G, { Observable: $Observable });
 __webpack_require__(52)('Observable');
 
 /***/ }),
-/* 389 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33724,7 +34113,7 @@ $export($export.G + $export.B + $export.F * MSIE, {
 });
 
 /***/ }),
-/* 390 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33738,7 +34127,7 @@ $export($export.G + $export.B, {
 });
 
 /***/ }),
-/* 391 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33746,9 +34135,9 @@ $export($export.G + $export.B, {
 
 var $iterators = __webpack_require__(119);
 var getKeys = __webpack_require__(48);
-var redefine = __webpack_require__(22);
+var redefine = __webpack_require__(21);
 var global = __webpack_require__(5);
-var hide = __webpack_require__(21);
+var hide = __webpack_require__(20);
 var Iterators = __webpack_require__(58);
 var wks = __webpack_require__(9);
 var ITERATOR = wks('iterator');
@@ -33806,7 +34195,7 @@ for (var collections = getKeys(DOMIterables), i = 0; i < collections.length; i++
 }
 
 /***/ }),
-/* 392 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34516,10 +34905,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 // object, this seems to be the most reliable technique that does not
 // use indirect eval (which violates Content Security Policy).
 (typeof global === "undefined" ? "undefined" : _typeof(global)) === "object" ? global : (typeof window === "undefined" ? "undefined" : _typeof(window)) === "object" ? window : (typeof self === "undefined" ? "undefined" : _typeof(self)) === "object" ? self : undefined);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(74), __webpack_require__(393)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(74), __webpack_require__(394)(module)))
 
 /***/ }),
-/* 393 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34549,17 +34938,17 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 394 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(395);
-module.exports = __webpack_require__(30).RegExp.escape;
+__webpack_require__(396);
+module.exports = __webpack_require__(31).RegExp.escape;
 
 /***/ }),
-/* 395 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34567,14 +34956,14 @@ module.exports = __webpack_require__(30).RegExp.escape;
 
 // https://github.com/benjamingr/RexExp.escape
 var $export = __webpack_require__(0);
-var $re = __webpack_require__(396)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+var $re = __webpack_require__(397)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export($export.S, 'RegExp', { escape: function escape(it) {
     return $re(it);
   } });
 
 /***/ }),
-/* 396 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34590,15 +34979,6 @@ module.exports = function (regExp, replace) {
 };
 
 /***/ }),
-/* 397 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(398);
-
-/***/ }),
 /* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -34607,23 +34987,32 @@ __webpack_require__(398);
 
 __webpack_require__(399);
 
+/***/ }),
+/* 399 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(400);
+
 var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(69);
+var _vueRouter = __webpack_require__(67);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _vueI18n = __webpack_require__(170);
+var _vueI18n = __webpack_require__(171);
 
 var _vueI18n2 = _interopRequireDefault(_vueI18n);
 
-var _route = __webpack_require__(406);
+var _route = __webpack_require__(407);
 
 var _route2 = _interopRequireDefault(_route);
 
-var _App = __webpack_require__(641);
+var _App = __webpack_require__(642);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -34631,7 +35020,7 @@ var _vue2do = __webpack_require__(60);
 
 var _vue2do2 = _interopRequireDefault(_vue2do);
 
-var _enUS = __webpack_require__(657);
+var _enUS = __webpack_require__(658);
 
 var _enUS2 = _interopRequireDefault(_enUS);
 
@@ -34668,22 +35057,22 @@ var app = new _vue2.default(Object.assign({}, _App2.default, {
 })).$mount('#app');
 
 /***/ }),
-/* 399 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(400);
+__webpack_require__(401);
 
 /***/ }),
-/* 400 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(401);
+var content = __webpack_require__(402);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -34708,7 +35097,7 @@ if(false) {
 }
 
 /***/ }),
-/* 401 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -34722,7 +35111,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\nhtml, body {\
 
 
 /***/ }),
-/* 402 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34817,7 +35206,7 @@ module.exports = function (css) {
 };
 
 /***/ }),
-/* 403 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34871,12 +35260,12 @@ exports._unrefActive = exports.active = function (item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(404);
+__webpack_require__(405);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 /***/ }),
-/* 404 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35064,10 +35453,10 @@ exports.clearImmediate = clearImmediate;
     attachTo.setImmediate = setImmediate;
     attachTo.clearImmediate = clearImmediate;
 })(typeof self === "undefined" ? typeof global === "undefined" ? undefined : global : self);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(74), __webpack_require__(405)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(74), __webpack_require__(406)))
 
 /***/ }),
-/* 405 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35260,7 +35649,7 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 406 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35270,19 +35659,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ = __webpack_require__(407);
+var _ = __webpack_require__(408);
 
 var _2 = _interopRequireDefault(_);
 
-var _Welcome = __webpack_require__(408);
+var _Welcome = __webpack_require__(409);
 
 var _Welcome2 = _interopRequireDefault(_Welcome);
 
-var _Component = __webpack_require__(551);
+var _Component = __webpack_require__(552);
 
 var _Component2 = _interopRequireDefault(_Component);
 
-var _componentChildren = __webpack_require__(555);
+var _componentChildren = __webpack_require__(556);
 
 var _componentChildren2 = _interopRequireDefault(_componentChildren);
 
@@ -35307,7 +35696,7 @@ exports.default = [{
 }];
 
 /***/ }),
-/* 407 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35329,7 +35718,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 408 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35339,9 +35728,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(409);
+__webpack_require__(410);
 
-var _Welcome = __webpack_require__(411);
+var _Welcome = __webpack_require__(412);
 
 var _Welcome2 = _interopRequireDefault(_Welcome);
 
@@ -35378,13 +35767,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 409 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(410);
+var content = __webpack_require__(411);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -35409,7 +35798,7 @@ if(false) {
 }
 
 /***/ }),
-/* 410 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -35423,22 +35812,22 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.welcome .wel
 
 
 /***/ }),
-/* 411 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
 
-function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"welcome\"\u003E\u003Cdiv class=\"welcome-bg\"\u003E\u003Ch3 class=\"z-css-text-center z-css-m-t-double\"\u003Ewelcome to\u003C\u002Fh3\u003E\u003Ch2 class=\"z-css-text-center z-css-m-t-double\"\u003Evue2do\u003C\u002Fh2\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"welcome-container\"\u003E\u003Cz-row align=\"start\" justify=\"justify\"\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E响应\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E适配任何设备，在移动端有更好的用户体验。\n支持五种尺寸的设备，让你不再担心适配不同设备的尺寸带来的烦恼。\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E灵活\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E组件和组件之间可以灵活组合，能满足任何需求。\n组件的功能丰富，能随意搭配成需要的功能\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E样式\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E内置多种 UI 规范和主题，让组件不再单调，为您提供更多的样式选择。\n将会支持谷歌的 material UI、bootstrap UI、苹果的 OS UI 和微软的 metro UI。\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"welcome\"\u003E\u003Cdiv class=\"welcome-bg\"\u003E\u003Ch3 class=\"z-css-text-center z-css-m-t-double\"\u003Ewelcome to\u003C\u002Fh3\u003E\u003Ch2 class=\"z-css-text-center z-css-m-t-double\"\u003Evue2do\u003C\u002Fh2\u003E\u003C\u002Fdiv\u003E\u003Cdiv class=\"welcome-container\"\u003E\u003Cz-row align=\"start\" justify=\"justify\"\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E响应\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E适配任何设备，在移动端有更好的用户体验。\n支持五种尺寸的设备，让你不再担心适配不同设备的尺寸带来的烦恼。\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E灵活\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E组件和组件之间可以灵活组合，能满足任何需求。\n组件的功能丰富，能随意搭配成需要的功能\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"welcome-detail-col\" :l=\"4\" :xs=\"12\" :span=\"4\"\u003E\u003Cdiv class=\"welcome-detail-col-title\"\u003E样式\u003C\u002Fdiv\u003E\u003Cp class=\"welcome-detail-col-text\"\u003E内置多种 UI 规范和主题，让组件不再单调，为您提供更多的样式选择。\n支持 primary、danger、success、warning、orange、light、dark 7 种主题颜色，\n将会支持谷歌的 material UI、bootstrap UI、苹果的 OS UI 和微软的 metro UI。\u003C\u002Fp\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
 /***/ }),
-/* 412 */
+/* 413 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 413 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35448,15 +35837,15 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _focus = __webpack_require__(414);
+var _focus = __webpack_require__(415);
 
 var _focus2 = _interopRequireDefault(_focus);
 
-var _bubble = __webpack_require__(415);
+var _bubble = __webpack_require__(416);
 
 var _bubble2 = _interopRequireDefault(_bubble);
 
-var _clickParent = __webpack_require__(416);
+var _clickParent = __webpack_require__(417);
 
 var _clickParent2 = _interopRequireDefault(_clickParent);
 
@@ -35483,7 +35872,7 @@ _vue2.default.directive('bubble', _bubble2.default);
 _vue2.default.directive('clickParent', _clickParent2.default);
 
 /***/ }),
-/* 414 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35530,7 +35919,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 415 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35582,7 +35971,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 416 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35643,58 +36032,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 417 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(418);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(2)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./transition.scss", function() {
-			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./transition.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
 /* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "@-webkit-keyframes bounce-in-top {\n  0%, 100%, 60%, 75%, 90% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 3000px, 0);\n            transform: translate3d(0, 3000px, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(0, -25px, 0);\n            transform: translate3d(0, -25px, 0); }\n  75% {\n    -webkit-transform: translate3d(0, 10px, 0);\n            transform: translate3d(0, 10px, 0); }\n  90% {\n    -webkit-transform: translate3d(0, -5px, 0);\n            transform: translate3d(0, -5px, 0); }\n  100% {\n    -webkit-transform: none;\n            transform: none; } }\n\n@keyframes bounce-in-top {\n  0%, 100%, 60%, 75%, 90% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 3000px, 0);\n            transform: translate3d(0, 3000px, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(0, -25px, 0);\n            transform: translate3d(0, -25px, 0); }\n  75% {\n    -webkit-transform: translate3d(0, 10px, 0);\n            transform: translate3d(0, 10px, 0); }\n  90% {\n    -webkit-transform: translate3d(0, -5px, 0);\n            transform: translate3d(0, -5px, 0); }\n  100% {\n    -webkit-transform: none;\n            transform: none; } }\n\n@-webkit-keyframes bounce-out-top {\n  20% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0); }\n  40%, 45% {\n    -webkit-transform: translate3d(0, -20px, 0);\n            transform: translate3d(0, -20px, 0); }\n  100% {\n    -webkit-transform: translate3d(0, 2000px, 0);\n            transform: translate3d(0, 2000px, 0); } }\n\n@keyframes bounce-out-top {\n  20% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0); }\n  40%, 45% {\n    -webkit-transform: translate3d(0, -20px, 0);\n            transform: translate3d(0, -20px, 0); }\n  100% {\n    -webkit-transform: translate3d(0, 2000px, 0);\n            transform: translate3d(0, 2000px, 0); } }\n\n.z-bounce-top-enter-active,\n.z-bounce-top-leave-active {\n  -webkit-animation-duration: 1s !important;\n          animation-duration: 1s !important; }\n\n.z-bounce-top-enter-active {\n  -webkit-animation-name: bounce-in-top !important;\n          animation-name: bounce-in-top !important; }\n\n.z-bounce-top-leave-active {\n  -webkit-animation-name: bounce-out-top !important;\n          animation-name: bounce-out-top !important; }\n\n@-webkit-keyframes bounce-in-bottom {\n  0%, 100%, 60%, 75%, 90% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  75% {\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  90% {\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  100% {\n    -webkit-transform: none;\n            transform: none; } }\n\n@keyframes bounce-in-bottom {\n  0%, 100%, 60%, 75%, 90% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  75% {\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  90% {\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  100% {\n    -webkit-transform: none;\n            transform: none; } }\n\n@-webkit-keyframes bounce-out-bottom {\n  20% {\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  40%, 45% {\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  100% {\n    -webkit-transform: translate3d();\n            transform: translate3d(); } }\n\n@keyframes bounce-out-bottom {\n  20% {\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  40%, 45% {\n    -webkit-transform: translate3d();\n            transform: translate3d(); }\n  100% {\n    -webkit-transform: translate3d();\n            transform: translate3d(); } }\n\n.z-bounce-bottom-enter-active,\n.z-bounce-bottom-leave-active {\n  -webkit-animation-duration: 1s !important;\n          animation-duration: 1s !important; }\n\n.z-bounce-bottom-enter-active {\n  -webkit-animation-name: bounce-in-bottom !important;\n          animation-name: bounce-in-bottom !important; }\n\n.z-bounce-bottom-leave-active {\n  -webkit-animation-name: bounce-out-bottom !important;\n          animation-name: bounce-out-bottom !important; }\n\n@-webkit-keyframes bounce-in-left {\n  0%, 100%, 60%, 75%, 90% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(-3000px, 0, 0);\n            transform: translate3d(-3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(25px, 0, 0);\n            transform: translate3d(25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(-10px, 0, 0);\n            transform: translate3d(-10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(5px, 0, 0);\n            transform: translate3d(5px, 0, 0); }\n  100% {\n    -webkit-transform: none;\n            transform: none; } }\n\n@keyframes bounce-in-left {\n  0%, 100%, 60%, 75%, 90% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(-3000px, 0, 0);\n            transform: translate3d(-3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(25px, 0, 0);\n            transform: translate3d(25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(-10px, 0, 0);\n            transform: translate3d(-10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(5px, 0, 0);\n            transform: translate3d(5px, 0, 0); }\n  100% {\n    -webkit-transform: none;\n            transform: none; } }\n\n@-webkit-keyframes bounce-out-left {\n  20% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0); }\n  40%, 45% {\n    -webkit-transform: translate3d(20px, 0, 0);\n            transform: translate3d(20px, 0, 0); }\n  100% {\n    -webkit-transform: translate3d(-2000px, 0, 0);\n            transform: translate3d(-2000px, 0, 0); } }\n\n@keyframes bounce-out-left {\n  20% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0); }\n  40%, 45% {\n    -webkit-transform: translate3d(20px, 0, 0);\n            transform: translate3d(20px, 0, 0); }\n  100% {\n    -webkit-transform: translate3d(-2000px, 0, 0);\n            transform: translate3d(-2000px, 0, 0); } }\n\n.z-bounce-left-enter-active,\n.z-bounce-left-leave-active {\n  -webkit-animation-duration: 1s !important;\n          animation-duration: 1s !important; }\n\n.z-bounce-left-enter-active {\n  -webkit-animation-name: bounce-in-left !important;\n          animation-name: bounce-in-left !important; }\n\n.z-bounce-left-leave-active {\n  -webkit-animation-name: bounce-out-left !important;\n          animation-name: bounce-out-left !important; }\n\n@-webkit-keyframes bounce-in-right {\n  0%, 100%, 60%, 75%, 90% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(3000px, 0, 0);\n            transform: translate3d(3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(-25px, 0, 0);\n            transform: translate3d(-25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(10px, 0, 0);\n            transform: translate3d(10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(-5px, 0, 0);\n            transform: translate3d(-5px, 0, 0); }\n  100% {\n    -webkit-transform: none;\n            transform: none; } }\n\n@keyframes bounce-in-right {\n  0%, 100%, 60%, 75%, 90% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(3000px, 0, 0);\n            transform: translate3d(3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(-25px, 0, 0);\n            transform: translate3d(-25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(10px, 0, 0);\n            transform: translate3d(10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(-5px, 0, 0);\n            transform: translate3d(-5px, 0, 0); }\n  100% {\n    -webkit-transform: none;\n            transform: none; } }\n\n@-webkit-keyframes bounce-out-right {\n  20% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0); }\n  40%, 45% {\n    -webkit-transform: translate3d(-20px, 0, 0);\n            transform: translate3d(-20px, 0, 0); }\n  100% {\n    -webkit-transform: translate3d(2000px, 0, 0);\n            transform: translate3d(2000px, 0, 0); } }\n\n@keyframes bounce-out-right {\n  20% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0); }\n  40%, 45% {\n    -webkit-transform: translate3d(-20px, 0, 0);\n            transform: translate3d(-20px, 0, 0); }\n  100% {\n    -webkit-transform: translate3d(2000px, 0, 0);\n            transform: translate3d(2000px, 0, 0); } }\n\n.z-bounce-right-enter-active,\n.z-bounce-right-leave-active {\n  -webkit-animation-duration: 1s !important;\n          animation-duration: 1s !important; }\n\n.z-bounce-right-enter-active {\n  -webkit-animation-name: bounce-in-right !important;\n          animation-name: bounce-in-right !important; }\n\n.z-bounce-right-leave-active {\n  -webkit-animation-name: bounce-out-right !important;\n          animation-name: bounce-out-right !important; }\n\n.z-slide-top-enter,\n.z-slide-top-enter-active,\n.z-slide-top-leave-active {\n  transition: -webkit-transform 500ms ease-out !important;\n  transition: transform 500ms ease-out !important;\n  transition: transform 500ms ease-out, -webkit-transform 500ms ease-out !important; }\n\n.z-slide-top-enter,\n.z-slide-top-leave-active {\n  -webkit-transform: translateY(100%) !important;\n          transform: translateY(100%) !important; }\n\n.z-slide-bottom-enter,\n.z-slide-bottom-enter-active,\n.z-slide-bottom-leave-active {\n  transition: -webkit-transform 500ms ease-out !important;\n  transition: transform 500ms ease-out !important;\n  transition: transform 500ms ease-out, -webkit-transform 500ms ease-out !important; }\n\n.z-slide-bottom-enter,\n.z-slide-bottom-leave-active {\n  -webkit-transform: translateY(-100%) !important;\n          transform: translateY(-100%) !important; }\n\n.z-slide-left-enter,\n.z-slide-left-enter-active,\n.z-slide-left-leave-active {\n  transition: -webkit-transform 500ms ease-out !important;\n  transition: transform 500ms ease-out !important;\n  transition: transform 500ms ease-out, -webkit-transform 500ms ease-out !important; }\n\n.z-slide-left-enter,\n.z-slide-left-leave-active {\n  -webkit-transform: translateX(-100%) !important;\n          transform: translateX(-100%) !important; }\n\n.z-slide-right-enter,\n.z-slide-right-enter-active,\n.z-slide-right-leave-active {\n  transition: -webkit-transform 500ms ease-out !important;\n  transition: transform 500ms ease-out !important;\n  transition: transform 500ms ease-out, -webkit-transform 500ms ease-out !important; }\n\n.z-slide-right-enter,\n.z-slide-right-leave-active {\n  -webkit-transform: translateX(100%) !important;\n          transform: translateX(100%) !important; }\n\n.z-rotate-half-enter {\n  -webkit-transform: rotate(0deg);\n          transform: rotate(0deg); }\n\n.z-rotate-half-enter-active {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n  transition: all 1s ease; }\n\n.z-fade-enter-active,\n.z-fade-leave-active {\n  transition: opacity 500ms ease-out !important; }\n\n.z-fade-enter,\n.z-fade-leave-active {\n  opacity: 0 !important; }\n\n.z-hide-enter-active,\n.z-hide-leave-active {\n  transition: all 800ms !important; }\n\n.z-bg-enter-active,\n.z-bg-leave-active {\n  transition: opacity 100ms ease-out !important; }\n\n.z-bg-enter,\n.z-bg-leave-active {\n  opacity: 0 !important; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 419 */
-/***/ (function(module, exports, __webpack_require__) {
-
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(420);
+var content = __webpack_require__(419);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -35719,7 +36063,7 @@ if(false) {
 }
 
 /***/ }),
-/* 420 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -35733,13 +36077,13 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * 全局盒子类\r\n */\n
 
 
 /***/ }),
-/* 421 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(422);
+var content = __webpack_require__(421);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -35764,7 +36108,7 @@ if(false) {
 }
 
 /***/ }),
-/* 422 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -35772,19 +36116,19 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * 主要样式\r\n */\n* {\n  -webkit-tap-highlight-color: transparent; }\n\n.z-css-device-size {\n  position: absolute;\n  height: 0;\n  width: 0;\n  overflow: hidden;\n  visibility: hidden;\n  z-index: -999; }\n  .z-css-device-size::after {\n    content: \"xl\"; }\n  @media only screen and (max-width: 1911px) {\n    .z-css-device-size::after {\n      content: \"l\"; } }\n  @media only screen and (max-width: 991px) {\n    .z-css-device-size::after {\n      content: \"m\"; } }\n  @media only screen and (max-width: 767px) {\n    .z-css-device-size::after {\n      content: \"s\"; } }\n  @media only screen and (max-width: 575px) {\n    .z-css-device-size::after {\n      content: \"xs\"; } }\n\n.z-css-ul {\n  margin: 0;\n  padding: 0;\n  list-style-type: none; }\n\n.z-css-motion-rip {\n  background-color: rgba(0, 0, 0, 0.2);\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  overflow: hidden; }\n  .z-css-motion-rip:after {\n    content: \"\";\n    position: absolute;\n    background-color: rgba(255, 255, 255, 0.3);\n    top: 50%;\n    left: 50%;\n    width: 80%;\n    height: 200%;\n    border-radius: 50%;\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1);\n    -webkit-animation: z-css-motion-rip 2s infinite ease-in-out;\n            animation: z-css-motion-rip 2s infinite ease-in-out; }\n\n@-webkit-keyframes z-css-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scaleX(0.8);\n            transform: translate(-50%, -50%) scaleX(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1); } }\n\n@keyframes z-css-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scaleX(0.8);\n            transform: translate(-50%, -50%) scaleX(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1); } }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * 主要样式\r\n */\n* {\n  -webkit-tap-highlight-color: transparent; }\n\n.z-css-device-size {\n  position: absolute;\n  height: 0;\n  width: 0;\n  overflow: hidden;\n  visibility: hidden;\n  z-index: -999; }\n  .z-css-device-size::after {\n    content: \"xl\"; }\n  @media only screen and (max-width: 1911px) {\n    .z-css-device-size::after {\n      content: \"l\"; } }\n  @media only screen and (max-width: 991px) {\n    .z-css-device-size::after {\n      content: \"m\"; } }\n  @media only screen and (max-width: 767px) {\n    .z-css-device-size::after {\n      content: \"s\"; } }\n  @media only screen and (max-width: 575px) {\n    .z-css-device-size::after {\n      content: \"xs\"; } }\n\n.z-css-ul {\n  margin: 0;\n  padding: 0;\n  list-style-type: none; }\n\n.z-css-motion-rip {\n  background-color: rgba(0, 0, 0, 0.2);\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  overflow: hidden; }\n  .z-css-motion-rip:after {\n    content: \"\";\n    position: absolute;\n    background-color: rgba(255, 255, 255, 0.3);\n    top: 50%;\n    left: 50%;\n    width: 80%;\n    height: 200%;\n    border-radius: 50%;\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n        -ms-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1);\n    -webkit-animation: z-css-motion-rip 2s infinite ease-in-out;\n            animation: z-css-motion-rip 2s infinite ease-in-out; }\n\n@-webkit-keyframes z-css-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scaleX(0.8);\n            transform: translate(-50%, -50%) scaleX(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1); } }\n\n@keyframes z-css-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scaleX(0.8);\n            transform: translate(-50%, -50%) scaleX(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1); } }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 423 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(424);
+var content = __webpack_require__(423);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -35809,7 +36153,7 @@ if(false) {
 }
 
 /***/ }),
-/* 424 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -35823,7 +36167,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * 组件公共类样式\r\
 
 
 /***/ }),
-/* 425 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35833,7 +36177,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Btn = __webpack_require__(61);
+var _Btn = __webpack_require__(68);
 
 var _Btn2 = _interopRequireDefault(_Btn);
 
@@ -35841,19 +36185,19 @@ var _Check = __webpack_require__(91);
 
 var _Check2 = _interopRequireDefault(_Check);
 
-var _Form = __webpack_require__(173);
+var _Form = __webpack_require__(175);
 
 var _Form2 = _interopRequireDefault(_Form);
 
-var _Input = __webpack_require__(65);
+var _Input = __webpack_require__(72);
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _Bubble = __webpack_require__(174);
+var _Bubble = __webpack_require__(176);
 
 var _Bubble2 = _interopRequireDefault(_Bubble);
 
@@ -35869,19 +36213,19 @@ var _Message = __webpack_require__(92);
 
 var _Message2 = _interopRequireDefault(_Message);
 
-var _Code = __webpack_require__(498);
+var _Code = __webpack_require__(500);
 
 var _Code2 = _interopRequireDefault(_Code);
 
-var _Loading = __webpack_require__(63);
+var _Loading = __webpack_require__(62);
 
 var _Loading2 = _interopRequireDefault(_Loading);
 
-var _Nav = __webpack_require__(175);
+var _Nav = __webpack_require__(177);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
-var _Omit = __webpack_require__(176);
+var _Omit = __webpack_require__(178);
 
 var _Omit2 = _interopRequireDefault(_Omit);
 
@@ -35893,19 +36237,19 @@ var _Scroller = __webpack_require__(44);
 
 var _Scroller2 = _interopRequireDefault(_Scroller);
 
-var _Search = __webpack_require__(177);
+var _Search = __webpack_require__(179);
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _Fold = __webpack_require__(130);
+var _Fold = __webpack_require__(131);
 
 var _Fold2 = _interopRequireDefault(_Fold);
 
-var _FoldTitle = __webpack_require__(131);
+var _FoldTitle = __webpack_require__(132);
 
 var _FoldTitle2 = _interopRequireDefault(_FoldTitle);
 
-var _FoldContent = __webpack_require__(132);
+var _FoldContent = __webpack_require__(133);
 
 var _FoldContent2 = _interopRequireDefault(_FoldContent);
 
@@ -35913,47 +36257,47 @@ var _List = __webpack_require__(97);
 
 var _List2 = _interopRequireDefault(_List);
 
-var _Table = __webpack_require__(179);
+var _Table = __webpack_require__(181);
 
 var _Table2 = _interopRequireDefault(_Table);
 
-var _TableRow = __webpack_require__(180);
+var _TableRow = __webpack_require__(182);
 
 var _TableRow2 = _interopRequireDefault(_TableRow);
 
-var _TableCol = __webpack_require__(181);
+var _TableCol = __webpack_require__(183);
 
 var _TableCol2 = _interopRequireDefault(_TableCol);
 
-var _Menu = __webpack_require__(134);
+var _Menu = __webpack_require__(135);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _MenuEle = __webpack_require__(184);
+var _MenuEle = __webpack_require__(185);
 
 var _MenuEle2 = _interopRequireDefault(_MenuEle);
 
-var _Shift = __webpack_require__(135);
+var _Shift = __webpack_require__(136);
 
 var _Shift2 = _interopRequireDefault(_Shift);
 
-var _ShiftEle = __webpack_require__(185);
+var _ShiftEle = __webpack_require__(186);
 
 var _ShiftEle2 = _interopRequireDefault(_ShiftEle);
 
-var _Select = __webpack_require__(186);
+var _Select = __webpack_require__(187);
 
 var _Select2 = _interopRequireDefault(_Select);
 
-var _SelectEle = __webpack_require__(187);
+var _SelectEle = __webpack_require__(188);
 
 var _SelectEle2 = _interopRequireDefault(_SelectEle);
 
-var _Tab = __webpack_require__(188);
+var _Tab = __webpack_require__(189);
 
 var _Tab2 = _interopRequireDefault(_Tab);
 
-var _TabEle = __webpack_require__(189);
+var _TabEle = __webpack_require__(190);
 
 var _TabEle2 = _interopRequireDefault(_TabEle);
 
@@ -35965,23 +36309,23 @@ var _Row = __webpack_require__(43);
 
 var _Row2 = _interopRequireDefault(_Row);
 
-var _MotionFade = __webpack_require__(95);
+var _MotionFade = __webpack_require__(73);
 
 var _MotionFade2 = _interopRequireDefault(_MotionFade);
 
-var _MotionFold = __webpack_require__(73);
+var _MotionFold = __webpack_require__(95);
 
 var _MotionFold2 = _interopRequireDefault(_MotionFold);
 
-var _MotionRip = __webpack_require__(71);
+var _MotionRip = __webpack_require__(70);
 
 var _MotionRip2 = _interopRequireDefault(_MotionRip);
 
-var _MotionSlide = __webpack_require__(72);
+var _MotionSlide = __webpack_require__(71);
 
 var _MotionSlide2 = _interopRequireDefault(_MotionSlide);
 
-var _MotionZoom = __webpack_require__(129);
+var _MotionZoom = __webpack_require__(130);
 
 var _MotionZoom2 = _interopRequireDefault(_MotionZoom);
 
@@ -36009,13 +36353,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 426 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(427);
+var content = __webpack_require__(426);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36040,7 +36384,7 @@ if(false) {
 }
 
 /***/ }),
-/* 427 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36048,19 +36392,19 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * btn 组件样式\r\n */\n.z-btn.z-btn-ban .z-btn-read-only-shadow {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto; }\n\n.z-btn {\n  position: relative;\n  display: inline-block;\n  cursor: pointer; }\n  .z-btn > .z-btn-ele {\n    display: -webkit-flex;\n    display: flex;\n    -webkit-align-items: center;\n            align-items: center;\n    -webkit-justify-content: center;\n            justify-content: center;\n    position: relative;\n    min-width: 64px;\n    box-sizing: border-box;\n    border-radius: 3px;\n    color: #fff;\n    text-align: center;\n    font-size: 14px;\n    overflow: hidden;\n    line-height: 1;\n    white-space: nowrap;\n    -webkit-transform: rotate(0);\n            transform: rotate(0);\n    transition-duration: 150ms;\n    transition-property: background-color, border-color, box-shadow, color;\n    transition-timing-function: ease-in-out; }\n    .z-btn > .z-btn-ele > .z-btn-ele-border {\n      border: transparent 1px solid;\n      padding: 10px 8px; }\n    .z-btn > .z-btn-ele .z-btn-loading {\n      position: absolute;\n      left: 8px;\n      z-index: 2; }\n  .z-btn > a.z-btn-ele {\n    width: 100%; }\n  .z-btn.z-btn-block {\n    display: block;\n    width: 100%; }\n  .z-btn.z-btn-size-m > .z-btn-ele {\n    min-width: 108px; }\n  .z-btn.z-btn-size-l > .z-btn-ele {\n    min-width: 128px; }\n  .z-btn.z-btn-size.z-btn-type-float-m > .z-btn-ele {\n    width: 56px;\n    height: 56px; }\n  .z-btn.z-btn-size.z-btn-type-float-l > .z-btn-ele {\n    width: 72px;\n    height: 72px; }\n  .z-btn.z-btn-radius-none > .z-btn-ele {\n    border-radius: 0; }\n  .z-btn.z-btn-radius-m > .z-btn-ele {\n    border-radius: 10px; }\n  .z-btn.z-btn-radius-l > .z-btn-ele {\n    border-radius: 30px; }\n  .z-btn.z-btn-ban .z-btn-ele {\n    color: rgba(0, 0, 0, 0.4);\n    background-color: rgba(0, 0, 0, 0.12) !important; }\n  .z-btn.z-btn-ban .z-btn-read-only-shadow {\n    background-color: rgba(255, 255, 255, 0.5);\n    border-radius: 3px;\n    cursor: not-allowed;\n    z-index: 1; }\n  .z-btn.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-type-float > .z-btn-ele {\n    border-radius: 3px;\n    background-color: #ef5350; }\n  .z-btn.z-btn-type-float > .z-btn-ele {\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    box-sizing: border-box;\n    padding: 0;\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\n    min-width: auto; }\n    .z-btn.z-btn-type-float > .z-btn-ele::after {\n      content: \" \";\n      display: inline-block;\n      vertical-align: middle;\n      height: 100%;\n      width: 0; }\n    .z-btn.z-btn-type-float > .z-btn-ele .z-btn-ele-border {\n      padding-top: 12px;\n      padding-bottom: 12px; }\n  .z-btn.z-btn-type-flat > .z-btn-ele {\n    background-color: #fff;\n    color: #ef5350; }\n  .z-btn.z-btn-type-outline > .z-btn-ele {\n    background-color: #fff;\n    border-style: solid;\n    border-width: 1px;\n    border-color: #ef5350;\n    color: #ef5350; }\n  .z-btn .z-btn-value-show {\n    display: inline-block; }\n\n.z-btn.z-btn-theme-success.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-success.z-btn-type-float > .z-btn-ele {\n  background-color: #66bb6a; }\n\n.z-btn.z-btn-theme-success.z-btn-type-flat > .z-btn-ele {\n  color: #66bb6a; }\n\n.z-btn.z-btn-theme-success.z-btn-type-outline > .z-btn-ele {\n  border-color: #66bb6a;\n  color: #66bb6a; }\n\n.z-btn.z-btn-theme-danger.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-danger.z-btn-type-float > .z-btn-ele {\n  background-color: #ef5350; }\n\n.z-btn.z-btn-theme-danger.z-btn-type-flat > .z-btn-ele {\n  color: #ef5350; }\n\n.z-btn.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele {\n  border-color: #ef5350;\n  color: #ef5350; }\n\n.z-btn.z-btn-theme-blue.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-blue.z-btn-type-float > .z-btn-ele {\n  background-color: #2196f3; }\n\n.z-btn.z-btn-theme-blue.z-btn-type-flat > .z-btn-ele {\n  color: #2196f3; }\n\n.z-btn.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele {\n  border-color: #2196f3;\n  color: #2196f3; }\n\n.z-btn.z-btn-theme-warning.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-warning.z-btn-type-float > .z-btn-ele {\n  background-color: #ffa726; }\n\n.z-btn.z-btn-theme-warning.z-btn-type-flat > .z-btn-ele {\n  color: #ffa726; }\n\n.z-btn.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele {\n  border-color: #ffa726;\n  color: #ffa726; }\n\n.z-btn.z-btn-theme-orange.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-orange.z-btn-type-float > .z-btn-ele {\n  background-color: #ffa726; }\n\n.z-btn.z-btn-theme-orange.z-btn-type-flat > .z-btn-ele {\n  color: #ffa726; }\n\n.z-btn.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele {\n  border-color: #ffa726;\n  color: #ffa726; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * btn 组件样式\r\n */\n.z-btn.z-btn-ban .z-btn-read-only-shadow {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto; }\n\n.z-btn {\n  position: relative;\n  display: inline-block;\n  cursor: pointer; }\n  .z-btn > .z-btn-ele {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-align-items: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-justify-content: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    position: relative;\n    min-width: 64px;\n    box-sizing: border-box;\n    border-radius: 3px;\n    color: #fff;\n    text-align: center;\n    font-size: 14px;\n    overflow: hidden;\n    line-height: 1;\n    white-space: nowrap;\n    -webkit-transform: rotate(0);\n        -ms-transform: rotate(0);\n            transform: rotate(0);\n    transition-duration: 150ms;\n    transition-property: background-color, border-color, box-shadow, color;\n    transition-timing-function: ease-in-out; }\n    .z-btn > .z-btn-ele > .z-btn-ele-border {\n      border: transparent 1px solid;\n      padding: 10px 8px; }\n    .z-btn > .z-btn-ele .z-btn-loading {\n      position: absolute;\n      left: 8px;\n      z-index: 2; }\n  .z-btn > a.z-btn-ele {\n    width: 100%; }\n  .z-btn.z-btn-block {\n    display: block;\n    width: 100%; }\n  .z-btn.z-btn-size-m > .z-btn-ele {\n    min-width: 108px; }\n  .z-btn.z-btn-size-l > .z-btn-ele {\n    min-width: 128px; }\n  .z-btn.z-btn-size.z-btn-type-float-m > .z-btn-ele {\n    width: 56px;\n    height: 56px; }\n  .z-btn.z-btn-size.z-btn-type-float-l > .z-btn-ele {\n    width: 72px;\n    height: 72px; }\n  .z-btn.z-btn-radius-none > .z-btn-ele {\n    border-radius: 0; }\n  .z-btn.z-btn-radius-m > .z-btn-ele {\n    border-radius: 10px; }\n  .z-btn.z-btn-radius-l > .z-btn-ele {\n    border-radius: 30px; }\n  .z-btn.z-btn-ban .z-btn-ele {\n    color: rgba(0, 0, 0, 0.4);\n    background-color: rgba(0, 0, 0, 0.12) !important; }\n  .z-btn.z-btn-ban .z-btn-read-only-shadow {\n    background-color: rgba(255, 255, 255, 0.5);\n    border-radius: 3px;\n    cursor: not-allowed;\n    z-index: 1; }\n  .z-btn.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-type-float > .z-btn-ele {\n    border-radius: 3px;\n    background-color: #2196f3; }\n  .z-btn.z-btn-type-float > .z-btn-ele {\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    box-sizing: border-box;\n    padding: 0;\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\n    min-width: auto; }\n    .z-btn.z-btn-type-float > .z-btn-ele::after {\n      content: \" \";\n      display: inline-block;\n      vertical-align: middle;\n      height: 100%;\n      width: 0; }\n    .z-btn.z-btn-type-float > .z-btn-ele .z-btn-ele-border {\n      padding-top: 12px;\n      padding-bottom: 12px; }\n  .z-btn.z-btn-type-flat > .z-btn-ele {\n    background-color: #fff;\n    color: #2196f3; }\n  .z-btn.z-btn-type-outline > .z-btn-ele {\n    background-color: #fff;\n    border-style: solid;\n    border-width: 1px;\n    border-color: #2196f3;\n    color: #2196f3; }\n  .z-btn .z-btn-value-show {\n    display: inline-block; }\n\n.z-btn.z-btn-theme-success.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-success.z-btn-type-float > .z-btn-ele {\n  background-color: #4caf50; }\n\n.z-btn.z-btn-theme-success.z-btn-type-flat > .z-btn-ele {\n  color: #4caf50; }\n\n.z-btn.z-btn-theme-success.z-btn-type-outline > .z-btn-ele {\n  border-color: #4caf50;\n  color: #4caf50; }\n\n.z-btn.z-btn-theme-danger.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-danger.z-btn-type-float > .z-btn-ele {\n  background-color: #f44336; }\n\n.z-btn.z-btn-theme-danger.z-btn-type-flat > .z-btn-ele {\n  color: #f44336; }\n\n.z-btn.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele {\n  border-color: #f44336;\n  color: #f44336; }\n\n.z-btn.z-btn-theme-blue.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-blue.z-btn-type-float > .z-btn-ele {\n  background-color: #2196f3; }\n\n.z-btn.z-btn-theme-blue.z-btn-type-flat > .z-btn-ele {\n  color: #2196f3; }\n\n.z-btn.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele {\n  border-color: #2196f3;\n  color: #2196f3; }\n\n.z-btn.z-btn-theme-warning.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-warning.z-btn-type-float > .z-btn-ele {\n  background-color: #9e9e9e; }\n\n.z-btn.z-btn-theme-warning.z-btn-type-flat > .z-btn-ele {\n  color: #9e9e9e; }\n\n.z-btn.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele {\n  border-color: #9e9e9e;\n  color: #9e9e9e; }\n\n.z-btn.z-btn-theme-orange.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-orange.z-btn-type-float > .z-btn-ele {\n  background-color: #ff5722; }\n\n.z-btn.z-btn-theme-orange.z-btn-type-flat > .z-btn-ele {\n  color: #ff5722; }\n\n.z-btn.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele {\n  border-color: #ff5722;\n  color: #ff5722; }\n\n.z-btn.z-btn-theme-grey.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-grey.z-btn-type-float > .z-btn-ele {\n  background-color: #9e9e9e; }\n\n.z-btn.z-btn-theme-grey.z-btn-type-flat > .z-btn-ele {\n  color: #9e9e9e; }\n\n.z-btn.z-btn-theme-grey.z-btn-type-outline > .z-btn-ele {\n  border-color: #9e9e9e;\n  color: #9e9e9e; }\n\n.z-btn.z-btn-theme-light.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-light.z-btn-type-float > .z-btn-ele {\n  background-color: #f5f5f5; }\n\n.z-btn.z-btn-theme-light.z-btn-type-flat > .z-btn-ele {\n  color: #f5f5f5; }\n\n.z-btn.z-btn-theme-light.z-btn-type-outline > .z-btn-ele {\n  border-color: #f5f5f5;\n  color: #f5f5f5; }\n\n.z-btn.z-btn-theme-dark.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-theme-dark.z-btn-type-float > .z-btn-ele {\n  background-color: #424242; }\n\n.z-btn.z-btn-theme-dark.z-btn-type-flat > .z-btn-ele {\n  color: #424242; }\n\n.z-btn.z-btn-theme-dark.z-btn-type-outline > .z-btn-ele {\n  border-color: #424242;\n  color: #424242; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 428 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(429);
+var content = __webpack_require__(428);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36085,7 +36429,7 @@ if(false) {
 }
 
 /***/ }),
-/* 429 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36093,19 +36437,19 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * btn 组件的 material UI 样式\r\n */\n.z-btn.z-btn-ui-material.z-btn-theme-primary > .z-btn-ele:focus {\n  outline: none; }\n\n.z-btn.z-btn-ui-material.z-btn-theme-primary.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-material.z-btn-theme-primary.z-btn-type-float > .z-btn-ele {\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2); }\n  .z-btn.z-btn-ui-material.z-btn-theme-primary.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-material.z-btn-theme-primary.z-btn-type-float > .z-btn-ele:hover {\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2); }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * btn 组件的 material UI 样式\r\n */\n.z-btn.z-btn-ui-material.z-btn-theme-primary:focus {\n  outline: none; }\n\n.z-btn.z-btn-ui-material.z-btn-theme-primary.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-material.z-btn-theme-primary.z-btn-type-float > .z-btn-ele {\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2); }\n  .z-btn.z-btn-ui-material.z-btn-theme-primary.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-material.z-btn-theme-primary.z-btn-type-float > .z-btn-ele:hover {\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2); }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 430 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(431);
+var content = __webpack_require__(430);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36130,7 +36474,7 @@ if(false) {
 }
 
 /***/ }),
-/* 431 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36138,13 +36482,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * btn 组件的 bootstrap UI 样式\r\n */\n.z-btn.z-btn-ui-bootstrap > .z-btn-ele:focus {\n  outline: none; }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-type-float > .z-btn-ele {\n  background-color: #ef5350;\n  border-color: #ef5350; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(182, 24, 39, 0.8);\n    border-color: rgba(182, 24, 39, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(182, 24, 39, 0.9);\n    border-color: #b61827; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-type-outline > .z-btn-ele {\n  border-color: #ef5350; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #ef5350;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #ef5350;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-float > .z-btn-ele {\n  background-color: #66bb6a;\n  border-color: #66bb6a; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(51, 138, 62, 0.8);\n    border-color: rgba(51, 138, 62, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(51, 138, 62, 0.9);\n    border-color: #338a3e; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-outline > .z-btn-ele {\n  border-color: #66bb6a; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #66bb6a;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #66bb6a;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-float > .z-btn-ele {\n  background-color: #ef5350;\n  border-color: #ef5350; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(182, 24, 39, 0.8);\n    border-color: rgba(182, 24, 39, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(182, 24, 39, 0.9);\n    border-color: #b61827; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele {\n  border-color: #ef5350; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #ef5350;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #ef5350;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-float > .z-btn-ele {\n  background-color: #ffa726;\n  border-color: #ffa726; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(199, 120, 0, 0.8);\n    border-color: rgba(199, 120, 0, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(199, 120, 0, 0.9);\n    border-color: #c77800; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele {\n  border-color: #ffa726; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #ffa726;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #ffa726;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-float > .z-btn-ele {\n  background-color: #2196f3;\n  border-color: #2196f3; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(0, 105, 192, 0.8);\n    border-color: rgba(0, 105, 192, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(0, 105, 192, 0.9);\n    border-color: #0069c0; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele {\n  border-color: #2196f3; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #2196f3;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #2196f3;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-float > .z-btn-ele {\n  background-color: #ffa726;\n  border-color: #ffa726; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(199, 120, 0, 0.8);\n    border-color: rgba(199, 120, 0, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(199, 120, 0, 0.9);\n    border-color: #c77800; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.4); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele {\n  border-color: #ffa726; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #ffa726;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.4); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #ffa726;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.4); }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * btn 组件的 bootstrap UI 样式\r\n */\n.z-btn.z-btn-ui-bootstrap:focus {\n  outline: none; }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-type-float > .z-btn-ele {\n  background-color: #2196f3;\n  border-color: #2196f3; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(0, 105, 192, 0.8);\n    border-color: rgba(0, 105, 192, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(0, 105, 192, 0.9);\n    border-color: #0069c0; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-type-outline > .z-btn-ele {\n  border-color: #2196f3; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #2196f3;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #2196f3;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-float > .z-btn-ele {\n  background-color: #4caf50;\n  border-color: #4caf50; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(8, 127, 35, 0.8);\n    border-color: rgba(8, 127, 35, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(8, 127, 35, 0.9);\n    border-color: #087f23; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-outline > .z-btn-ele {\n  border-color: #4caf50; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #4caf50;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #4caf50;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-success.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-float > .z-btn-ele {\n  background-color: #f44336;\n  border-color: #f44336; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(186, 0, 13, 0.8);\n    border-color: rgba(186, 0, 13, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(244, 67, 54, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(186, 0, 13, 0.9);\n    border-color: #ba000d; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(244, 67, 54, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele {\n  border-color: #f44336; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #f44336;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(244, 67, 54, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #f44336;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-danger.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(244, 67, 54, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-float > .z-btn-ele {\n  background-color: #9e9e9e;\n  border-color: #9e9e9e; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(112, 112, 112, 0.8);\n    border-color: rgba(112, 112, 112, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(158, 158, 158, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(112, 112, 112, 0.9);\n    border-color: #707070; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(158, 158, 158, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele {\n  border-color: #9e9e9e; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #9e9e9e;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(158, 158, 158, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #9e9e9e;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-warning.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(158, 158, 158, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-float > .z-btn-ele {\n  background-color: #2196f3;\n  border-color: #2196f3; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(0, 105, 192, 0.8);\n    border-color: rgba(0, 105, 192, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(0, 105, 192, 0.9);\n    border-color: #0069c0; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele {\n  border-color: #2196f3; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #2196f3;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #2196f3;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-blue.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-float > .z-btn-ele {\n  background-color: #ff5722;\n  border-color: #ff5722; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(196, 28, 0, 0.8);\n    border-color: rgba(196, 28, 0, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(196, 28, 0, 0.9);\n    border-color: #c41c00; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele {\n  border-color: #ff5722; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #ff5722;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #ff5722;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-orange.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-float > .z-btn-ele {\n  background-color: #f5f5f5;\n  border-color: #f5f5f5; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(224, 224, 224, 0.8);\n    border-color: rgba(224, 224, 224, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(245, 245, 245, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(224, 224, 224, 0.9);\n    border-color: #e0e0e0; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(245, 245, 245, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-outline > .z-btn-ele {\n  border-color: #f5f5f5; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #f5f5f5;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(245, 245, 245, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #f5f5f5;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-light.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(245, 245, 245, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-float > .z-btn-ele {\n  background-color: #424242;\n  border-color: #424242; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(27, 27, 27, 0.8);\n    border-color: rgba(27, 27, 27, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(66, 66, 66, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(27, 27, 27, 0.9);\n    border-color: #1b1b1b; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(66, 66, 66, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-outline > .z-btn-ele {\n  border-color: #424242; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #424242;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(66, 66, 66, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #424242;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-dark.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(66, 66, 66, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-button > .z-btn-ele, .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-float > .z-btn-ele {\n  background-color: #9e9e9e;\n  border-color: #9e9e9e; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-button > .z-btn-ele:hover, .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-float > .z-btn-ele:hover {\n    background-color: rgba(112, 112, 112, 0.8);\n    border-color: rgba(112, 112, 112, 0.9); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-button > .z-btn-ele:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-float > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(158, 158, 158, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-button > .z-btn-ele:active, .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-float > .z-btn-ele:active {\n    background-color: rgba(112, 112, 112, 0.9);\n    border-color: #707070; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-button > .z-btn-ele:active:focus, .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-float > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(158, 158, 158, 0.3); }\n\n.z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-outline > .z-btn-ele {\n  border-color: #9e9e9e; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-outline > .z-btn-ele:hover {\n    background-color: #9e9e9e;\n    color: #fff; }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-outline > .z-btn-ele:focus {\n    box-shadow: 0 0 0 4px rgba(158, 158, 158, 0.3); }\n  .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-outline > .z-btn-ele:active {\n    background-color: #9e9e9e;\n    color: #000; }\n    .z-btn.z-btn-ui-bootstrap.z-btn-theme-grey.z-btn-type-outline > .z-btn-ele:active:focus {\n      box-shadow: 0 0 0 4px rgba(158, 158, 158, 0.3); }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 432 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36185,7 +36529,9 @@ exports.default = function (h) {
       buttonChildren.push(h('loading', {
         class: [this.xclass('loading')],
         props: {
-          'bg-display': false
+          bgDisplay: false,
+          ui: this.ui,
+          theme: this.theme
         },
         ref: 'loading'
       }));
@@ -36203,7 +36549,9 @@ exports.default = function (h) {
       class: [this.xclass('rip')],
       props: {
         assign: !this.isFloatBtn,
-        mousePoi: this.mousePoi
+        mousePoi: this.mousePoi,
+        ui: this.ui,
+        theme: this.theme
       },
       ref: 'transition'
     }), h('div', {
@@ -36218,20 +36566,17 @@ exports.default = function (h) {
   return h('div', {
     class: [this.cPrefix, this.btnClass, _defineProperty({}, this.xclass('ban'), this.banState), _defineProperty({}, this.xclass('block'), this.block), _defineProperty({}, this.xclass('rip'), this.motion)],
     on: {
-      click: this.click,
       mousedown: this.mousedown,
       mouseup: this.mouseup,
-      keyup: this.keyup
-    }
-  }, [h('div', {
-    class: [this.xclass('ele')],
-    on: {
+      keyup: this.keyup,
       focus: this.focus,
       blur: this.blur
     },
     attrs: {
       tabindex: 0
     }
+  }, [h('div', {
+    class: [this.xclass('ele')]
   }, btnEleChildren)]);
 };
 
@@ -36240,13 +36585,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 433 */
+/* 432 */
 /***/ (function(module, exports) {
 
 module.exports = {"prefix":"z","defaultTheme":"primary","defaultUI":"material","language":"zh-CN"}
 
 /***/ }),
-/* 434 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36258,7 +36603,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _getters, _actions, _mutations;
 
-var _type = __webpack_require__(62);
+var _type = __webpack_require__(61);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -36333,7 +36678,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 435 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36385,7 +36730,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 436 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36434,13 +36779,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 437 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(438);
+var content = __webpack_require__(437);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36465,7 +36810,7 @@ if(false) {
 }
 
 /***/ }),
-/* 438 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36473,20 +36818,20 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.z-loading.z-loading-mark .z-loading-bg, .z-loading.z-loading-theme-secondary.z-loading-mark .z-loading-bg {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto; }\n\n@-webkit-keyframes z-loading-rotate {\n  0% {\n    -webkit-transform: rotateZ(0deg);\n            transform: rotateZ(0deg); }\n  50% {\n    -webkit-transform: rotateZ(180deg);\n            transform: rotateZ(180deg); }\n  100% {\n    -webkit-transform: rotateZ(360deg);\n            transform: rotateZ(360deg); } }\n\n@keyframes z-loading-rotate {\n  0% {\n    -webkit-transform: rotateZ(0deg);\n            transform: rotateZ(0deg); }\n  50% {\n    -webkit-transform: rotateZ(180deg);\n            transform: rotateZ(180deg); }\n  100% {\n    -webkit-transform: rotateZ(360deg);\n            transform: rotateZ(360deg); } }\n\n.z-loading.z-loading-theme-primary .z-loading-rotate .z-loading-icon, .z-loading.z-loading-theme-secondary .z-loading-rotate .z-loading-icon {\n  line-height: 0;\n  -webkit-transform-origin: 50%;\n          transform-origin: 50%;\n  -webkit-animation: z-loading-rotate 1s linear infinite;\n          animation: z-loading-rotate 1s linear infinite;\n  margin: 0; }\n\n.z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-1, .z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-2, .z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-3 {\n  opacity: 0; }\n\n.z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-1 {\n  -webkit-animation: z-loading-spot-fade-1 2s infinite;\n          animation: z-loading-spot-fade-1 2s infinite; }\n\n@-webkit-keyframes z-loading-spot-fade-1 {\n  0% {\n    opacity: 0; }\n  25% {\n    opacity: 0; }\n  26% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n@keyframes z-loading-spot-fade-1 {\n  0% {\n    opacity: 0; }\n  25% {\n    opacity: 0; }\n  26% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n.z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-2 {\n  -webkit-animation: z-loading-spot-fade-2 2s infinite;\n          animation: z-loading-spot-fade-2 2s infinite; }\n\n@-webkit-keyframes z-loading-spot-fade-2 {\n  0% {\n    opacity: 0; }\n  50% {\n    opacity: 0; }\n  51% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n@keyframes z-loading-spot-fade-2 {\n  0% {\n    opacity: 0; }\n  50% {\n    opacity: 0; }\n  51% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n.z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-3 {\n  -webkit-animation: z-loading-spot-fade-3 2s infinite;\n          animation: z-loading-spot-fade-3 2s infinite; }\n\n@-webkit-keyframes z-loading-spot-fade-3 {\n  0% {\n    opacity: 0; }\n  75% {\n    opacity: 0; }\n  76% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n@keyframes z-loading-spot-fade-3 {\n  0% {\n    opacity: 0; }\n  75% {\n    opacity: 0; }\n  76% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n/**\r\n * loading 组件样式\r\n */\n.z-loading {\n  display: inline-block; }\n  .z-loading .z-loading-wrap {\n    width: 100%;\n    height: 100%; }\n    .z-loading .z-loading-wrap .z-loading-rotate {\n      display: inline-block; }\n  .z-loading.z-loading-mark {\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    z-index: 949; }\n    .z-loading.z-loading-mark .z-loading-wrap {\n      position: relative;\n      z-index: 2; }\n    .z-loading.z-loading-mark .z-loading-bg {\n      background: rgba(255, 255, 255, 0.6);\n      width: 100%;\n      height: 100%; }\n  .z-loading.z-loading-theme-primary.z-loading-mark .z-loading-spot {\n    z-index: 2;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%); }\n  .z-loading.z-loading-theme-primary.z-loading-mark .z-loading-rotate {\n    position: absolute;\n    z-index: 2;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%); }\n  .z-loading.z-loading-theme-secondary.z-loading-mark .z-loading-bg {\n    background: #666666;\n    opacity: .6; }\n  .z-loading.z-loading-theme-secondary.z-loading-mark .z-loading-rotate {\n    position: absolute;\n    z-index: 2;\n    top: 50%;\n    left: 50%; }\n  .z-loading.z-loading-theme-secondary .z-loading-rotate {\n    background-color: #fff;\n    border-radius: 3px;\n    padding: 4px; }\n    .z-loading.z-loading-theme-secondary .z-loading-rotate .z-loading-icon i {\n      color: #666666; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.z-loading.z-loading-mark .z-loading-bg, .z-loading.z-loading-theme-secondary.z-loading-mark .z-loading-bg {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto; }\n\n@-webkit-keyframes z-loading-rotate {\n  0% {\n    -webkit-transform: rotateZ(0deg);\n            transform: rotateZ(0deg); }\n  50% {\n    -webkit-transform: rotateZ(180deg);\n            transform: rotateZ(180deg); }\n  100% {\n    -webkit-transform: rotateZ(360deg);\n            transform: rotateZ(360deg); } }\n\n@keyframes z-loading-rotate {\n  0% {\n    -webkit-transform: rotateZ(0deg);\n            transform: rotateZ(0deg); }\n  50% {\n    -webkit-transform: rotateZ(180deg);\n            transform: rotateZ(180deg); }\n  100% {\n    -webkit-transform: rotateZ(360deg);\n            transform: rotateZ(360deg); } }\n\n.z-loading.z-loading-theme-primary .z-loading-rotate .z-loading-icon, .z-loading.z-loading-theme-secondary .z-loading-rotate .z-loading-icon {\n  line-height: 0;\n  -webkit-transform-origin: 50%;\n      -ms-transform-origin: 50%;\n          transform-origin: 50%;\n  -webkit-animation: z-loading-rotate 1s linear infinite;\n          animation: z-loading-rotate 1s linear infinite;\n  margin: 0; }\n\n.z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-1, .z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-2, .z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-3 {\n  opacity: 0; }\n\n.z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-1 {\n  -webkit-animation: z-loading-spot-fade-1 2s infinite;\n          animation: z-loading-spot-fade-1 2s infinite; }\n\n@-webkit-keyframes z-loading-spot-fade-1 {\n  0% {\n    opacity: 0; }\n  25% {\n    opacity: 0; }\n  26% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n@keyframes z-loading-spot-fade-1 {\n  0% {\n    opacity: 0; }\n  25% {\n    opacity: 0; }\n  26% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n.z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-2 {\n  -webkit-animation: z-loading-spot-fade-2 2s infinite;\n          animation: z-loading-spot-fade-2 2s infinite; }\n\n@-webkit-keyframes z-loading-spot-fade-2 {\n  0% {\n    opacity: 0; }\n  50% {\n    opacity: 0; }\n  51% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n@keyframes z-loading-spot-fade-2 {\n  0% {\n    opacity: 0; }\n  50% {\n    opacity: 0; }\n  51% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n.z-loading.z-loading-theme-primary .z-loading-spot .z-loading-spot-3 {\n  -webkit-animation: z-loading-spot-fade-3 2s infinite;\n          animation: z-loading-spot-fade-3 2s infinite; }\n\n@-webkit-keyframes z-loading-spot-fade-3 {\n  0% {\n    opacity: 0; }\n  75% {\n    opacity: 0; }\n  76% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n@keyframes z-loading-spot-fade-3 {\n  0% {\n    opacity: 0; }\n  75% {\n    opacity: 0; }\n  76% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n/**\r\n * loading 组件样式\r\n */\n.z-loading {\n  display: inline-block; }\n  .z-loading .z-loading-wrap {\n    width: 100%;\n    height: 100%; }\n    .z-loading .z-loading-wrap .z-loading-rotate {\n      display: inline-block; }\n  .z-loading.z-loading-mark {\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    margin: auto;\n    z-index: 949; }\n    .z-loading.z-loading-mark .z-loading-wrap {\n      position: relative;\n      z-index: 2; }\n    .z-loading.z-loading-mark .z-loading-bg {\n      background: rgba(255, 255, 255, 0.6);\n      width: 100%;\n      height: 100%; }\n  .z-loading.z-loading-theme-primary.z-loading-mark .z-loading-spot {\n    z-index: 2;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n        -ms-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%); }\n  .z-loading.z-loading-theme-primary.z-loading-mark .z-loading-rotate {\n    position: absolute;\n    z-index: 2;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n        -ms-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%); }\n  .z-loading.z-loading-theme-secondary.z-loading-mark .z-loading-bg {\n    background: #9e9e9e;\n    opacity: .6; }\n  .z-loading.z-loading-theme-secondary.z-loading-mark .z-loading-rotate {\n    position: absolute;\n    z-index: 2;\n    top: 50%;\n    left: 50%; }\n  .z-loading.z-loading-theme-secondary .z-loading-rotate {\n    background-color: #fff;\n    border-radius: 3px;\n    padding: 4px; }\n    .z-loading.z-loading-theme-secondary .z-loading-rotate .z-loading-icon i {\n      color: #9e9e9e; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 439 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 (function (window) {
-  var svgSprite = '<svg><symbol id="ali-icon-close" viewBox="0 0 1024 1024"><path d="M557.312 513.248l265.28-263.904c12.544-12.48 12.608-32.704 0.128-45.248-12.512-12.576-32.704-12.608-45.248-0.128l-265.344 263.936-263.04-263.84C236.64 191.584 216.384 191.52 203.84 204 191.328 216.48 191.296 236.736 203.776 249.28l262.976 263.776L201.6 776.8c-12.544 12.48-12.608 32.704-0.128 45.248 6.24 6.272 14.464 9.44 22.688 9.44 8.16 0 16.32-3.104 22.56-9.312l265.216-263.808 265.44 266.24c6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.592-9.344 12.512-12.48 12.544-32.704 0.064-45.248L557.312 513.248z"  ></path></symbol><symbol id="ali-icon-spread" viewBox="0 0 1024 1024"><path d="M890.336 352.245c-12.576-12.416-32.8-12.352-45.248 0.192l-327.84 330.848-332.416-329.44c-12.576-12.448-32.8-12.352-45.28 0.192-12.448 12.576-12.352 32.832 0.192 45.28l353.312 350.112c0.544 0.544 1.248 0.672 1.792 1.184 0.128 0.128 0.16 0.288 0.288 0.416 6.24 6.176 14.4 9.28 22.528 9.28 8.224 0 16.48-3.168 22.72-9.472l350.112-353.312c12.48-12.576 12.384-32.832-0.16-45.28z"  ></path></symbol><symbol id="ali-icon-danger" viewBox="0 0 1024 1024"><path d="M942.656 769.376 602.112 159.584c-22.144-39.712-55.104-62.496-90.304-62.496-35.232 0-68.16 22.784-90.368 62.528L81.312 769.344c-22.016 39.456-24.256 79.456-6.112 110.4C93.344 910.624 129.664 928 174.88 928l674.24 0c45.184 0 81.536-17.376 99.648-48.256C966.944 848.8 964.672 808.832 942.656 769.376zM480 320c0-17.664 14.336-32 32-32s32 14.336 32 32l0 288c0 17.696-14.336 32-32 32s-32-14.304-32-32L480 320zM512 832.128c-26.528 0-48-21.504-48-48s21.472-48 48-48 48 21.504 48 48S538.528 832.128 512 832.128z"  ></path></symbol><symbol id="ali-icon-danger-o" viewBox="0 0 1024 1024"><path d="M849.12 928.704 174.88 928.704c-45.216 0-81.536-17.728-99.68-48.64-18.144-30.912-15.936-71.296 6.08-110.752L421.472 159.648c22.144-39.744 55.072-62.528 90.304-62.528s68.128 22.752 90.336 62.464l340.544 609.792c22.016 39.456 24.288 79.808 6.112 110.72C930.656 911.008 894.304 928.704 849.12 928.704zM511.808 161.12c-11.2 0-24.032 11.104-34.432 29.696L137.184 800.544c-10.656 19.136-13.152 36.32-6.784 47.168 6.368 10.816 22.592 17.024 44.48 17.024l674.24 0c21.92 0 38.112-6.176 44.48-17.024 6.336-10.816 3.872-28-6.816-47.136L546.24 190.816C535.872 172.224 522.976 161.12 511.808 161.12z"  ></path><path d="M512 640c-17.664 0-32-14.304-32-32l0-288c0-17.664 14.336-32 32-32s32 14.336 32 32l0 288C544 625.696 529.664 640 512 640z"  ></path><path d="M512 752.128m-48 0a1.5 1.5 0 1 0 96 0 1.5 1.5 0 1 0-96 0Z"  ></path></symbol><symbol id="ali-icon-back" viewBox="0 0 1024 1024"><path d="M671.968 912c-12.288 0-24.576-4.672-33.952-14.048L286.048 545.984c-18.752-18.72-18.752-49.12 0-67.872l351.968-352c18.752-18.752 49.12-18.752 67.872 0 18.752 18.72 18.752 49.12 0 67.872l-318.016 318.048 318.016 318.016c18.752 18.752 18.752 49.12 0 67.872C696.544 907.328 684.256 912 671.968 912z"  ></path></symbol><symbol id="ali-icon-right" viewBox="0 0 1024 1024"><path d="M761.056 532.128c0.512-0.992 1.344-1.824 1.792-2.848 8.8-18.304 5.92-40.704-9.664-55.424L399.936 139.744c-19.264-18.208-49.632-17.344-67.872 1.888-18.208 19.264-17.376 49.632 1.888 67.872l316.96 299.84-315.712 304.288c-19.072 18.4-19.648 48.768-1.248 67.872 9.408 9.792 21.984 14.688 34.56 14.688 12 0 24-4.48 33.312-13.44l350.048-337.376c0.672-0.672 0.928-1.6 1.6-2.304 0.512-0.48 1.056-0.832 1.568-1.344C757.76 538.88 759.2 535.392 761.056 532.128z"  ></path></symbol><symbol id="ali-icon-fold" viewBox="0 0 1024 1024"><path d="M887.328 617.152 533.952 267.008c-0.512-0.512-1.216-0.672-1.76-1.152-0.128-0.128-0.16-0.32-0.288-0.448-12.576-12.416-32.832-12.352-45.28 0.192L136.512 618.944c-12.448 12.576-12.352 32.8 0.192 45.248 6.24 6.176 14.4 9.28 22.528 9.28 8.224 0 16.48-3.168 22.72-9.472l327.84-330.816 332.48 329.408c6.24 6.176 14.368 9.28 22.528 9.28 8.256 0 16.48-3.168 22.72-9.472C899.968 649.856 899.872 629.6 887.328 617.152z"  ></path></symbol><symbol id="ali-icon-search" viewBox="0 0 1024 1024"><path d="M83.064 62.638v0z"  ></path><path d="M103.49 62.638v0z"  ></path><path d="M123.914 62.638v0z"  ></path><path d="M144.341 62.638v0z"  ></path><path d="M164.766 62.638v0z"  ></path><path d="M185.192 62.638v0z"  ></path><path d="M205.617 62.638v0z"  ></path><path d="M226.043 62.638v0z"  ></path><path d="M246.468 62.638v0z"  ></path><path d="M266.893 62.638v0z"  ></path><path d="M287.319 62.638v0z"  ></path><path d="M307.745 62.638v0z"  ></path><path d="M328.17 62.638v0z"  ></path><path d="M348.596 62.638v0z"  ></path><path d="M369.021 62.638v0z"  ></path><path d="M389.447 62.638v0z"  ></path><path d="M409.872 62.638v0z"  ></path><path d="M430.298 62.638v0z"  ></path><path d="M450.723 62.638v0z"  ></path><path d="M471.149 62.638v0z"  ></path><path d="M491.575 62.638v0z"  ></path><path d="M512 62.638v0z"  ></path><path d="M532.425 62.638v0z"  ></path><path d="M552.851 62.638v0z"  ></path><path d="M573.277 62.638v0z"  ></path><path d="M593.702 62.638v0z"  ></path><path d="M614.128 62.638v0z"  ></path><path d="M634.553 62.638v0z"  ></path><path d="M654.979 62.638v0z"  ></path><path d="M675.404 62.638v0z"  ></path><path d="M695.83 62.638v0z"  ></path><path d="M716.255 62.638v0z"  ></path><path d="M736.681 62.638v0z"  ></path><path d="M757.107 62.638v0z"  ></path><path d="M777.532 62.638v0z"  ></path><path d="M797.957 62.638v0z"  ></path><path d="M818.383 62.638v0z"  ></path><path d="M838.808 62.638v0z"  ></path><path d="M859.234 62.638v0z"  ></path><path d="M879.659 62.638v0z"  ></path><path d="M900.086 62.638v0z"  ></path><path d="M920.51 62.638v0z"  ></path><path d="M940.936 62.638v0z"  ></path><path d="M62.638 83.064v0z"  ></path><path d="M62.638 103.49v0z"  ></path><path d="M62.638 123.914v0z"  ></path><path d="M62.638 144.341v0z"  ></path><path d="M62.638 164.766v0z"  ></path><path d="M62.638 185.192v0z"  ></path><path d="M62.638 205.617v0z"  ></path><path d="M62.638 226.043v0z"  ></path><path d="M62.638 246.468v0z"  ></path><path d="M62.638 266.893v0z"  ></path><path d="M62.638 287.319v0z"  ></path><path d="M62.638 307.745v0z"  ></path><path d="M62.638 328.17v0z"  ></path><path d="M62.638 348.596v0z"  ></path><path d="M62.638 369.021v0z"  ></path><path d="M62.638 389.447v0z"  ></path><path d="M62.638 409.872v0z"  ></path><path d="M62.638 430.298v0z"  ></path><path d="M62.638 450.723v0z"  ></path><path d="M62.638 471.149v0z"  ></path><path d="M62.638 491.575v0z"  ></path><path d="M62.638 512v0z"  ></path><path d="M62.638 532.425v0z"  ></path><path d="M62.638 552.851v0z"  ></path><path d="M62.638 573.277v0z"  ></path><path d="M62.638 593.702v0z"  ></path><path d="M62.638 614.128v0z"  ></path><path d="M62.638 634.553v0z"  ></path><path d="M62.638 654.979v0z"  ></path><path d="M62.638 675.404v0z"  ></path><path d="M62.638 695.83v0z"  ></path><path d="M62.638 716.255v0z"  ></path><path d="M62.638 736.681v0z"  ></path><path d="M62.638 757.107v0z"  ></path><path d="M62.638 777.532v0z"  ></path><path d="M62.638 797.957v0z"  ></path><path d="M62.638 818.383v0z"  ></path><path d="M62.638 838.808v0z"  ></path><path d="M62.638 859.234v0z"  ></path><path d="M62.638 879.659v0z"  ></path><path d="M62.638 900.086v0z"  ></path><path d="M62.638 920.51v0z"  ></path><path d="M62.638 940.936v0z"  ></path><path d="M961.362 879.659c0 81.702-81.702 81.702-81.702 81.702l-233.75-233.709c-60.582 44.037-134.932 70.305-215.612 70.305-203.070 0-367.659-164.589-367.659-367.659s164.589-367.659 367.659-367.659 367.659 164.589 367.659 367.659c0 80.681-26.308 155.030-70.346 215.653l233.75 233.709zM430.298 144.341c-157.929 0-285.957 128.028-285.957 285.957s128.028 285.957 285.957 285.957 285.957-128.028 285.957-285.957-128.028-285.957-285.957-285.957z"  ></path></symbol><symbol id="ali-icon-sort" viewBox="0 0 1024 1024"><path d="M384 320l512 0c17.696 0 32-14.336 32-32s-14.304-32-32-32L384 256c-17.664 0-32 14.336-32 32S366.336 320 384 320z"  ></path><path d="M896 480 384 480c-17.664 0-32 14.336-32 32s14.336 32 32 32l512 0c17.696 0 32-14.336 32-32S913.696 480 896 480z"  ></path><path d="M896 704 384 704c-17.664 0-32 14.304-32 32s14.336 32 32 32l512 0c17.696 0 32-14.304 32-32S913.696 704 896 704z"  ></path><path d="M192 288m-64 0a2 2 0 1 0 128 0 2 2 0 1 0-128 0Z"  ></path><path d="M192 512m-64 0a2 2 0 1 0 128 0 2 2 0 1 0-128 0Z"  ></path><path d="M192 736m-64 0a2 2 0 1 0 128 0 2 2 0 1 0-128 0Z"  ></path></symbol><symbol id="ali-icon-spinner" viewBox="0 0 1024 1024"><path d="M392 173.333c0 66.274 53.726 120 120 120s120-53.726 120-120c0-66.274-53.726-120-120-120-66.274 0-120 53.726-120 120zM646.559 278.774c0 66.274 53.726 120 120 120s120-53.726 120-120c0-66.274-53.726-120-120-120-66.274 0-120 53.726-120 120zM812 533.333c0 33.137 26.863 60 60 60s60-26.863 60-60c0-33.137-26.863-60-60-60-33.137 0-60 26.863-60 60zM706.559 787.892c0 33.137 26.863 60 60 60s60-26.863 60-60c0-33.137-26.863-60-60-60-33.137 0-60 26.863-60 60zM452.002 893.333c0 33.137 26.863 60 60 60s60-26.863 60-60c0-33.137-26.863-60-60-60-33.137 0-60 26.863-60 60zM197.442 787.892c0 33.137 26.863 60 60 60s60-26.863 60-60c0-33.137-26.863-60-60-60-33.137 0-60 26.863-60 60zM167.442 278.774c0 49.705 40.295 90 90 90s90-40.295 90-90c0-49.705-40.295-90-90-90-49.705 0-90 40.295-90 90zM84.5 533.333c0 37.28 30.22 67.5 67.5 67.5s67.5-30.22 67.5-67.5c0-37.28-30.22-67.5-67.5-67.5-37.28 0-67.5 30.22-67.5 67.5z"  ></path></symbol><symbol id="ali-icon-forward-end" viewBox="0 0 1024 1024"><path d="M890.88 135.229c-39.242 0-71.081 31.613-71.081 70.626v612.286c0 39.013 31.84 70.626 71.081 70.626 39.198 0 70.99-31.613 70.99-70.626v-612.285c0.001-39.013-31.792-70.627-70.99-70.627zM62.128 182.328v659.338c0 48.608 47.351 47.1 47.351 47.1h47.348l568.317-329.693v-94.151c0 0-569.779-329.692-615.666-329.692-45.867 0-47.351 47.1-47.351 47.1z"  ></path></symbol><symbol id="ali-icon-backward" viewBox="0 0 1024 1024"><path d="M946.879 136.977c-13.504-7.124-29.993-6.256-42.668 2.362l-266.695 181.442v-147.184c0-15.367-8.492-29.412-22.038-36.621-13.504-7.124-29.993-6.256-42.668 2.362l-497.103 338.196c-11.351 7.705-18.144 20.547-18.144 34.258s6.794 26.554 18.144 34.258l497.103 338.362c7.002 4.764 15.121 7.207 23.281 7.207 6.627 0 13.297-1.573 19.387-4.805 13.547-7.167 22.038-21.294 22.038-36.621v-147.308l266.695 181.524c7.002 4.764 15.121 7.207 23.281 7.207 6.627 0 13.297-1.573 19.387-4.805 13.547-7.167 22.038-21.294 22.038-36.621v-676.598c0-15.367-8.492-29.412-22.038-36.621z"  ></path></symbol><symbol id="ali-icon-forward" viewBox="0 0 1024 1024"><path d="M948.293 477.742l-497.103-338.402c-12.635-8.617-29.081-9.487-42.668-2.362-13.547 7.207-22.038 21.25-22.038 36.621v147.308l-266.695-181.567c-12.676-8.617-29.081-9.487-42.668-2.362-13.547 7.207-22.038 21.25-22.038 36.621v676.598c0 15.327 8.492 29.454 22.038 36.621 6.091 3.23 12.759 4.805 19.387 4.805 8.16 0 16.322-2.444 23.281-7.167l266.695-181.442v147.184c0 15.327 8.492 29.454 22.038 36.621 6.091 3.23 12.759 4.805 19.387 4.805 8.16 0 16.322-2.444 23.281-7.167l497.103-338.238c11.351-7.664 18.144-20.505 18.144-34.218s-6.794-26.554-18.144-34.258z"  ></path></symbol><symbol id="ali-icon-arrow" viewBox="0 0 1024 1024"><path d="M277.888 61.632h481.632l-9.312 467.328 208.784 1.232-439.968 437.504-444.352-446.816 207.568-2.48z"  ></path></symbol><symbol id="ali-icon-circle-check-o" viewBox="0 0 1024 1024"><path d="M512 65.983389c-245.919634 0-446.016611 200.095256-446.016611 446.016611 0 245.952318 200.064292 446.016611 446.016611 446.016611S958.016611 757.952318 958.016611 512C958.016611 266.080366 757.952318 65.983389 512 65.983389zM512 894.016611c-210.655557 0-382.016611-171.392017-382.016611-382.016611 0-210.655557 171.359333-382.016611 382.016611-382.016611 210.624593 0 382.016611 171.359333 382.016611 382.016611C894.016611 722.624593 722.624593 894.016611 512 894.016611z"  ></path><path d="M512 352.00086c-88.223841 0-160.00086 71.775299-160.00086 159.99914s71.775299 160.00086 160.00086 160.00086 160.00086-71.775299 160.00086-160.00086S600.223841 352.00086 512 352.00086z"  ></path></symbol><symbol id="ali-icon-square-o" viewBox="0 0 1024 1024"><path d="M832 928.00086l-640 0c-52.9288 0-96.00086-43.07206-96.00086-95.99914l0-640c0-52.9288 43.07206-96.00086 96.00086-96.00086l640 0c52.92708 0 95.99914 43.07206 95.99914 96.00086l0 640C928.00086 884.9288 884.9288 928.00086 832 928.00086zM192 160.00086c-17.632039 0-32.00086 14.368821-32.00086 32.00086l0 640c0 17.664722 14.368821 31.99914 32.00086 31.99914l640 0c17.664722 0 31.99914-14.336138 31.99914-31.99914l0-640c0-17.632039-14.336138-32.00086-31.99914-32.00086L192 160.00086z"  ></path></symbol><symbol id="ali-icon-square-check-o" viewBox="0 0 1024 1024"><path d="M726.976697 393.184142c-12.54369-12.447359-32.831716-12.320065-45.248112 0.25631L448.447252 629.248757l-103.26354-106.112189c-12.352748-12.703669-32.60809-12.927295-45.248112-0.639914-12.672705 12.320065-12.959978 32.60809-0.639914 45.248112l126.016611 129.503454c0.063647 0.096331 0.192662 0.096331 0.25631 0.192662 0.063647 0.063647 0.096331 0.192662 0.159978 0.25631 2.016073 1.983389 4.512082 3.19957 6.880796 4.544765 1.247144 0.672598 2.239699 1.792447 3.519527 2.303346 3.872168 1.599785 8.000645 2.399677 12.096439 2.399677 4.06483 0 8.12794-0.799892 11.967424-2.33603 1.247144-0.512619 2.208735-1.536138 3.392232-2.176052 2.399677-1.343475 4.895686-2.528692 6.944443-4.544765 0.063647-0.063647 0.096331-0.192662 0.192662-0.25631 0.063647-0.096331 0.159978-0.127295 0.25631-0.192662l256.223626-259.008628C739.647682 425.888563 739.520387 405.631501 726.976697 393.184142z"  ></path><path d="M832 928.00086l-640 0c-52.9288 0-96.00086-43.07206-96.00086-95.99914l0-640c0-52.9288 43.07206-96.00086 96.00086-96.00086l640 0c52.92708 0 95.99914 43.07206 95.99914 96.00086l0 640C928.00086 884.9288 884.9288 928.00086 832 928.00086zM192 160.00086c-17.632039 0-32.00086 14.368821-32.00086 32.00086l0 640c0 17.664722 14.368821 31.99914 32.00086 31.99914l640 0c17.664722 0 31.99914-14.336138 31.99914-31.99914l0-640c0-17.632039-14.336138-32.00086-31.99914-32.00086L192 160.00086z"  ></path></symbol><symbol id="ali-icon-warning" viewBox="0 0 1024 1024"><path d="M512 65.983389c-245.952318 0-446.016611 200.064292-446.016611 446.016611S266.047682 958.016611 512 958.016611 958.016611 757.952318 958.016611 512 757.952318 65.983389 512 65.983389zM544.00086 736.00086c0 17.695686-14.303454 32.00086-32.00086 32.00086s-32.00086-14.303454-32.00086-32.00086L479.99914 448c0-17.695686 14.303454-32.00086 32.00086-32.00086 17.695686 0 32.00086 14.303454 32.00086 32.00086L544.00086 736.00086zM512 352.00086c-26.496224 0-48.00043-21.53689-48.00043-48.00043 0-26.527187 21.504206-48.00043 48.00043-48.00043s48.00043 21.471523 48.00043 48.00043C560.00043 330.46397 538.496224 352.00086 512 352.00086z"  ></path></symbol><symbol id="ali-icon-warning-o" viewBox="0 0 1024 1024"><path d="M512 958.017c-245.92 0-446.017-200.065-446.017-446.017 0-245.92 200.095-446.017 446.017-446.017 245.952 0 446.017 200.065 446.017 446.017s-200.065 446.017-446.017 446.017zM512 129.983c-210.656 0-382.017 171.359-382.017 382.017 0 210.625 171.359 382.017 382.017 382.017 210.625 0 382.017-171.359 382.017-382.017s-171.393-382.017-382.017-382.017z"  ></path><path d="M463.999 303.999c0 26.51 21.49 48.001 48.001 48.001s48.001-21.49 48.001-48.001-21.49-48.001-48.001-48.001-48.001 21.49-48.001 48.001z"  ></path><path d="M512 768c-17.665 0-32.001-14.303-32.001-32.001v-287.999c0-17.665 14.336-32.001 32.001-32.001s32.001 14.336 32.001 32.001v287.999c0 17.697-14.336 32.001-32.001 32.001z"  ></path></symbol><symbol id="ali-icon-question" viewBox="0 0 1024 1024"><path d="M512 64c-247.039484 0-448 200.960516-448 448S264.960516 960 512 960 960 759.039484 960 512 759.039484 64 512 64zM512 832.352641c-26.496224 0-48.00043-21.504206-48.00043-48.00043 0-26.496224 21.504206-48.00043 48.00043-48.00043s48.00043 21.504206 48.00043 48.00043S538.496224 832.352641 512 832.352641zM600.576482 505.184572c-27.839699 27.808735-56.575622 56.544658-56.575622 82.368284l0 54.112297c0 17.664722-14.336138 32.00086-32.00086 32.00086s-32.00086-14.336138-32.00086-32.00086l0-54.112297c0-52.352533 39.999785-92.352318 75.32751-127.647359 25.887273-25.887273 52.67249-52.639806 52.67249-73.984034 0-53.343368-43.07206-96.735385-95.99914-96.735385-53.823303 0-95.99914 41.535923-95.99914 94.559333 0 17.664722-14.336138 31.99914-32.00086 31.99914s-32.00086-14.336138-32.00086-31.99914c0-87.423948 71.775299-158.559333 160.00086-158.559333s160.00086 72.095256 160.00086 160.735385C672.00086 433.791157 635.680581 470.080473 600.576482 505.184572z"  ></path></symbol><symbol id="ali-icon-question-o" viewBox="0 0 1024 1024"><path d="M463.99957 784.352211c0 26.509985 21.490445 48.00043 48.00043 48.00043s48.00043-21.490445 48.00043-48.00043c0-26.509985-21.490445-48.00043-48.00043-48.00043S463.99957 757.842226 463.99957 784.352211z"  ></path><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"  ></path><path d="M512 673.695256c-17.664722 0-32.00086-14.336138-32.00086-31.99914l0-54.112297c0-52.352533 39.999785-92.352318 75.32751-127.647359 25.887273-25.919957 52.67249-52.67249 52.67249-74.016718 0-53.343368-43.07206-96.735385-95.99914-96.735385-53.823303 0-95.99914 41.535923-95.99914 94.559333 0 17.664722-14.336138 31.99914-32.00086 31.99914s-32.00086-14.336138-32.00086-31.99914c0-87.423948 71.775299-158.559333 160.00086-158.559333s160.00086 72.095256 160.00086 160.735385c0 47.904099-36.32028 84.191695-71.424378 119.295794-27.839699 27.776052-56.575622 56.511974-56.575622 82.3356l0 54.112297C544.00086 659.328155 529.664722 673.695256 512 673.695256z"  ></path></symbol><symbol id="ali-icon-circle-o" viewBox="0 0 1024 1024"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128c-211.744443 0-384 172.255557-384 384s172.255557 384 384 384 384-172.255557 384-384S723.744443 128 512 128z"  ></path></symbol><symbol id="ali-icon-success" viewBox="0 0 1024 1024"><path d="M512 65.983389c-245.919634 0-446.016611 200.095256-446.016611 446.016611 0 245.952318 200.064292 446.016611 446.016611 446.016611S958.016611 757.952318 958.016611 512C958.016611 266.080366 757.952318 65.983389 512 65.983389zM727.231286 438.432254 471.00766 697.439161c-0.063647 0.063647-0.192662 0.096331-0.25631 0.192662-0.096331 0.063647-0.096331 0.192662-0.192662 0.25631-2.048757 1.983389-4.575729 3.19957-6.944443 4.544765-1.183497 0.672598-2.143368 1.696116-3.392232 2.176052-3.839484 1.536138-7.904314 2.33603-11.967424 2.33603-4.095794 0-8.224271-0.799892-12.096439-2.399677-1.279828-0.543583-2.303346-1.632469-3.519527-2.303346-2.368714-1.343475-4.832039-2.528692-6.880796-4.544765-0.063647-0.063647-0.096331-0.192662-0.159978-0.25631-0.063647-0.096331-0.192662-0.096331-0.25631-0.192662l-126.016611-129.503454c-12.320065-12.672705-12.032791-32.928047 0.639914-45.248112 12.672705-12.287381 32.895364-12.063755 45.248112 0.639914l103.26354 106.112189 233.279613-235.839269c12.416396-12.576374 32.704421-12.703669 45.248112-0.25631C739.520387 405.600538 739.647682 425.85588 727.231286 438.432254z"  ></path></symbol><symbol id="ali-icon-success-o" viewBox="0 0 1024 1024"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"  ></path><path d="M726.976697 393.184142c-12.54369-12.447359-32.831716-12.320065-45.248112 0.25631l-233.279613 235.839269-103.26354-106.112189c-12.352748-12.703669-32.60809-12.927295-45.248112-0.639914-12.672705 12.320065-12.959978 32.60809-0.639914 45.248112l126.016611 129.503454c0.063647 0.096331 0.192662 0.096331 0.25631 0.192662 0.063647 0.063647 0.096331 0.192662 0.159978 0.25631 2.016073 1.983389 4.512082 3.19957 6.880796 4.544765 1.247144 0.672598 2.239699 1.792447 3.519527 2.303346 3.872168 1.599785 8.000645 2.399677 12.096439 2.399677 4.06483 0 8.12794-0.799892 11.967424-2.33603 1.247144-0.512619 2.208735-1.536138 3.392232-2.176052 2.399677-1.343475 4.895686-2.528692 6.944443-4.544765 0.063647-0.063647 0.096331-0.192662 0.192662-0.25631 0.063647-0.096331 0.159978-0.127295 0.25631-0.192662l256.223626-259.008628C739.647682 425.85588 739.520387 405.600538 726.976697 393.184142z"  ></path></symbol><symbol id="ali-icon-triangle-up" viewBox="0 0 1024 1024"><path d="M325.456471 862.280661"  ></path><path d="M882.057788 862.280661"  ></path><path d="M236.028491 877.160382"  ></path><path d="M960.132455 877.160382"  ></path><path d="M63.683483 788.736998"  ></path><path d="M958.469023 788.736998"  ></path><path d="M64.77753 858.792098"  ></path><path d="M861.417121 738.727375c41.604731 0 65.233383-54.963795 34.928639-85.258218L547.071415 304.191372c-20.029996-20.031716-49.822121-20.031716-69.853837 0L127.955275 653.469157c-31.085714 31.073673-5.136514 85.258218 35.441258 85.258218L861.417121 738.727375 861.417121 738.727375z"  ></path><path d="M959.523505 858.792098"  ></path></symbol><symbol id="ali-icon-triangle-down" viewBox="0 0 1024 1024"><path d="M325.456471 862.280661"  ></path><path d="M882.057788 862.280661"  ></path><path d="M236.028491 877.160382"  ></path><path d="M960.132455 877.160382"  ></path><path d="M63.683483 788.736998"  ></path><path d="M958.469023 788.736998"  ></path><path d="M64.77753 858.792098"  ></path><path d="M163.396533 289.168875c-40.577772 0-66.525252 54.184545-35.441258 85.258218L477.217578 723.704878c20.031716 20.031716 49.823841 20.031716 69.853837 0l349.274345-349.277785c30.304744-30.294423 6.677812-85.258218-34.928639-85.258218L163.396533 289.168875 163.396533 289.168875z"  ></path><path d="M959.523505 858.792098"  ></path></symbol><symbol id="ali-icon-arrow-moving" viewBox="0 0 1024 1024"><path d="M512 965.334l373.333-533.333h-160v-106.667h-426.667v106.667h-160l373.333 533.333zM725.334 165.333h-426.667v106.667h426.667v-106.667zM725.334 58.666h-426.667v53.334h426.667v-53.334z"  ></path></symbol><symbol id="ali-icon-github" viewBox="0 0 1024 1024"><path d="M512 62c-248.484375 0-450 206.71875-450 461.446875 0 203.90625 128.98125 376.678125 307.771875 437.7375 2.8125 0.590625 5.23125 0.815625 7.621875 0.815625 16.678125 0 23.090625-12.2625 23.090625-22.89375 0-11.053125-0.39375-39.965625-0.590625-78.553125-16.875 3.825-31.95 5.428125-45.39375 5.428125-86.596875 0-106.25625-67.303125-106.25625-67.303125-20.503125-53.240625-50.034375-67.5-50.034375-67.5-39.178125-27.534375-0.196875-28.321875 2.8125-28.321875 0.196875 0 0.196875 0 0.196875 0 45.196875 4.021875 68.90625 47.8125 68.90625 47.8125 22.5 39.375 52.621875 50.428125 79.565625 50.428125 21.09375 0 40.190625-6.834375 51.440625-12.065625 4.021875-29.728125 15.665625-50.034375 28.51875-61.678125-99.84375-11.64375-204.91875-51.215625-204.91875-228.009375 0-50.428125 17.465625-91.603125 46.209375-123.75-4.6125-11.64375-20.08125-58.66875 4.415625-122.146875 0 0 3.20625-1.0125 10.040625-1.0125 16.284375 0 53.04375 6.215625 113.709375 48.403125 35.971875-10.2375 74.334375-15.271875 112.696875-15.46875 38.165625 0.196875 76.753125 5.23125 112.696875 15.46875 60.665625-42.1875 97.425-48.403125 113.709375-48.403125 6.834375 0 10.040625 1.0125 10.040625 1.0125 24.496875 63.478125 9.028125 110.475 4.415625 122.146875 28.715625 32.34375 46.209375 73.51875 46.209375 123.75 0 177.1875-105.271875 216.16875-205.509375 227.615625 16.059375 14.259375 30.54375 42.384375 30.54375 85.3875 0 61.678125-0.590625 111.4875-0.590625 126.5625 0 10.85625 6.215625 23.090625 22.89375 23.090625 2.41875 0 5.23125-0.196875 8.04375-0.815625 178.9875-61.059375 307.771875-234.028125 307.771875-437.7375 0-254.728125-201.4875-461.446875-450-461.446875z"  ></path></symbol><symbol id="ali-icon-download" viewBox="0 0 1024 1024"><path d="M494.933333 782.933333c2.133333 2.133333 4.266667 4.266667 8.533334 6.4h8.533333c6.4 0 10.666667-2.133333 14.933333-6.4l2.133334-2.133333 275.2-275.2c8.533333-8.533333 8.533333-21.333333 0-29.866667-8.533333-8.533333-21.333333-8.533333-29.866667 0L533.333333 716.8V128c0-12.8-8.533333-21.333333-21.333333-21.333333s-21.333333 8.533333-21.333333 21.333333v588.8L249.6 475.733333c-8.533333-8.533333-21.333333-8.533333-29.866667 0-8.533333 8.533333-8.533333 21.333333 0 29.866667l275.2 277.333333zM853.333333 874.666667H172.8c-12.8 0-21.333333 8.533333-21.333333 21.333333s8.533333 21.333333 21.333333 21.333333H853.333333c12.8 0 21.333333-8.533333 21.333334-21.333333s-10.666667-21.333333-21.333334-21.333333z"  ></path></symbol><symbol id="ali-icon-backward-start" viewBox="0 0 1024 1024"><path d="M133.12 888.771c39.242 0 71.081-31.613 71.081-70.626v-612.287c0-39.012-31.84-70.626-71.081-70.626-39.198 0-70.99 31.613-70.99 70.627v612.285c-0.001 39.013 31.792 70.627 70.99 70.627zM961.872 841.672v-659.337c0-48.608-47.351-47.1-47.351-47.1h-47.348l-568.317 329.693v94.151c0 0 569.779 329.692 615.666 329.692 45.867 0 47.351-47.1 47.351-47.1z"  ></path></symbol><symbol id="ali-icon-arrow-right" viewBox="0 0 1024 1024"><path d="M522.002 180.667c-13.347 13.347-13.347 34.917 0 48.266l248.934 248.934h-600.27c-18.843 0-34.133 15.292-34.134 34.134s15.292 34.133 34.134 34.134h600.27l-248.934 248.934c-13.347 13.347-13.347 34.917 0 48.266s34.917 13.347 48.266 0l307.166-307.201c3.174-3.139 5.666-6.928 7.407-11.126 1.741-4.13 2.627-8.567 2.627-13.006 0-4.436-0.889-8.876-2.628-13.039-1.742-4.198-4.233-7.952-7.407-11.126l-307.166-307.201c-13.347-13.312-34.918-13.312-48.265 0.033z"  ></path></symbol><symbol id="ali-icon-arrow-down" viewBox="0 0 1024 1024"><path d="M843.333 522.002c-13.347-13.347-34.917-13.347-48.265 0l-248.934 248.934v-600.27c0-18.843-15.292-34.134-34.134-34.134s-34.134 15.292-34.134 34.134v600.27l-248.934-248.934c-13.347-13.347-34.917-13.347-48.265 0s-13.347 34.917 0 48.265l307.201 307.166c3.139 3.174 6.928 5.666 11.126 7.407 4.13 1.741 8.567 2.627 13.006 2.627 4.436 0 8.876-0.889 13.039-2.627 4.198-1.741 7.952-4.233 11.126-7.407l307.201-307.166c13.312-13.347 13.312-34.919-0.033-48.265z"  ></path></symbol><symbol id="ali-icon-arrow-left" viewBox="0 0 1024 1024"><path d="M501.998 843.333c13.347-13.347 13.347-34.917 0-48.266l-248.934-248.934h600.27c18.843 0 34.133-15.292 34.134-34.134s-15.292-34.133-34.134-34.134h-600.27l248.934-248.934c13.347-13.347 13.347-34.917 0-48.266s-34.917-13.347-48.266 0l-307.166 307.201c-3.174 3.139-5.666 6.928-7.407 11.126-1.741 4.13-2.627 8.567-2.627 13.006 0 4.436 0.889 8.876 2.628 13.039 1.742 4.198 4.233 7.952 7.407 11.126l307.166 307.201c13.347 13.312 34.918 13.312 48.265-0.033z"  ></path></symbol><symbol id="ali-icon-arrow-up" viewBox="0 0 1024 1024"><path d="M180.667 501.998c13.347 13.347 34.917 13.347 48.266 0l248.934-248.934v600.27c0 18.843 15.292 34.133 34.134 34.134s34.133-15.292 34.134-34.134v-600.27l248.934 248.934c13.347 13.347 34.917 13.347 48.266 0s13.347-34.917 0-48.266l-307.201-307.166c-3.139-3.174-6.928-5.666-11.126-7.407-4.13-1.741-8.567-2.627-13.006-2.627-4.436 0-8.876 0.889-13.039 2.628-4.198 1.742-7.952 4.233-11.126 7.407l-307.201 307.166c-13.312 13.347-13.312 34.918 0.033 48.265z"  ></path></symbol></svg>';var script = function () {
+  var svgSprite = '<svg><symbol id="ali-icon-close" viewBox="0 0 1024 1024"><path d="M557.312 513.248l265.28-263.904c12.544-12.48 12.608-32.704 0.128-45.248-12.512-12.576-32.704-12.608-45.248-0.128l-265.344 263.936-263.04-263.84C236.64 191.584 216.384 191.52 203.84 204 191.328 216.48 191.296 236.736 203.776 249.28l262.976 263.776L201.6 776.8c-12.544 12.48-12.608 32.704-0.128 45.248 6.24 6.272 14.464 9.44 22.688 9.44 8.16 0 16.32-3.104 22.56-9.312l265.216-263.808 265.44 266.24c6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.592-9.344 12.512-12.48 12.544-32.704 0.064-45.248L557.312 513.248z"  ></path></symbol><symbol id="ali-icon-danger" viewBox="0 0 1024 1024"><path d="M942.656 769.376 602.112 159.584c-22.144-39.712-55.104-62.496-90.304-62.496-35.232 0-68.16 22.784-90.368 62.528L81.312 769.344c-22.016 39.456-24.256 79.456-6.112 110.4C93.344 910.624 129.664 928 174.88 928l674.24 0c45.184 0 81.536-17.376 99.648-48.256C966.944 848.8 964.672 808.832 942.656 769.376zM480 320c0-17.664 14.336-32 32-32s32 14.336 32 32l0 288c0 17.696-14.336 32-32 32s-32-14.304-32-32L480 320zM512 832.128c-26.528 0-48-21.504-48-48s21.472-48 48-48 48 21.504 48 48S538.528 832.128 512 832.128z"  ></path></symbol><symbol id="ali-icon-danger-o" viewBox="0 0 1024 1024"><path d="M849.12 928.704 174.88 928.704c-45.216 0-81.536-17.728-99.68-48.64-18.144-30.912-15.936-71.296 6.08-110.752L421.472 159.648c22.144-39.744 55.072-62.528 90.304-62.528s68.128 22.752 90.336 62.464l340.544 609.792c22.016 39.456 24.288 79.808 6.112 110.72C930.656 911.008 894.304 928.704 849.12 928.704zM511.808 161.12c-11.2 0-24.032 11.104-34.432 29.696L137.184 800.544c-10.656 19.136-13.152 36.32-6.784 47.168 6.368 10.816 22.592 17.024 44.48 17.024l674.24 0c21.92 0 38.112-6.176 44.48-17.024 6.336-10.816 3.872-28-6.816-47.136L546.24 190.816C535.872 172.224 522.976 161.12 511.808 161.12z"  ></path><path d="M512 640c-17.664 0-32-14.304-32-32l0-288c0-17.664 14.336-32 32-32s32 14.336 32 32l0 288C544 625.696 529.664 640 512 640z"  ></path><path d="M512 752.128m-48 0a1.5 1.5 0 1 0 96 0 1.5 1.5 0 1 0-96 0Z"  ></path></symbol><symbol id="ali-icon-back" viewBox="0 0 1024 1024"><path d="M671.968 912c-12.288 0-24.576-4.672-33.952-14.048L286.048 545.984c-18.752-18.72-18.752-49.12 0-67.872l351.968-352c18.752-18.752 49.12-18.752 67.872 0 18.752 18.72 18.752 49.12 0 67.872l-318.016 318.048 318.016 318.016c18.752 18.752 18.752 49.12 0 67.872C696.544 907.328 684.256 912 671.968 912z"  ></path></symbol><symbol id="ali-icon-right" viewBox="0 0 1024 1024"><path d="M761.056 532.128c0.512-0.992 1.344-1.824 1.792-2.848 8.8-18.304 5.92-40.704-9.664-55.424L399.936 139.744c-19.264-18.208-49.632-17.344-67.872 1.888-18.208 19.264-17.376 49.632 1.888 67.872l316.96 299.84-315.712 304.288c-19.072 18.4-19.648 48.768-1.248 67.872 9.408 9.792 21.984 14.688 34.56 14.688 12 0 24-4.48 33.312-13.44l350.048-337.376c0.672-0.672 0.928-1.6 1.6-2.304 0.512-0.48 1.056-0.832 1.568-1.344C757.76 538.88 759.2 535.392 761.056 532.128z"  ></path></symbol><symbol id="ali-icon-search" viewBox="0 0 1024 1024"><path d="M83.064 62.638v0z"  ></path><path d="M103.49 62.638v0z"  ></path><path d="M123.914 62.638v0z"  ></path><path d="M144.341 62.638v0z"  ></path><path d="M164.766 62.638v0z"  ></path><path d="M185.192 62.638v0z"  ></path><path d="M205.617 62.638v0z"  ></path><path d="M226.043 62.638v0z"  ></path><path d="M246.468 62.638v0z"  ></path><path d="M266.893 62.638v0z"  ></path><path d="M287.319 62.638v0z"  ></path><path d="M307.745 62.638v0z"  ></path><path d="M328.17 62.638v0z"  ></path><path d="M348.596 62.638v0z"  ></path><path d="M369.021 62.638v0z"  ></path><path d="M389.447 62.638v0z"  ></path><path d="M409.872 62.638v0z"  ></path><path d="M430.298 62.638v0z"  ></path><path d="M450.723 62.638v0z"  ></path><path d="M471.149 62.638v0z"  ></path><path d="M491.575 62.638v0z"  ></path><path d="M512 62.638v0z"  ></path><path d="M532.425 62.638v0z"  ></path><path d="M552.851 62.638v0z"  ></path><path d="M573.277 62.638v0z"  ></path><path d="M593.702 62.638v0z"  ></path><path d="M614.128 62.638v0z"  ></path><path d="M634.553 62.638v0z"  ></path><path d="M654.979 62.638v0z"  ></path><path d="M675.404 62.638v0z"  ></path><path d="M695.83 62.638v0z"  ></path><path d="M716.255 62.638v0z"  ></path><path d="M736.681 62.638v0z"  ></path><path d="M757.107 62.638v0z"  ></path><path d="M777.532 62.638v0z"  ></path><path d="M797.957 62.638v0z"  ></path><path d="M818.383 62.638v0z"  ></path><path d="M838.808 62.638v0z"  ></path><path d="M859.234 62.638v0z"  ></path><path d="M879.659 62.638v0z"  ></path><path d="M900.086 62.638v0z"  ></path><path d="M920.51 62.638v0z"  ></path><path d="M940.936 62.638v0z"  ></path><path d="M62.638 83.064v0z"  ></path><path d="M62.638 103.49v0z"  ></path><path d="M62.638 123.914v0z"  ></path><path d="M62.638 144.341v0z"  ></path><path d="M62.638 164.766v0z"  ></path><path d="M62.638 185.192v0z"  ></path><path d="M62.638 205.617v0z"  ></path><path d="M62.638 226.043v0z"  ></path><path d="M62.638 246.468v0z"  ></path><path d="M62.638 266.893v0z"  ></path><path d="M62.638 287.319v0z"  ></path><path d="M62.638 307.745v0z"  ></path><path d="M62.638 328.17v0z"  ></path><path d="M62.638 348.596v0z"  ></path><path d="M62.638 369.021v0z"  ></path><path d="M62.638 389.447v0z"  ></path><path d="M62.638 409.872v0z"  ></path><path d="M62.638 430.298v0z"  ></path><path d="M62.638 450.723v0z"  ></path><path d="M62.638 471.149v0z"  ></path><path d="M62.638 491.575v0z"  ></path><path d="M62.638 512v0z"  ></path><path d="M62.638 532.425v0z"  ></path><path d="M62.638 552.851v0z"  ></path><path d="M62.638 573.277v0z"  ></path><path d="M62.638 593.702v0z"  ></path><path d="M62.638 614.128v0z"  ></path><path d="M62.638 634.553v0z"  ></path><path d="M62.638 654.979v0z"  ></path><path d="M62.638 675.404v0z"  ></path><path d="M62.638 695.83v0z"  ></path><path d="M62.638 716.255v0z"  ></path><path d="M62.638 736.681v0z"  ></path><path d="M62.638 757.107v0z"  ></path><path d="M62.638 777.532v0z"  ></path><path d="M62.638 797.957v0z"  ></path><path d="M62.638 818.383v0z"  ></path><path d="M62.638 838.808v0z"  ></path><path d="M62.638 859.234v0z"  ></path><path d="M62.638 879.659v0z"  ></path><path d="M62.638 900.086v0z"  ></path><path d="M62.638 920.51v0z"  ></path><path d="M62.638 940.936v0z"  ></path><path d="M961.362 879.659c0 81.702-81.702 81.702-81.702 81.702l-233.75-233.709c-60.582 44.037-134.932 70.305-215.612 70.305-203.070 0-367.659-164.589-367.659-367.659s164.589-367.659 367.659-367.659 367.659 164.589 367.659 367.659c0 80.681-26.308 155.030-70.346 215.653l233.75 233.709zM430.298 144.341c-157.929 0-285.957 128.028-285.957 285.957s128.028 285.957 285.957 285.957 285.957-128.028 285.957-285.957-128.028-285.957-285.957-285.957z"  ></path></symbol><symbol id="ali-icon-sort" viewBox="0 0 1024 1024"><path d="M384 320l512 0c17.696 0 32-14.336 32-32s-14.304-32-32-32L384 256c-17.664 0-32 14.336-32 32S366.336 320 384 320z"  ></path><path d="M896 480 384 480c-17.664 0-32 14.336-32 32s14.336 32 32 32l512 0c17.696 0 32-14.336 32-32S913.696 480 896 480z"  ></path><path d="M896 704 384 704c-17.664 0-32 14.304-32 32s14.336 32 32 32l512 0c17.696 0 32-14.304 32-32S913.696 704 896 704z"  ></path><path d="M192 288m-64 0a2 2 0 1 0 128 0 2 2 0 1 0-128 0Z"  ></path><path d="M192 512m-64 0a2 2 0 1 0 128 0 2 2 0 1 0-128 0Z"  ></path><path d="M192 736m-64 0a2 2 0 1 0 128 0 2 2 0 1 0-128 0Z"  ></path></symbol><symbol id="ali-icon-spinner" viewBox="0 0 1024 1024"><path d="M392 173.333c0 66.274 53.726 120 120 120s120-53.726 120-120c0-66.274-53.726-120-120-120-66.274 0-120 53.726-120 120zM646.559 278.774c0 66.274 53.726 120 120 120s120-53.726 120-120c0-66.274-53.726-120-120-120-66.274 0-120 53.726-120 120zM812 533.333c0 33.137 26.863 60 60 60s60-26.863 60-60c0-33.137-26.863-60-60-60-33.137 0-60 26.863-60 60zM706.559 787.892c0 33.137 26.863 60 60 60s60-26.863 60-60c0-33.137-26.863-60-60-60-33.137 0-60 26.863-60 60zM452.002 893.333c0 33.137 26.863 60 60 60s60-26.863 60-60c0-33.137-26.863-60-60-60-33.137 0-60 26.863-60 60zM197.442 787.892c0 33.137 26.863 60 60 60s60-26.863 60-60c0-33.137-26.863-60-60-60-33.137 0-60 26.863-60 60zM167.442 278.774c0 49.705 40.295 90 90 90s90-40.295 90-90c0-49.705-40.295-90-90-90-49.705 0-90 40.295-90 90zM84.5 533.333c0 37.28 30.22 67.5 67.5 67.5s67.5-30.22 67.5-67.5c0-37.28-30.22-67.5-67.5-67.5-37.28 0-67.5 30.22-67.5 67.5z"  ></path></symbol><symbol id="ali-icon-forward-end" viewBox="0 0 1024 1024"><path d="M890.88 135.229c-39.242 0-71.081 31.613-71.081 70.626v612.286c0 39.013 31.84 70.626 71.081 70.626 39.198 0 70.99-31.613 70.99-70.626v-612.285c0.001-39.013-31.792-70.627-70.99-70.627zM62.128 182.328v659.338c0 48.608 47.351 47.1 47.351 47.1h47.348l568.317-329.693v-94.151c0 0-569.779-329.692-615.666-329.692-45.867 0-47.351 47.1-47.351 47.1z"  ></path></symbol><symbol id="ali-icon-circle" viewBox="0 0 1024 1024"><path d="M511.317455 510.805802m-448.208115 0a438 438 0 1 0 896.41623 0 438 438 0 1 0-896.41623 0Z"  ></path></symbol><symbol id="ali-icon-backward" viewBox="0 0 1024 1024"><path d="M946.879 136.977c-13.504-7.124-29.993-6.256-42.668 2.362l-266.695 181.442v-147.184c0-15.367-8.492-29.412-22.038-36.621-13.504-7.124-29.993-6.256-42.668 2.362l-497.103 338.196c-11.351 7.705-18.144 20.547-18.144 34.258s6.794 26.554 18.144 34.258l497.103 338.362c7.002 4.764 15.121 7.207 23.281 7.207 6.627 0 13.297-1.573 19.387-4.805 13.547-7.167 22.038-21.294 22.038-36.621v-147.308l266.695 181.524c7.002 4.764 15.121 7.207 23.281 7.207 6.627 0 13.297-1.573 19.387-4.805 13.547-7.167 22.038-21.294 22.038-36.621v-676.598c0-15.367-8.492-29.412-22.038-36.621z"  ></path></symbol><symbol id="ali-icon-forward" viewBox="0 0 1024 1024"><path d="M948.293 477.742l-497.103-338.402c-12.635-8.617-29.081-9.487-42.668-2.362-13.547 7.207-22.038 21.25-22.038 36.621v147.308l-266.695-181.567c-12.676-8.617-29.081-9.487-42.668-2.362-13.547 7.207-22.038 21.25-22.038 36.621v676.598c0 15.327 8.492 29.454 22.038 36.621 6.091 3.23 12.759 4.805 19.387 4.805 8.16 0 16.322-2.444 23.281-7.167l266.695-181.442v147.184c0 15.327 8.492 29.454 22.038 36.621 6.091 3.23 12.759 4.805 19.387 4.805 8.16 0 16.322-2.444 23.281-7.167l497.103-338.238c11.351-7.664 18.144-20.505 18.144-34.218s-6.794-26.554-18.144-34.258z"  ></path></symbol><symbol id="ali-icon-arrow-up-thick" viewBox="0 0 1024 1024"><path d="M277.888 61.632h481.632l-9.312 467.328 208.784 1.232-439.968 437.504-444.352-446.816 207.568-2.48z"  ></path></symbol><symbol id="ali-icon-circle-check" viewBox="0 0 1024 1024"><path d="M512 65.983389c-245.919634 0-446.016611 200.095256-446.016611 446.016611 0 245.952318 200.064292 446.016611 446.016611 446.016611S958.016611 757.952318 958.016611 512C958.016611 266.080366 757.952318 65.983389 512 65.983389zM512 672.00086c-88.223841 0-160.00086-71.775299-160.00086-160.00086s71.775299-159.99914 160.00086-159.99914 160.00086 71.775299 160.00086 159.99914S600.223841 672.00086 512 672.00086z"  ></path></symbol><symbol id="ali-icon-warning" viewBox="0 0 1024 1024"><path d="M512 65.983389c-245.952318 0-446.016611 200.064292-446.016611 446.016611S266.047682 958.016611 512 958.016611 958.016611 757.952318 958.016611 512 757.952318 65.983389 512 65.983389zM544.00086 736.00086c0 17.695686-14.303454 32.00086-32.00086 32.00086s-32.00086-14.303454-32.00086-32.00086L479.99914 448c0-17.695686 14.303454-32.00086 32.00086-32.00086 17.695686 0 32.00086 14.303454 32.00086 32.00086L544.00086 736.00086zM512 352.00086c-26.496224 0-48.00043-21.53689-48.00043-48.00043 0-26.527187 21.504206-48.00043 48.00043-48.00043s48.00043 21.471523 48.00043 48.00043C560.00043 330.46397 538.496224 352.00086 512 352.00086z"  ></path></symbol><symbol id="ali-icon-warning-o" viewBox="0 0 1024 1024"><path d="M512 958.016611c-245.919634 0-446.016611-200.064292-446.016611-446.016611 0-245.919634 200.095256-446.016611 446.016611-446.016611 245.952318 0 446.016611 200.064292 446.016611 446.016611S757.952318 958.016611 512 958.016611zM512 129.983389c-210.655557 0-382.016611 171.359333-382.016611 382.016611 0 210.624593 171.359333 382.016611 382.016611 382.016611 210.624593 0 382.016611-171.359333 382.016611-382.016611S722.624593 129.983389 512 129.983389z"  ></path><path d="M463.99957 304.00043c0 26.509985 21.490445 48.00043 48.00043 48.00043s48.00043-21.490445 48.00043-48.00043-21.490445-48.00043-48.00043-48.00043S463.99957 277.490445 463.99957 304.00043z"  ></path><path d="M512 768c-17.664722 0-32.00086-14.303454-32.00086-32.00086L479.99914 448c0-17.664722 14.336138-32.00086 32.00086-32.00086s32.00086 14.336138 32.00086 32.00086l0 287.99914C544.00086 753.696546 529.664722 768 512 768z"  ></path></symbol><symbol id="ali-icon-question" viewBox="0 0 1024 1024"><path d="M512 64c-247.039484 0-448 200.960516-448 448S264.960516 960 512 960 960 759.039484 960 512 759.039484 64 512 64zM512 832.352641c-26.496224 0-48.00043-21.504206-48.00043-48.00043 0-26.496224 21.504206-48.00043 48.00043-48.00043s48.00043 21.504206 48.00043 48.00043S538.496224 832.352641 512 832.352641zM600.576482 505.184572c-27.839699 27.808735-56.575622 56.544658-56.575622 82.368284l0 54.112297c0 17.664722-14.336138 32.00086-32.00086 32.00086s-32.00086-14.336138-32.00086-32.00086l0-54.112297c0-52.352533 39.999785-92.352318 75.32751-127.647359 25.887273-25.887273 52.67249-52.639806 52.67249-73.984034 0-53.343368-43.07206-96.735385-95.99914-96.735385-53.823303 0-95.99914 41.535923-95.99914 94.559333 0 17.664722-14.336138 31.99914-32.00086 31.99914s-32.00086-14.336138-32.00086-31.99914c0-87.423948 71.775299-158.559333 160.00086-158.559333s160.00086 72.095256 160.00086 160.735385C672.00086 433.791157 635.680581 470.080473 600.576482 505.184572z"  ></path></symbol><symbol id="ali-icon-question-o" viewBox="0 0 1024 1024"><path d="M463.99957 784.352211c0 26.509985 21.490445 48.00043 48.00043 48.00043s48.00043-21.490445 48.00043-48.00043c0-26.509985-21.490445-48.00043-48.00043-48.00043S463.99957 757.842226 463.99957 784.352211z"  ></path><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"  ></path><path d="M512 673.695256c-17.664722 0-32.00086-14.336138-32.00086-31.99914l0-54.112297c0-52.352533 39.999785-92.352318 75.32751-127.647359 25.887273-25.919957 52.67249-52.67249 52.67249-74.016718 0-53.343368-43.07206-96.735385-95.99914-96.735385-53.823303 0-95.99914 41.535923-95.99914 94.559333 0 17.664722-14.336138 31.99914-32.00086 31.99914s-32.00086-14.336138-32.00086-31.99914c0-87.423948 71.775299-158.559333 160.00086-158.559333s160.00086 72.095256 160.00086 160.735385c0 47.904099-36.32028 84.191695-71.424378 119.295794-27.839699 27.776052-56.575622 56.511974-56.575622 82.3356l0 54.112297C544.00086 659.328155 529.664722 673.695256 512 673.695256z"  ></path></symbol><symbol id="ali-icon-success" viewBox="0 0 1024 1024"><path d="M512 65.983389c-245.919634 0-446.016611 200.095256-446.016611 446.016611 0 245.952318 200.064292 446.016611 446.016611 446.016611S958.016611 757.952318 958.016611 512C958.016611 266.080366 757.952318 65.983389 512 65.983389zM727.231286 438.432254 471.00766 697.439161c-0.063647 0.063647-0.192662 0.096331-0.25631 0.192662-0.096331 0.063647-0.096331 0.192662-0.192662 0.25631-2.048757 1.983389-4.575729 3.19957-6.944443 4.544765-1.183497 0.672598-2.143368 1.696116-3.392232 2.176052-3.839484 1.536138-7.904314 2.33603-11.967424 2.33603-4.095794 0-8.224271-0.799892-12.096439-2.399677-1.279828-0.543583-2.303346-1.632469-3.519527-2.303346-2.368714-1.343475-4.832039-2.528692-6.880796-4.544765-0.063647-0.063647-0.096331-0.192662-0.159978-0.25631-0.063647-0.096331-0.192662-0.096331-0.25631-0.192662l-126.016611-129.503454c-12.320065-12.672705-12.032791-32.928047 0.639914-45.248112 12.672705-12.287381 32.895364-12.063755 45.248112 0.639914l103.26354 106.112189 233.279613-235.839269c12.416396-12.576374 32.704421-12.703669 45.248112-0.25631C739.520387 405.600538 739.647682 425.85588 727.231286 438.432254z"  ></path></symbol><symbol id="ali-icon-success-o" viewBox="0 0 1024 1024"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"  ></path><path d="M726.976697 393.184142c-12.54369-12.447359-32.831716-12.320065-45.248112 0.25631l-233.279613 235.839269-103.26354-106.112189c-12.352748-12.703669-32.60809-12.927295-45.248112-0.639914-12.672705 12.320065-12.959978 32.60809-0.639914 45.248112l126.016611 129.503454c0.063647 0.096331 0.192662 0.096331 0.25631 0.192662 0.063647 0.063647 0.096331 0.192662 0.159978 0.25631 2.016073 1.983389 4.512082 3.19957 6.880796 4.544765 1.247144 0.672598 2.239699 1.792447 3.519527 2.303346 3.872168 1.599785 8.000645 2.399677 12.096439 2.399677 4.06483 0 8.12794-0.799892 11.967424-2.33603 1.247144-0.512619 2.208735-1.536138 3.392232-2.176052 2.399677-1.343475 4.895686-2.528692 6.944443-4.544765 0.063647-0.063647 0.096331-0.192662 0.192662-0.25631 0.063647-0.096331 0.159978-0.127295 0.25631-0.192662l256.223626-259.008628C739.647682 425.85588 739.520387 405.600538 726.976697 393.184142z"  ></path></symbol><symbol id="ali-icon-triangle-up" viewBox="0 0 1024 1024"><path d="M325.456471 862.280661"  ></path><path d="M882.057788 862.280661"  ></path><path d="M236.028491 877.160382"  ></path><path d="M960.132455 877.160382"  ></path><path d="M63.683483 788.736998"  ></path><path d="M958.469023 788.736998"  ></path><path d="M64.77753 858.792098"  ></path><path d="M861.417121 738.727375c41.604731 0 65.233383-54.963795 34.928639-85.258218L547.071415 304.191372c-20.029996-20.031716-49.822121-20.031716-69.853837 0L127.955275 653.469157c-31.085714 31.073673-5.136514 85.258218 35.441258 85.258218L861.417121 738.727375 861.417121 738.727375z"  ></path><path d="M959.523505 858.792098"  ></path></symbol><symbol id="ali-icon-triangle-down" viewBox="0 0 1024 1024"><path d="M325.456471 862.280661"  ></path><path d="M882.057788 862.280661"  ></path><path d="M236.028491 877.160382"  ></path><path d="M960.132455 877.160382"  ></path><path d="M63.683483 788.736998"  ></path><path d="M958.469023 788.736998"  ></path><path d="M64.77753 858.792098"  ></path><path d="M163.396533 289.168875c-40.577772 0-66.525252 54.184545-35.441258 85.258218L477.217578 723.704878c20.031716 20.031716 49.823841 20.031716 69.853837 0l349.274345-349.277785c30.304744-30.294423 6.677812-85.258218-34.928639-85.258218L163.396533 289.168875 163.396533 289.168875z"  ></path><path d="M959.523505 858.792098"  ></path></symbol><symbol id="ali-icon-arrow-up-moving" viewBox="0 0 1024 1024"><path d="M512 965.334l373.333-533.333h-160v-106.667h-426.667v106.667h-160l373.333 533.333zM725.334 165.333h-426.667v106.667h426.667v-106.667zM725.334 58.666h-426.667v53.334h426.667v-53.334z"  ></path></symbol><symbol id="ali-icon-square-bs" viewBox="0 0 1024 1024"><path d="M962 763.465625C962 873.125 873.125 962 763.465625 962L260.534375 962C150.875 962 62 873.125 62 763.465625L62 260.534375C62 150.875 150.875 62 260.534375 62l502.93125 0C873.125 62 962 150.875 962 260.534375L962 763.465625z"  ></path></symbol><symbol id="ali-icon-square-o" viewBox="0 0 1024 1024"><path d="M851.81629667 172.18370333l0 679.63259221L172.18370333 851.81629667 172.18370333 172.18370333 851.81629667 172.18370333M851.81629667 75.09333333L172.18370333 75.09333333C118.784 75.09333333 75.09333333 118.784 75.09333333 172.18370333l0 679.63259221c0 53.39970333 43.69066667 97.09036999 97.09037 97.09036999l679.63259221 0c53.39970333 0 97.09036999-43.69066667 97.09036999-97.09036999L948.90666667 172.18370333C948.90666667 118.784 905.216 75.09333333 851.81629667 75.09333333L851.81629667 75.09333333z"  ></path></symbol><symbol id="ali-icon-square-check" viewBox="0 0 1024 1024"><path d="M851.81629667 75.09333333L172.18370333 75.09333333C118.784 75.09333333 75.09333333 118.784 75.09333333 172.18370333l0 679.63259221c0 53.39970333 43.69066667 97.09036999 97.09037 97.09036999l679.63259221 0c53.39970333 0 97.09036999-43.69066667 97.09036999-97.09036999L948.90666667 172.18370333C948.90666667 118.784 905.216 75.09333333 851.81629667 75.09333333zM414.90963001 754.72592555l-242.72592555-242.72592555 67.96325888-67.96325888 174.76266667 174.76266667 368.94340778-368.94340779L851.81629667 317.81925888 414.90963001 754.72592555z"  ></path></symbol><symbol id="ali-icon-circle-o" viewBox="0 0 1024 1024"><path d="M512 56.88888853C261.68888853 56.88888853 56.88888853 261.68888853 56.88888853 512s204.8 455.11111147 455.11111147 455.11111147c250.31111147 0 455.11111147-204.8 455.11111147-455.11111147S762.31111147 56.88888853 512 56.88888853zM512 876.08888853c-200.24888853 0-364.08888853-163.84-364.08888853-364.08888853s163.84-364.08888853 364.08888853-364.08888853c200.24888853 0 364.08888853 163.84 364.08888853 364.08888853S712.24888853 876.08888853 512 876.08888853z"  ></path></symbol><symbol id="ali-icon-circle-check-o" viewBox="0 0 1024 1024"><path d="M512 284.4444448c-127.43111147 0-227.5555552 100.1244448-227.5555552 227.5555552s100.1244448 227.5555552 227.5555552 227.5555552c127.43111147 0 227.5555552-100.1244448 227.5555552-227.5555552S639.43111147 284.4444448 512 284.4444448zM512 56.88888853C261.68888853 56.88888853 56.88888853 261.68888853 56.88888853 512s204.8 455.11111147 455.11111147 455.11111147c250.31111147 0 455.11111147-204.8 455.11111147-455.11111147S762.31111147 56.88888853 512 56.88888853zM512 876.08888853c-200.24888853 0-364.08888853-163.84-364.08888853-364.08888853s163.84-364.08888853 364.08888853-364.08888853c200.24888853 0 364.08888853 163.84 364.08888853 364.08888853S712.24888853 876.08888853 512 876.08888853z"  ></path></symbol><symbol id="ali-icon-github" viewBox="0 0 1024 1024"><path d="M512 62c-248.484375 0-450 206.71875-450 461.446875 0 203.90625 128.98125 376.678125 307.771875 437.7375 2.8125 0.590625 5.23125 0.815625 7.621875 0.815625 16.678125 0 23.090625-12.2625 23.090625-22.89375 0-11.053125-0.39375-39.965625-0.590625-78.553125-16.875 3.825-31.95 5.428125-45.39375 5.428125-86.596875 0-106.25625-67.303125-106.25625-67.303125-20.503125-53.240625-50.034375-67.5-50.034375-67.5-39.178125-27.534375-0.196875-28.321875 2.8125-28.321875 0.196875 0 0.196875 0 0.196875 0 45.196875 4.021875 68.90625 47.8125 68.90625 47.8125 22.5 39.375 52.621875 50.428125 79.565625 50.428125 21.09375 0 40.190625-6.834375 51.440625-12.065625 4.021875-29.728125 15.665625-50.034375 28.51875-61.678125-99.84375-11.64375-204.91875-51.215625-204.91875-228.009375 0-50.428125 17.465625-91.603125 46.209375-123.75-4.6125-11.64375-20.08125-58.66875 4.415625-122.146875 0 0 3.20625-1.0125 10.040625-1.0125 16.284375 0 53.04375 6.215625 113.709375 48.403125 35.971875-10.2375 74.334375-15.271875 112.696875-15.46875 38.165625 0.196875 76.753125 5.23125 112.696875 15.46875 60.665625-42.1875 97.425-48.403125 113.709375-48.403125 6.834375 0 10.040625 1.0125 10.040625 1.0125 24.496875 63.478125 9.028125 110.475 4.415625 122.146875 28.715625 32.34375 46.209375 73.51875 46.209375 123.75 0 177.1875-105.271875 216.16875-205.509375 227.615625 16.059375 14.259375 30.54375 42.384375 30.54375 85.3875 0 61.678125-0.590625 111.4875-0.590625 126.5625 0 10.85625 6.215625 23.090625 22.89375 23.090625 2.41875 0 5.23125-0.196875 8.04375-0.815625 178.9875-61.059375 307.771875-234.028125 307.771875-437.7375 0-254.728125-201.4875-461.446875-450-461.446875z"  ></path></symbol><symbol id="ali-icon-square-check-bs" viewBox="0 0 1024 1024"><path d="M787.22383 63.960731 236.188792 63.960731c-95.112218 0-172.197874 77.086679-172.197874 172.198897l0 551.035038c0 95.112218 77.085656 172.21527 172.197874 172.21527l551.035038 0c95.079472 0 172.197874-77.103052 172.197874-172.21527L959.421704 236.159628C959.421704 141.046387 882.303302 63.960731 787.22383 63.960731zM746.225067 427.76348 479.485981 711.319581c-5.684466 5.717212-35.449373 5.918803-40.897456 0.436952L277.590737 534.681582c-6.962575-6.996344-6.962575-18.295692 0-25.258267l25.223474-25.224498c6.996344-6.961552 18.296715-6.961552 25.25929 0L461.627241 617.753579l237.310847-237.310847c6.5246-6.5246 17.08512-6.5246 23.64349 0l23.642466 23.677259C752.78446 410.644591 752.78446 421.23888 746.225067 427.76348z"  ></path></symbol><symbol id="ali-icon-download" viewBox="0 0 1024 1024"><path d="M494.933333 782.933333c2.133333 2.133333 4.266667 4.266667 8.533334 6.4h8.533333c6.4 0 10.666667-2.133333 14.933333-6.4l2.133334-2.133333 275.2-275.2c8.533333-8.533333 8.533333-21.333333 0-29.866667-8.533333-8.533333-21.333333-8.533333-29.866667 0L533.333333 716.8V128c0-12.8-8.533333-21.333333-21.333333-21.333333s-21.333333 8.533333-21.333333 21.333333v588.8L249.6 475.733333c-8.533333-8.533333-21.333333-8.533333-29.866667 0-8.533333 8.533333-8.533333 21.333333 0 29.866667l275.2 277.333333zM853.333333 874.666667H172.8c-12.8 0-21.333333 8.533333-21.333333 21.333333s8.533333 21.333333 21.333333 21.333333H853.333333c12.8 0 21.333333-8.533333 21.333334-21.333333s-10.666667-21.333333-21.333334-21.333333z"  ></path></symbol><symbol id="ali-icon-backward-start" viewBox="0 0 1024 1024"><path d="M133.12 888.771c39.242 0 71.081-31.613 71.081-70.626v-612.287c0-39.012-31.84-70.626-71.081-70.626-39.198 0-70.99 31.613-70.99 70.627v612.285c-0.001 39.013 31.792 70.627 70.99 70.627zM961.872 841.672v-659.337c0-48.608-47.351-47.1-47.351-47.1h-47.348l-568.317 329.693v94.151c0 0 569.779 329.692 615.666 329.692 45.867 0 47.351-47.1 47.351-47.1z"  ></path></symbol><symbol id="ali-icon-arrow-right" viewBox="0 0 1024 1024"><path d="M522.002 180.667c-13.347 13.347-13.347 34.917 0 48.266l248.934 248.934h-600.27c-18.843 0-34.133 15.292-34.134 34.134s15.292 34.133 34.134 34.134h600.27l-248.934 248.934c-13.347 13.347-13.347 34.917 0 48.266s34.917 13.347 48.266 0l307.166-307.201c3.174-3.139 5.666-6.928 7.407-11.126 1.741-4.13 2.627-8.567 2.627-13.006 0-4.436-0.889-8.876-2.628-13.039-1.742-4.198-4.233-7.952-7.407-11.126l-307.166-307.201c-13.347-13.312-34.918-13.312-48.265 0.033z"  ></path></symbol><symbol id="ali-icon-arrow-down" viewBox="0 0 1024 1024"><path d="M843.333 522.002c-13.347-13.347-34.917-13.347-48.265 0l-248.934 248.934v-600.27c0-18.843-15.292-34.134-34.134-34.134s-34.134 15.292-34.134 34.134v600.27l-248.934-248.934c-13.347-13.347-34.917-13.347-48.265 0s-13.347 34.917 0 48.265l307.201 307.166c3.139 3.174 6.928 5.666 11.126 7.407 4.13 1.741 8.567 2.627 13.006 2.627 4.436 0 8.876-0.889 13.039-2.627 4.198-1.741 7.952-4.233 11.126-7.407l307.201-307.166c13.312-13.347 13.312-34.919-0.033-48.265z"  ></path></symbol><symbol id="ali-icon-arrow-left" viewBox="0 0 1024 1024"><path d="M501.998 843.333c13.347-13.347 13.347-34.917 0-48.266l-248.934-248.934h600.27c18.843 0 34.133-15.292 34.134-34.134s-15.292-34.133-34.134-34.134h-600.27l248.934-248.934c13.347-13.347 13.347-34.917 0-48.266s-34.917-13.347-48.266 0l-307.166 307.201c-3.174 3.139-5.666 6.928-7.407 11.126-1.741 4.13-2.627 8.567-2.627 13.006 0 4.436 0.889 8.876 2.628 13.039 1.742 4.198 4.233 7.952 7.407 11.126l307.166 307.201c13.347 13.312 34.918 13.312 48.265-0.033z"  ></path></symbol><symbol id="ali-icon-arrow-up" viewBox="0 0 1024 1024"><path d="M180.667 501.998c13.347 13.347 34.917 13.347 48.266 0l248.934-248.934v600.27c0 18.843 15.292 34.133 34.134 34.134s34.133-15.292 34.134-34.134v-600.27l248.934 248.934c13.347 13.347 34.917 13.347 48.266 0s13.347-34.917 0-48.266l-307.201-307.166c-3.139-3.174-6.928-5.666-11.126-7.407-4.13-1.741-8.567-2.627-13.006-2.627-4.436 0-8.876 0.889-13.039 2.628-4.198 1.742-7.952 4.233-11.126 7.407l-307.201 307.166c-13.312 13.347-13.312 34.918 0.033 48.265z"  ></path></symbol><symbol id="ali-icon-fold" viewBox="0 0 1024 1024"><path d="M532.128 262.944c-0.992-0.512-1.82399999-1.344-2.848-1.792-18.304-8.8-40.70400001-5.92-55.424 9.664L139.744 624.064c-18.208 19.264-17.344 49.632 1.88800001 67.872 19.264 18.208 49.63199999 17.376 67.87199999-1.888l299.84-316.96 304.288 315.712c18.39999999 19.072 48.768 19.648 67.872 1.248 9.792-9.408 14.688-21.984 14.688-34.56 0-11.99999999-4.48-24-13.44-33.312l-337.376-350.048c-0.672-0.672-1.6-0.928-2.304-1.6-0.48-0.512-0.832-1.056-1.344-1.568C538.88 266.24 535.392 264.80000001 532.128 262.944z"  ></path></symbol><symbol id="ali-icon-spread" viewBox="0 0 1024 1024"><path d="M491.872 761.056c0.992 0.512 1.82399999 1.344 2.848 1.792 18.304 8.8 40.70400001 5.92 55.424-9.664L884.256 399.936c18.208-19.264 17.344-49.632-1.88800001-67.872-19.264-18.208-49.63199999-17.376-67.87199999 1.888l-299.84 316.96-304.288-315.712c-18.39999999-19.072-48.768-19.648-67.872-1.248-9.792 9.408-14.688 21.984-14.688 34.56 0 11.99999999 4.48 24 13.44 33.312l337.376 350.048c0.672 0.672 1.6 0.928 2.304 1.6 0.48 0.512 0.832 1.056 1.344 1.568C485.12 757.76 488.608 759.19999999 491.872 761.056z"  ></path></symbol></svg>';var script = function () {
     var scripts = document.getElementsByTagName("script");return scripts[scripts.length - 1];
   }();var shouldInjectCss = script.getAttribute("data-injectcss");var ready = function ready(fn) {
     if (document.addEventListener) {
@@ -36540,13 +36885,13 @@ exports.push([module.i, "@charset \"UTF-8\";\n.z-loading.z-loading-mark .z-loadi
 })(window);
 
 /***/ }),
-/* 440 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(441);
+var content = __webpack_require__(440);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36571,7 +36916,7 @@ if(false) {
 }
 
 /***/ }),
-/* 441 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36585,7 +36930,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/*\r\n* icon 组件样式\r\n*/\n.
 
 
 /***/ }),
-/* 442 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36600,7 +36945,7 @@ exports.default = function (h) {
 
   if (this.isAli) {
     iconChildren.push(h('svg', {
-      class: [this.typeClass, this.sizeClass, this.xclass(this.kind)]
+      class: [this.xclass(this.kind), this.typeClass]
     }, [h('use', {
       attrs: {
         'xlink:href': '#' + this.nameClass
@@ -36613,17 +36958,17 @@ exports.default = function (h) {
   }
 
   return h('div', {
-    class: [this.cPrefix],
+    class: [this.cPrefix, this.sizeClass, this.xclass(this.themeClass)],
     style: {
       color: this.color
     }
   }, [h('div', {
-    class: this.xclass(['stage', this.themeClass])
+    class: this.xclass('stage')
   }, iconChildren)]);
 };
 
 /***/ }),
-/* 443 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36642,7 +36987,9 @@ exports.default = function (h) {
     rotateChildren.push(h('icon', {
       class: [this.xclass('icon')],
       props: {
-        kind: 'spinner'
+        kind: 'spinner',
+        ui: this.ui,
+        theme: this.theme
       }
     }));
 
@@ -36695,13 +37042,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 444 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(445);
+var content = __webpack_require__(444);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36726,7 +37073,7 @@ if(false) {
 }
 
 /***/ }),
-/* 445 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36734,19 +37081,19 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".z-motion-rip {\n  position: absolute;\n  top: 0; }\n  .z-motion-rip.z-motion-rip-comp {\n    position: absolute;\n    background-color: rgba(0, 0, 0, 0.2);\n    border-radius: 100%;\n    opacity: 1;\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0; }\n    .z-motion-rip.z-motion-rip-comp.z-motion-rip-assign {\n      border-radius: 0;\n      overflow: hidden; }\n      .z-motion-rip.z-motion-rip-comp.z-motion-rip-assign > .z-motion-rip-spot {\n        top: auto;\n        left: auto;\n        width: 200%;\n        height: 200%;\n        border-radius: 100%;\n        -webkit-transform: scaleX(0.2);\n                transform: scaleX(0.2); }\n    .z-motion-rip.z-motion-rip-comp.z-motion-rip-active {\n      opacity: 0; }\n      .z-motion-rip.z-motion-rip-comp.z-motion-rip-active.z-motion-rip-assign > .z-motion-rip-spot {\n        -webkit-transform: scaleX(1);\n                transform: scaleX(1); }\n      .z-motion-rip.z-motion-rip-comp.z-motion-rip-active > .z-motion-rip-spot {\n        opacity: 0;\n        -webkit-transform: translate(-50%, -50%) scale(2);\n                transform: translate(-50%, -50%) scale(2); }\n    .z-motion-rip.z-motion-rip-comp > .z-motion-rip-spot {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      width: 100%;\n      height: 100%;\n      background-color: rgba(0, 0, 0, 0.2);\n      border-radius: 100%;\n      opacity: 1;\n      will-change: transform;\n      -webkit-transform-origin: 50% 50%;\n              transform-origin: 50% 50%;\n      -webkit-transform: translate(-50%, -50%) scale(0.5);\n              transform: translate(-50%, -50%) scale(0.5); }\n", ""]);
+exports.push([module.i, ".z-motion-rip {\n  position: absolute;\n  top: 0; }\n  .z-motion-rip.z-motion-rip-comp {\n    position: absolute;\n    background-color: rgba(0, 0, 0, 0.2);\n    border-radius: 100%;\n    opacity: 1;\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0; }\n    .z-motion-rip.z-motion-rip-comp.z-motion-rip-assign {\n      border-radius: 0;\n      overflow: hidden; }\n      .z-motion-rip.z-motion-rip-comp.z-motion-rip-assign > .z-motion-rip-spot {\n        top: auto;\n        left: auto;\n        width: 200%;\n        height: 200%;\n        border-radius: 100%;\n        -webkit-transform: scaleX(0.2);\n            -ms-transform: scaleX(0.2);\n                transform: scaleX(0.2); }\n    .z-motion-rip.z-motion-rip-comp.z-motion-rip-active {\n      opacity: 0; }\n      .z-motion-rip.z-motion-rip-comp.z-motion-rip-active.z-motion-rip-assign > .z-motion-rip-spot {\n        -webkit-transform: scaleX(1);\n            -ms-transform: scaleX(1);\n                transform: scaleX(1); }\n      .z-motion-rip.z-motion-rip-comp.z-motion-rip-active > .z-motion-rip-spot {\n        opacity: 0;\n        -webkit-transform: translate(-50%, -50%) scale(2);\n            -ms-transform: translate(-50%, -50%) scale(2);\n                transform: translate(-50%, -50%) scale(2); }\n    .z-motion-rip.z-motion-rip-comp > .z-motion-rip-spot {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      width: 100%;\n      height: 100%;\n      background-color: rgba(0, 0, 0, 0.2);\n      border-radius: 100%;\n      opacity: 1;\n      will-change: transform;\n      -webkit-transform-origin: 50% 50%;\n          -ms-transform-origin: 50% 50%;\n              transform-origin: 50% 50%;\n      -webkit-transform: translate(-50%, -50%) scale(0.5);\n          -ms-transform: translate(-50%, -50%) scale(0.5);\n              transform: translate(-50%, -50%) scale(0.5); }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 446 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(447);
+var content = __webpack_require__(446);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36771,7 +37118,7 @@ if(false) {
 }
 
 /***/ }),
-/* 447 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36779,19 +37126,19 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/*\r\n* check 组件样式\r\n*/\n.z-check {\n  display: inline-block;\n  vertical-align: middle;\n  position: relative; }\n  .z-check-read-only {\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 2;\n    width: 100%;\n    height: 100%;\n    background: #000;\n    opacity: 0; }\n  .z-check > .z-check-opt-row > .z-check-opt-col {\n    margin: 0 4px 8px;\n    display: inline-block;\n    line-height: 0; }\n    .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box {\n      display: inline-block; }\n      .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon {\n        position: relative;\n        display: inline-block;\n        vertical-align: middle;\n        line-height: 0; }\n        .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon {\n          vertical-align: middle; }\n          .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-ali {\n            text-align: center; }\n          .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-circle-check-o,\n          .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-square-check-o {\n            color: #ef5350; }\n      .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-lable {\n        display: inline-block;\n        vertical-align: middle;\n        line-height: 1;\n        margin-left: 4px;\n        cursor: default; }\n  .z-check .z-check-opt-check-all {\n    margin-bottom: 8px; }\n    .z-check .z-check-opt-check-all > .z-icon {\n      width: 14px;\n      margin-right: 0; }\n      .z-check .z-check-opt-check-all > .z-icon .z-icon-square-check {\n        color: #ef5350; }\n    .z-check .z-check-opt-check-all .z-check-lable {\n      cursor: default; }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-circle-check-o,\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-square-check-o {\n  color: #66bb6a; }\n\n.z-check.z-check-theme-success .z-check-opt-check-all > .z-icon .z-icon-square-check {\n  color: #66bb6a; }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-circle-check-o,\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-square-check-o {\n  color: #ef5350; }\n\n.z-check.z-check-theme-danger .z-check-opt-check-all > .z-icon .z-icon-square-check {\n  color: #ef5350; }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-circle-check-o,\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-square-check-o {\n  color: #ffa726; }\n\n.z-check.z-check-theme-warning .z-check-opt-check-all > .z-icon .z-icon-square-check {\n  color: #ffa726; }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-circle-check-o,\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-square-check-o {\n  color: #ffa726; }\n\n.z-check.z-check-theme-orange .z-check-opt-check-all > .z-icon .z-icon-square-check {\n  color: #ffa726; }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-circle-check-o,\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-square-check-o {\n  color: #2196f3; }\n\n.z-check.z-check-theme-blue .z-check-opt-check-all > .z-icon .z-icon-square-check {\n  color: #2196f3; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/*\r\n* check 组件样式\r\n*/\n.z-check {\n  display: inline-block;\n  vertical-align: middle;\n  position: relative; }\n  .z-check-disabled {\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 2;\n    width: 100%;\n    height: 100%;\n    background: #000;\n    opacity: 0; }\n  .z-check > .z-check-opt-row > .z-check-opt-col {\n    display: inline-block;\n    line-height: 0; }\n    .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box {\n      display: inline-block; }\n      .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-icon {\n        color: #2196f3; }\n      .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon {\n        position: relative;\n        display: inline-block;\n        vertical-align: middle;\n        line-height: 0; }\n        .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon {\n          vertical-align: middle; }\n          .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-ali {\n            text-align: center; }\n      .z-check > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-lable {\n        display: inline-block;\n        vertical-align: middle;\n        line-height: 1;\n        margin-left: 4px;\n        cursor: default; }\n  .z-check .z-check-opt-check-all .z-check-checked > .z-icon {\n    color: #2196f3; }\n  .z-check .z-check-opt-check-all .z-check-lable {\n    cursor: default;\n    margin-left: 5px; }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-icon {\n  color: #4caf50; }\n\n.z-check.z-check-theme-success .z-check-opt-check-all.z-check-checked > .z-icon {\n  color: #4caf50; }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-icon {\n  color: #f44336; }\n\n.z-check.z-check-theme-danger .z-check-opt-check-all.z-check-checked > .z-icon {\n  color: #f44336; }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-icon {\n  color: #9e9e9e; }\n\n.z-check.z-check-theme-warning .z-check-opt-check-all.z-check-checked > .z-icon {\n  color: #9e9e9e; }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-icon {\n  color: #ff5722; }\n\n.z-check.z-check-theme-orange .z-check-opt-check-all.z-check-checked > .z-icon {\n  color: #ff5722; }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-icon {\n  color: #2196f3; }\n\n.z-check.z-check-theme-blue .z-check-opt-check-all.z-check-checked > .z-icon {\n  color: #2196f3; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 448 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(449);
+var content = __webpack_require__(448);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36816,7 +37163,7 @@ if(false) {
 }
 
 /***/ }),
-/* 449 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36824,19 +37171,19 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * check 组件的 material UI 样式\r\n */\n.z-check.z-check-ui-material .z-check-motion-rip {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0; }\n  .z-check.z-check-ui-material .z-check-motion-rip:after {\n    content: \"\";\n    position: absolute;\n    background-color: rgba(153, 153, 153, 0.3);\n    top: 50%;\n    left: 50%;\n    width: 200%;\n    height: 200%;\n    border-radius: 100%;\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1);\n    -webkit-animation: z-check-motion-rip 2s infinite ease-in-out;\n            animation: z-check-motion-rip 2s infinite ease-in-out; }\n\n@-webkit-keyframes z-check-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scale(0.8);\n            transform: translate(-50%, -50%) scale(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); } }\n\n@keyframes z-check-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scale(0.8);\n            transform: translate(-50%, -50%) scale(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); } }\n\n.z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col {\n  margin: 0 4px 8px;\n  display: inline-block;\n  line-height: 0; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon:focus {\n    outline: none; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-check-rip {\n    position: absolute;\n    top: 0;\n    left: 0;\n    background-color: rgba(153, 153, 153, 0.2); }\n    .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n      background-color: rgba(153, 153, 153, 0.8); }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n    background-color: rgba(239, 83, 80, 0.3); }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n    background-color: rgba(239, 83, 80, 0.2); }\n    .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n      background-color: rgba(239, 83, 80, 0.8); }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(102, 187, 106, 0.3); }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(102, 187, 106, 0.2); }\n  .z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(102, 187, 106, 0.8); }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(239, 83, 80, 0.3); }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(239, 83, 80, 0.2); }\n  .z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(239, 83, 80, 0.8); }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(255, 167, 38, 0.3); }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(255, 167, 38, 0.2); }\n  .z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(255, 167, 38, 0.8); }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(255, 167, 38, 0.3); }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(255, 167, 38, 0.2); }\n  .z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(255, 167, 38, 0.8); }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(33, 150, 243, 0.3); }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(33, 150, 243, 0.2); }\n  .z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(33, 150, 243, 0.8); }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * check 组件的 material UI 样式\r\n */\n.z-check.z-check-ui-material .z-check-motion-rip {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0; }\n  .z-check.z-check-ui-material .z-check-motion-rip:after {\n    content: \"\";\n    position: absolute;\n    background-color: rgba(33, 150, 243, 0.3);\n    top: 50%;\n    left: 50%;\n    width: 200%;\n    height: 200%;\n    border-radius: 100%;\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n        -ms-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1);\n    -webkit-animation: z-check-motion-rip 2s infinite ease-in-out;\n            animation: z-check-motion-rip 2s infinite ease-in-out; }\n\n@-webkit-keyframes z-check-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scale(0.8);\n            transform: translate(-50%, -50%) scale(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); } }\n\n@keyframes z-check-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scale(0.8);\n            transform: translate(-50%, -50%) scale(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); } }\n\n.z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col {\n  display: inline-block;\n  line-height: 0; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box:focus {\n    outline: none; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon {\n    font-size: 18px; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-check-rip {\n    position: absolute;\n    top: 0;\n    left: 0;\n    background-color: rgba(33, 150, 243, 0.2); }\n    .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n      height: 150%;\n      width: 150%;\n      background-color: rgba(33, 150, 243, 0.8); }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n    color: #2196f3; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n    background-color: rgba(33, 150, 243, 0.3); }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n    background-color: rgba(33, 150, 243, 0.2); }\n    .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n      background-color: rgba(33, 150, 243, 0.8); }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #4caf50; }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(76, 175, 80, 0.3); }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(76, 175, 80, 0.2); }\n  .z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(76, 175, 80, 0.8); }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #f44336; }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(244, 67, 54, 0.3); }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(244, 67, 54, 0.2); }\n  .z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(244, 67, 54, 0.8); }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #9e9e9e; }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(158, 158, 158, 0.3); }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(158, 158, 158, 0.2); }\n  .z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(158, 158, 158, 0.8); }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #ff5722; }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(255, 87, 34, 0.3); }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(255, 87, 34, 0.2); }\n  .z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(255, 87, 34, 0.8); }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #2196f3; }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(33, 150, 243, 0.3); }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(33, 150, 243, 0.2); }\n  .z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(33, 150, 243, 0.8); }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 450 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(451);
+var content = __webpack_require__(450);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -36861,7 +37208,7 @@ if(false) {
 }
 
 /***/ }),
-/* 451 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36869,13 +37216,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * check 组件的 bootstrap UI 样式\r\n */\n.z-check.z-check-ui-bootstrap > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-circle-check-o,\n.z-check.z-check-ui-bootstrap > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon .z-icon-square-check-o {\n  color: #666666; }\n\n.z-check.z-check-ui-bootstrap .z-check-opt-check-all > .z-icon .z-icon-square-check {\n  color: #666666; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * check 组件的 bootstrap UI 样式\r\n */\n.z-check.z-check-ui-bootstrap.z-check-multiple > .z-check-opt-row > .z-check-opt-col > .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-multiple > .z-check-opt-row > .z-check-opt-col > .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-multiple > .z-check-opt-row > .z-check-opt-col > .z-check-box:focus:active > .z-check-icon {\n  border-radius: 4px; }\n\n.z-check.z-check-ui-bootstrap > .z-check-opt-row > .z-check-opt-col > .z-check-box:focus {\n  outline: none; }\n\n.z-check.z-check-ui-bootstrap > .z-check-opt-row > .z-check-opt-col > .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap > .z-check-opt-row > .z-check-opt-col > .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap > .z-check-opt-row > .z-check-opt-col > .z-check-box:focus:active > .z-check-icon {\n  border-radius: 100%;\n  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3); }\n\n.z-check.z-check-ui-bootstrap > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon {\n  color: #cccccc;\n  font-size: 16px; }\n\n.z-check.z-check-ui-bootstrap .z-check-opt-check-all > .z-icon {\n  color: #cccccc;\n  font-size: 16px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 452 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36890,22 +37237,6 @@ exports.default = function (h) {
 
   var RowChildren = [];
 
-  if (this.checkAll) {
-    RowChildren.push(h('column', [h('div', {
-      class: [this.xclass('opt-check-all')],
-      on: {
-        click: this.checkAllOption
-      }
-    }, [h('icon', {
-      props: {
-        size: 'XS',
-        kind: this.checkedAll ? 'square-check-o' : 'square-o'
-      }
-    }), h('span', {
-      class: [this.xclass('lable')]
-    }, '全选')])]));
-  }
-
   if (Array.isArray(this.option) && this.option.length > 0) {
     var checkEle = [];
 
@@ -36915,6 +37246,9 @@ exports.default = function (h) {
       checkEle.push(h('column', {
         class: [_this.xclass('opt-col')]
       }, [h('div', {
+        attrs: {
+          tabindex: 0
+        },
         class: [_this.xclass('box'), _defineProperty({}, _this.xclass('checked'), _this.isCheckbox ? _this.value.includes(item.value) : index === _this.index)],
         on: {
           click: function click(event) {
@@ -36925,14 +37259,7 @@ exports.default = function (h) {
           },
           mouseup: function mouseup(event) {
             return _this._handlerMouseup(event, currentIndex);
-          }
-        }
-      }, [h('div', {
-        attrs: {
-          tabindex: 0
-        },
-        class: [_this.xclass('icon')],
-        on: {
+          },
           focus: function focus(event) {
             return _this._handlerFocus(event, currentIndex);
           },
@@ -36943,16 +37270,23 @@ exports.default = function (h) {
             return _this._handlerKeyup(event, currentIndex);
           }
         }
+      }, [h('div', {
+        class: [_this.xclass('icon')]
       }, [h('icon', {
         props: {
-          size: 'xs',
-          kind: _this.iconName(item[_this.valName])
+          kind: _this.iconName(item[_this.valName]),
+          ui: _this.ui,
+          theme: _this.theme
         }
       }), h('motion-rip', {
         class: [_this.xclass('rip')],
-        ref: 'checkTransition' + currentIndex
+        ref: 'motionCheck' + currentIndex
       }), h('div', {
         class: [_this.xclass('motion-rip')],
+        props: {
+          ui: _this.ui,
+          theme: _this.theme
+        },
         directives: [{
           name: 'show',
           value: _this.motion[index]
@@ -36970,14 +37304,32 @@ exports.default = function (h) {
   }
 
   return h('div', {
-    class: [this.cPrefix, this.xclass(['stage', this.themeClass, this.uiClass])]
+    class: [this.cPrefix, this.xclass(['stage', this.themeClass, this.uiClass]), _defineProperty({}, this.xclass('multiple'), this.multiple)]
   }, [h('div', {
-    class: [this.xclass('read-only')],
+    class: [this.xclass('disabled')],
     directives: [{
       name: 'show',
-      value: this.readOnly
+      value: this.disabled
     }]
-  }), h('row', {
+  }), function () {
+    if (_this.checkAll && _this.multiple) {
+      return h('div', {
+        class: [_this.xclass('opt-check-all'), _defineProperty({}, _this.xclass('checked'), _this.checkedAll)],
+        on: {
+          click: _this.checkAllOption
+        }
+      }, [h('icon', {
+        props: {
+          size: 'XS',
+          kind: _this._getIconName(_this.checkedAll),
+          ui: _this.ui,
+          theme: _this.theme
+        }
+      }), h('span', {
+        class: [_this.xclass('lable')]
+      }, '全选')]);
+    }
+  }(), h('row', {
     class: [this.xclass('opt-row')],
     props: {
       justify: 'start'
@@ -36996,13 +37348,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 453 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(454);
+var content = __webpack_require__(453);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -37027,7 +37379,7 @@ if(false) {
 }
 
 /***/ }),
-/* 454 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37041,7 +37393,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * col 组件样式\r\n */\
 
 
 /***/ }),
-/* 455 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37098,13 +37450,13 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 456 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(457);
+var content = __webpack_require__(456);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -37129,7 +37481,7 @@ if(false) {
 }
 
 /***/ }),
-/* 457 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37137,13 +37489,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * row 组件样式\r\n */\n.z-row {\n  display: -webkit-flex;\n  display: flex;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-justify-content: center;\n          justify-content: center; }\n  .z-row.z-row-wrap {\n    -webkit-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .z-row.z-row-nowrap {\n    -webkit-flex-wrap: nowrap;\n            flex-wrap: nowrap; }\n  .z-row.z-row-align-start {\n    -webkit-align-items: flex-start;\n            align-items: flex-start; }\n  .z-row.z-row-align-end {\n    -webkit-align-items: flex-end;\n            align-items: flex-end; }\n  .z-row.z-row-justify-justify {\n    -webkit-justify-content: space-between;\n            justify-content: space-between; }\n  .z-row.z-row-justify-start {\n    -webkit-justify-content: flex-start;\n            justify-content: flex-start; }\n  .z-row.z-row-justify-end {\n    -webkit-justify-content: flex-end;\n            justify-content: flex-end; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * row 组件样式\r\n */\n.z-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n  .z-row.z-row-wrap {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .z-row.z-row-nowrap {\n    -webkit-flex-wrap: nowrap;\n        -ms-flex-wrap: nowrap;\n            flex-wrap: nowrap; }\n  .z-row.z-row-align-start {\n    -webkit-align-items: flex-start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .z-row.z-row-align-end {\n    -webkit-align-items: flex-end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n  .z-row.z-row-justify-justify {\n    -webkit-justify-content: space-between;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .z-row.z-row-justify-start {\n    -webkit-justify-content: flex-start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .z-row.z-row-justify-end {\n    -webkit-justify-content: flex-end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 458 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37167,13 +37519,13 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 459 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(460);
+var content = __webpack_require__(459);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -37198,7 +37550,7 @@ if(false) {
 }
 
 /***/ }),
-/* 460 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37206,19 +37558,19 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n.z-message {\n  position: absolute;\n  z-index: 1001; }\n  .z-message > .z-message-pop {\n    max-width: 100px;\n    background: #fff;\n    overflow: hidden;\n    -webkit-transform: rotate(0);\n            transform: rotate(0);\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\n    padding: 12px;\n    border-radius: 3px; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n.z-message {\n  position: absolute;\n  z-index: 1001; }\n  .z-message > .z-message-pop {\n    max-width: 100px;\n    background: #fff;\n    overflow: hidden;\n    -webkit-transform: rotate(0);\n        -ms-transform: rotate(0);\n            transform: rotate(0);\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\n    padding: 12px;\n    border-radius: 3px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 461 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(462);
+var content = __webpack_require__(461);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -37243,7 +37595,7 @@ if(false) {
 }
 
 /***/ }),
-/* 462 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37257,7 +37609,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\
 
 
 /***/ }),
-/* 463 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37278,20 +37630,22 @@ exports.default = function (h) {
     class: [this.xclass('pop')],
     props: {
       direction: this.direction,
-      position: this.position
+      position: this.position,
+      ui: this.ui,
+      theme: this.theme
     },
     ref: 'pop'
   }, this.$slots.default ? this.$slots.default : this.infoMessage)]);
 };
 
 /***/ }),
-/* 464 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(465);
+var content = __webpack_require__(464);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -37316,7 +37670,7 @@ if(false) {
 }
 
 /***/ }),
-/* 465 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37330,13 +37684,13 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\
 
 
 /***/ }),
-/* 466 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(467);
+var content = __webpack_require__(466);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -37361,7 +37715,7 @@ if(false) {
 }
 
 /***/ }),
-/* 467 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37375,7 +37729,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\
 
 
 /***/ }),
-/* 468 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37390,7 +37744,9 @@ exports.default = function (h) {
     props: {
       direction: this.popDirection,
       global: !this.part,
-      speed: this.speed
+      speed: this.speed,
+      ui: this.ui,
+      theme: this.theme
     },
     ref: 'transition'
   }, [h('div', {
@@ -37404,50 +37760,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 469 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * 判断是否有滚动条
- *
- * @param {DOMElement} el - dom 元素
- * @param {string} type - 默认是垂直方向的滚动条
- */
-var hasScroller = function hasScroller() {
-  var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.body;
-  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'vertical';
-
-  var style = window.getComputedStyle(el);
-
-  if (style.getPropertyValue('overflow') === 'hidden') {
-    return false;
-  }
-
-  if (type === 'vertical') {
-    if (style.getPropertyValue('overflow-y') === 'hidden') {
-      return false;
-    }
-
-    return el.scrollHeight > window.innerHeight;
-  } else {
-    if (style.getPropertyValue('overflow-x') === 'hidden') {
-      return false;
-    }
-
-    return el.scrollWidth > window.innerWidth;
-  }
-};
-
-exports.hasScroller = hasScroller;
-
-/***/ }),
-/* 470 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37461,7 +37774,7 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
@@ -37476,11 +37789,7 @@ exports.default = {
      * @return { Function, Object }
      **/
     iconName: function iconName(val) {
-      if (this.isRadio) {
-        return this.value === val ? 'circle-check-o' : 'circle-o';
-      } else if (this.isCheckbox && Array.isArray(this.value)) {
-        return this.value.indexOf(val) !== -1 ? 'square-check-o' : 'square-o';
-      }
+      return this.isRadio ? this._getIconName(this.value === val) : this._getIconName(this.value.includes(val));
     },
 
 
@@ -37513,7 +37822,7 @@ exports.default = {
 
       this.$nextTick(function () {
         _this.success && _this.success(_this);
-        _this.UIMaterial && _this.$refs['checkTransition' + index].enter();
+        _this.UIMaterial && _this.$refs['motionCheck' + index].enter();
       });
     },
 
@@ -37606,36 +37915,29 @@ exports.default = {
     checkAllOption: function checkAllOption() {
       var _this4 = this;
 
-      if (!this.selectAllVal) {
-        var value = [];
+      var value = [];
 
-        this.option.forEach(function (item) {
-          value.push(item[_this4.valName]);
-        });
-
-        this.value = value;
-        this.selectAllVal = value;
-      }
+      this.option.forEach(function (item) {
+        value.push(item[_this4.valName]);
+      });
 
       if (this.checkedAll) {
         this.value = [];
       } else {
-        this.value = this.selectAllVal;
+        this.value = value;
       }
-
-      this.checkedAll = !this.checkedAll;
     }
   }
 };
 
 /***/ }),
-/* 471 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(472);
+var content = __webpack_require__(470);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -37660,7 +37962,7 @@ if(false) {
 }
 
 /***/ }),
-/* 472 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37674,19 +37976,19 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * form 组件样式\r\n */
 
 
 /***/ }),
-/* 473 */
+/* 471 */
 /***/ (function(module, exports) {
 
 module.exports = "<div :class=\"[cPrefix]\">\r\n  <div v-xclass=\"xclass(themeClass)\">\r\n    <slot></slot>\r\n  </div>\r\n</div>";
 
 /***/ }),
-/* 474 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(475);
+var content = __webpack_require__(473);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -37711,6 +38013,51 @@ if(false) {
 }
 
 /***/ }),
+/* 473 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input 组件样式\r\n */\n.z-input {\n  display: inline-block;\n  vertical-align: middle;\n  width: 170px;\n  position: relative;\n  font-size: 16px; }\n  .z-input.z-input-block {\n    width: 100%; }\n  .z-input.z-input-type-area > .z-input-wrap {\n    border: #d6d6d6 1px solid;\n    border-radius: 3px; }\n    .z-input.z-input-type-area > .z-input-wrap > .z-input-wrap-border {\n      border-radius: 3px;\n      border: transparent 1px solid; }\n  .z-input > .z-input-limit-txt {\n    padding: 8px 0;\n    text-align: right;\n    font-size: 12px;\n    color: gery-light; }\n  .z-input > .z-input-wrap {\n    position: relative;\n    border-bottom: #d6d6d6 1px solid;\n    background-color: #fff;\n    box-sizing: border-box; }\n    .z-input > .z-input-wrap .z-input-edit-box-start > .z-input-icon-stage {\n      line-height: 34px;\n      padding-left: 8px; }\n    .z-input > .z-input-wrap .z-input-edit-box {\n      position: relative;\n      line-height: 1.5em;\n      color: #707070; }\n      .z-input > .z-input-wrap .z-input-edit-box.z-input-edit-box-multiline > textarea {\n        position: absolute;\n        height: 100%;\n        top: 0;\n        left: 0;\n        overflow: hidden; }\n      .z-input > .z-input-wrap .z-input-edit-box.z-input-edit-box-multiline > pre {\n        font: inherit;\n        margin: 0;\n        display: block;\n        visibility: hidden;\n        white-space: pre-wrap;\n        word-break: break-all; }\n      .z-input > .z-input-wrap .z-input-edit-box > .z-input-edit-box-input {\n        border: none;\n        width: 100%;\n        font: inherit;\n        color: inherit;\n        box-sizing: border-box;\n        display: block; }\n        .z-input > .z-input-wrap .z-input-edit-box > .z-input-edit-box-input:focus {\n          outline: none;\n          border: none; }\n      .z-input > .z-input-wrap .z-input-edit-box > input,\n      .z-input > .z-input-wrap .z-input-edit-box > textarea {\n        -webkit-transform: rotate(0);\n            -ms-transform: rotate(0);\n                transform: rotate(0);\n        background-color: transparent; }\n      .z-input > .z-input-wrap .z-input-edit-box > textarea {\n        resize: none; }\n      .z-input > .z-input-wrap .z-input-edit-box-placeholder {\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        color: #2196f3;\n        box-sizing: border-box;\n        white-space: nowrap;\n        overflow: hidden; }\n  .z-input .z-input-tip {\n    margin-top: 8px;\n    font-size: 12px;\n    color: #9e9e9e;\n    position: relative; }\n    .z-input .z-input-tip::after {\n      content: 'd';\n      visibility: hidden; }\n    .z-input .z-input-tip-error, .z-input .z-input-tip-helper {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%; }\n    .z-input .z-input-tip-error {\n      color: #f44336;\n      width: 100%;\n      background: #fff; }\n\n@media only screen and (max-width: 767px) {\n  .z-input {\n    width: 100%; } }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 474 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(475);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(2)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.material.scss", function() {
+			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.material.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
 /* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37719,7 +38066,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input 组件样式\r\n */\n.z-input {\n  display: inline-block;\n  vertical-align: middle;\n  width: 170px;\n  position: relative; }\n  .z-input.z-input-type-area .z-input-wrap {\n    border: #d6d6d6 1px solid;\n    border-radius: 3px; }\n    .z-input.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n      border-radius: 3px;\n      border: transparent 1px solid; }\n  .z-input .z-input-limit-txt {\n    padding: 8px 0;\n    text-align: right; }\n  .z-input .z-input-wrap {\n    position: relative;\n    border-bottom: #d6d6d6 1px solid;\n    background-color: #fff;\n    box-sizing: border-box;\n    transition: all 100ms ease-out; }\n    .z-input .z-input-wrap.z-input-error-border {\n      outline: #ef5350 1px solid; }\n    .z-input .z-input-wrap .z-input-edit-box-start > .z-input-icon-stage {\n      line-height: 34px;\n      padding-left: 8px; }\n    .z-input .z-input-wrap .z-input-edit-box > input,\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      -webkit-transform: rotate(0);\n              transform: rotate(0);\n      border: none;\n      width: 100%;\n      font: inherit;\n      color: inherit;\n      padding: 7.5px; }\n      .z-input .z-input-wrap .z-input-edit-box > input:focus,\n      .z-input .z-input-wrap .z-input-edit-box > textarea:focus {\n        outline: none;\n        border: none; }\n    .z-input .z-input-wrap .z-input-edit-box > input {\n      box-sizing: border-box;\n      background-color: transparent; }\n    .z-input .z-input-wrap .z-input-edit-box > textarea {\n      box-sizing: border-box;\n      resize: none; }\n  .z-input .z-input-tip {\n    margin-top: 4px;\n    font-size: 12px;\n    color: #999999; }\n    .z-input .z-input-tip-danger {\n      color: #ef5350; }\n\n@media only screen and (max-width: 767px) {\n  .z-input {\n    width: 100%; } }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input material UI 组件样式\r\n */\n.z-input.z-input-ui-material {\n  padding-top: 10px; }\n  .z-input.z-input-ui-material.z-input-label-cover > .z-input-wrap .z-input-edit-box-input {\n    cursor: pointer; }\n  .z-input.z-input-ui-material.z-input-type-area > .z-input-wrap:hover {\n    border: #2196f3 1px solid; }\n    .z-input.z-input-ui-material.z-input-type-area > .z-input-wrap:hover > .z-input-wrap-border {\n      border: #2196f3 1px solid; }\n  .z-input.z-input-ui-material.z-input-type-area > .z-input-wrap.z-input-editting {\n    border-color: #2196f3 !important; }\n    .z-input.z-input-ui-material.z-input-type-area > .z-input-wrap.z-input-editting > .z-input-wrap-border {\n      border-color: #2196f3 !important; }\n  .z-input.z-input-ui-material.z-input-type-area > .z-input-wrap .z-input-edit-box {\n    padding-top: 26px; }\n    .z-input.z-input-ui-material.z-input-type-area > .z-input-wrap .z-input-edit-box > .z-input-edit-box-input {\n      padding: 0 13px 8px; }\n    .z-input.z-input-ui-material.z-input-type-area > .z-input-wrap .z-input-edit-box-placeholder {\n      padding-top: 26px;\n      padding-left: 13px;\n      padding-right: 13px; }\n    .z-input.z-input-ui-material.z-input-type-area > .z-input-wrap .z-input-edit-box-label {\n      padding-top: 12px;\n      padding-left: 13px;\n      padding-right: 13px; }\n      .z-input.z-input-ui-material.z-input-type-area > .z-input-wrap .z-input-edit-box-label-float {\n        top: -8px; }\n  .z-input.z-input-ui-material > .z-input-wrap > .z-input-wrap-border-motion {\n    position: absolute;\n    width: 0;\n    height: 2px;\n    left: 0;\n    right: 0;\n    margin: 0 auto;\n    bottom: -1px;\n    z-index: 1;\n    transition-property: width;\n    transition-duration: 300ms;\n    transition-timing-function: ease-in-out; }\n    .z-input.z-input-ui-material > .z-input-wrap > .z-input-wrap-border-motion.z-input-wrap-border-motion-active {\n      width: 100%; }\n  .z-input.z-input-ui-material > .z-input-wrap > .z-input-wrap-border-motion-edit {\n    background-color: #2196f3; }\n  .z-input.z-input-ui-material > .z-input-wrap > .z-input-wrap-border-motion-error {\n    background-color: #f44336; }\n  .z-input.z-input-ui-material > .z-input-wrap:hover {\n    border-color: #2196f3; }\n    .z-input.z-input-ui-material > .z-input-wrap:hover > .z-input-wrap-border {\n      border-color: #2196f3; }\n  .z-input.z-input-ui-material > .z-input-wrap.z-input-error .z-input-edit-box-label {\n    color: #f44336; }\n  .z-input.z-input-ui-material > .z-input-wrap > .z-input-wrap-border {\n    border-top-left-radius: 3px;\n    border-top-right-radius: 3px;\n    border-bottom: transparent 1px solid;\n    transition: border 100ms ease-out; }\n  .z-input.z-input-ui-material > .z-input-wrap .z-input-edit-box > .z-input-edit-box-pre,\n  .z-input.z-input-ui-material > .z-input-wrap .z-input-edit-box > .z-input-edit-box-input {\n    padding: 8px 0; }\n  .z-input.z-input-ui-material > .z-input-wrap .z-input-edit-box-placeholder {\n    padding: 8px 0; }\n  .z-input.z-input-ui-material > .z-input-wrap .z-input-edit-box-label {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    padding: 8px 0;\n    transition: all 150ms ease-in-out;\n    color: #9e9e9e;\n    box-sizing: border-box;\n    cursor: pointer; }\n    .z-input.z-input-ui-material > .z-input-wrap .z-input-edit-box-label-float {\n      color: #2196f3;\n      top: -22px;\n      font-size: 12px; }\n  .z-input.z-input-ui-material > .z-input-wrap .z-input-auto-completion {\n    border-bottom-left-radius: 3px;\n    border-bottom-right-radius: 3px; }\n", ""]);
 
 // exports
 
@@ -37745,8 +38092,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.material.scss", function() {
-			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.material.scss");
+		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.bootstrap.scss", function() {
+			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.bootstrap.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -37764,58 +38111,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input material UI 组件样式\r\n */\n.z-input.z-input-ui-material:hover .z-input-wrap {\n  border-color: #999999; }\n  .z-input.z-input-ui-material:hover .z-input-wrap > .z-input-wrap-border {\n    border-color: #999999; }\n\n.z-input.z-input-ui-material:hover.z-input-type-area .z-input-wrap {\n  border: #999999 1px solid; }\n  .z-input.z-input-ui-material:hover.z-input-type-area .z-input-wrap > .z-input-wrap-border {\n    border: #999999 1px solid; }\n\n.z-input.z-input-ui-material .z-input-wrap::after {\n  content: '';\n  position: absolute;\n  width: 0;\n  height: 2px;\n  left: 0;\n  right: 0;\n  margin: 0 auto;\n  bottom: -1px;\n  background-color: transparent;\n  z-index: 1;\n  -webkit-transform: scaleX(0);\n          transform: scaleX(0);\n  transition: all 300ms ease-out; }\n\n.z-input.z-input-ui-material .z-input-wrap.z-input-error-border {\n  outline: none; }\n\n.z-input.z-input-ui-material .z-input-wrap.z-input-editting::after {\n  width: 100%;\n  background-color: #ef5350;\n  -webkit-transform: scaleX(1);\n          transform: scaleX(1); }\n\n.z-input.z-input-ui-material .z-input-wrap > .z-input-wrap-border {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n  border-bottom: transparent 1px solid;\n  transition: all 100ms ease-out; }\n\n.z-input.z-input-ui-material .z-input-wrap .z-input-auto-completion {\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px; }\n\n.z-input.z-input-ui-material .z-input-tip-danger {\n  position: absolute;\n  top: 41px;\n  width: 100%;\n  background: #fff;\n  border: #ef5350 1px solid;\n  padding: 8px;\n  z-index: 1; }\n  .z-input.z-input-ui-material .z-input-tip-danger::after, .z-input.z-input-ui-material .z-input-tip-danger::before {\n    content: \"\\25C6\";\n    position: absolute;\n    top: -11px;\n    left: 0;\n    right: 0;\n    margin: auto;\n    width: 22px;\n    height: 20px;\n    font-size: 33px;\n    line-height: 20px; }\n  .z-input.z-input-ui-material .z-input-tip-danger::after {\n    top: -9px;\n    color: #fff; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input bootstrap UI 组件样式\r\n */\n.z-input.z-input-ui-bootstrap.z-input-ui-bootstrap > .z-input-wrap {\n  border: #d6d6d6 1px solid;\n  border-radius: 3px;\n  transition-property: border, box-shadow;\n  transition-duration: 300ms;\n  transition-timing-function: ease-in-out; }\n  .z-input.z-input-ui-bootstrap.z-input-ui-bootstrap > .z-input-wrap.z-input-editting {\n    border-color: #2196f3;\n    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3); }\n  .z-input.z-input-ui-bootstrap.z-input-ui-bootstrap > .z-input-wrap.z-input-error-border {\n    border-color: #f44336;\n    box-shadow: 0 0 0 4px rgba(244, 67, 54, 0.3); }\n  .z-input.z-input-ui-bootstrap.z-input-ui-bootstrap > .z-input-wrap .z-input-edit-box > .z-input-edit-box-pre,\n  .z-input.z-input-ui-bootstrap.z-input-ui-bootstrap > .z-input-wrap .z-input-edit-box > .z-input-edit-box-input {\n    padding: 10px; }\n  .z-input.z-input-ui-bootstrap.z-input-ui-bootstrap > .z-input-wrap .z-input-edit-box-placeholder {\n    padding: 10px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 478 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(479);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(2)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.bootstrap.scss", function() {
-			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Input.bootstrap.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 479 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * input bootstrap UI 组件样式\r\n */\n.z-input.z-input-ui-bootstrap.z-input-ui-bootstrap .z-input-wrap {\n  border: #d6d6d6 1px solid;\n  border-radius: 3px; }\n  .z-input.z-input-ui-bootstrap.z-input-ui-bootstrap .z-input-wrap.z-input-editting {\n    border-color: #2196f3;\n    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.4); }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37828,116 +38130,164 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function (h) {
   var _this = this;
 
-  var editBoxEle = {};
+  var children = [];
+  var editBoxChild = [];
+  var wrapChildren = [];
 
-  if (this.isText) {
-    editBoxEle = h('input', {
-      domProps: {
-        value: this.value
-      },
-      attrs: {
-        value: this.value,
-        maxlength: this.number ? undefined : this.max,
-        readonly: this.readOnly,
-        placeholder: this.placeholder
-      },
+  editBoxChild.push(h('motion-fade', {
+    props: {
+      speed: 'fast'
+    },
+    ref: 'palceholder'
+  }, [h('div', {
+    class: [this.xclass('edit-box-placeholder')],
+    style: {
+      display: this.placeholderStartedDisplay ? '' : 'none'
+    }
+  }, this.placeholder)]));
+
+  if (this.UIMaterial) {
+    editBoxChild.push(h('div', {
+      class: [this.xclass('edit-box-label'), _defineProperty({}, this.xclass('edit-box-label-float'), this.labelDisplay && this.labelFloatDisplay)],
       directives: [{
-        name: 'focus',
-        value: this.focusing
+        name: 'show',
+        value: !!this.label
       }],
       on: {
-        focus: this.focus,
-        blur: this.blur,
-        keyup: this.keyup,
-        input: function input(event) {
-          _this.value = event.target.value;
+        click: function click() {
+          _this.$refs.input.focus();
         }
-      },
-      ref: 'input'
-    });
-  } else {
-    editBoxEle = h('textarea', {
-      attrs: {
-        placeholder: this.placeholder,
-        maxlength: this.maxLength,
-        readonly: this.readOnly,
-        rows: this.row
-      },
-      directives: [{
-        name: 'focus',
-        value: this.focusing
-      }],
-      on: {
-        focus: this.focus,
-        blur: this.blur,
-        keyup: this.keyup,
-        input: function input(event) {
-          _this.value = event.target.value;
-        }
-      },
-      ref: 'input'
-    }, this.value);
+      }
+    }, this.label));
   }
 
-  return h('div', {
-    class: this.stageClass.concat(this.cPrefix, this.xclass('type-' + this.type), this.xclass([this.themeClass, this.uiClass])),
+  editBoxChild.push(h('' + (this.isTextarea || this.multiline ? 'textarea' : 'input'), {
+    attrs: {
+      readonly: this.readOnly,
+      rows: this.isText ? 1 : this.row
+    },
+    class: [this.xclass('edit-box-input')],
+    domProps: {
+      value: this.value
+    },
     directives: [{
-      name: 'show',
-      value: !this.hidden
-    }]
-  }, [h('div', {
-    class: this.wrapClass
-  }, [h('div', {
+      name: 'focus',
+      value: this.focusing
+    }],
+    on: {
+      focus: this._handlerFocus,
+      blur: this._handlerBlur,
+      keyup: this._handlerKeyup,
+      input: this._handlerInput
+    },
+    ref: 'input'
+  }));
+
+  if (this.multiline) {
+    editBoxChild.push(h('pre', {
+      class: this.xclass('edit-box-pre')
+    }, [h('span', {
+      ref: 'pre'
+    }, this.value), h('br')]));
+  }
+
+  if (this.UIMaterial) {
+    wrapChildren.push(h('div', {
+      class: [this.xclass(['wrap-border-motion', 'wrap-border-motion-edit']), _defineProperty({}, this.xclass('wrap-border-motion-active'), this.editBorderActive)]
+    }), h('div', {
+      class: [this.xclass(['wrap-border-motion', 'wrap-border-motion-error']), _defineProperty({}, this.xclass('wrap-border-motion-active'), this.errorTextDisplay)]
+    }));
+  }
+
+  wrapChildren.push(h('div', {
     class: [this.xclass('wrap-border')]
   }, [h('row', {
     props: {
-      justify: 'justify'
+      justify: 'justify',
+      ui: this.ui,
+      theme: this.theme
     }
   }, [h('column', {
     props: {
-      span: this.$slots.header ? this.headerSpan : 0
+      span: this.$slots.header ? this.headerSpan : 0,
+      ui: this.ui,
+      theme: this.theme
     }
   }, [h('div', {
     class: this.xclass('edit-box-header')
   }, this.$slots.header)]), h('column', {
     props: {
-      span: this.inputBoxCol
+      span: this.inputBoxCol,
+      ui: this.ui,
+      theme: this.theme
     }
   }, [h('div', {
-    class: this.xclass('edit-box')
-  }, [editBoxEle])]), h('column', {
+    class: [this.xclass('edit-box'), _defineProperty({}, this.xclass('edit-box-multiline'), this.multiline)]
+  }, editBoxChild)]), h('column', {
     props: {
-      span: this.$slots.footer ? this.footerSpan : 0
+      span: this.$slots.footer ? this.footerSpan : 0,
+      ui: this.ui,
+      theme: this.theme
     }
   }, [h('div', {
     class: this.xclass('edit-box-footer')
-  }, this.$slots.footer)])])])]), h('div', {
-    class: [this.xclass('completion')],
+  }, this.$slots.footer)])])]));
+
+  children.push(h('div', {
+    class: this.wrapClass
+  }, wrapChildren));
+
+  if (this.completion) {
+    children.push(h('div', {
+      class: [this.xclass('completion')],
+      directives: [{
+        name: 'show',
+        value: this.completion
+      }]
+    }, this.$slots.completion));
+  }
+
+  if (!this.number && this.max && this.textLengthTip) {
+    children.push(h('div', {
+      class: [this.xclass('limit-txt')]
+    }, [h('span', this.inputTextLength + ' / ' + this.max)]));
+  }
+
+  if (this.tipDisplay) {
+    children.push(h('div', {
+      class: [this.xclass('tip')]
+    }, [h('motion-fade', {
+      props: {
+        speed: 'fast'
+      },
+      ref: 'helperTip'
+    }, [h('div', {
+      class: [this.xclass('tip-helper')]
+    }, this.helperText)]), h('motion-fade', {
+      props: {
+        speed: 'fast'
+      },
+      ref: 'errorTip'
+    }, [h('div', {
+      class: [this.xclass('tip-error')]
+    }, this.errorTip)])]));
+  }
+
+  return h('div', {
+    class: this.stageClass,
     directives: [{
       name: 'show',
-      value: this.completion
+      value: !this.hidden
     }]
-  }, this.$slots.completion), h('transition', {
-    props: {
-      name: 'fade'
-    }
-  }, [h('div', {
-    class: [this.xclass('tip-danger')],
-    directives: [{
-      name: 'show',
-      value: this.dangerTipDisplay
-    }]
-  }, this.dangerTip)]), function () {
-    if (_this.maxLength && _this.textLengthTip) {
-      return h('div', {
-        class: [_this.xclass('limit-txt')]
-      }, [h('span', _this.limitLen), h('span', _this.maxLength)]);
-    }
-  }()]);
+  }, children);
 };
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
+                                                                                                                                                                                                                   * input.render.js
+                                                                                                                                                                                                                   */
+
 /***/ }),
-/* 481 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38013,7 +38363,7 @@ exports.default = function (verifedType) {
 };
 
 /***/ }),
-/* 482 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38023,15 +38373,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var KEYUP_INTERVAL_TIME = 100; /**
-                                * input api
-                                */
 
 exports.default = {
   methods: {
@@ -38045,15 +38391,15 @@ exports.default = {
       var _this = this;
 
       var verified = true;
-      var dangerTip = '';
+      var errorTip = '';
 
       var returnFun = function returnFun() {
         if (!verified) {
-          document.body.scrollTop = _this.$el.offsetTop;
+          _this.$el.offsetParent.scrollTop = _this.$el.offsetTop;
         }
 
         _this.verified = verified;
-        _this.dangerTip = dangerTip;
+        _this.errorTip = errorTip;
 
         return verified;
       };
@@ -38066,12 +38412,12 @@ exports.default = {
         var verifyEmpty = this._verifyEmpty();
 
         verified = verifyEmpty.verified;
-        dangerTip = verifyEmpty.dangerTip;
+        errorTip = verifyEmpty.errorTip;
 
         return returnFun();
       } else {
         if (this.number && isNaN(this.value)) {
-          dangerTip = this.errorMessage + '\u8BF7\u8F93\u5165\u6570\u5B57\u7C7B\u578B';
+          errorTip = this.errorMsg + '\u8BF7\u8F93\u5165\u6570\u5B57\u7C7B\u578B';
           verified = false;
 
           return returnFun();
@@ -38080,10 +38426,10 @@ exports.default = {
         if (this.min) {
           if (this.number) {
             verified = this.min <= this.value;
-            dangerTip = verified ? '' : this.lengthMessage + '\u4E0D\u80FD\u5C0F\u4E8E' + this.min + '!';
+            errorTip = verified ? '' : this.name + '\u4E0D\u80FD\u5C0F\u4E8E' + this.min + '!';
           } else {
             verified = this.min <= this.value.toString().length;
-            dangerTip = verified ? '' : this.lengthMessage + '\u957F\u5EA6\u4E0D\u80FD\u5C0F\u4E8E' + this.min + '\u4E2A\u5B57\u7B26!';
+            errorTip = verified ? '' : this.name + '\u957F\u5EA6\u4E0D\u80FD\u5C0F\u4E8E' + this.min + '\u4E2A\u5B57\u7B26!';
           }
 
           if (!verified) {
@@ -38093,7 +38439,7 @@ exports.default = {
 
         if (this.max) {
           verified = this.max >= this.value.toString().length;
-          dangerTip = verified ? '' : this.lengthMessage + '\u957F\u5EA6\u4E0D\u80FD\u5927\u4E8E' + this.max + '\u4E2A\u5B57\u7B26!';
+          errorTip = verified ? '' : this.name + '\u957F\u5EA6\u4E0D\u80FD\u5927\u4E8E' + this.max + '\u4E2A\u5B57\u7B26!';
 
           if (!verified) {
             return returnFun();
@@ -38104,7 +38450,7 @@ exports.default = {
           var value = Number(this.value);
 
           verified = this.minNum <= value;
-          dangerTip = verified ? '' : this.lengthMessage + '\u4E0D\u80FD\u5C0F\u4E8E' + this.minNum + '!';
+          errorTip = verified ? '' : this.name + '\u4E0D\u80FD\u5C0F\u4E8E' + this.minNum + '!';
 
           if (!verified) {
             return returnFun();
@@ -38115,7 +38461,7 @@ exports.default = {
           var _value = Number(this.value);
 
           verified = this.maxNum >= _value;
-          dangerTip = verified ? '' : this.lengthMessage + '\u4E0D\u80FD\u5927\u4E8E' + this.maxNum + '!';
+          errorTip = verified ? '' : this.name + '\u4E0D\u80FD\u5927\u4E8E' + this.maxNum + '!';
 
           if (!verified) {
             return returnFun();
@@ -38126,9 +38472,9 @@ exports.default = {
           verified = false;
 
           if (firstVerify) {
-            dangerTip = '';
+            errorTip = '';
           } else {
-            dangerTip = this.formatMessage ? this.formatMessage : this._formatMessage;
+            errorTip = this.formatText ? this.formatText : this._formatMessage;
           }
 
           return returnFun();
@@ -38148,80 +38494,26 @@ exports.default = {
       this.verify();
 
       if (!this.verified) {
-        this.errorBorderDisplay = true;
-        (0, _tip2.default)(this.dangerTip);
+        (0, _tip2.default)(this.errorTip);
 
         return false;
       }
 
       return this;
-    },
-
-
-    /**
-     * 输入框 focus 状态触发的方法
-     * @return {Object} this - 组件
-     */
-    focus: function focus(evt) {
-      this.errorBorderDisplay = false;
-      this.verified = true;
-      this.focusing = true;
-
-      return this.$emit('focus', {
-        emitter: this,
-        valeu: this.value,
-        event: evt
-      });
-    },
-
-
-    /**
-     * 输入框 blur 状态触发的方法
-     * @return {Object} this - 组件
-     */
-    blur: function blur(evt) {
-      this.focusing = false;
-
-      if (this.number) {
-        this.value = this._switchNum(this.value);
-      }
-
-      return this.$emit('blur', {
-        emitter: this,
-        valeu: this.value,
-        event: evt
-      });
-    },
-
-
-    /**
-     * 输入框 keyup 状态触发的方法
-     * @return {Object}
-     */
-    keyup: function keyup() {
-      var _this2 = this;
-
-      if (this.keyuping) {
-        return false;
-      }
-
-      this.keyuping = true;
-
-      setTimeout(function () {
-        _this2.keyuping = false;
-      }, KEYUP_INTERVAL_TIME);
     }
   }
-};
+}; /**
+    * input api
+    */
 
 /***/ }),
-/* 483 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(484);
+var content = __webpack_require__(482);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -38246,7 +38538,7 @@ if(false) {
 }
 
 /***/ }),
-/* 484 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -38254,13 +38546,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * tip 组件样式\r\n */\n.z-bubble-slot .z-bubble-text {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n.z-bubble {\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 999;\n  background: #fff;\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\n  border-radius: 3px;\n  padding: 8px; }\n  .z-bubble-slot {\n    max-width: 300px; }\n    .z-bubble-slot .z-bubble-text {\n      width: 100%;\n      display: inline-block; }\n  .z-bubble.z-bubble-custom .z-bubble-slot {\n    max-width: none; }\n  .z-bubble .z-bubble-arrow {\n    position: absolute;\n    top: -10px;\n    left: 0;\n    right: 0;\n    height: 15px;\n    width: 16px;\n    margin: auto;\n    overflow: hidden;\n    -webkit-transform: rotate(0);\n            transform: rotate(0); }\n    .z-bubble .z-bubble-arrow .z-icon {\n      position: absolute;\n      top: 0;\n      left: 0; }\n      .z-bubble .z-bubble-arrow .z-icon .z-icon-triangle-up {\n        font-size: 16px; }\n    .z-bubble .z-bubble-arrow .z-bubble-border {\n      top: -1px;\n      color: #d6d6d6; }\n    .z-bubble .z-bubble-arrow .z-bubble-body {\n      color: #fff; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * tip 组件样式\r\n */\n.z-bubble-slot .z-bubble-text {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n.z-bubble {\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 999;\n  background: #fff;\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\n  border-radius: 3px;\n  padding: 8px; }\n  .z-bubble-slot {\n    max-width: 300px; }\n    .z-bubble-slot .z-bubble-text {\n      width: 100%;\n      display: inline-block; }\n  .z-bubble.z-bubble-custom .z-bubble-slot {\n    max-width: none; }\n  .z-bubble .z-bubble-arrow {\n    position: absolute;\n    top: -10px;\n    left: 0;\n    right: 0;\n    height: 15px;\n    width: 16px;\n    margin: auto;\n    overflow: hidden;\n    -webkit-transform: rotate(0);\n        -ms-transform: rotate(0);\n            transform: rotate(0); }\n    .z-bubble .z-bubble-arrow .z-icon {\n      position: absolute;\n      top: 0;\n      left: 0; }\n      .z-bubble .z-bubble-arrow .z-icon .z-icon-triangle-up {\n        font-size: 16px; }\n    .z-bubble .z-bubble-arrow .z-bubble-border {\n      top: -1px;\n      color: #d6d6d6; }\n    .z-bubble .z-bubble-arrow .z-bubble-body {\n      color: #fff; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 485 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38276,7 +38568,9 @@ exports.default = function (h) {
   return h('zoom-transition', {
     props: {
       speed: 'fast',
-      origin: '50% 0'
+      origin: '50% 0',
+      ui: this.ui,
+      theme: this.theme
     },
     ref: 'transition'
   }, [h('div', {
@@ -38293,12 +38587,16 @@ exports.default = function (h) {
   }, [h('icon', {
     class: [this.xclass('border')],
     props: {
-      kind: 'triangle-up'
+      kind: 'triangle-up',
+      ui: this.ui,
+      theme: this.theme
     }
   }), h('icon', {
     class: [this.xclass('body')],
     props: {
-      kind: 'triangle-up'
+      kind: 'triangle-up',
+      ui: this.ui,
+      theme: this.theme
     }
   })]), h('div', {
     class: [this.xclass('slot')]
@@ -38318,13 +38616,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 486 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(487);
+var content = __webpack_require__(485);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -38349,6 +38647,51 @@ if(false) {
 }
 
 /***/ }),
+/* 485 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n.z-modal {\n  position: fixed;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 100%;\n  z-index: 1000; }\n  .z-modal.z-modal-no-header .z-modal-pop > article > .z-modal-scroller > .z-scroller-box {\n    padding-top: 16px; }\n  .z-modal > .z-modal-bg {\n    background: rgba(0, 0, 0, 0.12);\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    left: 0;\n    top: 0; }\n  .z-modal > .z-modal-pop {\n    position: absolute;\n    background: #fff;\n    border-radius: 3px;\n    overflow: hidden;\n    -webkit-transform: rotate(0);\n        -ms-transform: rotate(0);\n            transform: rotate(0);\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2); }\n    .z-modal > .z-modal-pop > header {\n      cursor: move;\n      padding: 16px;\n      box-sizing: border-box;\n      width: 100%; }\n      .z-modal > .z-modal-pop > header .z-modal-header-title {\n        font-size: 16px;\n        line-height: 1;\n        font-weight: bold; }\n    .z-modal > .z-modal-pop > article {\n      box-sizing: border-box;\n      max-width: 100%;\n      min-width: 280px; }\n      .z-modal > .z-modal-pop > article > .z-modal-scroller > .z-scroller-box {\n        padding: 16px;\n        box-sizing: border-box; }\n    .z-modal > .z-modal-pop > footer {\n      padding: 16px;\n      box-sizing: border-box;\n      line-height: normal;\n      text-align: right;\n      height: auto;\n      width: 100%; }\n      .z-modal > .z-modal-pop > footer > .z-btn {\n        margin: 0 4px; }\n  .z-modal.z-modal-type-full.z-modal-has-scroller .z-modal-pop > header {\n    border-color: #2196f3; }\n  .z-modal.z-modal-type-full .z-modal-pop {\n    width: 530px;\n    padding-top: 0; }\n    .z-modal.z-modal-type-full .z-modal-pop > header {\n      color: #fff;\n      padding-top: 12px;\n      padding-bottom: 12px;\n      background-color: #2196f3;\n      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2); }\n      .z-modal.z-modal-type-full .z-modal-pop > header > div {\n        min-height: 36px; }\n      .z-modal.z-modal-type-full .z-modal-pop > header .z-modal-header-nav {\n        line-height: 1; }\n    .z-modal.z-modal-type-full .z-modal-pop > article {\n      height: 300px; }\n    .z-modal.z-modal-type-full .z-modal-pop > footer {\n      border-top: #d6d6d6 1px solid;\n      padding-top: 12px;\n      padding-bottom: 12px; }\n  .z-modal.z-modal-size-m > .z-modal-pop > article {\n    min-width: 500px; }\n  .z-modal.z-modal-size-l > .z-modal-pop > article {\n    min-width: 800px; }\n\n.z-modal.z-modal-theme-success.z-modal-type-full.z-modal-has-scroller .z-modal-pop > header {\n  border-color: #4caf50; }\n\n.z-modal.z-modal-theme-success.z-modal-type-full .z-modal-pop > header {\n  background-color: #4caf50; }\n\n.z-modal.z-modal-theme-danger.z-modal-type-full.z-modal-has-scroller .z-modal-pop > header {\n  border-color: #f44336; }\n\n.z-modal.z-modal-theme-danger.z-modal-type-full .z-modal-pop > header {\n  background-color: #f44336; }\n\n.z-modal.z-modal-theme-warning.z-modal-type-full.z-modal-has-scroller .z-modal-pop > header {\n  border-color: #9e9e9e; }\n\n.z-modal.z-modal-theme-warning.z-modal-type-full .z-modal-pop > header {\n  background-color: #9e9e9e; }\n\n.z-modal.z-modal-theme-orange.z-modal-type-full.z-modal-has-scroller .z-modal-pop > header {\n  border-color: #ff5722; }\n\n.z-modal.z-modal-theme-orange.z-modal-type-full .z-modal-pop > header {\n  background-color: #ff5722; }\n\n.z-modal.z-modal-theme-blue.z-modal-type-full.z-modal-has-scroller .z-modal-pop > header {\n  border-color: #2196f3; }\n\n.z-modal.z-modal-theme-blue.z-modal-type-full .z-modal-pop > header {\n  background-color: #2196f3; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 486 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(487);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(2)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Modal.m.scss", function() {
+			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Modal.m.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
 /* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38357,7 +38700,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n.z-modal {\n  position: fixed;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 100%;\n  z-index: 1000; }\n  .z-modal.z-modal-no-header .z-modal-pop > article > .z-modal-scroller\n> .z-scroller-box {\n    padding-top: 24px; }\n  .z-modal .z-modal-bg {\n    background: rgba(0, 0, 0, 0.12);\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    left: 0;\n    top: 0; }\n  .z-modal .z-modal-pop {\n    position: absolute;\n    background: #fff;\n    border-radius: 3px;\n    overflow: hidden;\n    -webkit-transform: rotate(0);\n            transform: rotate(0);\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2); }\n    .z-modal .z-modal-pop > header {\n      cursor: move;\n      padding: 24px 24px 20px;\n      box-sizing: border-box;\n      width: 100%; }\n      .z-modal .z-modal-pop > header .z-modal-header-title {\n        font-size: 16px;\n        line-height: 1;\n        font-weight: bold; }\n    .z-modal .z-modal-pop > article {\n      box-sizing: border-box;\n      max-width: 100%;\n      min-width: 280px; }\n      .z-modal .z-modal-pop > article > .z-modal-scroller\n> .z-scroller-box {\n        padding: 0 24px 24px;\n        box-sizing: border-box; }\n    .z-modal .z-modal-pop > footer {\n      padding: 8px 8px 8px 24px;\n      box-sizing: border-box;\n      line-height: normal;\n      text-align: right;\n      height: auto;\n      width: 100%; }\n      .z-modal .z-modal-pop > footer > .z-btn {\n        margin: 0 4px; }\n  .z-modal.z-modal-has-scroller .z-modal-pop > header {\n    border-bottom: #d6d6d6 1px solid; }\n  .z-modal.z-modal-has-scroller .z-modal-pop > article {\n    padding-top: 0;\n    padding-bottom: 0; }\n  .z-modal.z-modal-has-scroller .z-modal-pop > footer {\n    border-top: #d6d6d6 1px solid; }\n  .z-modal.z-modal-type-alert .z-modal-pop > article {\n    min-height: auto; }\n  .z-modal.z-modal-type-full.z-modal-has-scroller .z-modal-pop > header {\n    border-color: #ef5350; }\n  .z-modal.z-modal-type-full .z-modal-pop {\n    width: 530px;\n    padding-top: 0; }\n    .z-modal.z-modal-type-full .z-modal-pop > header {\n      color: #fff;\n      padding-top: 12px;\n      padding-bottom: 12px;\n      background-color: #ef5350;\n      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2); }\n      .z-modal.z-modal-type-full .z-modal-pop > header > div {\n        min-height: 36px; }\n      .z-modal.z-modal-type-full .z-modal-pop > header .z-modal-header-nav {\n        line-height: 1; }\n    .z-modal.z-modal-type-full .z-modal-pop > article {\n      height: 300px; }\n    .z-modal.z-modal-type-full .z-modal-pop > footer {\n      border-top: #d6d6d6 1px solid;\n      padding-top: 12px;\n      padding-bottom: 12px; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n@media only screen and (max-width: 767px) {\n  .z-modal .z-modal-bg {\n    background: rgba(0, 0, 0, 0.5); }\n  .z-modal .z-modal-pop {\n    width: 96%; }\n  .z-modal.z-modal-type-full .z-modal-pop {\n    width: 100%;\n    height: 100%;\n    position: relative;\n    border-radius: 0; }\n    .z-modal.z-modal-type-full .z-modal-pop > header {\n      position: absolute;\n      top: 0;\n      left: 0;\n      padding-top: 12px;\n      padding-bottom: 12px; }\n    .z-modal.z-modal-type-full .z-modal-pop > article {\n      min-height: auto;\n      width: 100%;\n      height: 100%;\n      padding-top: 60px; } }\n", ""]);
 
 // exports
 
@@ -38383,8 +38726,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Modal.m.scss", function() {
-			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Modal.m.scss");
+		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Modal.material.scss", function() {
+			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Modal.material.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -38402,13 +38745,58 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件样式\r\n */\n@media only screen and (max-width: 767px) {\n  .z-modal .z-modal-bg {\n    background: rgba(0, 0, 0, 0.5); }\n  .z-modal .z-modal-pop {\n    width: 96%; }\n  .z-modal.z-modal-type-full .z-modal-pop {\n    width: 100%;\n    height: 100%;\n    position: relative;\n    border-radius: 0; }\n    .z-modal.z-modal-type-full .z-modal-pop > header {\n      position: absolute;\n      top: 0;\n      left: 0;\n      padding-top: 12px;\n      padding-bottom: 12px; }\n    .z-modal.z-modal-type-full .z-modal-pop > article {\n      min-height: auto;\n      width: 100%;\n      height: 100%;\n      padding-top: 60px; } }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件 material 样式\r\n */\n.z-modal.z-modal-ui-material.z-modal-no-header .z-modal-pop > article > .z-modal-scroller\n> .z-scroller-box {\n  padding-top: 24px; }\n\n.z-modal.z-modal-ui-material .z-modal-pop > header {\n  padding: 24px 24px 20px; }\n  .z-modal.z-modal-ui-material .z-modal-pop > header .z-modal-header-title {\n    font-size: 16px;\n    line-height: 1; }\n\n.z-modal.z-modal-ui-material .z-modal-pop > article > .z-modal-scroller\n> .z-scroller-box {\n  padding: 0 24px 24px; }\n\n.z-modal.z-modal-ui-material .z-modal-pop > footer {\n  padding: 8px 8px 8px 24px; }\n  .z-modal.z-modal-ui-material .z-modal-pop > footer > .z-btn {\n    margin: 0 4px; }\n\n.z-modal.z-modal-ui-material.z-modal-has-scroller .z-modal-pop > header {\n  border-bottom: #d6d6d6 1px solid; }\n\n.z-modal.z-modal-ui-material.z-modal-has-scroller .z-modal-pop > article {\n  padding-top: 0;\n  padding-bottom: 0; }\n\n.z-modal.z-modal-ui-material.z-modal-has-scroller .z-modal-pop > footer {\n  border-top: #d6d6d6 1px solid; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 490 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(491);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(2)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Modal.bootstrap.scss", function() {
+			var newContent = require("!!../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../node_modules/_postcss-loader@2.0.9@postcss-loader/lib/index.js!../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./Modal.bootstrap.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 491 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * pop 组件 bootstrap 样式\r\n */\n.z-modal.z-modal-ui-bootstrap.z-modal-no-header .z-modal-pop > article > .z-modal-scroller > .z-scroller-box {\n  padding-top: 16px; }\n\n.z-modal.z-modal-ui-bootstrap .z-modal-pop > header {\n  padding: 16px; }\n  .z-modal.z-modal-ui-bootstrap .z-modal-pop > header .z-modal-header-title {\n    font-size: 16px;\n    line-height: 24px;\n    font-weight: 500; }\n\n.z-modal.z-modal-ui-bootstrap .z-modal-pop > article {\n  padding: 16px;\n  border-top: #d6d6d6 1px solid;\n  border-bottom: #d6d6d6 1px solid; }\n\n.z-modal.z-modal-ui-bootstrap .z-modal-pop > footer {\n  padding: 16px; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38419,9 +38807,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (h) {
-  var _this = this;
-
   var modalChildren = [];
+  var articleEle = this.$slots.default ? this.$slots.default : [h('div', {
+    class: this.xclass('alert-message')
+  }, this.modalMessage)];
   var headerChildren = _ModalHeader2.default.call(this, h);
   var footerChildren = _ModalFooter2.default.call(this, h);
 
@@ -38433,27 +38822,24 @@ exports.default = function (h) {
       }
     }, [h('row', {
       props: {
-        justify: 'justify'
+        justify: 'justify',
+        ui: this.state.ui,
+        theme: this.state.theme
       }
     }, headerChildren)]));
   }
 
-  modalChildren.push(h('article', [h('scroller', {
+  modalChildren.push(this.UIMaterial ? h('article', [h('scroller', {
     class: [this.xclass('scroller')],
     props: {
       height: this.modalHeight,
-      autoHide: true
+      width: '100%',
+      autoHide: true,
+      ui: this.state.ui,
+      theme: this.state.theme
     },
     ref: 'scroller'
-  }, function () {
-    if (_this.$slots.default) {
-      return _this.$slots.default;
-    } else {
-      return [h('div', {
-        class: _this.xclass('alert-message')
-      }, _this.modalMessage)];
-    }
-  }())]));
+  }, articleEle)]) : h('article', articleEle));
 
   if (this.modalFooterDisplay) {
     modalChildren.push(h('footer', {
@@ -38466,7 +38852,7 @@ exports.default = function (h) {
   }
 
   return h('div', {
-    class: [this.cPrefix, this.xclass([this.themeClass]), this.xclass('type-' + this.type), _defineProperty({}, this.xclass('no-header'), !this.modalHeaderDisplay), _defineProperty({}, this.xclass('has-scroller'), this.hasScroller)],
+    class: [this.cPrefix, this.xclass([this.uiClass]), this.xclass([this.themeClass]), this.xclass('size-' + this.size), this.xclass('type-' + this.type), _defineProperty({}, this.xclass('no-header'), !this.modalHeaderDisplay), _defineProperty({}, this.xclass('has-scroller'), this.hasScroller)],
     directives: [{
       name: 'show',
       value: this.modalDisplay
@@ -38474,7 +38860,7 @@ exports.default = function (h) {
     on: {
       mousemove: this.mouseMove
     }
-  }, [h('fade-transition', {
+  }, [h('motion-fade', {
     props: {
       speed: 'fast'
     },
@@ -38486,19 +38872,23 @@ exports.default = function (h) {
       value: this.modalDisplay
     }],
     on: {
-      click: this.no
+      click: this._handlerClickBg
     }
   })]), h('pop', {
     class: [this.xclass('pop')],
+    props: {
+      ui: this.state.ui,
+      theme: this.state.theme
+    },
     ref: 'pop'
   }, [modalChildren])]);
 };
 
-var _ModalHeader = __webpack_require__(491);
+var _ModalHeader = __webpack_require__(493);
 
 var _ModalHeader2 = _interopRequireDefault(_ModalHeader);
 
-var _ModalFooter = __webpack_require__(492);
+var _ModalFooter = __webpack_require__(494);
 
 var _ModalFooter2 = _interopRequireDefault(_ModalFooter);
 
@@ -38509,7 +38899,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 491 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38572,7 +38962,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 492 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38589,7 +38979,9 @@ exports.default = function (h) {
     footerChildren.push(h('btn', {
       props: {
         value: this.noBtn,
-        type: 'flat'
+        type: this.UIMaterial ? 'flat' : 'button',
+        ui: this.state.ui,
+        theme: 'grey'
       },
       on: {
         click: this.no
@@ -38601,7 +38993,9 @@ exports.default = function (h) {
     footerChildren.push(h('btn', {
       props: {
         value: this.okBtn,
-        type: 'flat'
+        type: this.UIMaterial ? 'flat' : 'button',
+        ui: this.state.ui,
+        theme: this.state.theme
       },
       on: {
         click: this.ok
@@ -38613,7 +39007,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 493 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38833,7 +39227,11 @@ exports.default = {
           _ref$title = _ref.title,
           title = _ref$title === undefined ? '' : _ref$title,
           _ref$message = _ref.message,
-          message = _ref$message === undefined ? '' : _ref$message;
+          message = _ref$message === undefined ? '' : _ref$message,
+          _ref$ui = _ref.ui,
+          ui = _ref$ui === undefined ? this.ui : _ref$ui,
+          _ref$theme = _ref.theme,
+          theme = _ref$theme === undefined ? this.theme : _ref$theme;
 
       this.okCbFun = okCb;
       this.noCbFun = noCb;
@@ -38842,19 +39240,22 @@ exports.default = {
       this.modalHeader = title;
       this.modalMessage = message;
 
+      this.state.ui = ui;
+      this.state.theme = theme;
+
       return this;
     }
   }
 };
 
 /***/ }),
-/* 494 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(495);
+var content = __webpack_require__(497);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -38879,7 +39280,7 @@ if(false) {
 }
 
 /***/ }),
-/* 495 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -38887,13 +39288,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * scroller 组件样式\r\n */\n.z-scroller {\n  overflow: hidden;\n  position: relative; }\n  .z-scroller .z-scroller-box {\n    position: absolute;\n    top: 0;\n    left: 0; }\n  .z-scroller .z-scroller-bar {\n    position: absolute;\n    border-radius: 4px;\n    background-color: #999999;\n    opacity: .4;\n    z-index: 1; }\n    .z-scroller .z-scroller-bar:hover {\n      opacity: .8; }\n    .z-scroller .z-scroller-bar.z-scroller-x-bar {\n      bottom: 0;\n      height: 5px; }\n    .z-scroller .z-scroller-bar.z-scroller-y-bar {\n      right: 0;\n      width: 5px; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * scroller 组件样式\r\n */\n.z-scroller {\n  overflow: hidden;\n  position: relative; }\n  .z-scroller .z-scroller-box {\n    position: absolute;\n    top: 0;\n    left: 0; }\n  .z-scroller .z-scroller-bar {\n    position: absolute;\n    border-radius: 4px;\n    background-color: #9e9e9e;\n    opacity: .6;\n    transition: opacity 150ms ease-out;\n    z-index: 1; }\n    .z-scroller .z-scroller-bar:hover {\n      opacity: .8; }\n    .z-scroller .z-scroller-bar.z-scroller-x-bar {\n      bottom: 0;\n      height: 5px; }\n    .z-scroller .z-scroller-bar.z-scroller-y-bar {\n      right: 0;\n      width: 5px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 496 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38963,14 +39364,20 @@ exports.default = {
       this.yData.isMousedown = false;
       this.xData.isMousedown = false;
     },
-    scrollerMouseover: function scrollerMouseover(evt) {
+    scrollerMouseenter: function scrollerMouseenter(evt) {
       this.showBar = true;
     },
-    scrollerMouseout: function scrollerMouseout(evt) {
+    scrollerMouseleave: function scrollerMouseleave(evt) {
       this.showBar = false;
     },
     mouseWheel: function mouseWheel(evt) {
       var _this = this;
+
+      this.triggerScroll('y');
+
+      if (evt.deltaY < 0 && this.yComputed.isTop === 0 || evt.deltaY > 0 && this.yComputed.isBottom === 0) {
+        return false;
+      }
 
       var barTop = 0;
       var boxTop = 0;
@@ -38982,8 +39389,6 @@ exports.default = {
         boxDistance: evt.deltaY > 0 ? -SCROLL_PIXEL : SCROLL_PIXEL,
         barDistance: evt.deltaY > 0 ? this.yData.scrollBarPixel : -this.yData.scrollBarPixel
       });
-
-      this.triggerScroll('y');
 
       if (this.yComputed.isBottom || this.yComputed.isTop) {
         if (this.scrolling) {
@@ -39134,7 +39539,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 497 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39148,8 +39553,8 @@ exports.default = function (h) {
   return h('div', {
     class: [this.cPrefix],
     on: {
-      mouseover: this.scrollerMouseover,
-      mouseout: this.scrollerMouseout,
+      mouseenter: this.scrollerMouseenter,
+      mouseleave: this.scrollerMouseleave,
       wheel: this.mouseWheel,
       touchstart: this.scrollerTouchStart,
       touchmove: this.scrollerTouchMove,
@@ -39162,20 +39567,17 @@ exports.default = function (h) {
   }, this.$slots.default), h('motion-fade', {
     props: {
       opacity: true,
-      speed: 'fast'
-    }
+      speed: 'fast',
+      display: !this.autoHide
+    },
+    ref: 'bar'
   }, [h('div', {
     class: [this.xclass(['bar', 'y-bar'])],
     on: {
       click: this.barClick,
       mousedown: this.yBarMouseDown
     },
-    style: this.yComputed.barStyle,
-    ref: 'bar',
-    directives: [{
-      name: 'show',
-      value: this.yComputed.barDisplay
-    }]
+    style: this.yComputed.barStyle
   })]), h('div', {
     class: [this.xclass(['bar', 'x-bar'])],
     on: {
@@ -39192,7 +39594,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 498 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39202,9 +39604,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(499);
+__webpack_require__(501);
 
-var _CodeRender = __webpack_require__(501);
+var _CodeRender = __webpack_require__(503);
 
 var _CodeRender2 = _interopRequireDefault(_CodeRender);
 
@@ -39251,7 +39653,7 @@ exports.default = {
   data: function data() {
     return {
       lineNum: 3,
-      stageWidth: 0 // stage 的宽度
+      preWidth: 0 // pre 的宽度
     };
   },
 
@@ -39265,26 +39667,26 @@ exports.default = {
 
   methods: {
     _initComp: function _initComp() {
-      this.stageWidth = this.$el.offsetWidth;
+      this.preWidth = this.$refs.article.offsetWidth - 50;
     },
     _binder: function _binder() {
       var _this = this;
 
       this.$refs.scroller.$on('scrollerChange', function () {
-        _this.stageWidth = _this.$el.offsetWidth;
+        _this.preWidth = _this.$refs.article.offsetWidth - 50;
       });
     }
   }
 };
 
 /***/ }),
-/* 499 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(500);
+var content = __webpack_require__(502);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39309,7 +39711,7 @@ if(false) {
 }
 
 /***/ }),
-/* 500 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39317,13 +39719,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * code 组件样式\r\n */\n.z-code {\n  font-size: 14px;\n  background-color: #fff;\n  border: #ff867c 1px solid;\n  border-radius: 3px; }\n  .z-code .z-code-stage {\n    box-sizing: border-box;\n    position: relative;\n    padding: 8px 16px; }\n  .z-code .z-code-header {\n    color: #d6d6d6;\n    font-weight: bold;\n    text-align: right;\n    margin-bottom: 5px; }\n  .z-code .z-code-article .z-code-pre {\n    width: 100%;\n    font-family: 'Roboto Mono', Monaco, courier, monospace;\n    font-size: 1em;\n    line-height: 16px;\n    margin: 0 0 0 50px;\n    -webkit-font-smoothing: initial;\n    -moz-osx-font-smoothing: initial; }\n  .z-code .z-code-line-num {\n    border-right: 2px #ef5350 solid;\n    font-family: 'Roboto Mono', Monaco, courier, monospace;\n    line-height: 16px;\n    text-align: right;\n    position: absolute;\n    top: 0;\n    left: 0;\n    padding-right: 5px;\n    width: 24px; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * code 组件样式\r\n */\n.z-code {\n  font-size: 14px;\n  background-color: #fff;\n  border: #6ec6ff 1px solid;\n  border-radius: 3px;\n  position: relative;\n  padding: 8px 16px; }\n  .z-code .z-code-header {\n    color: #d6d6d6;\n    font-weight: bold;\n    text-align: right;\n    margin-bottom: 5px; }\n  .z-code .z-code-article .z-code-pre {\n    width: 100%;\n    font-family: 'Roboto Mono', Monaco, courier, monospace;\n    font-size: 1em;\n    line-height: 16px;\n    margin: 0 0 0 50px;\n    -webkit-font-smoothing: initial;\n    -moz-osx-font-smoothing: initial; }\n  .z-code .z-code-line-num {\n    border-right: 2px #2196f3 solid;\n    font-family: 'Roboto Mono', Monaco, courier, monospace;\n    line-height: 16px;\n    text-align: right;\n    position: absolute;\n    top: 0;\n    left: 0;\n    padding-right: 5px;\n    width: 24px; }\n\n.z-code.z-code-theme-success .z-code {\n  border: #80e27e 1px solid; }\n  .z-code.z-code-theme-success .z-code .z-code-line-num {\n    border-right: 2px #4caf50 solid; }\n\n.z-code.z-code-theme-danger .z-code {\n  border: #ff7961 1px solid; }\n  .z-code.z-code-theme-danger .z-code .z-code-line-num {\n    border-right: 2px #f44336 solid; }\n\n.z-code.z-code-theme-blue .z-code {\n  border: #6ec6ff 1px solid; }\n  .z-code.z-code-theme-blue .z-code .z-code-line-num {\n    border-right: 2px #2196f3 solid; }\n\n.z-code.z-code-theme-warning .z-code {\n  border: #cfcfcf 1px solid; }\n  .z-code.z-code-theme-warning .z-code .z-code-line-num {\n    border-right: 2px #9e9e9e solid; }\n\n.z-code.z-code-theme-orange .z-code {\n  border: #ff8a50 1px solid; }\n  .z-code.z-code-theme-orange .z-code .z-code-line-num {\n    border-right: 2px #ff5722 solid; }\n\n.z-code.z-code-theme-grey .z-code {\n  border: #cfcfcf 1px solid; }\n  .z-code.z-code-theme-grey .z-code .z-code-line-num {\n    border-right: 2px #9e9e9e solid; }\n\n.z-code.z-code-theme-light .z-code {\n  border: #fff 1px solid; }\n  .z-code.z-code-theme-light .z-code .z-code-line-num {\n    border-right: 2px #f5f5f5 solid; }\n\n.z-code.z-code-theme-dark .z-code {\n  border: #6d6d6d 1px solid; }\n  .z-code.z-code-theme-dark .z-code .z-code-line-num {\n    border-right: 2px #424242 solid; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 501 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39346,47 +39748,47 @@ exports.default = function (h) {
 
   return h('div', {
     class: [this.cPrefix, this.xclass(this.themeClass)]
-  }, [h('scroller', {
-    props: {
-      height: 200,
-      width: 'auto'
-    },
-    ref: 'scroller'
-  }, [h('div', {
-    class: [this.xclass('stage')],
-    style: {
-      width: this.stageWidth + 'px'
-    },
-    ref: 'stage'
   }, [h('header', {
     class: [this.xclass('header')]
   }, this.type), h('article', {
-    class: [this.xclass('article')]
+    class: [this.xclass('article')],
+    ref: 'article'
+  }, [h('scroller', {
+    props: {
+      height: 200,
+      width: 'auto',
+      ui: this.ui,
+      theme: this.theme
+    },
+    ref: 'scroller'
+  }, [h('pre', {
+    class: [this.xclass('pre')],
+    style: {
+      width: this.preWidth + 'px'
+    }
   }, [h('scroller', {
     props: {
       height: 'auto',
       width: '100%'
     },
     ref: 'scrollerArticle'
-  }, [h('pre', {
-    class: [this.xclass('pre')]
-  }, $slots.default || this.code), h('aside', {
+  }, [$slots.default || this.code])]), h('aside', {
     class: [this.xclass('line-num')]
   }, [h('ul', {
     class: [this.prefix('css-ul')]
   }, lineNumEle)])])]), h('footer', {
     class: [this.xclass('footer')]
-  }, $slots.footer || this.footer)])])]);
+  }, $slots.footer || this.footer)]);
 };
 
 /***/ }),
-/* 502 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(503);
+var content = __webpack_require__(505);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39411,7 +39813,7 @@ if(false) {
 }
 
 /***/ }),
-/* 503 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39425,13 +39827,13 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * nav 组件样式\r\n */\
 
 
 /***/ }),
-/* 504 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(505);
+var content = __webpack_require__(507);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39456,7 +39858,7 @@ if(false) {
 }
 
 /***/ }),
-/* 505 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39464,13 +39866,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * nav 组件样式\r\n */\n@media only screen and (max-width: 767px) {\n  .z-nav {\n    font-size: 16px; }\n    .z-nav .z-nav-trigger {\n      display: block;\n      font-size: 21px; }\n    .z-nav .z-nav-stage {\n      box-sizing: border-box;\n      transition: all 500ms ease-in-out;\n      width: 100%;\n      z-index: 999; }\n      .z-nav .z-nav-stage.z-nav-animate-slide {\n        position: fixed;\n        padding: 15% 10% 10%;\n        margin: auto;\n        top: 0;\n        bottom: 0;\n        background: rgba(0, 0, 0, 0.8); }\n      .z-nav .z-nav-stage.z-nav-animate-fold {\n        overflow: hidden;\n        background: rgba(0, 0, 0, 0.8); }\n        .z-nav .z-nav-stage.z-nav-animate-fold > .z-nav-transition-container\n> .z-nav-close-nav {\n          display: none; }\n        .z-nav .z-nav-stage.z-nav-animate-fold > .z-nav-transition-container\n> .z-nav-sub-fold {\n          padding: 24px 24px 40px; }\n        .z-nav .z-nav-stage.z-nav-animate-fold .router-link-active {\n          color: #ef5350; }\n        .z-nav .z-nav-stage.z-nav-animate-fold .z-nav-sub-fold {\n          padding: 0 8px; }\n      .z-nav .z-nav-stage > .z-nav-transition-container\n> .z-nav-close-nav {\n        position: absolute;\n        display: block;\n        left: 8px;\n        top: 8px; }\n        .z-nav .z-nav-stage > .z-nav-transition-container\n> .z-nav-close-nav .z-icon-close {\n          font-size: 30px; }\n      .z-nav .z-nav-stage .z-icon-ali {\n        color: #fff;\n        font-size: 20px; }\n      .z-nav .z-nav-stage .z-nav-sub-fold {\n        color: #fff !important; }\n        .z-nav .z-nav-stage .z-nav-sub-fold a {\n          color: #fff;\n          text-decoration: none; } }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * nav 组件样式\r\n */\n@media only screen and (max-width: 767px) {\n  .z-nav {\n    font-size: 16px; }\n    .z-nav .z-nav-trigger {\n      display: block;\n      font-size: 21px; }\n    .z-nav .z-nav-stage {\n      box-sizing: border-box;\n      transition: all 500ms ease-in-out;\n      width: 100%;\n      z-index: 999; }\n      .z-nav .z-nav-stage.z-nav-animate-slide {\n        position: fixed;\n        padding: 15% 10% 10%;\n        margin: auto;\n        top: 0;\n        bottom: 0;\n        background: rgba(0, 0, 0, 0.8); }\n      .z-nav .z-nav-stage.z-nav-animate-fold {\n        overflow: hidden;\n        background: rgba(0, 0, 0, 0.8); }\n        .z-nav .z-nav-stage.z-nav-animate-fold > .z-nav-transition-container\n> .z-nav-close-nav {\n          display: none; }\n        .z-nav .z-nav-stage.z-nav-animate-fold > .z-nav-transition-container\n> .z-nav-sub-fold {\n          padding: 24px 24px 40px; }\n        .z-nav .z-nav-stage.z-nav-animate-fold .router-link-active {\n          color: #2196f3; }\n        .z-nav .z-nav-stage.z-nav-animate-fold .z-nav-sub-fold {\n          padding: 0 8px; }\n      .z-nav .z-nav-stage > .z-nav-transition-container\n> .z-nav-close-nav {\n        position: absolute;\n        display: block;\n        left: 8px;\n        top: 8px; }\n        .z-nav .z-nav-stage > .z-nav-transition-container\n> .z-nav-close-nav .z-icon-close {\n          font-size: 30px; }\n      .z-nav .z-nav-stage .z-icon-ali {\n        color: #fff;\n        font-size: 20px; }\n      .z-nav .z-nav-stage .z-nav-sub-fold {\n        color: #fff !important; }\n        .z-nav .z-nav-stage .z-nav-sub-fold a {\n          color: #fff;\n          text-decoration: none; } }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 506 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39495,29 +39897,23 @@ exports.default = function (h) {
     }
   }, [h('icon', {
     props: {
-      kind: 'close'
+      kind: 'close',
+      ui: this.ui,
+      theme: this.theme
     }
   })]), this.$slots.start, foldContent.call(this, h, this.initOpt), this.$slots.end])];
 
   if (this.isVerticalType) {
-    navStage.push(h('fold-transition', {
-      directives: [{
-        name: 'show',
-        value: this.isStageActive
-      }],
+    navStage.push(h('motion-fold', {
       ref: 'transition'
     }, [h('div', {
       class: [this.xclass('stage'), this.xclass('animate-' + this.navAnimate)]
     }, stageChildren)]));
   } else {
-    navStage.push(h('slide-transition', {
+    navStage.push(h('motion-slide', {
       props: {
         offset: 0
       },
-      directives: [{
-        name: 'show',
-        value: this.isStageActive
-      }],
       ref: 'transition'
     }, [h('div', {
       class: [this.xclass('stage'), this.xclass('animate-' + this.navAnimate)]
@@ -39547,7 +39943,9 @@ exports.default = function (h) {
   }, [h('icon', {
     props: {
       kind: this.isStageActive ? 'spread' : 'fold',
-      size: 's'
+      size: 's',
+      ui: this.ui,
+      theme: this.theme
     }
   })])])]), navStage]);
 };
@@ -39576,14 +39974,26 @@ function foldContent(h, foldList) {
       contentChildren = foldContent.call(_this, h, subNav);
 
       foldChildren.push(h('fold-title', {
+        props: {
+          ui: _this.ui,
+          theme: _this.theme
+        },
         slot: 'title-' + flodNum
       }, item.name));
 
       foldChildren.push(h('fold-content', {
+        props: {
+          ui: _this.ui,
+          theme: _this.theme
+        },
         slot: 'content-' + flodNum
       }, [contentChildren]));
     } else {
       foldChildren.push(h('fold-title', {
+        props: {
+          ui: _this.ui,
+          theme: _this.theme
+        },
         slot: 'title-' + flodNum
       }, [h('router-link', {
         props: {
@@ -39603,20 +40013,22 @@ function foldContent(h, foldList) {
   return h('fold', {
     props: {
       only: this.isSmallDevice ? true : this.only,
-      spreadAll: this.isSmallDevice ? false : this.spreadAll
+      spreadAll: this.isSmallDevice ? false : this.spreadAll,
+      ui: this.ui,
+      theme: this.theme
     },
     class: [this.xclass('sub-fold')]
   }, foldChildren);
 }
 
 /***/ }),
-/* 507 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(508);
+var content = __webpack_require__(510);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39641,7 +40053,7 @@ if(false) {
 }
 
 /***/ }),
-/* 508 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39655,7 +40067,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * fold 组件样式\r\n */
 
 
 /***/ }),
-/* 509 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39682,7 +40094,9 @@ exports.default = function (h) {
           class: [_this.xclass('icon')],
           props: {
             kind: _this.foldTitleIcon(contentIndex),
-            size: 'xs'
+            size: 'xs',
+            ui: _this.ui,
+            theme: _this.theme
           }
         }));
 
@@ -39710,7 +40124,7 @@ exports.default = function (h) {
 
       foldChildren.push(h('dd', {
         class: [_this.foldContentActive(contentIndex)]
-      }, [h('fold-transition', {
+      }, [h('motion-fold', {
         height: _this.transitionChildHeight,
         ref: 'transition' + contentIndex
       }, [h('div', {
@@ -39729,13 +40143,13 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 510 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(511);
+var content = __webpack_require__(513);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39760,7 +40174,7 @@ if(false) {
 }
 
 /***/ }),
-/* 511 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39774,7 +40188,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/*\r\n * omit 组件样式\r\n */\
 
 
 /***/ }),
-/* 512 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39810,13 +40224,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 513 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(514);
+var content = __webpack_require__(516);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -39841,7 +40255,7 @@ if(false) {
 }
 
 /***/ }),
-/* 514 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -39849,13 +40263,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * page 组件样式\r\n */\n.z-page {\n  color: #333333; }\n  .z-page.z-page-type-more {\n    display: inline-block; }\n  .z-page .z-page-more {\n    padding: 8px 0;\n    color: #666666; }\n    .z-page .z-page-more .z-page-load {\n      cursor: pointer; }\n  .z-page .z-page-num .z-page-length {\n    color: #999999; }\n  .z-page .z-page-num .z-page-ele {\n    cursor: pointer;\n    min-width: 20px; }\n  .z-page .z-page-num .z-page-ul {\n    margin: 0 8px;\n    display: inline-block;\n    vertical-align: middle; }\n    .z-page .z-page-num .z-page-ul > .z-page-li {\n      display: inline-block;\n      color: #999999;\n      padding: 4px 0;\n      border-radius: 6px;\n      min-width: 30px;\n      text-align: center; }\n      .z-page .z-page-num .z-page-ul > .z-page-li.z-page-li-active {\n        background-color: #ef5350;\n        color: #fff; }\n      .z-page .z-page-num .z-page-ul > .z-page-li:first-child {\n        margin-left: 0; }\n      .z-page .z-page-num .z-page-ul > .z-page-li:last-child {\n        margin-right: 0; }\n  .z-page .z-page-num .z-page-total {\n    color: #999999;\n    margin: 0 16px; }\n  .z-page .z-page-num .z-page-search {\n    display: inline-block; }\n    .z-page .z-page-num .z-page-search .z-page-jump-box {\n      width: 50px; }\n    .z-page .z-page-num .z-page-search .z-page-jump-btn {\n      margin-left: 8px; }\n      .z-page .z-page-num .z-page-search .z-page-jump-btn .btn-default {\n        color: #666666; }\n  .z-page.z-page-theme-primary {\n    text-align: center; }\n  @media only screen and (max-width: 767px) {\n    .z-page.z-page-type-more {\n      width: 100%; }\n    .z-page .z-page-num .z-page-search,\n    .z-page .z-page-num .z-page-length {\n      display: none; } }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * page 组件样式\r\n */\n.z-page {\n  color: #707070; }\n  .z-page.z-page-type-more {\n    display: inline-block; }\n  .z-page .z-page-more {\n    padding: 8px 0;\n    color: #9e9e9e; }\n    .z-page .z-page-more .z-page-load {\n      cursor: pointer; }\n  .z-page .z-page-num .z-page-length {\n    color: #2196f3; }\n  .z-page .z-page-num .z-page-ele {\n    cursor: pointer;\n    min-width: 20px; }\n  .z-page .z-page-num .z-page-ul {\n    margin: 0 8px;\n    display: inline-block;\n    vertical-align: middle; }\n    .z-page .z-page-num .z-page-ul > .z-page-li {\n      display: inline-block;\n      color: #2196f3;\n      padding: 4px 0;\n      border-radius: 6px;\n      min-width: 30px;\n      text-align: center; }\n      .z-page .z-page-num .z-page-ul > .z-page-li.z-page-li-active {\n        background-color: #2196f3;\n        color: #fff; }\n      .z-page .z-page-num .z-page-ul > .z-page-li:first-child {\n        margin-left: 0; }\n      .z-page .z-page-num .z-page-ul > .z-page-li:last-child {\n        margin-right: 0; }\n  .z-page .z-page-num .z-page-total {\n    color: #2196f3;\n    margin: 0 16px; }\n  .z-page .z-page-num .z-page-search {\n    display: inline-block; }\n    .z-page .z-page-num .z-page-search .z-page-jump-box {\n      width: 50px; }\n    .z-page .z-page-num .z-page-search .z-page-jump-btn {\n      margin-left: 8px; }\n      .z-page .z-page-num .z-page-search .z-page-jump-btn .btn-default {\n        color: #9e9e9e; }\n  .z-page.z-page-theme-primary {\n    text-align: center; }\n  @media only screen and (max-width: 767px) {\n    .z-page.z-page-type-more {\n      width: 100%; }\n    .z-page .z-page-num .z-page-search,\n    .z-page .z-page-num .z-page-length {\n      display: none; } }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 515 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40005,13 +40419,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 516 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(517);
+var content = __webpack_require__(519);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -40036,7 +40450,7 @@ if(false) {
 }
 
 /***/ }),
-/* 517 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -40044,13 +40458,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.z-search .z-search-match .z-search-list-content {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n/**\r\n * search 组件样式\r\n */\n.z-search .z-search-match {\n  position: absolute;\n  top: 32px;\n  left: -1px;\n  z-index: 1;\n  width: 170px;\n  background: #fff;\n  border: #999999 1px solid;\n  box-sizing: border-box;\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px;\n  overflow: hidden; }\n  .z-search .z-search-match .z-search-list-content {\n    cursor: default;\n    width: 100%;\n    text-align: left;\n    padding: 8px;\n    box-sizing: border-box; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.z-search .z-search-match .z-search-list-content {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n/**\r\n * search 组件样式\r\n */\n.z-search .z-search-match {\n  position: absolute;\n  top: 32px;\n  left: -1px;\n  z-index: 1;\n  width: 170px;\n  background: #fff;\n  border: #2196f3 1px solid;\n  box-sizing: border-box;\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px;\n  overflow: hidden; }\n  .z-search .z-search-match .z-search-list-content {\n    cursor: default;\n    width: 100%;\n    text-align: left;\n    padding: 8px;\n    box-sizing: border-box; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 518 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40068,6 +40482,10 @@ exports.default = function (h) {
   }, [function () {
     if (_this.input) {
       return h('input-box', {
+        props: {
+          ui: _this.ui,
+          theme: _this.theme
+        },
         class: [_this.xclass('input')]
       });
     } else {
@@ -40086,8 +40504,9 @@ exports.default = function (h) {
       auto: true,
       pageType: 'more',
       pager: true,
-      theme: 'default',
-      scrollerHeight: 150
+      scrollerHeight: 150,
+      ui: this.ui,
+      theme: this.theme
     },
     scopedSlots: {
       default: function _default(props) {
@@ -40105,13 +40524,13 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 519 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(520);
+var content = __webpack_require__(522);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -40136,7 +40555,7 @@ if(false) {
 }
 
 /***/ }),
-/* 520 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -40144,13 +40563,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * list 组件样式\r\n */\n.z-list {\n  position: relative;\n  background-color: #fff;\n  overflow: hidden; }\n  .z-list .z-list-page {\n    background-color: #fff;\n    border-top: #d6d6d6 1px solid;\n    margin: 0 auto;\n    position: absolute;\n    left: 0;\n    right: 0;\n    transition: top 150ms ease-out; }\n  .z-list .z-list-ul {\n    list-style-type: none; }\n  .z-list .z-list-empty-data {\n    padding: 8px 0;\n    text-align: center; }\n  .z-list.z-list-theme-primary .z-list-ul {\n    list-style-type: none; }\n    .z-list.z-list-theme-primary .z-list-ul > .z-list-li {\n      border-bottom: #d6d6d6 1px solid;\n      padding: 8px 0; }\n      .z-list.z-list-theme-primary .z-list-ul > .z-list-li:last-child {\n        border: none; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * list 组件样式\r\n */\n.z-list {\n  position: relative;\n  background-color: #fff;\n  overflow: hidden; }\n  .z-list .z-list-page {\n    background-color: #fff;\n    border-top: #d6d6d6 1px solid;\n    margin: 0 auto;\n    position: absolute;\n    left: 0;\n    right: 0;\n    transition: top 150ms ease-out; }\n  .z-list .z-list-ul {\n    list-style-type: none; }\n  .z-list .z-list-empty-data {\n    padding: 8px 0;\n    text-align: center; }\n  .z-list.z-list-theme-primary .z-list-ul {\n    list-style-type: none; }\n    .z-list.z-list-theme-primary .z-list-ul > .z-list-li {\n      padding: 8px 0; }\n      .z-list.z-list-theme-primary .z-list-ul > .z-list-li:last-child {\n        border: none; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 521 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40197,7 +40616,9 @@ exports.default = function (h) {
     loadingOfNum.push(h('loading', {
       class: this.xclass(['loading', 'loading-num']),
       props: {
-        'bg-display': true
+        bgDisplay: true,
+        ui: this.ui,
+        theme: this.theme
       },
       ref: 'loading'
     }));
@@ -40208,7 +40629,9 @@ exports.default = function (h) {
     props: {
       autoHide: this.autoHideScroller,
       height: this.scrollerHeight,
-      width: '100%'
+      width: '100%',
+      ui: this.ui,
+      theme: this.theme
     },
     on: {
       scrollY: this.scroll
@@ -40219,7 +40642,9 @@ exports.default = function (h) {
   listChildren.push(h('slide-transition', {
     props: {
       direction: 'north',
-      offset: this.pageDetail.bottom
+      offset: this.pageDetail.bottom,
+      ui: this.ui,
+      theme: this.theme
     },
     ref: 'pageSlideTransition'
   }, [h('page', {
@@ -40227,7 +40652,9 @@ exports.default = function (h) {
     props: {
       data: this.pageData,
       type: this.pageType,
-      loadMoreText: this.loadMoreText
+      loadMoreText: this.loadMoreText,
+      ui: this.ui,
+      theme: this.theme
     },
     on: {
       'switch': this.switchPage
@@ -40238,7 +40665,9 @@ exports.default = function (h) {
     var ele = [h('icon', {
       class: [_this.compPrefix + '-m-r-half'],
       props: {
-        kind: 'arrow'
+        kind: 'arrow',
+        ui: _this.ui,
+        theme: _this.theme
       }
     }), h('span', _this.loadMoreText)];
 
@@ -40247,6 +40676,10 @@ exports.default = function (h) {
         slot: 'loadMore'
       }, [h('loading', {
         class: [_this.compPrefix + '-m-r-half'].concat(_this.xclass(['loading', 'loading-more'])),
+        props: {
+          ui: _this.ui,
+          theme: _this.theme
+        },
         ref: 'loadingOfMore'
       }), h('icon', {
         class: [_this.compPrefix + '-m-r-half'],
@@ -40255,7 +40688,9 @@ exports.default = function (h) {
           value: _this.arrowOfMoreDisplay
         }],
         props: {
-          kind: 'arrow'
+          kind: 'arrow',
+          ui: _this.ui,
+          theme: _this.theme
         }
       }), h('span', _this.loadMoreText)])];
     }
@@ -40271,7 +40706,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 522 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40492,13 +40927,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 523 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(524);
+var content = __webpack_require__(526);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -40523,7 +40958,7 @@ if(false) {
 }
 
 /***/ }),
-/* 524 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -40531,13 +40966,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * table 组件样式\r\n */\n.z-table {\n  position: relative; }\n  .z-table .z-table-col > div {\n    display: inline-block; }\n  .z-table.z-table-border-row .z-table-row-group .z-table-row, .z-table.z-table-border-all .z-table-row-group .z-table-row {\n    border-bottom: #d6d6d6 1px solid; }\n    .z-table.z-table-border-row .z-table-row-group .z-table-row:last-child, .z-table.z-table-border-all .z-table-row-group .z-table-row:last-child {\n      border-bottom: none; }\n  .z-table.z-table-border-col .z-table-row .z-table-col, .z-table.z-table-border-all .z-table-row .z-table-col {\n    border-right: #d6d6d6 1px solid; }\n    .z-table.z-table-border-col .z-table-row .z-table-col:last-child, .z-table.z-table-border-all .z-table-row .z-table-col:last-child {\n      border-right: none; }\n  .z-table.z-table-theme-primary {\n    border-radius: 3px;\n    border: #d6d6d6 1px solid;\n    overflow: hidden; }\n    .z-table.z-table-theme-primary .z-table-header-group .z-table-col {\n      color: #333333; }\n  .z-table .z-table-empty-data {\n    color: #ef5350;\n    text-align: center;\n    padding: 8px 0; }\n  .z-table .z-table-wrap {\n    background: #fff;\n    border-collapse: collapse;\n    display: table;\n    width: 100%; }\n  .z-table .z-table-header-group {\n    background: #f5f5f5;\n    display: table-header-group;\n    padding: 8px; }\n  .z-table .z-table-row-group {\n    display: table-row-group; }\n  .z-table .z-table-row {\n    display: table-row; }\n    .z-table .z-table-row:nth-child(2n) {\n      background: #fafafa; }\n  .z-table .z-table-header {\n    display: table-header;\n    padding: 16px; }\n  .z-table .z-table-col {\n    display: table-cell;\n    padding: 8px 8px; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * table 组件样式\r\n */\n.z-table {\n  position: relative; }\n  .z-table .z-table-col > div {\n    display: inline-block; }\n  .z-table.z-table-border-row .z-table-row-group .z-table-row, .z-table.z-table-border-all .z-table-row-group .z-table-row {\n    border-bottom: #d6d6d6 1px solid; }\n    .z-table.z-table-border-row .z-table-row-group .z-table-row:last-child, .z-table.z-table-border-all .z-table-row-group .z-table-row:last-child {\n      border-bottom: none; }\n  .z-table.z-table-border-col .z-table-row .z-table-col, .z-table.z-table-border-all .z-table-row .z-table-col {\n    border-right: #d6d6d6 1px solid; }\n    .z-table.z-table-border-col .z-table-row .z-table-col:last-child, .z-table.z-table-border-all .z-table-row .z-table-col:last-child {\n      border-right: none; }\n  .z-table.z-table-theme-primary {\n    border-radius: 3px;\n    border: #d6d6d6 1px solid;\n    overflow: hidden; }\n    .z-table.z-table-theme-primary .z-table-header-group .z-table-col {\n      color: #707070; }\n  .z-table .z-table-empty-data {\n    color: #f44336;\n    text-align: center;\n    padding: 8px 0; }\n  .z-table .z-table-wrap {\n    background: #fff;\n    border-collapse: collapse;\n    display: table;\n    width: 100%; }\n  .z-table .z-table-header-group {\n    background: #f5f5f5;\n    display: table-header-group;\n    padding: 8px; }\n  .z-table .z-table-row-group {\n    display: table-row-group; }\n  .z-table .z-table-row {\n    display: table-row; }\n    .z-table .z-table-row:nth-child(2n) {\n      background: #f5f5f5; }\n  .z-table .z-table-header {\n    display: table-header;\n    padding: 16px; }\n  .z-table .z-table-col {\n    display: table-cell;\n    padding: 8px 8px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 525 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40659,18 +41094,22 @@ exports.default = function (h) {
     },
     ref: 'pager'
   }), h('loading', {
+    props: {
+      ui: this.ui,
+      theme: this.theme
+    },
     ref: 'loading'
   })]);
 };
 
 /***/ }),
-/* 526 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(527);
+var content = __webpack_require__(529);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -40695,7 +41134,7 @@ if(false) {
 }
 
 /***/ }),
-/* 527 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -40709,7 +41148,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * menu 组件样式\r\n */
 
 
 /***/ }),
-/* 528 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40734,13 +41173,17 @@ exports.default = function (h) {
     var $slotTrigger = this.$slots.trigger;
     var triggerBox = $slotTrigger ? this.$slots.trigger : [h('btn', {
       props: {
-        type: 'float'
+        type: 'float',
+        ui: this.ui,
+        theme: this.theme
       },
       ref: 'triggerBtn'
     }, [h('icon', {
       props: {
         kind: 'sort',
-        size: 'S'
+        size: 'S',
+        ui: this.ui,
+        theme: this.theme
       }
     })])];
 
@@ -40756,8 +41199,7 @@ exports.default = function (h) {
   children.push(h('motion', {
     props: {
       height: this.menuHeight,
-      slideLength: this.noCoverTrig ? this.triggerHeight : 0,
-      sync: true
+      slideLength: this.noCoverTrig ? this.triggerHeight : 0
     },
     ref: 'motion'
   }, [h('div', {
@@ -40778,7 +41220,9 @@ exports.default = function (h) {
   }, [h('scroller', {
     props: {
       height: this.height,
-      width: '100%'
+      width: '100%',
+      ui: this.ui,
+      theme: this.theme
     },
     ref: 'scroller'
   }, [h('div', {
@@ -40798,7 +41242,7 @@ exports.default = function (h) {
 };
 
 /***/ }),
-/* 529 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40810,13 +41254,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _attr = __webpack_require__(90);
 
-var _prop = __webpack_require__(36);
+var _prop = __webpack_require__(27);
 
 var _base = __webpack_require__(3);
 
 var _base2 = _interopRequireDefault(_base);
 
-var _motion = __webpack_require__(64);
+var _motion = __webpack_require__(63);
 
 var _motion2 = _interopRequireDefault(_motion);
 
@@ -40841,8 +41285,6 @@ exports.default = {
   },
 
   data: function data() {
-    this.moving = false; // 是否正在执行过渡动画
-
     return {
       transitionHeight: 0
     };
@@ -40986,7 +41428,8 @@ exports.default = {
       Object.assign(el.style, {
         overflow: '',
         opacity: '',
-        'transition': ''
+        'transition': '',
+        display: ''
       });
 
       this.$emit('afterEnter');
@@ -41037,7 +41480,8 @@ exports.default = {
       Object.assign(el.style, {
         overflow: '',
         opacity: '',
-        'transition': ''
+        transition: '',
+        display: 'none'
       });
 
       return this.$emit('afterLeave');
@@ -41050,7 +41494,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 530 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41060,11 +41504,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _keyCode = __webpack_require__(182);
+var _keyCode = __webpack_require__(184);
 
 var _keyCode2 = _interopRequireDefault(_keyCode);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
@@ -41190,13 +41634,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 531 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(532);
+var content = __webpack_require__(534);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -41221,7 +41665,7 @@ if(false) {
 }
 
 /***/ }),
-/* 532 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -41235,7 +41679,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * scroller 组件样式\r\
 
 
 /***/ }),
-/* 533 */
+/* 535 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41272,13 +41716,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 534 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(535);
+var content = __webpack_require__(537);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -41303,7 +41747,7 @@ if(false) {
 }
 
 /***/ }),
-/* 535 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -41311,13 +41755,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.z-select > .z-select-selected-box .z-select-init-text, .z-select.z-select-theme-primary.z-select-multiple-stage .z-select-opt-li > span {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n/**\r\n * menu 组件样式\r\n */\n.z-select {\n  display: inline-block;\n  position: relative;\n  box-sizing: border-box;\n  width: 170px;\n  background-color: #fff;\n  cursor: default; }\n  .z-select > .z-select-read-only {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    z-index: 5;\n    opacity: 0; }\n  .z-select > .z-select-selected-box {\n    display: inline-block;\n    position: relative;\n    padding: 8px 30px 8px 16px;\n    border-bottom-left-radius: 0;\n    border-bottom-right-radius: 0;\n    min-height: 36px;\n    width: 100%;\n    box-sizing: border-box;\n    vertical-align: middle; }\n    .z-select > .z-select-selected-box .z-select-init-text,\n    .z-select > .z-select-selected-box .z-select-init-text-input {\n      width: 100%;\n      outline: none;\n      border: none;\n      cursor: default; }\n    .z-select > .z-select-selected-box .z-select-init-text {\n      font-size: 14px; }\n      .z-select > .z-select-selected-box .z-select-init-text.z-select-default-text {\n        color: #999; }\n    .z-select > .z-select-selected-box .z-select-init-text-input {\n      position: absolute;\n      top: 0;\n      left: 0;\n      opacity: 0;\n      height: 0;\n      padding: 0; }\n    .z-select > .z-select-selected-box .z-select-caret-down-icon {\n      position: absolute;\n      right: 10px;\n      top: 11px;\n      height: 13px; }\n  .z-select > .z-select-menu {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%; }\n  .z-select .z-select-panel {\n    overflow: hidden;\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    border-bottom-right-radius: 3px;\n    border-bottom-left-radius: 3px;\n    z-index: 2; }\n    .z-select .z-select-panel .z-select-tag-opt > .z-select-ele {\n      background-color: #fff;\n      padding: 8px; }\n    .z-select .z-select-panel .z-select-opt-comp {\n      position: static;\n      display: block; }\n    .z-select .z-select-panel .z-select-search-input {\n      box-sizing: border-box;\n      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);\n      background-color: #fff;\n      border-bottom: 1px solid #d6d6d6;\n      display: inline-block;\n      width: 100%; }\n  .z-select.z-select-multiple {\n    position: relative;\n    width: 250px;\n    height: auto;\n    min-height: 36px; }\n    .z-select.z-select-multiple .z-select-init-text.z-select-opacity {\n      opacity: 0;\n      position: absolute;\n      top: 0;\n      left: 0;\n      height: 0;\n      padding: 0; }\n    .z-select.z-select-multiple > .z-select-selected-box > .z-select-scroller > .z-scroller-box > .z-select-multiple {\n      margin-right: 24px; }\n    .z-select.z-select-multiple > .z-select-selected-box {\n      transition: height 300ms ease;\n      will-change: height; }\n      .z-select.z-select-multiple > .z-select-selected-box .z-select-multiple-selected-ul > li {\n        background-color: #e6e6e6;\n        display: inline-block;\n        margin: 4.5px 3px;\n        padding: 3px; }\n        .z-select.z-select-multiple > .z-select-selected-box .z-select-multiple-selected-ul > li:hover {\n          background-color: #d6d6d6; }\n    .z-select.z-select-multiple .z-select-panel,\n    .z-select.z-select-multiple .z-select-opt-comp {\n      width: 100%; }\n\n.z-select.z-select-theme-primary {\n  vertical-align: middle;\n  border-radius: 3px; }\n  .z-select.z-select-theme-primary.z-select-multiple-stage .z-select-opt-li > span {\n    display: inline-block;\n    vertical-align: middle;\n    width: calc(100% - 25px); }\n  .z-select.z-select-theme-primary.z-select-selecting .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-theme-primary.z-select-focusing .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-theme-primary > .z-select-selected-box::after {\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    content: '';\n    opacity: 0;\n    transition: opacity 300ms ease-out;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1; }\n  .z-select.z-select-theme-primary .z-select-opt-comp {\n    border-top: none;\n    border-top-left-radius: 0;\n    border-top-right-radius: 0;\n    border: none; }\n    .z-select.z-select-theme-primary .z-select-opt-comp > .z-select-opt-li:first-child {\n      border-top: #f0f0f0 1px solid; }\n\n@media only screen and (max-width: 767px) {\n  .z-select {\n    width: 100%; } }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.z-select > .z-select-selected-box .z-select-init-text, .z-select.z-select-theme-primary.z-select-multiple-stage .z-select-opt-li > span {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n/**\r\n * menu 组件样式\r\n */\n.z-select {\n  display: inline-block;\n  position: relative;\n  box-sizing: border-box;\n  width: 170px;\n  background-color: #fff;\n  cursor: default; }\n  .z-select > .z-select-read-only {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    z-index: 5;\n    opacity: 0; }\n  .z-select > .z-select-selected-box {\n    display: inline-block;\n    position: relative;\n    padding: 8px 30px 8px 16px;\n    border-bottom-left-radius: 0;\n    border-bottom-right-radius: 0;\n    min-height: 36px;\n    width: 100%;\n    box-sizing: border-box;\n    vertical-align: middle; }\n    .z-select > .z-select-selected-box .z-select-init-text,\n    .z-select > .z-select-selected-box .z-select-init-text-input {\n      width: 100%;\n      outline: none;\n      border: none;\n      cursor: default; }\n    .z-select > .z-select-selected-box .z-select-init-text {\n      font-size: 14px; }\n      .z-select > .z-select-selected-box .z-select-init-text.z-select-default-text {\n        color: #999; }\n    .z-select > .z-select-selected-box .z-select-init-text-input {\n      position: absolute;\n      top: 0;\n      left: 0;\n      opacity: 0;\n      height: 0;\n      padding: 0; }\n    .z-select > .z-select-selected-box .z-select-caret-down-icon {\n      position: absolute;\n      right: 10px;\n      top: 11px;\n      height: 13px; }\n  .z-select > .z-select-menu {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%; }\n  .z-select .z-select-panel {\n    overflow: hidden;\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    border-bottom-right-radius: 3px;\n    border-bottom-left-radius: 3px;\n    z-index: 2; }\n    .z-select .z-select-panel .z-select-tag-opt > .z-select-ele {\n      background-color: #fff;\n      padding: 8px; }\n    .z-select .z-select-panel .z-select-opt-comp {\n      position: static;\n      display: block; }\n    .z-select .z-select-panel .z-select-search-input {\n      box-sizing: border-box;\n      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);\n      background-color: #fff;\n      border-bottom: 1px solid #d6d6d6;\n      display: inline-block;\n      width: 100%; }\n  .z-select.z-select-multiple {\n    position: relative;\n    width: 250px;\n    height: auto;\n    min-height: 36px; }\n    .z-select.z-select-multiple .z-select-init-text.z-select-opacity {\n      opacity: 0;\n      position: absolute;\n      top: 0;\n      left: 0;\n      height: 0;\n      padding: 0; }\n    .z-select.z-select-multiple > .z-select-selected-box > .z-select-scroller > .z-scroller-box > .z-select-multiple {\n      margin-right: 24px; }\n    .z-select.z-select-multiple > .z-select-selected-box {\n      transition: height 300ms ease;\n      will-change: height; }\n      .z-select.z-select-multiple > .z-select-selected-box .z-select-multiple-selected-ul > li {\n        background-color: #f5f5f5;\n        display: inline-block;\n        margin: 4.5px 3px;\n        padding: 3px; }\n        .z-select.z-select-multiple > .z-select-selected-box .z-select-multiple-selected-ul > li:hover {\n          background-color: #d6d6d6; }\n    .z-select.z-select-multiple .z-select-panel,\n    .z-select.z-select-multiple .z-select-opt-comp {\n      width: 100%; }\n\n.z-select.z-select-theme-primary {\n  vertical-align: middle;\n  border-radius: 3px; }\n  .z-select.z-select-theme-primary.z-select-multiple-stage .z-select-opt-li > span {\n    display: inline-block;\n    vertical-align: middle;\n    width: calc(100% - 25px); }\n  .z-select.z-select-theme-primary.z-select-selecting .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-theme-primary.z-select-focusing .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-theme-primary > .z-select-selected-box::after {\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    content: '';\n    opacity: 0;\n    transition: opacity 300ms ease-out;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1; }\n  .z-select.z-select-theme-primary .z-select-opt-comp {\n    border-top: none;\n    border-top-left-radius: 0;\n    border-top-right-radius: 0;\n    border: none; }\n    .z-select.z-select-theme-primary .z-select-opt-comp > .z-select-opt-li:first-child {\n      border-top: #f0f0f0 1px solid; }\n\n@media only screen and (max-width: 767px) {\n  .z-select {\n    width: 100%; } }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 536 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41327,21 +41771,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(537);
+__webpack_require__(539);
 
 var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _SelectOpt = __webpack_require__(539);
+var _SelectOpt = __webpack_require__(541);
 
 var _SelectOpt2 = _interopRequireDefault(_SelectOpt);
 
-var _event = __webpack_require__(172);
+var _event = __webpack_require__(173);
 
 var _event2 = _interopRequireDefault(_event);
 
-var _Icon = __webpack_require__(18);
+var _Icon = __webpack_require__(23);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
@@ -41361,7 +41805,7 @@ var _Col = __webpack_require__(42);
 
 var _Col2 = _interopRequireDefault(_Col);
 
-var _MotionRip = __webpack_require__(71);
+var _MotionRip = __webpack_require__(70);
 
 var _MotionRip2 = _interopRequireDefault(_MotionRip);
 
@@ -41509,13 +41953,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 537 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(538);
+var content = __webpack_require__(540);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -41540,7 +41984,7 @@ if(false) {
 }
 
 /***/ }),
-/* 538 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -41554,7 +41998,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n.z-select-opt-ul.z-select-opt-them
 
 
 /***/ }),
-/* 539 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41580,7 +42024,9 @@ exports.default = function (h) {
       props: {
         multiple: true,
         initVal: this.$parent.selectAll ? [-1] : [],
-        initOpt: this.selectedAllCheckOpt
+        initOpt: this.selectedAllCheckOpt,
+        ui: this.ui,
+        theme: this.theme
       }
     }), h('span', this.$parent.selectAllTxt)]));
   }
@@ -41597,15 +42043,18 @@ exports.default = function (h) {
     if (_this.multiple && !item.classify) {
       rowEle.push(h('column', {
         props: {
-          span: 1
+          span: 1,
+          ui: _this.ui,
+          theme: _this.theme
         }
       }, [h('check', {
         class: [_this.xclass('li-check')],
         props: {
-          theme: 'default',
           multiple: true,
           initVal: _this.optRoot.checkboxVal(optVal),
-          initOpt: _this.selectedAllCheckOpt
+          initOpt: _this.selectedAllCheckOpt,
+          ui: _this.ui,
+          theme: _this.theme
         }
       })]));
     }
@@ -41613,7 +42062,9 @@ exports.default = function (h) {
     if (_this.$scopedSlots[index]) {
       rowEle.push(h('column', {
         props: {
-          span: 11
+          span: 11,
+          ui: _this.ui,
+          theme: _this.theme
         }
       }, [_this.$scopedSlots[index]({
         item: item
@@ -41621,7 +42072,9 @@ exports.default = function (h) {
     } else {
       rowEle.push(h('column', {
         props: {
-          span: 11
+          span: 11,
+          ui: _this.ui,
+          theme: _this.theme
         }
       }, [h('span', {
         class: [_this.xclass('li-text')],
@@ -41636,14 +42089,18 @@ exports.default = function (h) {
 
     element.push(h('row', {
       props: {
-        justify: 'justify'
+        justify: 'justify',
+        ui: _this.ui,
+        theme: _this.theme
       }
     }, rowEle));
 
     if (_this.hasSubOption(item)) {
       element.push(h('icon', {
         props: {
-          kind: 'caret-right'
+          kind: 'caret-right',
+          ui: _this.ui,
+          theme: _this.theme
         }
       }), h('menu-opt', {
         props: {
@@ -41663,7 +42120,9 @@ exports.default = function (h) {
       }
     }, [element, h('motion-rip', {
       props: {
-        switch: _this.pressing
+        switch: _this.pressing,
+        ui: _this.ui,
+        theme: _this.theme
       },
       on: {
         'afterEnter': function afterEnter() {
@@ -41682,7 +42141,8 @@ exports.default = function (h) {
       pageType: 'more',
       pager: true,
       scrollerHeight: 200,
-      theme: 'default'
+      ui: this.ui,
+      theme: this.theme
     },
     scopedSlots: {
       default: scopedSlots
@@ -41700,7 +42160,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 540 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41743,7 +42203,9 @@ exports.default = function (h) {
         }
       }, [h('icon', {
         props: {
-          kind: 'close'
+          kind: 'close',
+          ui: _this.ui,
+          theme: _this.theme
         }
       })])]));
     });
@@ -41752,7 +42214,9 @@ exports.default = function (h) {
       class: [this.xclass('scroller')],
       props: {
         height: 100,
-        width: '100%'
+        width: '100%',
+        ui: this.ui,
+        theme: this.theme
       },
       directives: [{
         name: 'show',
@@ -41783,7 +42247,9 @@ exports.default = function (h) {
   selectedBoxChildren.push(h('icon', {
     class: [this.xclass('caret-down-icon')],
     props: {
-      kind: 'spread'
+      kind: 'spread',
+      ui: this.ui,
+      theme: this.theme
     }
   }));
 
@@ -41799,11 +42265,15 @@ exports.default = function (h) {
       }
     }, [h('input-box', {
       props: {
-        placeholder: '请输入搜索值'
+        placeholder: '请输入搜索值',
+        ui: this.ui,
+        theme: this.theme
       }
     }, [h('icon', {
       props: {
-        kind: 'search'
+        kind: 'search',
+        ui: this.ui,
+        theme: this.theme
       },
       slot: 'header'
     })])]));
@@ -41830,7 +42300,9 @@ exports.default = function (h) {
         valName: this.valName,
         txtName: this.txtName,
         option: this.searchOptionDisplay ? this.searchOptionItem : this.option,
-        optRoot: this.me
+        optRoot: this.me,
+        ui: this.ui,
+        theme: this.theme
       },
       ref: 'option',
       scopedSlots: scopedSlots
@@ -41869,7 +42341,9 @@ exports.default = function (h) {
       noTrig: true,
       noCoverTrig: true,
       width: this.menuWidth,
-      trigHeight: this.selectedHeight
+      trigHeight: this.selectedHeight,
+      ui: this.ui,
+      theme: this.theme
     },
     ref: 'menu'
   }, [h('div', {
@@ -41882,7 +42356,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    */
 
 /***/ }),
-/* 541 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41892,49 +42366,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _base = __webpack_require__(3);
-
-var _base2 = _interopRequireDefault(_base);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  name: 'MenuTrig',
-
-  template: '\n    <div :class="[cPrefix]">\n      <slot></slot>\n    </div>\n  ',
-
-  mixins: [_base2.default],
-
-  computed: {
-    // 组件类名的前缀
-    cPrefix: function cPrefix() {
-      return this.compPrefix + '-menu-trig';
-    }
-  }
-}; /**
-    * menu 组件里面的 ele 组件
-    */
-
-/***/ }),
-/* 542 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _keyCode = __webpack_require__(182);
+var _keyCode = __webpack_require__(184);
 
 var _keyCode2 = _interopRequireDefault(_keyCode);
 
-var _tip = __webpack_require__(19);
+var _tip = __webpack_require__(18);
 
 var _tip2 = _interopRequireDefault(_tip);
 
-var _prop = __webpack_require__(36);
+var _prop = __webpack_require__(27);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42148,13 +42588,13 @@ exports.default = {
     */
 
 /***/ }),
-/* 543 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(544);
+var content = __webpack_require__(545);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -42179,7 +42619,7 @@ if(false) {
 }
 
 /***/ }),
-/* 544 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -42187,13 +42627,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.z-tab > .z-tab-shift > .z-shift-ul::after {\n  content: \"\\200B\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden; }\n\n/**\r\n * select 组件样式\r\n */\n.z-tab {\n  border-right: #d6d6d6 1px solid;\n  cursor: pointer; }\n  .z-tab > .z-tab-shift > .z-shift-ul > .z-shift-li {\n    float: left; }\n    .z-tab > .z-tab-shift > .z-shift-ul > .z-shift-li.z-tab-active {\n      border-bottom: #d6d6d6 1px solid; }\n    .z-tab > .z-tab-shift > .z-shift-ul > .z-shift-li:last-child {\n      border-right: none; }\n  .z-tab.z-tab-theme-primary {\n    display: inline-block;\n    vertical-align: middle;\n    border: #d6d6d6 1px solid;\n    border-radius: 3px;\n    box-shadow: 0 1px 1px 0 #d6d6d6;\n    overflow: hidden; }\n    .z-tab.z-tab-theme-primary > .z-tab-shift > .z-shift-ul > .z-shift-li {\n      border: none;\n      border-right: #d6d6d6 1px solid; }\n      .z-tab.z-tab-theme-primary > .z-tab-shift > .z-shift-ul > .z-shift-li:last-child {\n        border-right: none; }\n      .z-tab.z-tab-theme-primary > .z-tab-shift > .z-shift-ul > .z-shift-li .z-tab-ele {\n        min-width: 100px;\n        padding: 8px 16px;\n        background-color: #fff;\n        text-align: center;\n        color: #999999; }\n        .z-tab.z-tab-theme-primary > .z-tab-shift > .z-shift-ul > .z-shift-li .z-tab-ele:hover {\n          background-color: #fafafa;\n          color: #999999; }\n      .z-tab.z-tab-theme-primary > .z-tab-shift > .z-shift-ul > .z-shift-li.z-tab-active .z-tab-ele {\n        background-color: #f3f3f3;\n        color: #333333; }\n  .z-tab.z-tab-theme-secondary {\n    border-bottom: 1px solid #d6d6d6; }\n    .z-tab.z-tab-theme-secondary > .z-tab-shift > .z-shift-ul > .z-shift-li {\n      min-width: 100px;\n      padding: 12px 16px 8px;\n      text-align: center;\n      border: none; }\n      .z-tab.z-tab-theme-secondary > .z-tab-shift > .z-shift-ul > .z-shift-li:hover {\n        color: #ef5350; }\n      .z-tab.z-tab-theme-secondary > .z-tab-shift > .z-shift-ul > .z-shift-li.z-tab-active {\n        border-bottom: #ef5350 2px solid;\n        color: #ef5350; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.z-tab > .z-tab-shift > .z-shift-ul::after {\n  content: \"\\200B\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden; }\n\n/**\r\n * select 组件样式\r\n */\n.z-tab {\n  border-right: #d6d6d6 1px solid;\n  cursor: pointer; }\n  .z-tab > .z-tab-shift > .z-shift-ul > .z-shift-li {\n    float: left; }\n    .z-tab > .z-tab-shift > .z-shift-ul > .z-shift-li.z-tab-active {\n      border-bottom: #d6d6d6 1px solid; }\n    .z-tab > .z-tab-shift > .z-shift-ul > .z-shift-li:last-child {\n      border-right: none; }\n  .z-tab.z-tab-theme-primary {\n    display: inline-block;\n    vertical-align: middle;\n    border: #d6d6d6 1px solid;\n    border-radius: 3px;\n    box-shadow: 0 1px 1px 0 #d6d6d6;\n    overflow: hidden; }\n    .z-tab.z-tab-theme-primary > .z-tab-shift > .z-shift-ul > .z-shift-li {\n      border: none;\n      border-right: #d6d6d6 1px solid; }\n      .z-tab.z-tab-theme-primary > .z-tab-shift > .z-shift-ul > .z-shift-li:last-child {\n        border-right: none; }\n      .z-tab.z-tab-theme-primary > .z-tab-shift > .z-shift-ul > .z-shift-li .z-tab-ele {\n        min-width: 100px;\n        padding: 8px 16px;\n        background-color: #fff;\n        text-align: center;\n        color: #2196f3; }\n        .z-tab.z-tab-theme-primary > .z-tab-shift > .z-shift-ul > .z-shift-li .z-tab-ele:hover {\n          background-color: #f5f5f5;\n          color: #2196f3; }\n      .z-tab.z-tab-theme-primary > .z-tab-shift > .z-shift-ul > .z-shift-li.z-tab-active .z-tab-ele {\n        background-color: #f3f3f3;\n        color: #707070; }\n  .z-tab.z-tab-theme-secondary {\n    border-bottom: 1px solid #d6d6d6; }\n    .z-tab.z-tab-theme-secondary > .z-tab-shift > .z-shift-ul > .z-shift-li {\n      min-width: 100px;\n      padding: 12px 16px 8px;\n      text-align: center;\n      border: none; }\n      .z-tab.z-tab-theme-secondary > .z-tab-shift > .z-shift-ul > .z-shift-li:hover {\n        color: #2196f3; }\n      .z-tab.z-tab-theme-secondary > .z-tab-shift > .z-shift-ul > .z-shift-li.z-tab-active {\n        border-bottom: #2196f3 2px solid;\n        color: #2196f3; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 545 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42264,14 +42704,16 @@ exports.default = function (h) {
   }, [h('shift', {
     class: [this.xclass('shift')],
     props: {
-      after: this.cPrefix + '-active'
+      after: this.cPrefix + '-active',
+      ui: this.ui,
+      theme: this.theme
     },
     ref: 'shift'
   }, tabOption)]);
 };
 
 /***/ }),
-/* 546 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42313,13 +42755,13 @@ var search = function search(urlSearch) {
 exports.search = search;
 
 /***/ }),
-/* 547 */
+/* 548 */
 /***/ (function(module, exports) {
 
 module.exports = {"btn":{},"column":{},"check":{},"form":{},"input":{},"icon":{},"loading":{},"page":{},"pop":{},"list":{},"scroller":{},"select":{},"selectEle":{},"shift":{},"shiftEle":{},"tab":{},"tabEle":{},"row":{},"table":{"emptyData":"暂无数据"}}
 
 /***/ }),
-/* 548 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42334,7 +42776,7 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueI18n = __webpack_require__(170);
+var _vueI18n = __webpack_require__(171);
 
 var _vueI18n2 = _interopRequireDefault(_vueI18n);
 
@@ -42367,7 +42809,7 @@ var set = {
 exports.set = set;
 
 /***/ }),
-/* 549 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42381,7 +42823,7 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(69);
+var _vueRouter = __webpack_require__(67);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -42393,7 +42835,7 @@ var _store = __webpack_require__(41);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _type = __webpack_require__(62);
+var _type = __webpack_require__(61);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -42467,6 +42909,8 @@ var alert = function alert() {
   }
 
   return commonVuex.$store.getters[_type2.default.alert.get].$refs.alert.set({
+    theme: option.theme,
+    ui: option.ui,
     title: option.title,
     message: option.message,
     okCb: function okCb(vm) {
@@ -42488,7 +42932,7 @@ createAlert();
 exports.default = alert;
 
 /***/ }),
-/* 550 */
+/* 551 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42502,7 +42946,7 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(69);
+var _vueRouter = __webpack_require__(67);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -42514,7 +42958,7 @@ var _store = __webpack_require__(41);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _type = __webpack_require__(62);
+var _type = __webpack_require__(61);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -42541,8 +42985,8 @@ var createConfirm = function createConfirm() {
     name: 'confirm',
     mixins: [_base2.default],
     computed: {
-      // 组件类名的前缀
       cPrefix: function cPrefix() {
+        // 组件类名的前缀
         return this.compPrefix + '-confirm';
       }
     },
@@ -42550,7 +42994,16 @@ var createConfirm = function createConfirm() {
       modal: _Modal2.default
     },
     store: _store2.default,
-    template: '\n      <div :class="[cPrefix]">\n        <modal type="confirm" ref="confirm"></modal>\n      </div>\n    ',
+    render: function render(h) {
+      return h('div', {
+        class: this.cPrefix
+      }, [h('modal', {
+        props: {
+          type: 'confirm'
+        },
+        ref: 'confirm'
+      })]);
+    },
     mounted: function mounted() {
       this.$store.dispatch(_type2.default.confirm.add, this);
     }
@@ -42588,6 +43041,8 @@ var confirm = function confirm() {
   }
 
   return commonVuex.$store.getters[_type2.default.confirm.get].$refs.confirm.set({
+    theme: option.theme,
+    ui: option.ui,
     title: option.title,
     message: option.message,
     okCb: function okCb(vm) {
@@ -42609,7 +43064,7 @@ createConfirm();
 exports.default = confirm;
 
 /***/ }),
-/* 551 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42619,13 +43074,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(552);
+__webpack_require__(553);
 
-var _Component = __webpack_require__(554);
+var _Component = __webpack_require__(555);
 
 var _Component2 = _interopRequireDefault(_Component);
 
-var _menuOpt = __webpack_require__(191);
+var _menuOpt = __webpack_require__(192);
 
 var _menuOpt2 = _interopRequireDefault(_menuOpt);
 
@@ -42721,13 +43176,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 552 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(553);
+var content = __webpack_require__(554);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -42752,7 +43207,7 @@ if(false) {
 }
 
 /***/ }),
-/* 553 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -42766,7 +43221,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.p-component 
 
 
 /***/ }),
-/* 554 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -42775,7 +43230,7 @@ function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_ht
 module.exports = template;
 
 /***/ }),
-/* 555 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42785,83 +43240,83 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _total = __webpack_require__(556);
+var _total = __webpack_require__(557);
 
 var _total2 = _interopRequireDefault(_total);
 
-var _Btn = __webpack_require__(560);
+var _Btn = __webpack_require__(561);
 
 var _Btn2 = _interopRequireDefault(_Btn);
 
-var _Start = __webpack_require__(564);
+var _Start = __webpack_require__(565);
 
 var _Start2 = _interopRequireDefault(_Start);
 
-var _Select = __webpack_require__(568);
+var _Select = __webpack_require__(569);
 
 var _Select2 = _interopRequireDefault(_Select);
 
-var _Menu = __webpack_require__(572);
+var _Menu = __webpack_require__(573);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _Check = __webpack_require__(576);
+var _Check = __webpack_require__(577);
 
 var _Check2 = _interopRequireDefault(_Check);
 
-var _Input = __webpack_require__(580);
+var _Input = __webpack_require__(581);
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _Icon = __webpack_require__(584);
+var _Icon = __webpack_require__(585);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _Modal = __webpack_require__(586);
+var _Modal = __webpack_require__(587);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
-var _Omit = __webpack_require__(590);
+var _Omit = __webpack_require__(591);
 
 var _Omit2 = _interopRequireDefault(_Omit);
 
-var _Pop = __webpack_require__(594);
+var _Pop = __webpack_require__(595);
 
 var _Pop2 = _interopRequireDefault(_Pop);
 
-var _Tip = __webpack_require__(598);
+var _Tip = __webpack_require__(599);
 
 var _Tip2 = _interopRequireDefault(_Tip);
 
-var _Table = __webpack_require__(602);
+var _Table = __webpack_require__(603);
 
 var _Table2 = _interopRequireDefault(_Table);
 
-var _Tab = __webpack_require__(606);
+var _Tab = __webpack_require__(607);
 
 var _Tab2 = _interopRequireDefault(_Tab);
 
-var _List = __webpack_require__(610);
+var _List = __webpack_require__(611);
 
 var _List2 = _interopRequireDefault(_List);
 
-var _Page = __webpack_require__(614);
+var _Page = __webpack_require__(615);
 
 var _Page2 = _interopRequireDefault(_Page);
 
-var _Grid = __webpack_require__(618);
+var _Grid = __webpack_require__(619);
 
 var _Grid2 = _interopRequireDefault(_Grid);
 
-var _Scroller = __webpack_require__(622);
+var _Scroller = __webpack_require__(623);
 
 var _Scroller2 = _interopRequireDefault(_Scroller);
 
-var _Motion = __webpack_require__(626);
+var _Motion = __webpack_require__(627);
 
 var _Motion2 = _interopRequireDefault(_Motion);
 
-var _motionChildren = __webpack_require__(630);
+var _motionChildren = __webpack_require__(631);
 
 var _motionChildren2 = _interopRequireDefault(_motionChildren);
 
@@ -42982,7 +43437,7 @@ exports.default = [{
 }];
 
 /***/ }),
-/* 556 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42992,9 +43447,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(557);
+__webpack_require__(558);
 
-var _total = __webpack_require__(559);
+var _total = __webpack_require__(560);
 
 var _total2 = _interopRequireDefault(_total);
 
@@ -43083,13 +43538,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 557 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(558);
+var content = __webpack_require__(559);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43114,7 +43569,7 @@ if(false) {
 }
 
 /***/ }),
-/* 558 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -43128,13 +43583,13 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.welcome {\n 
 
 
 /***/ }),
-/* 559 */
+/* 560 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"welcome\">\r\n  <article class=\"example-article\">\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"z-btn-component\">\r\n        <a href=\"#z-btn-component\">按钮组件</a>\r\n      </h1>\r\n      <z-btn>提交</z-btn>\r\n      <z-btn kind=\"success\">成功</z-btn>\r\n      <z-btn kind=\"warning\">提交</z-btn>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"select-component\">\r\n        <a href=\"#select-component\">下拉框组件</a>\r\n      </h1>\r\n      <z-menu\r\n          :multiple=\"true\"\r\n          :search=\"true\"\r\n          :select-all=\"true\"\r\n          :init-val=\"initVal\">\r\n        <z-menu-ele value=\"1\">{{ testName }}</z-menu-ele>\r\n        <z-menu-ele value=\"2\">测试2</z-menu-ele>\r\n        <z-menu-ele value=\"3\">测试222</z-menu-ele>\r\n        <z-menu-ele value=\"4\">测试3</z-menu-ele>\r\n        <z-menu-ele value=\"5\">测试4</z-menu-ele>\r\n      </z-menu>\r\n\r\n      <z-menu\r\n          :multiple=\"true\"\r\n          :search=\"true\"\r\n          :select-all=\"true\"\r\n          :init-val=\"[1, 3]\"\r\n          :classify=\"[{\r\n            key: 'recent',\r\n            text: '最近'\r\n          }, {\r\n            key: 'hot',\r\n            text: '热门'\r\n          }]\"\r\n          :classify-opt=\"classifyOpt\"></z-menu>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"form-component\">\r\n        <a href=\"#form-component\">表单组件</a>\r\n      </h1>\r\n\r\n      <z-form slot=\"1\" ref=\"formArea\">\r\n          <z-row :gap=\"10\">\r\n            <z-col :span=\"6\">test2: </z-col>\r\n            <z-col :span=\"6\">\r\n              <z-menu\r\n                  :init-opt=\"dropMenuOpt\"\r\n                  :init-val=\"2\"\r\n                  :opt-processor=\"optProcessor\"\r\n                  query-name=\"test3\"></z-menu>\r\n            </z-col>\r\n          </z-row>\r\n\r\n          <z-row :gap=\"10\">\r\n            <z-col :span=\"6\">name: </z-col>\r\n            <z-col :span=\"6\">\r\n              <z-input\r\n                  number\r\n                  init-val=\"test-input\"\r\n                  query-name=\"name\">\r\n              </z-input>\r\n            </z-col>\r\n          </z-row>\r\n\r\n          <z-row :gap=\"10\">\r\n            <z-col :offset=\"6\">\r\n              <z-btn ref=\"submit\" @click=\"submit\">提交</z-btn>\r\n            </z-col>\r\n          </z-row>\r\n        </z-form>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"list-component\">\r\n        <a href=\"#list-component\">列表组件</a>\r\n      </h1>\r\n      <z-list\r\n          page-type=\"more\"\r\n          page-trigger=\"click\"\r\n          scroller-auto-hide\r\n          auto\r\n          pager\r\n          :page-size=\"7\"\r\n          :item=\"dropMenuOpt\"\r\n          class=\"z-css-m-t\">\r\n        <template slot-scope=\"props\">\r\n          <div>{{ props.item.text }}</div>\r\n        </template>\r\n      </z-list>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"table-component\">\r\n        <a href=\"#table-component\">表格组件</a>\r\n      </h1>\r\n      <z-table\r\n          auto\r\n          :thead=\"['test', 'name', 'en']\"\r\n          :tbody=\"dropMenuOpt\">\r\n        <template slot=\"thead\" v-for=\"item in ['test', 'name', 'en']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <template slot=\"tbody\" slot-scope=\"props\">\r\n          <z-table-col>{{ props.item.text }}</z-table-col>\r\n          <z-table-col>{{ props.item.name }}</z-table-col>\r\n          <z-table-col>{{ props.item.en }}</z-table-col>\r\n        </template>\r\n      </z-table>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"layout-component\">\r\n        <a href=\"#layout-component\">布局组件</a>\r\n      </h1>\r\n      <z-row :gap=\"10\">\r\n        <z-col :span=\"6\" :m=4 :xs=\"12\">name: </z-col>\r\n        <z-col :span=\"4\" :m=\"4\" :s=\"8\">\r\n          <z-input\r\n              number\r\n              init-val=\"test-input\"\r\n              query-name=\"test\">\r\n          </z-input>\r\n        </z-col>\r\n        <z-col :span=\"2\" :m=\"4\" :s=\"4\">\r\n          <z-input init-val=\"test-input\" query-name=\"test\"></z-input>\r\n        </z-col>\r\n      </z-row>\r\n      <z-row :gap=\"10\">\r\n        <z-col :grid=\"{xs: 10, s: 8}\" :m=\"4\" :xs=\"12\" :span=\"6\">test1: </z-col>\r\n        <z-col :span=\"6\">\r\n          <z-menu\r\n              @click=\"clickIcon\"\r\n              query-name=\"test2\"\r\n              init-val=\"2\">\r\n            <z-menu-ele value=\"1\">{{ testName }}</z-menu-ele>\r\n            <z-menu-ele value=\"2\">测试2</z-menu-ele>\r\n          </z-menu>\r\n        </z-col>\r\n      </z-row>\r\n\r\n      <z-row :gap=\"10\">\r\n        <z-col :push=\"6\" :span=\"6\">test3: </z-col>\r\n        <z-col :pull=\"6\" :span=\"6\">test3: </z-col>\r\n      </z-row>\r\n      <z-row :gap=\"10\">\r\n        <z-col :span=\"12\" :offset=\"6\">\r\n          <z-btn ref=\"submit\" @click=\"submit\">提交</z-btn>\r\n        </z-col>\r\n      </z-row>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"shift-component\">\r\n        <a href=\"#shift-component\">切换组件</a>\r\n      </h1>\r\n\r\n      <z-shift ref=\"shift\" :index=\"1\">\r\n\r\n\r\n      </z-shift>\r\n\r\n      <z-pop ref=\"pop\">sadf</z-pop>\r\n      <z-btn @click=\"next\">next</z-btn>\r\n    </section>\r\n\r\n    <section>\r\n      <h1 class=\"anchor-title\" id=\"tab-component\">\r\n        <a href=\"#tab-component\">选项卡组件</a>\r\n      </h1>\r\n\r\n      <article>\r\n        <h3>可以嵌套自定义组件</h3>\r\n        <z-tab slot=\"2\">\r\n          <z-tab-ele slot=\"1\" value=\"1\" text=\"tab1\">\r\n            <z-btn @click=\"next\">tab1</z-btn>\r\n          </z-tab-ele>\r\n          <z-tab-ele slot=\"2\" value=\"2\" text=\"tab2\">\r\n            <z-btn @click=\"next\">tab2</z-btn>\r\n          </z-tab-ele>\r\n        </z-tab>\r\n      </article>\r\n\r\n      <article>\r\n        <h3>传入初始化数据</h3>\r\n        <z-tab\r\n            slot=\"3\"\r\n            :init-opt=\"[{\r\n              value: 1,\r\n              text: 'tab-1-1'\r\n            }, {\r\n              value: 2,\r\n              text: 'tab-1-2'\r\n            }, {\r\n              value: 3,\r\n              text: 'tab-1-3'\r\n            }]\"></z-tab>\r\n      </article>\r\n    </section>\r\n  </article>\r\n</div>";
 
 /***/ }),
-/* 560 */
+/* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43144,9 +43599,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(561);
+__webpack_require__(562);
 
-var _Btn = __webpack_require__(563);
+var _Btn = __webpack_require__(564);
 
 var _Btn2 = _interopRequireDefault(_Btn);
 
@@ -43171,13 +43626,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 561 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(562);
+var content = __webpack_require__(563);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43202,7 +43657,7 @@ if(false) {
 }
 
 /***/ }),
-/* 562 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -43216,7 +43671,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 563 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -43240,7 +43695,7 @@ pug_html = pug_html + "\u003Cz-btn\u003E提交\u003C\u002Fz-btn\u003E\u003Cz-cod
 }, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-btn ui=\"bootstrap\" block\u003E提交\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-btn block>') ? "" : pug_interp)) + "\n  提交\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-btn block\u003E提交\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-btn block>') ? "" : pug_interp)) + "\n  提交\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'bootstrap', 'bootstrap UI 规范');
 pug_mixins["section"].call({
@@ -43277,7 +43732,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 564 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43287,9 +43742,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(565);
+__webpack_require__(566);
 
-var _Start = __webpack_require__(567);
+var _Start = __webpack_require__(568);
 
 var _Start2 = _interopRequireDefault(_Start);
 
@@ -43314,13 +43769,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 565 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(566);
+var content = __webpack_require__(567);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43345,7 +43800,7 @@ if(false) {
 }
 
 /***/ }),
-/* 566 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -43359,7 +43814,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 567 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -43385,7 +43840,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 568 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43395,9 +43850,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(569);
+__webpack_require__(570);
 
-var _Select = __webpack_require__(571);
+var _Select = __webpack_require__(572);
 
 var _Select2 = _interopRequireDefault(_Select);
 
@@ -43452,13 +43907,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 569 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(570);
+var content = __webpack_require__(571);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43483,7 +43938,7 @@ if(false) {
 }
 
 /***/ }),
-/* 570 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -43497,7 +43952,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 571 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -43553,7 +44008,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 572 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43563,9 +44018,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(573);
+__webpack_require__(574);
 
-var _Menu = __webpack_require__(575);
+var _Menu = __webpack_require__(576);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
@@ -43620,13 +44075,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 573 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(574);
+var content = __webpack_require__(575);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43651,7 +44106,7 @@ if(false) {
 }
 
 /***/ }),
-/* 574 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -43665,7 +44120,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 575 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -43701,7 +44156,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 576 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43711,9 +44166,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(577);
+__webpack_require__(578);
 
-var _Check = __webpack_require__(579);
+var _Check = __webpack_require__(580);
 
 var _Check2 = _interopRequireDefault(_Check);
 
@@ -43738,13 +44193,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 577 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(578);
+var content = __webpack_require__(579);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43769,7 +44224,7 @@ if(false) {
 }
 
 /***/ }),
-/* 578 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -43783,7 +44238,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 579 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -43812,7 +44267,7 @@ pug_html = pug_html + "\u003Cz-check multiple theme=\"blue\" :init-opt=\"testOpt
 }, 'multiple', '多选');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-check ui=\"bootstrap\" theme=\"blue\" :init-opt=\"testOpt\"\u003E\u003C\u002Fz-check\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-check ui="bootstrap"></z-check>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-check ui=\"bootstrap\" check-all multiple theme=\"success\" :init-opt=\"testOpt\"\u003E\u003C\u002Fz-check\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-check ui="bootstrap"></z-check>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'bootstrap', 'bootstrap UI');
 pug_mixins["section"].call({
@@ -43829,7 +44284,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 580 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43839,9 +44294,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(581);
+__webpack_require__(582);
 
-var _Input = __webpack_require__(583);
+var _Input = __webpack_require__(584);
 
 var _Input2 = _interopRequireDefault(_Input);
 
@@ -43875,13 +44330,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 581 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(582);
+var content = __webpack_require__(583);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -43906,7 +44361,7 @@ if(false) {
 }
 
 /***/ }),
-/* 582 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -43920,7 +44375,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 583 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -43939,22 +44394,22 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-input ref=\"startInput\" ui=\"bootstrap\"\u003E\u003C\u002Fz-input\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input></z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-input block required helper-text=\"输入文本\" multiline placeholder=\"asd输入区域\" ref=\"startInput\" ui=\"bootstrap\"\u003E\u003C\u002Fz-input\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input></z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'start', '开始使用');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-input type=\"area\" :row=\"4\" placeholder=\"请输入...\"\u003E\u003C\u002Fz-input\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input type="row" :row="4" placeholder="请输入..."></z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-input textLengthTip :max=\"10\" label=\"区域标签\" type=\"area\" :row=\"4\" placeholder=\"请输入...\"\u003E\u003C\u002Fz-input\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input label="区域标签" type="area" :row="4" placeholder="请输入..."></z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'textarea', '输入区域');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-input completion placeholder=\"请输入...会补全的...\" ref=\"input\"\u003E\u003Cz-search :option=\"testOpt\" :input=\"false\" ref=\"completion\" slot=\"completion\"\u003E\u003C\u002Fz-search\u003E\u003C\u002Fz-input\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = 'completion') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = 'placeholder="请输入...会补全的..."') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = 'ref="input">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-search') ? "" : pug_interp)) + "\n      " + (pug.escape(null == (pug_interp = ':option="testOpt"') ? "" : pug_interp)) + "\n      " + (pug.escape(null == (pug_interp = 'ref="completion"') ? "" : pug_interp)) + "\n      " + (pug.escape(null == (pug_interp = 'slot="completion"></z-search>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '<z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-input completion label=\"补全功能\" placeholder=\"请输入...会补全的...\" ref=\"input\"\u003E\u003Cz-search :option=\"testOpt\" :input=\"false\" ref=\"completion\" slot=\"completion\"\u003E\u003C\u002Fz-search\u003E\u003C\u002Fz-input\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = 'completion') ? "" : pug_interp)) + "\n    label=\"补全功能\"\n    " + (pug.escape(null == (pug_interp = 'placeholder="请输入...会补全的..."') ? "" : pug_interp)) + "\n    " + (pug.escape(null == (pug_interp = 'ref="input">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<z-search') ? "" : pug_interp)) + "\n      " + (pug.escape(null == (pug_interp = ':option="testOpt"') ? "" : pug_interp)) + "\n      " + (pug.escape(null == (pug_interp = 'ref="completion"') ? "" : pug_interp)) + "\n      " + (pug.escape(null == (pug_interp = 'slot="completion"></z-search>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '<z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'completion', '补全功能');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-input :min=\"2\" :max=\"11\" error-message=\"手机\" placeholder=\"限制只能输入2-10位以内\" verified-type=\"mobile\" :header-span=\"4\" ref=\"verifyInput\"\u003E\u003C\u002Fz-input\u003E\u003Cz-btn class=\"z-css-m-l\" @click.native=\"clickVerifyInput\"\u003E点击验证是否为手机\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input') ? "" : pug_interp)) + "\n    :min=\"2\"\n    :max=\"10\"\n    error-message=\"邮箱\"\n    placeholder=\"限制只能输入2-10位以内\"\n    verifedType=\"email\"\n    " + (pug.escape(null == (pug_interp = 'ref="verifyInput"></z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-input active-verify label=\"手机\" :min=\"2\" :max=\"11\" name=\"手机\" placeholder=\"例如: 13111111111\" helper-text=\"限制只能输入2-10位以内\" verified-type=\"mobile\" :header-span=\"4\" ref=\"verifyInput\"\u003E\u003C\u002Fz-input\u003E\u003Cz-btn class=\"z-css-m-l\" @click.native=\"clickVerifyInput\"\u003E点击验证是否为手机\u003C\u002Fz-btn\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-input') ? "" : pug_interp)) + "\n    :min=\"2\"\n    :max=\"10\"\n    error-message=\"邮箱\"\n    placeholder=\"限制只能输入2-10位以内\"\n    verifedType=\"email\"\n    " + (pug.escape(null == (pug_interp = 'ref="verifyInput"></z-input>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'verify', '验证功能');
 pug_mixins["section"].call({
@@ -43976,7 +44431,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 584 */
+/* 585 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43986,7 +44441,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Icon = __webpack_require__(585);
+var _Icon = __webpack_require__(586);
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
@@ -44011,7 +44466,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 585 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44042,7 +44497,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 586 */
+/* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44052,9 +44507,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(587);
+__webpack_require__(588);
 
-var _Modal = __webpack_require__(589);
+var _Modal = __webpack_require__(590);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -44095,7 +44550,9 @@ exports.default = {
     confirm: function confirm() {
       (0, _index.confirm)({
         message: '这是一个确认弹窗',
-        title: '测试确认弹出'
+        title: '测试确认弹出',
+        theme: 'danger',
+        ui: 'bootstrap'
       });
     },
     showFullPop: function showFullPop() {
@@ -44111,13 +44568,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 587 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(588);
+var content = __webpack_require__(589);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -44142,7 +44599,7 @@ if(false) {
 }
 
 /***/ }),
-/* 588 */
+/* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -44156,7 +44613,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 589 */
+/* 590 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44190,7 +44647,7 @@ pug_html = pug_html + "\u003Cz-btn @click=\"confirm\"\u003E确认弹窗\u003C\u0
 }, 'confirm', '确认弹窗');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-btn @click=\"showFullPop\"\u003E全屏弹窗\u003C\u002Fz-btn\u003E\u003Cz-modal commit header=\"dasfdfasdf\" ok-btn=\"发布\" type=\"full\" ref=\"fullPop\"\u003E";
+pug_html = pug_html + "\u003Cz-btn @click=\"showFullPop\"\u003E全屏弹窗\u003C\u002Fz-btn\u003E\u003Cz-modal theme=\"success\" commit header=\"dasfdfasdf\" ok-btn=\"发布\" type=\"full\" ref=\"fullPop\"\u003E";
 var n = 0
 while (n < 8) {
 pug_html = pug_html + "\u003Cp\u003Efull-" + (pug.escape(null == (pug_interp = n++) ? "" : pug_interp)) + "\u003C\u002Fp\u003E";
@@ -44217,7 +44674,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 590 */
+/* 591 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44227,9 +44684,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(591);
+__webpack_require__(592);
 
-var _Omit = __webpack_require__(593);
+var _Omit = __webpack_require__(594);
 
 var _Omit2 = _interopRequireDefault(_Omit);
 
@@ -44254,13 +44711,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 591 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(592);
+var content = __webpack_require__(593);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -44285,7 +44742,7 @@ if(false) {
 }
 
 /***/ }),
-/* 592 */
+/* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -44299,7 +44756,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 593 */
+/* 594 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44330,7 +44787,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 594 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44340,9 +44797,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(595);
+__webpack_require__(596);
 
-var _Pop = __webpack_require__(597);
+var _Pop = __webpack_require__(598);
 
 var _Pop2 = _interopRequireDefault(_Pop);
 
@@ -44383,13 +44840,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 595 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(596);
+var content = __webpack_require__(597);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -44414,7 +44871,7 @@ if(false) {
 }
 
 /***/ }),
-/* 596 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -44428,7 +44885,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 597 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44469,7 +44926,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 598 */
+/* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44479,9 +44936,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(599);
+__webpack_require__(600);
 
-var _Tip = __webpack_require__(601);
+var _Tip = __webpack_require__(602);
 
 var _Tip2 = _interopRequireDefault(_Tip);
 
@@ -44489,11 +44946,11 @@ var _mixin = __webpack_require__(10);
 
 var _mixin2 = _interopRequireDefault(_mixin);
 
-var _tip2 = __webpack_require__(19);
+var _tip2 = __webpack_require__(18);
 
 var _tip3 = _interopRequireDefault(_tip2);
 
-var _toast2 = __webpack_require__(190);
+var _toast2 = __webpack_require__(191);
 
 var _toast3 = _interopRequireDefault(_toast2);
 
@@ -44563,13 +45020,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 599 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(600);
+var content = __webpack_require__(601);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -44594,7 +45051,7 @@ if(false) {
 }
 
 /***/ }),
-/* 600 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -44608,7 +45065,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 601 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44644,7 +45101,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 602 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44654,9 +45111,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(603);
+__webpack_require__(604);
 
-var _Table = __webpack_require__(605);
+var _Table = __webpack_require__(606);
 
 var _Table2 = _interopRequireDefault(_Table);
 
@@ -44681,13 +45138,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 603 */
+/* 604 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(604);
+var content = __webpack_require__(605);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -44712,7 +45169,7 @@ if(false) {
 }
 
 /***/ }),
-/* 604 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -44726,7 +45183,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 605 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44755,7 +45212,7 @@ pug_html = pug_html + "\u003Cz-table auto list pager :page-size=\"11\" :thead=\"
 }, 'list', '展示列表化的表格数据');
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-table border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Eauto\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E根据传入的列表数据生成分页数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Eborder\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(*none | all | row | col)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E表格的边界线的类型，\u003C\u002Fp\u003E\n（none：默认是不要边界线，all：横竖都要，row：只要行与行之间要，col：只要列与列之间要）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Epage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E分页数据（没传的话，默认将传的列表数据（item）作为分页数据）\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Ecurrent - 当前页码\u003C\u002Fli\u003E\u003Cli\u003Etotal - 总共页码\u003C\u002Fli\u003E\u003Cli\u003Elength - 数据总长度\u003C\u002Fli\u003E\u003Cli\u003Esize - 每页展示的数据长度\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Epager\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动分页功能\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Elist\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E默认是不以列表化的表格数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003Ethead\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E表头标题数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003Etbody\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E列表标题数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003EpageSize\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E将列表数据（item）分为每页多少条数据, 默认为 5。\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"9\"\u003E\u003Cz-table-col\u003EscrollerAutoHide\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动滚动条自动隐藏\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
+pug_html = pug_html + "\u003Cz-table scrollerAutoHide border=\"row\" auto :pageSize=\"10\"\u003E\u003Ctemplate slot=\"thead\" v-for=\"item in [&quot;名字&quot;, &quot;类型&quot;, &quot;可选值&quot;, &quot;说明&quot;]\"\u003E\u003Cz-table-col\u003E{{ item }}\u003C\u002Fz-table-col\u003E\u003C\u002Ftemplate\u003E\u003Cz-table-row slot=\"1\"\u003E\u003Cz-table-col\u003Eauto\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E根据传入的列表数据生成分页数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"2\"\u003E\u003Cz-table-col\u003Eborder\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EString\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E(*none | all | row | col)\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E表格的边界线的类型，\u003C\u002Fp\u003E\n（none：默认是不要边界线，all：横竖都要，row：只要行与行之间要，col：只要列与列之间要）\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"3\"\u003E\u003Cz-table-col\u003Epage\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EObject\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E\u003Cp\u003E分页数据（没传的话，默认将传的列表数据（item）作为分页数据）\u003C\u002Fp\u003E\u003Cul\u003E\u003Cli\u003Ecurrent - 当前页码\u003C\u002Fli\u003E\u003Cli\u003Etotal - 总共页码\u003C\u002Fli\u003E\u003Cli\u003Elength - 数据总长度\u003C\u002Fli\u003E\u003Cli\u003Esize - 每页展示的数据长度\u003C\u002Fli\u003E\u003C\u002Ful\u003E\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"4\"\u003E\u003Cz-table-col\u003Epager\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动分页功能\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"5\"\u003E\u003Cz-table-col\u003Elist\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E默认是不以列表化的表格数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"6\"\u003E\u003Cz-table-col\u003Ethead\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E表头标题数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"7\"\u003E\u003Cz-table-col\u003Etbody\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EArray\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E列表标题数据\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"8\"\u003E\u003Cz-table-col\u003EpageSize\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003ENumber\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E将列表数据（item）分为每页多少条数据, 默认为 5。\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003Cz-table-row slot=\"9\"\u003E\u003Cz-table-col\u003EscrollerAutoHide\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003EBoolean\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E——\u003C\u002Fz-table-col\u003E\u003Cz-table-col\u003E启动滚动条自动隐藏\u003C\u002Fz-table-col\u003E\u003C\u002Fz-table-row\u003E\u003C\u002Fz-table\u003E";
 }
 }, 'props', 'props 数据类型');
 pug_mixins["section"].call({
@@ -44767,7 +45224,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 606 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44777,9 +45234,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(607);
+__webpack_require__(608);
 
-var _Tab = __webpack_require__(609);
+var _Tab = __webpack_require__(610);
 
 var _Tab2 = _interopRequireDefault(_Tab);
 
@@ -44804,13 +45261,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 607 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(608);
+var content = __webpack_require__(609);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -44835,7 +45292,7 @@ if(false) {
 }
 
 /***/ }),
-/* 608 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -44849,7 +45306,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 609 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -44885,7 +45342,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 610 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44895,9 +45352,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(611);
+__webpack_require__(612);
 
-var _List = __webpack_require__(613);
+var _List = __webpack_require__(614);
 
 var _List2 = _interopRequireDefault(_List);
 
@@ -44922,13 +45379,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 611 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(612);
+var content = __webpack_require__(613);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -44953,7 +45410,7 @@ if(false) {
 }
 
 /***/ }),
-/* 612 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -44967,7 +45424,7 @@ exports.push([module.i, ".component-list .z-list-li {\n  white-space: nowrap; }\
 
 
 /***/ }),
-/* 613 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45003,7 +45460,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 614 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45013,9 +45470,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(615);
+__webpack_require__(616);
 
-var _Page = __webpack_require__(617);
+var _Page = __webpack_require__(618);
 
 var _Page2 = _interopRequireDefault(_Page);
 
@@ -45043,13 +45500,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 615 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(616);
+var content = __webpack_require__(617);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -45074,7 +45531,7 @@ if(false) {
 }
 
 /***/ }),
-/* 616 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -45088,13 +45545,13 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 617 */
+/* 618 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"component-page\">\r\n  <article class=\"example-article\">\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('basic')\">\r\n        <span @click=\"goAnchor\">基本用法</span>\r\n      </router-link>\r\n\r\n      <p class=\"section-description\">默认是点击数字的分页形式</p>\r\n\r\n      <z-page :data=\"{\r\n        length: 24,\r\n        size: 5,\r\n        total: 5,\r\n        current: 2\r\n      }\"></z-page>\r\n\r\n      <z-code v-pre>&ltz-page :data=\"{\r\n  length: 24,\r\n  size: 5,\r\n  total: 5,\r\n  current: 2\r\n}\">&lt/z-page&gt</z-code>\r\n    </section>\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('more')\">\r\n        <span @click=\"goAnchor\">加载更多的分页形式</span>\r\n      </router-link>\r\n\r\n      <z-page auto :data=\"pageData\" type=\"more\"></z-page>\r\n\r\n      <z-code v-pre>&ltz-page auto :data=\"pageData\" type=\"more\"&gt&lt/z-page&gt</z-code>\r\n    </section>\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :to=\"anchorLink('auto')\">\r\n        <span @click=\"goAnchor\">自动计算分页数据</span>\r\n      </router-link>\r\n\r\n      <z-page auto :data=\"{\r\n        length: 24,\r\n        size: 5\r\n      }\"></z-page>\r\n\r\n      <z-code v-pre>&ltz-page auto :data=\"{\r\n  length: 24,\r\n  size: 5\r\n}\"&gt&lt/z-page&gt</z-code>\r\n    </section>\r\n\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :list=\"false\"\r\n          :to=\"anchorLink('props')\">\r\n        <span @click=\"goAnchor\">props 数据类型</span>\r\n      </router-link>\r\n\r\n      <z-table\r\n          border=\"row\"\r\n          auto\r\n          :pageSize=\"10\">\r\n        <template slot=\"thead\" v-for=\"item in ['名字', '类型', '可选值', '说明']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <z-table-row slot=\"1\">\r\n          <z-table-col>auto</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>(*false | true)</z-table-col>\r\n          <z-table-col>分页的显示状态</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"2\">\r\n          <z-table-col>display</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>(*false | true)</z-table-col>\r\n          <z-table-col>分页的显示状态</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"3\">\r\n          <z-table-col>data</z-table-col>\r\n          <z-table-col>Object</z-table-col>\r\n          <z-table-col>——</z-table-col>\r\n          <z-table-col>\r\n            <p>分页数据</p>\r\n            <ul>\r\n              <li>length：一共有几条数据</li>\r\n              <li>total：一共有多少页</li>\r\n              <li>size：每页几条数据</li>\r\n              <li>current：当前的页码</li>\r\n            </ul>\r\n          </z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"4\">\r\n          <z-table-col>onePageDisplay</z-table-col>\r\n          <z-table-col>布尔值</z-table-col>\r\n          <z-table-col>(*false | true)</z-table-col>\r\n          <z-table-col>分页总页数为 1 时是否显示</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"5\">\r\n          <z-table-col>size</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>（s | *m | l）</z-table-col>\r\n          <z-table-col>分页外观尺寸大小</z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"6\">\r\n          <z-table-col>type</z-table-col>\r\n          <z-table-col>Boolean</z-table-col>\r\n          <z-table-col>（more | *num）</z-table-col>\r\n          <z-table-col>\r\n            <p>分页类型</p>\r\n            <ul>\r\n              <li>more：加载更多</li>\r\n              <li>num：数字标注（默认）</li>\r\n            </ul>\r\n          </z-table-col>\r\n        </z-table-row>\r\n        <z-table-row slot=\"7\">\r\n          <z-table-col>loadMoreText</z-table-col>\r\n          <z-table-col>String</z-table-col>\r\n          <z-table-col>——</z-table-col>\r\n          <z-table-col>\r\n            加载更多的提示文字\r\n          </z-table-col>\r\n        </z-table-row>\r\n      </z-table>\r\n    </section>\r\n\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :list=\"false\"\r\n          :to=\"anchorLink('events')\">\r\n        <span @click=\"goAnchor\">events 事件</span>\r\n      </router-link>\r\n\r\n      <z-table\r\n          border=\"row\"\r\n          auto\r\n          :pageSize=\"10\">\r\n        <template slot=\"thead\" v-for=\"item in ['名字', '返回值类型', '说明']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <z-table-row slot=\"1\">\r\n          <z-table-col>switch</z-table-col>\r\n          <z-table-col>Number</z-table-col>\r\n          <z-table-col>切换页码触发的事件</z-table-col>\r\n        </z-table-row>\r\n      </z-table>\r\n    </section>\r\n\r\n    <section>\r\n      <router-link\r\n          class=\"anchor-title\"\r\n          tag=\"h1\"\r\n          :list=\"false\"\r\n          :to=\"anchorLink('slots')\">\r\n        <span @click=\"goAnchor\">slots 内容分发</span>\r\n      </router-link>\r\n\r\n      <z-table\r\n          border=\"row\"\r\n          auto\r\n          :pageSize=\"10\">\r\n        <template slot=\"thead\" v-for=\"item in ['名字', '返回值类型', '说明']\">\r\n          <z-table-col>{{ item }}</z-table-col>\r\n        </template>\r\n\r\n        <z-table-row slot=\"1\">\r\n          <z-table-col>loadMore</z-table-col>\r\n          <z-table-col>分页类型为加载更多时的，在按钮处的内容分发</z-table-col>\r\n        </z-table-row>\r\n      </z-table>\r\n    </section>\r\n  </article>\r\n</div>";
 
 /***/ }),
-/* 618 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45104,9 +45561,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(619);
+__webpack_require__(620);
 
-var _Grid = __webpack_require__(621);
+var _Grid = __webpack_require__(622);
 
 var _Grid2 = _interopRequireDefault(_Grid);
 
@@ -45129,13 +45586,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(620);
+var content = __webpack_require__(621);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -45160,7 +45617,7 @@ if(false) {
 }
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -45174,7 +45631,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45210,7 +45667,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45220,9 +45677,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(623);
+__webpack_require__(624);
 
-var _Scroller = __webpack_require__(625);
+var _Scroller = __webpack_require__(626);
 
 var _Scroller2 = _interopRequireDefault(_Scroller);
 
@@ -45247,13 +45704,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(624);
+var content = __webpack_require__(625);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -45278,7 +45735,7 @@ if(false) {
 }
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -45292,7 +45749,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45311,7 +45768,7 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-scroller height=\"150\"\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003C\u002Fz-scroller\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-scroller height="150">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-scroller>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-scroller :height=\"150\"\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003Cp\u003E这是滚动内容 请滑动 (滚动)\u003C\u002Fp\u003E\u003C\u002Fz-scroller\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-scroller :height="150">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<p>这是滚动内容 请滑动 (滚动)</p>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-scroller>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'start', '开始使用');
 pug_mixins["section"].call({
@@ -45328,7 +45785,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45338,9 +45795,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(627);
+__webpack_require__(628);
 
-var _Motion = __webpack_require__(629);
+var _Motion = __webpack_require__(630);
 
 var _Motion2 = _interopRequireDefault(_Motion);
 
@@ -45396,13 +45853,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 627 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(628);
+var content = __webpack_require__(629);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -45427,7 +45884,7 @@ if(false) {
 }
 
 /***/ }),
-/* 628 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -45441,7 +45898,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.component-tr
 
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45472,7 +45929,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45482,23 +45939,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Zoom = __webpack_require__(631);
+var _Zoom = __webpack_require__(632);
 
 var _Zoom2 = _interopRequireDefault(_Zoom);
 
-var _Slide = __webpack_require__(633);
+var _Slide = __webpack_require__(634);
 
 var _Slide2 = _interopRequireDefault(_Slide);
 
-var _Fade = __webpack_require__(635);
+var _Fade = __webpack_require__(636);
 
 var _Fade2 = _interopRequireDefault(_Fade);
 
-var _Rip = __webpack_require__(637);
+var _Rip = __webpack_require__(638);
 
 var _Rip2 = _interopRequireDefault(_Rip);
 
-var _Fold = __webpack_require__(639);
+var _Fold = __webpack_require__(640);
 
 var _Fold2 = _interopRequireDefault(_Fold);
 
@@ -45537,7 +45994,7 @@ exports.default = [{
 }];
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45547,7 +46004,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Zoom = __webpack_require__(632);
+var _Zoom = __webpack_require__(633);
 
 var _Zoom2 = _interopRequireDefault(_Zoom);
 
@@ -45582,7 +46039,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45608,7 +46065,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45618,7 +46075,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Slide = __webpack_require__(634);
+var _Slide = __webpack_require__(635);
 
 var _Slide2 = _interopRequireDefault(_Slide);
 
@@ -45653,7 +46110,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45679,7 +46136,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 635 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45689,7 +46146,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Fade = __webpack_require__(636);
+var _Fade = __webpack_require__(637);
 
 var _Fade2 = _interopRequireDefault(_Fade);
 
@@ -45724,7 +46181,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 636 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45750,7 +46207,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 637 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45760,7 +46217,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Rip = __webpack_require__(638);
+var _Rip = __webpack_require__(639);
 
 var _Rip2 = _interopRequireDefault(_Rip);
 
@@ -45792,7 +46249,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 638 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45818,7 +46275,7 @@ pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return p
 module.exports = template;
 
 /***/ }),
-/* 639 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45828,7 +46285,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Fold = __webpack_require__(640);
+var _Fold = __webpack_require__(641);
 
 var _Fold2 = _interopRequireDefault(_Fold);
 
@@ -45863,7 +46320,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 640 */
+/* 641 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -45882,14 +46339,14 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv class=\"component-transition\"\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cz-btn @click=\"fold\"\u003E折叠\u003C\u002Fz-btn\u003E\u003Cz-btn class=\"z-css-m-l\" @click=\"unfold\"\u003E展开\u003C\u002Fz-btn\u003E\u003Cdiv class=\"transitioner\"\u003E\u003Cz-motion-fold ref=\"fold\" :height=\"30\" :offset=\"100\"\u003E\u003Cdiv\u003E我被折叠展开了！\u003C\u002Fdiv\u003E\u003C\u002Fz-motion-fold\u003E\u003C\u002Fdiv\u003E\u003Cz-code type=\"html\"\u003E" + (pug.escape(null == (pug_interp = '<z-btn @click="fold">') ? "" : pug_interp)) + "\n  折叠\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\n\n" + (pug.escape(null == (pug_interp = '<z-btn @click="unfold">') ? "" : pug_interp)) + "\n  展开\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\n\n" + (pug.escape(null == (pug_interp = '<z-motion-fold ref="fold">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<div>我被折叠展开了！</div>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-motion-fold>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E\u003Cz-code type=\"js\"\u003E...\n  methods: {\n    fold() {\n      this.$refs.fold.enter()\n    },\n    unfold() {\n      this.$refs.fold.leave()\n    }\n  }\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cz-btn @click=\"fold\"\u003E折叠\u003C\u002Fz-btn\u003E\u003Cz-btn class=\"z-css-m-l\" @click=\"unfold\"\u003E展开\u003C\u002Fz-btn\u003E\u003Cdiv class=\"transitioner\"\u003E\u003Cz-motion-fold display ref=\"fold\" :height=\"30\" :offset=\"100\"\u003E\u003Cdiv\u003E我被折叠展开了！\u003C\u002Fdiv\u003E\u003C\u002Fz-motion-fold\u003E\u003C\u002Fdiv\u003E\u003Cz-code type=\"html\"\u003E" + (pug.escape(null == (pug_interp = '<z-btn @click="fold">') ? "" : pug_interp)) + "\n  折叠\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\n\n" + (pug.escape(null == (pug_interp = '<z-btn @click="unfold">') ? "" : pug_interp)) + "\n  展开\n" + (pug.escape(null == (pug_interp = '</z-btn>') ? "" : pug_interp)) + "\n\n" + (pug.escape(null == (pug_interp = '<z-motion-fold ref="fold">') ? "" : pug_interp)) + "\n  " + (pug.escape(null == (pug_interp = '<div>我被折叠展开了！</div>') ? "" : pug_interp)) + "\n" + (pug.escape(null == (pug_interp = '</z-motion-fold>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E\u003Cz-code type=\"js\"\u003E...\n  methods: {\n    fold() {\n      this.$refs.fold.enter()\n    },\n    unfold() {\n      this.$refs.fold.leave()\n    }\n  }\u003C\u002Fz-code\u003E";
 }
 }, 'fold', '折叠');
 pug_html = pug_html + "\u003C\u002Farticle\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
 /***/ }),
-/* 641 */
+/* 642 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45899,31 +46356,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(642);
+__webpack_require__(643);
 
-var _App = __webpack_require__(644);
+var _App = __webpack_require__(645);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _store = __webpack_require__(645);
+var _store = __webpack_require__(646);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _type = __webpack_require__(192);
+var _type = __webpack_require__(193);
 
 var _type2 = _interopRequireDefault(_type);
 
-var _LayoutHeader = __webpack_require__(647);
+var _LayoutHeader = __webpack_require__(648);
 
 var _LayoutHeader2 = _interopRequireDefault(_LayoutHeader);
 
-var _LayoutFooter = __webpack_require__(652);
+var _LayoutFooter = __webpack_require__(653);
 
 var _LayoutFooter2 = _interopRequireDefault(_LayoutFooter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(656);
+__webpack_require__(657);
 
 exports.default = {
   name: 'app',
@@ -45979,13 +46436,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 642 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(643);
+var content = __webpack_require__(644);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -46010,7 +46467,7 @@ if(false) {
 }
 
 /***/ }),
-/* 643 */
+/* 644 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -46018,13 +46475,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.app-container {\n  position: relative; }\n", ""]);
+exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.app-container {\n  position: relative; }\n  .app-container > .app-content {\n    overflow: auto; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 644 */
+/* 645 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -46033,7 +46490,7 @@ function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_ht
 module.exports = template;
 
 /***/ }),
-/* 645 */
+/* 646 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46048,11 +46505,11 @@ var _vue = __webpack_require__(15);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuex = __webpack_require__(171);
+var _vuex = __webpack_require__(172);
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
-var _common = __webpack_require__(646);
+var _common = __webpack_require__(647);
 
 var _common2 = _interopRequireDefault(_common);
 
@@ -46071,7 +46528,7 @@ exports.default = commonStore;
 exports.common = commonStore;
 
 /***/ }),
-/* 646 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46081,7 +46538,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _type = __webpack_require__(192);
+var _type = __webpack_require__(193);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -46115,7 +46572,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 647 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46125,13 +46582,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(648);
+__webpack_require__(649);
 
-var _LayoutHeader = __webpack_require__(650);
+var _LayoutHeader = __webpack_require__(651);
 
 var _LayoutHeader2 = _interopRequireDefault(_LayoutHeader);
 
-var _menuOpt = __webpack_require__(191);
+var _menuOpt = __webpack_require__(192);
 
 var _menuOpt2 = _interopRequireDefault(_menuOpt);
 
@@ -46144,7 +46601,7 @@ exports.default = {
 
   data: function data() {
     return {
-      logoUrl: __webpack_require__(651),
+      logoUrl: __webpack_require__(652),
       menuOpt: [{
         'name': '组件',
         'route': '/component/start'
@@ -46172,13 +46629,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 648 */
+/* 649 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(649);
+var content = __webpack_require__(650);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -46203,7 +46660,7 @@ if(false) {
 }
 
 /***/ }),
-/* 649 */
+/* 650 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -46211,13 +46668,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.header-layout-stage {\n  position: relative;\n  background-color: #333333;\n  height: 88px;\n  padding: 0 10px; }\n  .header-layout-stage > .nav-box-mobile {\n    display: none; }\n    .header-layout-stage > .nav-box-mobile .z-icon .z-icon-ali {\n      font-size: 30px;\n      color: #fff; }\n    .header-layout-stage > .nav-box-mobile .z-icon .z-icon-sort {\n      font-size: 40px; }\n  .header-layout-stage > .nav-box {\n    max-width: 1024px;\n    height: 100%;\n    margin: 0 auto; }\n    .header-layout-stage > .nav-box .logo-box {\n      width: 30px; }\n    .header-layout-stage > .nav-box .nav-menu-box .z-icon .z-icon-l {\n      font-size: 40px; }\n    .header-layout-stage > .nav-box .nav-menu-box .router-link-active {\n      color: #f5f5f5; }\n      .header-layout-stage > .nav-box .nav-menu-box .router-link-active::after {\n        content: \" \";\n        width: 100%;\n        bottom: -33px;\n        left: 0;\n        position: absolute;\n        border-bottom: #fff 5px solid; }\n    .header-layout-stage > .nav-box .nav-menu-box a {\n      color: #fff;\n      text-decoration: none; }\n    .header-layout-stage > .nav-box .nav-menu-box .z-col {\n      position: relative;\n      font-size: 16px;\n      width: 100px;\n      text-align: center; }\n  .header-layout-stage > .mobile-menu {\n    margin: -10px;\n    display: none; }\n    .header-layout-stage > .mobile-menu .menu-search {\n      border-bottom: #fff 1px solid; }\n      .header-layout-stage > .mobile-menu .menu-search > .z-input {\n        width: 100%; }\n        .header-layout-stage > .mobile-menu .menu-search > .z-input .z-input-wrap {\n          background-color: transparent;\n          border: none; }\n          .header-layout-stage > .mobile-menu .menu-search > .z-input .z-input-wrap .z-icon .z-icon-search {\n            font-size: 24px; }\n          .header-layout-stage > .mobile-menu .menu-search > .z-input .z-input-wrap input {\n            font-size: 20px; }\n  @media only screen and (max-width: 575px) {\n    .header-layout-stage {\n      height: 60px; }\n      .header-layout-stage > .nav-box {\n        display: none; }\n      .header-layout-stage > .nav-box-mobile {\n        display: -webkit-flex;\n        display: flex; }\n      .header-layout-stage > .mobile-menu {\n        display: block; } }\n", ""]);
+exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.header-layout-stage {\n  position: relative;\n  background-color: #333333;\n  height: 88px;\n  padding: 0 10px; }\n  .header-layout-stage > .nav-box-mobile {\n    display: none; }\n    .header-layout-stage > .nav-box-mobile .z-icon .z-icon-ali {\n      font-size: 30px;\n      color: #fff; }\n    .header-layout-stage > .nav-box-mobile .z-icon .z-icon-sort {\n      font-size: 40px; }\n  .header-layout-stage > .nav-box {\n    max-width: 1024px;\n    height: 100%;\n    margin: 0 auto; }\n    .header-layout-stage > .nav-box .logo-box {\n      width: 30px; }\n    .header-layout-stage > .nav-box .nav-menu-box .z-icon .z-icon-l {\n      font-size: 40px; }\n    .header-layout-stage > .nav-box .nav-menu-box .router-link-active {\n      color: #f5f5f5; }\n      .header-layout-stage > .nav-box .nav-menu-box .router-link-active::after {\n        content: \" \";\n        width: 100%;\n        bottom: -33px;\n        left: 0;\n        position: absolute;\n        border-bottom: #fff 5px solid; }\n    .header-layout-stage > .nav-box .nav-menu-box a {\n      color: #fff;\n      text-decoration: none; }\n    .header-layout-stage > .nav-box .nav-menu-box .z-col {\n      position: relative;\n      font-size: 16px;\n      width: 100px;\n      text-align: center; }\n  .header-layout-stage > .mobile-menu {\n    margin: -10px;\n    display: none; }\n    .header-layout-stage > .mobile-menu .menu-search {\n      border-bottom: #fff 1px solid; }\n      .header-layout-stage > .mobile-menu .menu-search > .z-input {\n        width: 100%; }\n        .header-layout-stage > .mobile-menu .menu-search > .z-input .z-input-wrap {\n          background-color: transparent;\n          border: none; }\n          .header-layout-stage > .mobile-menu .menu-search > .z-input .z-input-wrap .z-icon .z-icon-search {\n            font-size: 24px; }\n          .header-layout-stage > .mobile-menu .menu-search > .z-input .z-input-wrap input {\n            font-size: 20px; }\n  @media only screen and (max-width: 575px) {\n    .header-layout-stage {\n      height: 60px; }\n      .header-layout-stage > .nav-box {\n        display: none; }\n      .header-layout-stage > .nav-box-mobile {\n        display: -webkit-flex;\n        display: -ms-flexbox;\n        display: flex; }\n      .header-layout-stage > .mobile-menu {\n        display: block; } }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 650 */
+/* 651 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -46226,13 +46683,13 @@ function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_ht
 module.exports = template;
 
 /***/ }),
-/* 651 */
+/* 652 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAADtCAYAAADurKT6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzQ4QzI3QjA4OTcxMUU3QTUzOEE1RjhBN0FEQ0Q3RiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzQ4QzI3QzA4OTcxMUU3QTUzOEE1RjhBN0FEQ0Q3RiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRDNDhDMjc5MDg5NzExRTdBNTM4QTVGOEE3QURDRDdGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDNDhDMjdBMDg5NzExRTdBNTM4QTVGOEE3QURDRDdGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+2FwMGgAAB9BJREFUeNrs3YmO2zoQRFHT8P//cYYvEyQPiqPV2sjuU8AgjjctvF0sSpRcfvz48SDqVc/nc/T5r6+v+vv1MvXZl91HHan+/rdMwb5F4KfewH9/XD4B/1evsGNFqvagi6CfYm0R/LnXnwetWO1oh1Gfbr/59bm8f3TseV+RctMOWfPegquuoT9Er5s2oGzcyDLxuB68booiGPDf7v8dfcZ6gVcjG1pacAJFEdflj3L+enEx1MYbSGE0DvyU+7/snEvWtZy4nAL4cU3Fnf933AdneCMfRSkdb2sB/LTzjxWDk1zTjVVmgKodgFYyA7+qKLj+7LZO/fW4/lctqzkNT3QNH3N+g8xy8Pc9Wi8A8NMaiEuvsJ8ReyhfYYSbKvL/dGftSxn168iP3UBZJfNTKg2P8291fqfyKQT4Mj+lAX5smgP4KTT4c/N7PoFf9KEuos3SxDbOTzEHswuXMH7L0R4K5/ZrXH+P84s+1JyG83fWOL/YQz3qn3izFXzwU6/6685tn4C/F37Rh5pw/0/AP2LAWxp1hB4b0k22duT8reAfAX/zbtBJodSJda8KY7adPwY/IvxHFEptqFBFy5PAzw7/p8AtXSheV8aauhJu7n+SOTja89kOH/7Nvf4Y+fcf99rZ0CUh7PWI7Qb/tQPZMnhu+HhNEdSZAirJwD9E4L+3KNYUwVgBvUNQk/QI9chtA//17j8F8ZaeoGwAJdo+PKyowd/G+GHJ2TNn/VPAB/89XfZSDNrSC2Qc7II/YMONOX5Z8dnoBXBafAN/Ww1ZJsYI5WwQsrk++NttwKnIM/e8/Qb+MN340O2nzhVUhgH+qI05l/nfi8A8IPCHLpq68TWuD/7mGnUPqBnO5l6yPeDvt3jM8gR/SvePfOizgJ+WiiZaAZTHxfHNxSz3g1x2fkfvBXDbeIXziwpp1xv8fWf/ngvg9vUFf4yC6e2X4psoVPDHcn9uD34CPvi5v5gDfsXC7cEPaOCDX57ODD7421T98P0V+ODP4uAF+ODn/sAHv/xuncHP/YEPfu5P4NczKFLwd+b+tfH14/yUzvVDxDLwc/+04xHw9zcIrsAHf0b3Bz745Xzggz9b5AE++Lk+8MFPwAc/1wc++IEPfPAT8MHP9YEPfuADH/xE4G/a9a9w42bvpnaF/DhFu+DXk6FPL/DnEujFnpSuD3zwpwIf8GJP6oijAMCfxvXBDv7uXLqCXubP6PrAB39K8MUc8BucEvizuX6mnyIFP/APA1+PAf5uow7HB39K1wc++FOCT+AneR/8XJ/AD3wCP/AJ/CTvg5/rE/iJwE8EfpGHwG+wS+AHPoE/TuQB/sFyATu35/wEfPBTK5EH+ODn+AT+LK4PfANebk+cP4PrAx/8wCfwizoE/sCuD3zwA5/AD3wCv4xP4I/l+sAHP/AJ/KIOgT+w6wMf/MAn8BOBP6jr+9Vz8KcFvwIf/AqFwG+QS+AHPoE/pIAPftmdwC/uEPiBT+CX8wn8cj6BX9wh8AOfwC/qEPgNcul8ZbxRretwifMT+Lk+1wc/AR/8XJ/AL+5ABPxE4Of6BP4cOd84AfwGuAR+4BP4icAfSwa54Bd5CPzZVPUE4M/o+kVPAn4CPfjBSuDPIxkf/FyfwA98An8i8IsoBP5sOb/OFJfeBfwhXR/Y4E8dd4pCAH9W8EEP/pQD3Lrx/wT+EOAT+IFP4CcFCH7QEfiBT+AHPoE/Kvjm8IA/teMrAPCHVxGzqDX464XLKRueVyDgDxV3KsDBnw18uZ6agb8GXx6BvzkQ9QDgTwm+HoBug79n8BQN+MFD4Ac+gT+BysM1v+AP6vqOAIG/W/DLzvfWgbvPzf/h/gH0CgD98J47deO6jUFcF5ZVH3oIzh9An4BcZgqHwH85wHcVwEMBgP/uAW694PPu3gx+mhhvEPhPh6E0WgAE/uYjzlnL5f7gDxdpxB/wN+/MV2zH3LkEBZAc/igNXxaeE4HAH1Z1BfB1pkCcAEsGf7TGLju32VGgJPBHdLk/+b7MAF1GxgHO/iaNPb273dKd3IazPsdee0wUBwWFfwmA3rN+2dDLDXsL05+Dwx+5UcuE2z9GYs5UgSiARLEnWt6fyvVLvcUjQQSqvW/Pc+fGR8j5a7ZzakZnGYk7ZUUhRdgn3RfB86CNz9ATjEWhOhKH6iPmJZB1RQ/YVSHsvYwxepYtExn+/bn3QlgTkXq5HLIe9JkSAf5Mrr802J0qhDVF0HoB1Ju+75T98fX19dfyn89ned28Q3qMPEu93fD9ZUPBRIX+1OX/hPq22BNdZSLLr4l7n9xJIivw1w50f7r+Vvgzu/5cL7A249aGCiDtOYc/4G+BvyYb6K7dH3WmCMbmBa3tLQrI2xzwOlu5HrKpAlg6OmT/nuz6a+GvwD+8MEx/uBn8X89tBJ+OHUy79PHOgtjhYophf48A+kbhn4s7wKew8C+Bz7WoK72f4V0Te4oBL2Vy/rkjEMCnsPDPnaQh6hf0jYc6RRxK4/wiDqVx/SH8QKdU4P+B/xPwjQUo3IB3rfQU1LXrf+v1WL5LGVFIvTbGGkURV6GuIVhy/Tn41+yg2lmjnNF4Zcd3lgPWozReRE2b5etgKGuAgXFp5DsjHFS4tBDWuP1R8EdtMDq3EI4sgvIT+Fucn+isxHCJuYKfWo5HpyaJ/wQYANZhS2MSpvy0AAAAAElFTkSuQmCC"
 
 /***/ }),
-/* 652 */
+/* 653 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46242,9 +46699,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__webpack_require__(653);
+__webpack_require__(654);
 
-var _LayoutFooter = __webpack_require__(655);
+var _LayoutFooter = __webpack_require__(656);
 
 var _LayoutFooter2 = _interopRequireDefault(_LayoutFooter);
 
@@ -46257,13 +46714,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 653 */
+/* 654 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(654);
+var content = __webpack_require__(655);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -46288,7 +46745,7 @@ if(false) {
 }
 
 /***/ }),
-/* 654 */
+/* 655 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -46302,7 +46759,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.footer-layou
 
 
 /***/ }),
-/* 655 */
+/* 656 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pug = __webpack_require__(8);
@@ -46311,17 +46768,17 @@ function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_ht
 module.exports = template;
 
 /***/ }),
-/* 656 */
+/* 657 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "favicon.ico";
 
 /***/ }),
-/* 657 */
+/* 658 */
 /***/ (function(module, exports) {
 
 module.exports = {"en-US":{"btn":{},"column":{},"check":{},"form":{},"input":{},"icon":{},"loading":{},"page":{},"pop":{},"list":{},"scroller":{},"select":{},"selectEle":{},"shift":{},"shiftEle":{},"tab":{},"tabEle":{},"row":{},"table":{"emptyData":"empty data"}}}
 
 /***/ })
-],[193]);
-//# sourceMappingURL=app.cd8fcfe499cadc3b6c41.js.map
+],[194]);
+//# sourceMappingURL=app.cbce6ea641260556a9f5.js.map
