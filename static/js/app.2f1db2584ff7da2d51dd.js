@@ -28636,7 +28636,8 @@ exports.default = {
       this.$refs.option.$on('change', function (_ref5) {
         var value = _ref5.value,
             text = _ref5.text,
-            index = _ref5.index;
+            index = _ref5.index,
+            hideMenu = _ref5.hideMenu;
 
         _this2.currentIndex = index;
         var selectedItem = _this2._isExistedVal(value);
@@ -28652,7 +28653,7 @@ exports.default = {
         } else {
           _this2.value = value;
 
-          return _this2._menuMotion(false);
+          hideMenu && _this2._menuMotion(false);
         }
       });
     },
@@ -42448,11 +42449,13 @@ exports.default = {
         case 'up':
           this.focusIndex = this.focusIndex === 0 ? 0 : this.focusIndex - 1;
           this.$refs.list.scrollTop(this.optionEleH * this.focusIndex);
+          this.selectOption(this.focusIndex + 1, false);
 
           break;
         case 'down':
           this.focusIndex = this.focusIndex === this.optionLength - 1 ? this.optionLength - 1 : this.focusIndex + 1;
           this.$refs.list.scrollTop(this.optionEleH * this.focusIndex);
+          this.selectOption(this.focusIndex + 1, false);
 
           break;
         case 'left':
@@ -42481,11 +42484,13 @@ exports.default = {
 
 
     /**
-     * @param {Object} 子下拉框值
+     * @param {Object} index - 子下拉框值的游标，从 1 开始
+     * @param {Boolean} hideMenu - 自动关闭下拉框
+     *
      * @return {Function}
      */
-    selectOption: function selectOption(evt, index) {
-      evt.stopPropagation();
+    selectOption: function selectOption(index) {
+      var hideMenu = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
       var option = this.option[parseInt(index - 1, 10)];
 
@@ -42493,12 +42498,12 @@ exports.default = {
         return false;
       }
 
-      this.$refs['rip' + index].enter();
       this.$emit('change', {
         emitter: this,
         value: option[this.valName],
         text: option[this.txtName],
-        index: index
+        index: index,
+        hideMenu: hideMenu
       });
     },
 
@@ -42516,6 +42521,28 @@ exports.default = {
      */
     initPageDisplay: function initPageDisplay() {
       return this.$refs.list.initPageDisplay();
+    },
+    _handlerMouseenter: function _handlerMouseenter(event, index) {
+      this.focusIndex = index - 1;
+    },
+    _handlerClidk: function _handlerClidk(event, index) {
+      event && event.stopPropagation();
+
+      var option = this.option[parseInt(index - 1, 10)];
+
+      if (option.classify) {
+        return false;
+      }
+
+      this.$refs['rip' + index].enter();
+
+      this.$emit('change', {
+        emitter: this,
+        value: option[this.valName],
+        text: option[this.txtName],
+        index: index,
+        hideMenu: true
+      });
     }
   },
 
@@ -42568,7 +42595,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * select-opt 组件样式\r\n */\n.z-select-opt-ul .z-select-opt-li .z-select-opt-li-text {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n.z-select-opt-ul {\n  display: none;\n  background-color: #fff; }\n  .z-select-opt-ul .z-select-opt-li {\n    position: relative;\n    padding: 8px 16px;\n    box-sizing: border-box;\n    width: 100%;\n    text-align: left;\n    cursor: default; }\n    .z-select-opt-ul .z-select-opt-li:first-child {\n      padding-top: 8px; }\n    .z-select-opt-ul .z-select-opt-li:last-child {\n      padding-bottom: 8px; }\n    .z-select-opt-ul .z-select-opt-li.z-select-opt-default-txt {\n      color: #999; }\n    .z-select-opt-ul .z-select-opt-li.z-select-opt-classify-title {\n      font-weight: bold; }\n    .z-select-opt-ul .z-select-opt-li.z-select-opt-li-focus {\n      background-color: #f5f5f5; }\n    .z-select-opt-ul .z-select-opt-li:hover {\n      background-color: #f5f5f5; }\n      .z-select-opt-ul .z-select-opt-li:hover > .z-select-opt-ul {\n        display: block; }\n      .z-select-opt-ul .z-select-opt-li:hover.z-select-opt-classify-title {\n        background-color: transparent; }\n    .z-select-opt-ul .z-select-opt-li .z-select-opt-li-check {\n      line-height: 1; }\n    .z-select-opt-ul .z-select-opt-li .z-select-opt-li-text {\n      display: inline-block;\n      vertical-align: middle;\n      width: 100%;\n      padding: 0 8px;\n      box-sizing: border-box; }\n\n@media only screen and (max-width: 767px) {\n  .z-select-opt-ul {\n    width: 100%; } }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * select-opt 组件样式\r\n */\n.z-select-opt-ul .z-select-opt-li .z-select-opt-li-text {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n.z-select-opt-ul {\n  display: none;\n  background-color: #fff; }\n  .z-select-opt-ul .z-select-opt-li {\n    position: relative;\n    padding: 8px 16px;\n    box-sizing: border-box;\n    width: 100%;\n    text-align: left;\n    cursor: default;\n    background-color: rgba(245, 245, 245, 0); }\n    .z-select-opt-ul .z-select-opt-li:first-child {\n      padding-top: 8px; }\n    .z-select-opt-ul .z-select-opt-li:last-child {\n      padding-bottom: 8px; }\n    .z-select-opt-ul .z-select-opt-li.z-select-opt-default-txt {\n      color: #999; }\n    .z-select-opt-ul .z-select-opt-li.z-select-opt-classify-title {\n      font-weight: bold; }\n    .z-select-opt-ul .z-select-opt-li.z-select-opt-li-focus {\n      background-color: whitesmoke; }\n    .z-select-opt-ul .z-select-opt-li .z-select-opt-li-check {\n      line-height: 1; }\n    .z-select-opt-ul .z-select-opt-li .z-select-opt-li-text {\n      display: inline-block;\n      vertical-align: middle;\n      width: 100%;\n      padding: 0 8px;\n      box-sizing: border-box; }\n\n@media only screen and (max-width: 767px) {\n  .z-select-opt-ul {\n    width: 100%; } }\n", ""]);
 
 // exports
 
@@ -42673,7 +42700,10 @@ exports.default = function (h) {
       class: [_this.liClass(item.classify, optVal), _defineProperty({}, _this.xclass('li-focus'), index - 1 === _this.focusIndex)],
       on: {
         click: function click(event) {
-          return _this.selectOption(event, index);
+          return _this._handlerClidk(event, index);
+        },
+        mouseenter: function mouseenter(event) {
+          return _this._handlerMouseenter(event, index);
         }
       },
       ref: 'option' + index
@@ -47274,4 +47304,4 @@ module.exports = {"en-US":{"btn":{},"column":{},"check":{},"form":{},"input":{},
 
 /***/ })
 ],[194]);
-//# sourceMappingURL=app.69cdf46d6e72d287acdb.js.map
+//# sourceMappingURL=app.2f1db2584ff7da2d51dd.js.map
