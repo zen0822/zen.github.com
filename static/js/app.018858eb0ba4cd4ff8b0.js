@@ -17078,11 +17078,13 @@ __webpack_require__(447);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * rip(涟漪) motion component
- *
- * @prop assign - 指定涟漪在是什么位置开始
- */
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
+                                                                                                                                                                                                                   * rip(涟漪) motion component
+                                                                                                                                                                                                                   *
+                                                                                                                                                                                                                   * @prop assign - 指定涟漪在是什么位置开始
+                                                                                                                                                                                                                   * @prop circle - 涟漪是圆形
+                                                                                                                                                                                                                   * @prop overflow - 默认溢出不隐藏，true 为隐藏溢出的 spot
+                                                                                                                                                                                                                   */
 
 exports.default = {
   name: 'MotionRip',
@@ -17093,15 +17095,31 @@ exports.default = {
     assign: {
       type: Boolean,
       default: false
+    },
+    circle: {
+      type: Boolean,
+      default: false
+    },
+    overflow: {
+      type: Boolean,
+      default: false
     }
   },
 
-  data: function data() {
-    this.moving = false; // 是否正在执行过渡动画
-
-    return {};
+  computed: {
+    time: function time() {
+      switch (this.speed) {
+        case 'normal':
+          return 800;
+        case 'fast':
+          return 600;
+        case 'slow':
+          return 1000;
+        default:
+          return 800;
+      }
+    }
   },
-
 
   methods: {
     beforeEnter: function beforeEnter() {
@@ -17114,6 +17132,12 @@ exports.default = {
       this.$emit('beforeEnter');
 
       var el = this.$el;
+
+      Object.assign(el.style, {
+        'display': 'none'
+      });
+
+      (0, _attr.delClass)(el, [this.prefix('motion-rip-assign'), this.prefix('motion-rip-active')]);
 
       (0, _attr.addClass)(el, this.prefix('motion-rip-comp'));
 
@@ -17142,7 +17166,7 @@ exports.default = {
 
       // HACK: trigger browser reflow
       var height = el.offsetHeight;
-      el.firstChild.style.transition = el.style.transition = 'all 800ms';
+      el.firstChild.style.transition = el.style.transition = 'all ' + this.time + 'ms';
 
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
@@ -17189,7 +17213,7 @@ exports.default = {
 
   render: function render(h, context) {
     return h('transition', [h('div', {
-      class: [this.prefix('motion-rip')]
+      class: [this.prefix('motion-rip'), _defineProperty({}, this.prefix('motion-rip-circle'), this.circle), _defineProperty({}, this.prefix('motion-rip-overflow'), this.overflow)]
     }, [h('div', {
       class: [this.prefix('motion-rip-spot')]
     })])]);
@@ -17277,15 +17301,15 @@ exports.default = {
     _getTranslate: function _getTranslate() {
       switch (this.direction) {
         case 'south':
-          return 'translateY(calc(-100% - ' + this.slideOffset + 'px))';
+          return 'translateY(-100%) translateY(-' + this.slideOffset + 'px)';
         case 'north':
-          return 'translateY(calc(100% + ' + this.slideOffset + 'px))';
+          return 'translateY(100%) translateY(' + this.slideOffset + 'px)';
         case 'east':
-          return 'translateX(calc(-100% - ' + this.slideOffset + 'px))';
+          return 'translateX(-100%) translateY(-' + this.slideOffset + 'px)';
         case 'west':
-          return 'translateX(calc(100% + ' + this.slideOffset + 'px))';
+          return 'translateX(100%) translateY(' + this.slideOffset + 'px)';
         default:
-          return 'translateY(calc(-100% - ' + this.slideOffset + 'px))';
+          return 'translateY(-100%) translateY(-' + this.slideOffset + 'px)';
       }
     },
 
@@ -19076,7 +19100,7 @@ var checkCompConfig = {
      */
     _handlerClick: function _handlerClick(event, index) {
       this.check(event, index);
-      this.motion.splice(index - 1, 1, false);
+      // this.motion.splice(index - 1, 1, false)
     },
 
 
@@ -36889,9 +36913,7 @@ exports.default = function (h) {
       class: [this.xclass('rip')],
       props: {
         assign: !this.isFloatBtn,
-        mousePoi: this.mousePoi,
-        ui: this.ui,
-        theme: this.theme
+        mousePoi: this.mousePoi
       },
       ref: 'transition'
     }), h('div', {
@@ -37421,7 +37443,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".z-motion-rip {\n  position: absolute;\n  top: 0;\n  overflow: hidden; }\n  .z-motion-rip.z-motion-rip-comp {\n    position: absolute;\n    background-color: rgba(0, 0, 0, 0.2);\n    opacity: 1;\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0; }\n    .z-motion-rip.z-motion-rip-comp.z-motion-rip-assign > .z-motion-rip-spot {\n      top: auto;\n      left: auto;\n      width: 200%;\n      height: 200%;\n      border-radius: 100%;\n      -webkit-transform: scaleX(0.2);\n          -ms-transform: scaleX(0.2);\n              transform: scaleX(0.2); }\n    .z-motion-rip.z-motion-rip-comp.z-motion-rip-active {\n      opacity: 0; }\n      .z-motion-rip.z-motion-rip-comp.z-motion-rip-active.z-motion-rip-assign > .z-motion-rip-spot {\n        -webkit-transform: scaleX(1);\n            -ms-transform: scaleX(1);\n                transform: scaleX(1); }\n      .z-motion-rip.z-motion-rip-comp.z-motion-rip-active > .z-motion-rip-spot {\n        opacity: 0;\n        -webkit-transform: translate(-50%, -50%) scaleX(1);\n            -ms-transform: translate(-50%, -50%) scaleX(1);\n                transform: translate(-50%, -50%) scaleX(1); }\n    .z-motion-rip.z-motion-rip-comp > .z-motion-rip-spot {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      width: 200%;\n      height: 200%;\n      background-color: rgba(0, 0, 0, 0.2);\n      border-radius: 100%;\n      opacity: 1;\n      will-change: transform;\n      -webkit-transform-origin: 50% 50%;\n          -ms-transform-origin: 50% 50%;\n              transform-origin: 50% 50%;\n      -webkit-transform: translate(-50%, -50%) scaleX(0.2);\n          -ms-transform: translate(-50%, -50%) scaleX(0.2);\n              transform: translate(-50%, -50%) scaleX(0.2); }\n", ""]);
+exports.push([module.i, ".z-motion-rip.z-motion-rip-comp {\n  position: absolute;\n  box-sizing: border-box;\n  background-color: rgba(0, 0, 0, 0.2);\n  width: 100%;\n  height: 100%;\n  opacity: 1;\n  top: 0;\n  left: 0;\n  transition: opacity 800ms ease-out; }\n  .z-motion-rip.z-motion-rip-comp.z-motion-rip-circle {\n    border-radius: 100%; }\n  .z-motion-rip.z-motion-rip-comp.z-motion-rip-overflow {\n    overflow: hidden; }\n  .z-motion-rip.z-motion-rip-comp > .z-motion-rip-spot {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    padding: 100%;\n    box-sizing: border-box;\n    background-color: rgba(0, 0, 0, 0.2);\n    border-radius: 100%;\n    opacity: 1;\n    will-change: transform;\n    -webkit-transform-origin: 50% 50%;\n        -ms-transform-origin: 50% 50%;\n            transform-origin: 50% 50%;\n    -webkit-transform: translate(-50%, -50%) scale(0);\n        -ms-transform: translate(-50%, -50%) scale(0);\n            transform: translate(-50%, -50%) scale(0); }\n\n.z-motion-rip.z-motion-rip-assign > .z-motion-rip-spot {\n  top: auto;\n  left: auto;\n  -webkit-transform: scale(0);\n      -ms-transform: scale(0);\n          transform: scale(0); }\n\n.z-motion-rip.z-motion-rip-active {\n  opacity: 0; }\n  .z-motion-rip.z-motion-rip-active.z-motion-rip-assign > .z-motion-rip-spot {\n    -webkit-transform: scale(1);\n        -ms-transform: scale(1);\n            transform: scale(1); }\n  .z-motion-rip.z-motion-rip-active > .z-motion-rip-spot {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n        -ms-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); }\n", ""]);
 
 // exports
 
@@ -37511,7 +37533,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * check 组件的 material UI 样式\r\n */\n.z-check.z-check-ui-material .z-check-motion-rip {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0; }\n  .z-check.z-check-ui-material .z-check-motion-rip:after {\n    content: \"\";\n    position: absolute;\n    background-color: rgba(112, 112, 112, 0.3);\n    top: 50%;\n    left: 50%;\n    width: 200%;\n    height: 200%;\n    border-radius: 100%;\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n        -ms-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1);\n    -webkit-animation: z-check-motion-rip 2s infinite ease-in-out;\n            animation: z-check-motion-rip 2s infinite ease-in-out; }\n\n@-webkit-keyframes z-check-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scale(0.8);\n            transform: translate(-50%, -50%) scale(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); } }\n\n@keyframes z-check-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scale(0.8);\n            transform: translate(-50%, -50%) scale(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); } }\n\n.z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col {\n  display: inline-block;\n  line-height: 0; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box:focus {\n    outline: none; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon {\n    font-size: 18px; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-check-rip {\n    position: absolute;\n    top: 0;\n    left: 0;\n    background-color: rgba(112, 112, 112, 0.2); }\n    .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n      height: 150%;\n      width: 150%;\n      background-color: rgba(112, 112, 112, 0.8); }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n    color: #2196f3; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n    background-color: rgba(33, 150, 243, 0.3); }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n    background-color: rgba(33, 150, 243, 0.2); }\n    .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n      background-color: rgba(33, 150, 243, 0.8); }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #4caf50; }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(76, 175, 80, 0.3); }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(76, 175, 80, 0.2); }\n  .z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(76, 175, 80, 0.8); }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #f44336; }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(244, 67, 54, 0.3); }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(244, 67, 54, 0.2); }\n  .z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(244, 67, 54, 0.8); }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #9e9e9e; }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(158, 158, 158, 0.3); }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(158, 158, 158, 0.2); }\n  .z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(158, 158, 158, 0.8); }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #ff5722; }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(255, 87, 34, 0.3); }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(255, 87, 34, 0.2); }\n  .z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(255, 87, 34, 0.8); }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #2196f3; }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(33, 150, 243, 0.3); }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(33, 150, 243, 0.2); }\n  .z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(33, 150, 243, 0.8); }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * check 组件的 material UI 样式\r\n */\n.z-check.z-check-ui-material .z-check-motion-rip {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0; }\n  .z-check.z-check-ui-material .z-check-motion-rip:after {\n    content: \"\";\n    position: absolute;\n    background-color: rgba(112, 112, 112, 0.3);\n    top: 50%;\n    left: 50%;\n    width: 200%;\n    height: 200%;\n    border-radius: 100%;\n    -webkit-transform: translate(-50%, -50%) scaleX(1);\n        -ms-transform: translate(-50%, -50%) scaleX(1);\n            transform: translate(-50%, -50%) scaleX(1);\n    -webkit-animation: z-check-motion-rip 2s infinite ease-in-out;\n            animation: z-check-motion-rip 2s infinite ease-in-out; }\n\n@-webkit-keyframes z-check-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scale(0.8);\n            transform: translate(-50%, -50%) scale(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); } }\n\n@keyframes z-check-motion-rip {\n  0% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); }\n  50% {\n    -webkit-transform: translate(-50%, -50%) scale(0.8);\n            transform: translate(-50%, -50%) scale(0.8); }\n  100% {\n    -webkit-transform: translate(-50%, -50%) scale(1);\n            transform: translate(-50%, -50%) scale(1); } }\n\n.z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col {\n  display: inline-block;\n  line-height: 0; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box:focus {\n    outline: none; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-icon {\n    font-size: 18px; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-check-rip {\n    position: absolute;\n    top: 0;\n    left: 0;\n    background-color: rgba(112, 112, 112, 0.4); }\n    .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n      background-color: rgba(112, 112, 112, 0.8); }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n    color: #2196f3; }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n    background-color: rgba(33, 150, 243, 0.3); }\n  .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n    background-color: rgba(33, 150, 243, 0.2); }\n    .z-check.z-check-ui-material > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n      background-color: rgba(33, 150, 243, 0.8); }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #4caf50; }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(76, 175, 80, 0.3); }\n\n.z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(76, 175, 80, 0.4); }\n  .z-check.z-check-theme-success > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(76, 175, 80, 0.8); }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #f44336; }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(244, 67, 54, 0.3); }\n\n.z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(244, 67, 54, 0.4); }\n  .z-check.z-check-theme-danger > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(244, 67, 54, 0.8); }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #9e9e9e; }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(158, 158, 158, 0.3); }\n\n.z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(158, 158, 158, 0.4); }\n  .z-check.z-check-theme-warning > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(158, 158, 158, 0.8); }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #ff5722; }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(255, 87, 34, 0.3); }\n\n.z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(255, 87, 34, 0.4); }\n  .z-check.z-check-theme-orange > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(255, 87, 34, 0.8); }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-icon {\n  color: #2196f3; }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked .z-check-motion-rip::after {\n  background-color: rgba(33, 150, 243, 0.3); }\n\n.z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip {\n  background-color: rgba(33, 150, 243, 0.4); }\n  .z-check.z-check-theme-blue > .z-check-opt-row > .z-check-opt-col > .z-check-box.z-check-checked > .z-check-icon > .z-check-rip > .z-motion-rip-spot {\n    background-color: rgba(33, 150, 243, 0.8); }\n", ""]);
 
 // exports
 
@@ -37620,6 +37642,9 @@ exports.default = function (h) {
         }
       }), h('motion-rip', {
         class: [_this.xclass('rip')],
+        props: {
+          circle: true
+        },
         ref: 'motionCheck' + currentIndex
       }), h('div', {
         class: [_this.xclass('motion-rip')],
@@ -40150,7 +40175,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * code 组件样式\r\n */\n.z-code {\n  font-size: 14px;\n  background-color: #fff;\n  border: #6ec6ff 1px solid;\n  border-radius: 3px;\n  position: relative;\n  padding: 8px 16px; }\n  .z-code .z-code-header {\n    color: #d6d6d6;\n    font-weight: bold;\n    text-align: right;\n    margin-bottom: 5px; }\n  .z-code .z-code-article .z-code-pre {\n    width: 100%;\n    font-family: 'Roboto Mono', Monaco, courier, monospace;\n    font-size: 1em;\n    line-height: 16px;\n    margin: 0 0 0 50px;\n    -webkit-font-smoothing: initial;\n    -moz-osx-font-smoothing: initial; }\n  .z-code .z-code-line-num {\n    border-right: 2px #2196f3 solid;\n    font-family: 'Roboto Mono', Monaco, courier, monospace;\n    line-height: 16px;\n    text-align: right;\n    position: absolute;\n    top: 0;\n    left: 0;\n    padding-right: 5px;\n    width: 24px; }\n\n.z-code.z-code-theme-success .z-code {\n  border: #80e27e 1px solid; }\n  .z-code.z-code-theme-success .z-code .z-code-line-num {\n    border-right: 2px #4caf50 solid; }\n\n.z-code.z-code-theme-danger .z-code {\n  border: #ff7961 1px solid; }\n  .z-code.z-code-theme-danger .z-code .z-code-line-num {\n    border-right: 2px #f44336 solid; }\n\n.z-code.z-code-theme-blue .z-code {\n  border: #6ec6ff 1px solid; }\n  .z-code.z-code-theme-blue .z-code .z-code-line-num {\n    border-right: 2px #2196f3 solid; }\n\n.z-code.z-code-theme-warning .z-code {\n  border: #cfcfcf 1px solid; }\n  .z-code.z-code-theme-warning .z-code .z-code-line-num {\n    border-right: 2px #9e9e9e solid; }\n\n.z-code.z-code-theme-orange .z-code {\n  border: #ff8a50 1px solid; }\n  .z-code.z-code-theme-orange .z-code .z-code-line-num {\n    border-right: 2px #ff5722 solid; }\n\n.z-code.z-code-theme-grey .z-code {\n  border: #cfcfcf 1px solid; }\n  .z-code.z-code-theme-grey .z-code .z-code-line-num {\n    border-right: 2px #9e9e9e solid; }\n\n.z-code.z-code-theme-light .z-code {\n  border: #fff 1px solid; }\n  .z-code.z-code-theme-light .z-code .z-code-line-num {\n    border-right: 2px #f5f5f5 solid; }\n\n.z-code.z-code-theme-dark .z-code {\n  border: #6d6d6d 1px solid; }\n  .z-code.z-code-theme-dark .z-code .z-code-line-num {\n    border-right: 2px #424242 solid; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * code 组件样式\r\n */\n.z-code {\n  font-size: 14px;\n  background-color: #fff;\n  border: #6ec6ff 1px solid;\n  border-radius: 3px;\n  position: relative;\n  padding: 8px 16px; }\n  .z-code .z-code-header {\n    color: #d6d6d6;\n    font-weight: bold;\n    text-align: right;\n    margin-bottom: 5px; }\n  .z-code .z-code-article .z-code-pre {\n    width: 100%;\n    font-family: 'Roboto Mono', Monaco, courier, monospace;\n    font-size: 1em;\n    line-height: 16px;\n    -webkit-font-smoothing: initial;\n    -moz-osx-font-smoothing: initial; }\n    .z-code .z-code-article .z-code-pre .z-code-content {\n      position: relative;\n      padding: 0 0 0 50px; }\n  .z-code .z-code-line-num {\n    border-right: 2px #2196f3 solid;\n    font-family: 'Roboto Mono', Monaco, courier, monospace;\n    line-height: 16px;\n    text-align: right;\n    position: absolute;\n    top: 0;\n    left: 0;\n    padding-right: 5px;\n    width: 24px; }\n\n.z-code.z-code-theme-success .z-code {\n  border: #80e27e 1px solid; }\n  .z-code.z-code-theme-success .z-code .z-code-line-num {\n    border-right: 2px #4caf50 solid; }\n\n.z-code.z-code-theme-danger .z-code {\n  border: #ff7961 1px solid; }\n  .z-code.z-code-theme-danger .z-code .z-code-line-num {\n    border-right: 2px #f44336 solid; }\n\n.z-code.z-code-theme-blue .z-code {\n  border: #6ec6ff 1px solid; }\n  .z-code.z-code-theme-blue .z-code .z-code-line-num {\n    border-right: 2px #2196f3 solid; }\n\n.z-code.z-code-theme-warning .z-code {\n  border: #cfcfcf 1px solid; }\n  .z-code.z-code-theme-warning .z-code .z-code-line-num {\n    border-right: 2px #9e9e9e solid; }\n\n.z-code.z-code-theme-orange .z-code {\n  border: #ff8a50 1px solid; }\n  .z-code.z-code-theme-orange .z-code .z-code-line-num {\n    border-right: 2px #ff5722 solid; }\n\n.z-code.z-code-theme-grey .z-code {\n  border: #cfcfcf 1px solid; }\n  .z-code.z-code-theme-grey .z-code .z-code-line-num {\n    border-right: 2px #9e9e9e solid; }\n\n.z-code.z-code-theme-light .z-code {\n  border: #fff 1px solid; }\n  .z-code.z-code-theme-light .z-code .z-code-line-num {\n    border-right: 2px #f5f5f5 solid; }\n\n.z-code.z-code-theme-dark .z-code {\n  border: #6d6d6d 1px solid; }\n  .z-code.z-code-theme-dark .z-code .z-code-line-num {\n    border-right: 2px #424242 solid; }\n", ""]);
 
 // exports
 
@@ -40184,14 +40209,6 @@ exports.default = function (h) {
   }, this.type), h('article', {
     class: [this.xclass('article')],
     ref: 'article'
-  }, [h('scroller', {
-    props: {
-      height: 200,
-      width: 'auto',
-      ui: this.ui,
-      theme: this.theme
-    },
-    ref: 'scroller'
   }, [h('pre', {
     class: [this.xclass('pre')],
     style: {
@@ -40199,15 +40216,17 @@ exports.default = function (h) {
     }
   }, [h('scroller', {
     props: {
-      height: 'auto',
+      height: 200,
       width: '100%'
     },
-    ref: 'scrollerArticle'
-  }, [$slots.default || this.code])]), h('aside', {
+    ref: 'scroller'
+  }, [h('div', {
+    class: [this.xclass('content')]
+  }, [$slots.default || this.code, h('aside', {
     class: [this.xclass('line-num')]
   }, [h('ul', {
     class: [this.prefix('css-ul')]
-  }, lineNumEle)])])]), h('footer', {
+  }, lineNumEle)])])])])]), h('footer', {
     class: [this.xclass('footer')]
   }, $slots.footer || this.footer)]);
 };
@@ -42284,7 +42303,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".z-select.z-select-ui-material {\n  width: 170px;\n  height: 36px;\n  vertical-align: middle;\n  border-radius: 3px; }\n  .z-select.z-select-ui-material:focus {\n    outline: none; }\n  .z-select.z-select-ui-material.z-select-multiple {\n    width: 250px; }\n  .z-select.z-select-ui-material.z-select-selecting .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-ui-material.z-select-focusing .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-ui-material > .z-select-selected-box::after {\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    content: '';\n    opacity: 0;\n    transition: opacity 300ms ease-out;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1; }\n  .z-select.z-select-ui-material .z-select-opt-comp {\n    border-top: none;\n    border-top-left-radius: 0;\n    border-top-right-radius: 0;\n    border: none; }\n    .z-select.z-select-ui-material .z-select-opt-comp > .z-select-opt-li:first-child {\n      border-top: #e5e5e5 1px solid; }\n", ""]);
+exports.push([module.i, ".z-select.z-select-ui-material {\n  width: 170px;\n  height: 36px;\n  vertical-align: middle;\n  border-radius: 3px; }\n  .z-select.z-select-ui-material:focus {\n    outline: none; }\n  .z-select.z-select-ui-material.z-select-multiple {\n    width: 250px;\n    height: auto; }\n  .z-select.z-select-ui-material.z-select-selecting .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-ui-material.z-select-focusing .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-ui-material > .z-select-selected-box::after {\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    content: '';\n    opacity: 0;\n    transition: opacity 300ms ease-out;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1; }\n  .z-select.z-select-ui-material .z-select-opt-comp {\n    border-top: none;\n    border-top-left-radius: 0;\n    border-top-right-radius: 0;\n    border: none; }\n    .z-select.z-select-ui-material .z-select-opt-comp > .z-select-opt-li:first-child {\n      border-top: #e5e5e5 1px solid; }\n", ""]);
 
 // exports
 
@@ -42708,6 +42727,9 @@ exports.default = function (h) {
       },
       ref: 'option' + index
     }, [element, h('motion-rip', {
+      props: {
+        overflow: true
+      },
       ref: 'rip' + index
     })]);
   };
@@ -43819,7 +43841,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.p-component .p-component-stage {\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  padding: 20px 40px; }\n\n.p-component .p-component-menu {\n  width: 250px;\n  overflow: auto;\n  padding: 20px 20px; }\n  .p-component .p-component-menu a {\n    color: #666666; }\n    .p-component .p-component-menu a.router-link-active {\n      color: #0099FF; }\n    .p-component .p-component-menu a:hover {\n      text-decoration: none; }\n\n.p-component .example-article > section {\n  padding-bottom: 20px; }\n\n.p-component .example-article > section:first-child > h1:first-child {\n  margin-top: 0; }\n\n.p-component .example-article .section-description {\n  font-size: 16px; }\n\n.p-component .example-article .anchor-title {\n  font-size: 2em;\n  cursor: pointer;\n  padding-bottom: 20px;\n  margin-bottom: 20px;\n  border-bottom: #999999 1px solid; }\n  .p-component .example-article .anchor-title:hover::after {\n    content: \"#\";\n    color: #0099FF;\n    margin-left: 5px; }\n  .p-component .example-article .anchor-title a {\n    color: #666666; }\n    .p-component .example-article .anchor-title a:hover {\n      text-decoration: none; }\n\n.p-component .example-article .z-code {\n  margin-top: 20px; }\n\n@media only screen and (max-width: 991px) {\n  .p-component .example-article .anchor-title::after {\n    content: \"#\";\n    color: #0099FF;\n    margin-left: 5px; } }\n\n@media only screen and (max-width: 575px) {\n  .p-component .p-component-menu {\n    overflow: visible;\n    padding: 0;\n    width: 100%; }\n    .p-component .p-component-menu a {\n      color: #fff; }\n  .p-component .p-component-stage {\n    padding: 30px 10px; } }\n", ""]);
+exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.p-component .p-component-stage {\n  overflow: auto;\n  padding: 20px 40px; }\n\n.p-component .p-component-menu {\n  width: 250px;\n  overflow: auto;\n  padding: 20px 20px; }\n  .p-component .p-component-menu a {\n    color: #666666; }\n    .p-component .p-component-menu a.router-link-active {\n      color: #0099FF; }\n    .p-component .p-component-menu a:hover {\n      text-decoration: none; }\n\n.p-component .example-article > section {\n  padding-bottom: 20px; }\n\n.p-component .example-article > section:first-child > h1:first-child {\n  margin-top: 0; }\n\n.p-component .example-article .section-description {\n  font-size: 16px; }\n\n.p-component .example-article .anchor-title {\n  font-size: 2em;\n  cursor: pointer;\n  padding-bottom: 20px;\n  margin-bottom: 20px;\n  border-bottom: #999999 1px solid; }\n  .p-component .example-article .anchor-title:hover::after {\n    content: \"#\";\n    color: #0099FF;\n    margin-left: 5px; }\n  .p-component .example-article .anchor-title a {\n    color: #666666; }\n    .p-component .example-article .anchor-title a:hover {\n      text-decoration: none; }\n\n.p-component .example-article .z-code {\n  margin-top: 20px; }\n\n@media only screen and (max-width: 991px) {\n  .p-component .example-article .anchor-title::after {\n    content: \"#\";\n    color: #0099FF;\n    margin-left: 5px; } }\n\n@media only screen and (max-width: 575px) {\n  .p-component .p-component-menu {\n    overflow: visible;\n    padding: 0;\n    width: 100%; }\n    .p-component .p-component-menu a {\n      color: #fff; }\n  .p-component .p-component-stage {\n    padding: 30px 10px; } }\n", ""]);
 
 // exports
 
@@ -43830,7 +43852,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.p-component 
 
 var pug = __webpack_require__(8);
 
-function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"p-component\"\u003E\u003Cz-row :gap=\"30\" align=\"start\"\u003E\u003Cz-col class=\"p-component-menu\" :style=\"componentStyle\"\u003E\u003Cz-nav type=\"vertical\" title=\"组件导航\" trigger=\"show\" spread-all :init-opt=\"menuOpt\"\u003E\u003C\u002Fz-nav\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"p-component-stage\" :style=\"componentStyle\" ref=\"compStage\"\u003E\u003Ctransition name=\"z-fade\" v-on:after-enter=\"afterEnter\"\u003E\u003Crouter-view\u003E\u003C\u002Frouter-view\u003E\u003C\u002Ftransition\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"p-component\"\u003E\u003Cz-row :gap=\"30\" align=\"start\"\u003E\u003Cz-col class=\"p-component-menu\" :style=\"componentStyle\" :span=\"3\" :xl=\"2\"\u003E\u003Cz-nav type=\"vertical\" title=\"组件导航\" trigger=\"show\" spread-all :init-opt=\"menuOpt\"\u003E\u003C\u002Fz-nav\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"p-component-stage\" :style=\"componentStyle\" ref=\"compStage\" :span=\"9\" :xl=\"10\"\u003E\u003Ctransition name=\"z-fade\" v-on:after-enter=\"afterEnter\"\u003E\u003Crouter-view\u003E\u003C\u002Frouter-view\u003E\u003C\u002Ftransition\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
 /***/ }),
@@ -44513,6 +44535,30 @@ exports.default = {
 
       return this.testOpt;
     }
+  },
+
+  created: function created() {
+    var _this = this;
+
+    var testOpt = [];
+
+    for (var i = 0, len = 13; i < len; i++) {
+      testOpt.push({
+        text: 'test-' + i,
+        name: 'name-' + i,
+        size: 'size-' + i,
+        en: 'en-' + i,
+        value: i
+      });
+    }
+
+    this.dropMenuOpt = testOpt;
+
+    setTimeout(function () {
+      var _dropMenuOpt;
+
+      (_dropMenuOpt = _this.dropMenuOpt).push.apply(_dropMenuOpt, testOpt);
+    }, 10000);
   }
 };
 
@@ -44581,7 +44627,7 @@ pug_html = pug_html + "\u003C\u002Fsection\u003E";
 pug_html = pug_html + "\u003Cdiv\u003E\u003Carticle class=\"example-article\"\u003E";
 pug_mixins["section"].call({
 block: function(){
-pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E直接传入 init-opt\u003C\u002Fp\u003E\u003Cz-select :init-opt=\"selectOpt\" ui=\"bootstrap\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select :init-opt="selectOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
+pug_html = pug_html + "\u003Cp class=\"section-description\"\u003E直接传入 init-opt，10s 之后会更改 initOpt 数据\u003C\u002Fp\u003E\u003Cz-select :init-opt=\"dropMenuOpt\" ui=\"bootstrap\"\u003E\u003C\u002Fz-select\u003E\u003Cz-code\u003E" + (pug.escape(null == (pug_interp = '<z-select :init-opt="dropMenuOpt"></z-select>') ? "" : pug_interp)) + "\u003C\u002Fz-code\u003E";
 }
 }, 'start', '开始使用');
 pug_mixins["section"].call({
@@ -47191,7 +47237,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.header-layout-stage {\n  position: relative;\n  background-color: #333333;\n  height: 88px;\n  padding: 0 10px; }\n  .header-layout-stage > .nav-box-mobile {\n    display: none; }\n    .header-layout-stage > .nav-box-mobile .z-icon .z-icon-ali {\n      font-size: 30px;\n      color: #fff; }\n    .header-layout-stage > .nav-box-mobile .z-icon .z-icon-sort {\n      font-size: 40px; }\n  .header-layout-stage > .nav-box {\n    max-width: 1024px;\n    height: 100%;\n    margin: 0 auto; }\n    .header-layout-stage > .nav-box .logo-box {\n      width: 30px; }\n    .header-layout-stage > .nav-box .nav-menu-box .z-icon .z-icon-l {\n      font-size: 40px; }\n    .header-layout-stage > .nav-box .nav-menu-box .router-link-active {\n      color: #f5f5f5; }\n      .header-layout-stage > .nav-box .nav-menu-box .router-link-active::after {\n        content: \" \";\n        width: 100%;\n        bottom: -33px;\n        left: 0;\n        position: absolute;\n        border-bottom: #fff 5px solid; }\n    .header-layout-stage > .nav-box .nav-menu-box a {\n      color: #fff;\n      text-decoration: none; }\n    .header-layout-stage > .nav-box .nav-menu-box .z-col {\n      position: relative;\n      font-size: 16px;\n      width: 100px;\n      text-align: center; }\n  .header-layout-stage > .mobile-menu {\n    margin: -10px;\n    display: none; }\n    .header-layout-stage > .mobile-menu .menu-search > .z-input .z-input-wrap input {\n      font-size: 20px; }\n  @media only screen and (max-width: 575px) {\n    .header-layout-stage {\n      height: 60px; }\n      .header-layout-stage > .nav-box {\n        display: none; }\n      .header-layout-stage > .nav-box-mobile {\n        display: -webkit-flex;\n        display: -ms-flexbox;\n        display: flex; }\n      .header-layout-stage > .mobile-menu {\n        display: block; } }\n", ""]);
+exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.header-layout-stage {\n  position: relative;\n  background-color: #333333;\n  height: 88px;\n  padding: 0 20px; }\n  .header-layout-stage > .nav-box-mobile {\n    display: none; }\n    .header-layout-stage > .nav-box-mobile .z-icon .z-icon-ali {\n      font-size: 30px;\n      color: #fff; }\n    .header-layout-stage > .nav-box-mobile .z-icon .z-icon-sort {\n      font-size: 40px; }\n  .header-layout-stage > .nav-box {\n    height: 100%;\n    margin: 0 auto; }\n    .header-layout-stage > .nav-box .logo-box {\n      width: 30px; }\n    .header-layout-stage > .nav-box .nav-menu-box .z-icon .z-icon-l {\n      font-size: 40px; }\n    .header-layout-stage > .nav-box .nav-menu-box .router-link-active {\n      color: #f5f5f5; }\n      .header-layout-stage > .nav-box .nav-menu-box .router-link-active::after {\n        content: \" \";\n        width: 100%;\n        bottom: -33px;\n        left: 0;\n        position: absolute;\n        border-bottom: #fff 5px solid; }\n    .header-layout-stage > .nav-box .nav-menu-box a {\n      color: #fff;\n      text-decoration: none; }\n    .header-layout-stage > .nav-box .nav-menu-box .z-col {\n      position: relative;\n      font-size: 16px;\n      width: 100px;\n      text-align: center; }\n  .header-layout-stage > .mobile-menu {\n    margin: -10px;\n    display: none; }\n    .header-layout-stage > .mobile-menu .menu-search > .z-input .z-input-wrap input {\n      font-size: 20px; }\n  @media only screen and (max-width: 575px) {\n    .header-layout-stage {\n      height: 60px; }\n      .header-layout-stage > .nav-box {\n        display: none; }\n      .header-layout-stage > .nav-box-mobile {\n        display: -webkit-flex;\n        display: -ms-flexbox;\n        display: flex; }\n      .header-layout-stage > .mobile-menu {\n        display: block; } }\n", ""]);
 
 // exports
 
@@ -47202,7 +47248,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.header-layou
 
 var pug = __webpack_require__(8);
 
-function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"header-layout-stage\"\u003E\u003Cz-row class=\"nav-box\"\u003E\u003Cz-col :span=\"7\"\u003E\u003Crouter-link to=\"\u002F\"\u003E\u003Cimg class=\"logo-box\" :src=\"logoUrl\"\u003E\u003C\u002Frouter-link\u003E\u003C\u002Fz-col\u003E\u003Cz-col :span=\"5\"\u003E\u003Cz-row class=\"nav-menu-box\"\u003E\u003Cz-col :span=\"3\"\u003E\u003Crouter-link to=\"\u002Fcomponent\u002Fstart\"\u003E组件\u003C\u002Frouter-link\u003E\u003C\u002Fz-col\u003E\u003Cz-col :span=\"3\"\u003E\u003Crouter-link to=\"\u002Fbuild\"\u003E构建\u003C\u002Frouter-link\u003E\u003C\u002Fz-col\u003E\u003Cz-col :span=\"3\"\u003E\u003Crouter-link to=\"\u002Fabout\"\u003E关于\u003C\u002Frouter-link\u003E\u003C\u002Fz-col\u003E\u003Cz-col :span=\"3\"\u003E\u003Ca href=\"\u002F\u002Fgithub.com\u002Fzen0822\u002Fvue2do\"\u003E\u003Cz-icon size=\"L\" kind=\"github\"\u003E\u003C\u002Fz-icon\u003E\u003C\u002Fa\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003Cz-row class=\"nav-box nav-box-mobile\"\u003E\u003Cz-col :span=\"4\"\u003E\u003Cdiv @click.stop=\"showMenu\"\u003E\u003Cz-icon kind=\"sort\" v-show=\"sortIconDisplay\"\u003E\u003C\u002Fz-icon\u003E\u003C\u002Fdiv\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"z-css-text-center\" :span=\"4\"\u003E\u003Cimg class=\"logo-box\" :src=\"logoUrl\"\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"z-css-text-right\" :span=\"4\"\u003E\u003Cdiv @click.stop=\"showMenu\"\u003E\u003Cz-icon kind=\"search\"\u003E\u003C\u002Fz-icon\u003E\u003C\u002Fdiv\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003Cz-nav class=\"mobile-menu\" ref=\"mobileMenu\" @hide=\"hideMenu\" :init-opt=\"menuOpt\" theme=\"danger\"\u003E\u003Cdiv class=\"menu-search\" slot=\"end\"\u003E\u003Cz-input placeholder=\"search in vue2do\" block\u003E\u003Cz-icon slot=\"header\" kind=\"search\" size=\"xs\"\u003E\u003C\u002Fz-icon\u003E\u003C\u002Fz-input\u003E\u003C\u002Fdiv\u003E\u003C\u002Fz-nav\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"header-layout-stage\"\u003E\u003Cz-row class=\"nav-box\" justify=\"justify\"\u003E\u003Cz-col :span=\"7\" :xl=\"9\"\u003E\u003Crouter-link to=\"\u002F\"\u003E\u003Cimg class=\"logo-box\" :src=\"logoUrl\"\u003E\u003C\u002Frouter-link\u003E\u003C\u002Fz-col\u003E\u003Cz-col :span=\"5\" :xl=\"3\"\u003E\u003Cz-row class=\"nav-menu-box\" justify=\"justify\"\u003E\u003Cz-col :span=\"3\"\u003E\u003Crouter-link to=\"\u002Fcomponent\u002Fstart\"\u003E组件\u003C\u002Frouter-link\u003E\u003C\u002Fz-col\u003E\u003Cz-col :span=\"3\"\u003E\u003Crouter-link to=\"\u002Fbuild\"\u003E构建\u003C\u002Frouter-link\u003E\u003C\u002Fz-col\u003E\u003Cz-col :span=\"3\"\u003E\u003Crouter-link to=\"\u002Fabout\"\u003E关于\u003C\u002Frouter-link\u003E\u003C\u002Fz-col\u003E\u003Cz-col :span=\"3\"\u003E\u003Ca href=\"\u002F\u002Fgithub.com\u002Fzen0822\u002Fvue2do\"\u003E\u003Cz-icon size=\"L\" kind=\"github\"\u003E\u003C\u002Fz-icon\u003E\u003C\u002Fa\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003Cz-row class=\"nav-box nav-box-mobile\"\u003E\u003Cz-col :span=\"4\"\u003E\u003Cdiv @click.stop=\"showMenu\"\u003E\u003Cz-icon kind=\"sort\" v-show=\"sortIconDisplay\"\u003E\u003C\u002Fz-icon\u003E\u003C\u002Fdiv\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"z-css-text-center\" :span=\"4\"\u003E\u003Cimg class=\"logo-box\" :src=\"logoUrl\"\u003E\u003C\u002Fz-col\u003E\u003Cz-col class=\"z-css-text-right\" :span=\"4\"\u003E\u003Cdiv @click.stop=\"showMenu\"\u003E\u003Cz-icon kind=\"search\"\u003E\u003C\u002Fz-icon\u003E\u003C\u002Fdiv\u003E\u003C\u002Fz-col\u003E\u003C\u002Fz-row\u003E\u003Cz-nav class=\"mobile-menu\" ref=\"mobileMenu\" @hide=\"hideMenu\" :init-opt=\"menuOpt\" theme=\"danger\"\u003E\u003Cdiv class=\"menu-search\" slot=\"end\"\u003E\u003Cz-input placeholder=\"search in vue2do\" block\u003E\u003Cz-icon slot=\"header\" kind=\"search\" size=\"xs\"\u003E\u003C\u002Fz-icon\u003E\u003C\u002Fz-input\u003E\u003C\u002Fdiv\u003E\u003C\u002Fz-nav\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
 /***/ }),
@@ -47276,7 +47322,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.footer-layout-stage {\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  z-index: 999;\n  background-color: #333333;\n  box-sizing: border-box;\n  font-size: 12px;\n  padding: 10px;\n  text-align: center; }\n  @media only screen and (max-width: 575px) {\n    .footer-layout-stage {\n      position: static; } }\n", ""]);
+exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.footer-layout-stage {\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  z-index: 999;\n  background-color: #333333;\n  box-sizing: border-box;\n  font-size: 12px;\n  text-align: center; }\n  @media only screen and (max-width: 575px) {\n    .footer-layout-stage {\n      position: static; } }\n", ""]);
 
 // exports
 
@@ -47287,7 +47333,7 @@ exports.push([module.i, "/**\r\n * zenSpa/scss/config.scss\r\n */\n.footer-layou
 
 var pug = __webpack_require__(8);
 
-function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"footer-layout-stage\"\u003ECopyright © 2018 Zen. nobody can keep the right\u003C\u002Fdiv\u003E";;return pug_html;};
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;pug_html = pug_html + "\u003Cdiv class=\"footer-layout-stage\"\u003E\u003C\u002Fdiv\u003E";;return pug_html;};
 module.exports = template;
 
 /***/ }),
@@ -47304,4 +47350,4 @@ module.exports = {"en-US":{"btn":{},"column":{},"check":{},"form":{},"input":{},
 
 /***/ })
 ],[194]);
-//# sourceMappingURL=app.2f1db2584ff7da2d51dd.js.map
+//# sourceMappingURL=app.018858eb0ba4cd4ff8b0.js.map
