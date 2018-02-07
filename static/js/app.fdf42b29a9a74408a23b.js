@@ -12838,8 +12838,14 @@ exports.default = {
     barLeft: function barLeft(val) {
       this.triggerScroll('x');
     },
-    'yComputed.barDisplay': function yComputedBarDisplay(val) {
-      val ? this.$refs.bar.enter() : this.$refs.bar.leave();
+    yComputed: function yComputed(val) {
+      var refBar = this.$refs.bar;
+
+      if (val.barDisplay && !refBar.isEntering) {
+        refBar.enter();
+      } else if (!val.barDisplay && !refBar.isLeaving) {
+        refBar.leave();
+      }
     }
   },
 
@@ -13910,7 +13916,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             *
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             * @prop display - 默认一开始是隐藏（进来之前的状态）
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             * @prop speed - 动画速度
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            * @prop sync - 迅速切换动画，进来动画与离开动画之间是否同步进行
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             * @prop sync - 当处于进来动画，再次调用进来动画是否执行，同离开动画
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             *
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             * @event beforeEnter - 进来过渡之前
@@ -13987,60 +13992,61 @@ exports.default = {
                 case 0:
                   _context.prev = 0;
 
+                  _this.isLeaving = false;
                   _this.moving = _this.isEntering = true;
 
                   _context.t0 = code === _this.code;
 
                   if (!_context.t0) {
-                    _context.next = 6;
+                    _context.next = 7;
                     break;
                   }
 
-                  _context.next = 6;
+                  _context.next = 7;
                   return _this.beforeEnter(opt);
 
-                case 6:
+                case 7:
                   _context.t1 = code === _this.code;
 
                   if (!_context.t1) {
-                    _context.next = 10;
+                    _context.next = 11;
                     break;
                   }
 
-                  _context.next = 10;
+                  _context.next = 11;
                   return _this.entering(opt);
 
-                case 10:
+                case 11:
                   _context.t2 = code === _this.code;
 
                   if (!_context.t2) {
-                    _context.next = 14;
+                    _context.next = 15;
                     break;
                   }
 
-                  _context.next = 14;
+                  _context.next = 15;
                   return _this.afterEnter(opt);
 
-                case 14:
+                case 15:
 
-                  _this.moving = _this.isEntering = false;
+                  _this.moving = false;
 
                   resolve();
-                  _context.next = 21;
+                  _context.next = 22;
                   break;
 
-                case 18:
-                  _context.prev = 18;
+                case 19:
+                  _context.prev = 19;
                   _context.t3 = _context['catch'](0);
 
                   reject(_context.t3);
 
-                case 21:
+                case 22:
                 case 'end':
                   return _context.stop();
               }
             }
-          }, _callee, _this, [[0, 18]]);
+          }, _callee, _this, [[0, 19]]);
         }));
 
         return function (_x2, _x3) {
@@ -14078,60 +14084,61 @@ exports.default = {
                 case 0:
                   _context2.prev = 0;
 
+                  _this2.isEntering = false;
                   _this2.moving = _this2.isLeaving = true;
 
                   _context2.t0 = code === _this2.code;
 
                   if (!_context2.t0) {
-                    _context2.next = 6;
+                    _context2.next = 7;
                     break;
                   }
 
-                  _context2.next = 6;
+                  _context2.next = 7;
                   return _this2.beforeLeave(opt);
 
-                case 6:
+                case 7:
                   _context2.t1 = code === _this2.code;
 
                   if (!_context2.t1) {
-                    _context2.next = 10;
+                    _context2.next = 11;
                     break;
                   }
 
-                  _context2.next = 10;
+                  _context2.next = 11;
                   return _this2.leaveing(opt);
 
-                case 10:
+                case 11:
                   _context2.t2 = code === _this2.code;
 
                   if (!_context2.t2) {
-                    _context2.next = 14;
+                    _context2.next = 15;
                     break;
                   }
 
-                  _context2.next = 14;
+                  _context2.next = 15;
                   return _this2.afterLeave(opt);
 
-                case 14:
+                case 15:
 
-                  _this2.moving = _this2.isLeaving = false;
+                  _this2.moving = false;
 
                   resolve();
-                  _context2.next = 21;
+                  _context2.next = 22;
                   break;
 
-                case 18:
-                  _context2.prev = 18;
+                case 19:
+                  _context2.prev = 19;
                   _context2.t3 = _context2['catch'](0);
 
                   reject(_context2.t3);
 
-                case 21:
+                case 22:
                 case 'end':
                   return _context2.stop();
               }
             }
-          }, _callee2, _this2, [[0, 18]]);
+          }, _callee2, _this2, [[0, 19]]);
         }));
 
         return function (_x5, _x6) {
@@ -14165,8 +14172,8 @@ exports.default = {
 
   created: function created() {
     this.moving = false; // 当前正在执行动画
-    this.isEntering = false; // 当前执行进来的动画的编号
-    this.isLeaving = false; // 当前执行离开的动画的编号
+    this.isEntering = this.display; // 当前执行进来的动画的编号
+    this.isLeaving = !this.display; // 当前执行离开的动画的编号
     this.code = 0; // 当前执行的动画的编号
   }
 };
@@ -40024,7 +40031,7 @@ exports.default = function (h) {
     props: {
       opacity: true,
       speed: 'fast',
-      display: !this.autoHide
+      display: false
     },
     ref: 'bar'
   }, [h('div', {
@@ -47350,4 +47357,4 @@ module.exports = {"en-US":{"btn":{},"column":{},"check":{},"form":{},"input":{},
 
 /***/ })
 ],[194]);
-//# sourceMappingURL=app.018858eb0ba4cd4ff8b0.js.map
+//# sourceMappingURL=app.fdf42b29a9a74408a23b.js.map
