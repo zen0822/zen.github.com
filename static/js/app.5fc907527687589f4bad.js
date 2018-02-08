@@ -22552,7 +22552,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * menu 组件
  *
  * @prop store - 储存实例化的信息
- * @prop noCoverTrig - 菜单展开是不遮挡触发器，TODO： pc 上默认是不遮挡的，mobile 是默认遮挡的
+ * @prop coverTrig - 菜单展开是不遮挡触发器，TODO： pc 上默认是不遮挡的，mobile 是默认遮挡的
  * @prop noTrig - 不使用组件自带的菜单触发器
  * @prop height - 菜单高度，默认是 auto
  *                1、auto：根据菜单内容的高度
@@ -22595,7 +22595,7 @@ exports.default = {
       type: Boolean,
       default: false
     },
-    noCoverTrig: {
+    coverTrig: {
       type: Boolean,
       default: false
     },
@@ -28427,6 +28427,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                                                                                                                                                                                                    * menu 组件
                                                                                                                                                                                                                    *
                                                                                                                                                                                                                    * @prop classifyOpt - 分类下拉框的数据
+                                                                                                                                                                                                                   * @prop coverTrig - 菜单展开是不遮挡触发器
                                                                                                                                                                                                                    * @prop defaultVal - 默认的选项值
                                                                                                                                                                                                                    * @prop defaultTxt - 默认的选项文本值
                                                                                                                                                                                                                    * @prop initVal - 默认第一个显示的值
@@ -28455,6 +28456,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 // 搜索功能的函数节流的间隔时间
 var SEARCH_KEY_UP_INTERVAL = 500;
+var MENU_WIDTH = 170;
 
 exports.default = {
   name: 'Select',
@@ -28475,6 +28477,10 @@ exports.default = {
   },
 
   props: {
+    coverTrig: {
+      type: Boolean,
+      default: false
+    },
     initOpt: {
       type: Array,
       default: function _default() {
@@ -28568,6 +28574,7 @@ exports.default = {
       selectedAll: false, // 是否全选多选下拉框的标记
       selectedHeight: 0, // 当前选择值的样式高度值
       selectedStyleHeight: 0, // 当前选择值的样式高度值
+      stateCoverTrig: false, // 遮挡下拉选择框的触发器
       transitionFinish: false, // 下拉框显示过渡完成的标识符
       text: undefined // 当前下拉框的 text 值
     };
@@ -28635,6 +28642,9 @@ exports.default = {
   methods: {
     _initComp: function _initComp() {
       this._adjustSelectedPoiStyle();
+    },
+    _initDataOpt: function _initDataOpt() {
+      this.stateCoverTrig = this.coverTrig;
     },
 
 
@@ -29099,8 +29109,9 @@ exports.default = {
             var scrollerComp = vm.$refs.option.$refs.list.$refs.scroller;
             scrollerComp.initScroller();
 
+            var offsetWidth = vm.$el.offsetWidth;
             vm.menuHeight = scrollerComp.scrollerHeight;
-            vm.menuWidth = vm.$el.offsetWidth;
+            vm.menuWidth = offsetWidth < MENU_WIDTH ? MENU_WIDTH : offsetWidth;
           }
         });
       };
@@ -36457,6 +36468,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\r\n * 组件公共类样式\r\
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.install = undefined;
 
 var _Btn = __webpack_require__(68);
 
@@ -36614,24 +36626,29 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var compHub = [_Btn2.default, _Bubble2.default, _Check2.default, _Code2.default, _Form2.default, _Fold2.default, _FoldTitle2.default, _FoldContent2.default, _Input2.default, _Icon2.default, _List2.default, _Loading2.default, _Omit2.default, _Pop2.default, _Page2.default, _Message2.default, _Menu2.default, _Modal2.default, _MenuEle2.default, _MotionFade2.default, _MotionFold2.default, _MotionRip2.default, _MotionSlide2.default, _MotionZoom2.default, _Nav2.default, _Scroller2.default, _Search2.default, _Select2.default, _SelectEle2.default, _Shift2.default, _ShiftEle2.default, _Tab2.default, _TabEle2.default, _Col2.default, _Row2.default, _Table2.default, _TableRow2.default, _TableCol2.default];
 
-exports.default = {
-  install: function install(Vue) {
-    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref$prefix = _ref.prefix,
-        prefix = _ref$prefix === undefined ? 'z' : _ref$prefix;
+var install = function install(Vue) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$prefix = _ref.prefix,
+      prefix = _ref$prefix === undefined ? 'z' : _ref$prefix;
 
-    compHub.forEach(function (item) {
-      var compName = '';
+  compHub.forEach(function (item) {
+    var compName = '';
 
-      // FlodEle -> -fold-ele
-      if (item.name) {
-        compName = item.name.replace(/([A-Z])/g, '-$1').toLowerCase();
-      }
+    // FlodEle -> -fold-ele
+    if (item.name) {
+      compName = item.name.replace(/([A-Z])/g, '-$1').toLowerCase();
+    }
 
-      Vue.component('' + prefix + compName, item);
-    });
-  }
+    Vue.component('' + prefix + compName, item);
+  });
 };
+
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+}
+
+exports.install = install;
+exports.default = install;
 
 /***/ }),
 /* 428 */
@@ -41663,7 +41680,7 @@ exports.default = function (h) {
     children.push(h('motion', {
       props: {
         height: this.menuHeight,
-        slideLength: this.noCoverTrig ? this.triggerHeight : 0,
+        slideLength: this.coverTrig ? 0 : this.triggerHeight,
         display: false,
         ui: this.ui
       },
@@ -42310,7 +42327,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".z-select.z-select-ui-material {\n  width: 170px;\n  height: 36px;\n  vertical-align: middle;\n  border-radius: 3px; }\n  .z-select.z-select-ui-material:focus {\n    outline: none; }\n  .z-select.z-select-ui-material.z-select-multiple {\n    width: 250px;\n    height: auto; }\n  .z-select.z-select-ui-material.z-select-selecting .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-ui-material.z-select-focusing .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-ui-material > .z-select-selected-box::after {\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    content: '';\n    opacity: 0;\n    transition: opacity 300ms ease-out;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1; }\n  .z-select.z-select-ui-material .z-select-opt-comp {\n    border-top: none;\n    border-top-left-radius: 0;\n    border-top-right-radius: 0;\n    border: none; }\n    .z-select.z-select-ui-material .z-select-opt-comp > .z-select-opt-li:first-child {\n      border-top: #e5e5e5 1px solid; }\n", ""]);
+exports.push([module.i, ".z-select.z-select-ui-material {\n  height: 36px;\n  vertical-align: middle;\n  border-radius: 3px; }\n  .z-select.z-select-ui-material:focus {\n    outline: none; }\n  .z-select.z-select-ui-material.z-select-multiple {\n    width: 250px;\n    height: auto; }\n  .z-select.z-select-ui-material.z-select-selecting .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-ui-material.z-select-focusing .z-select-selected-box::after {\n    opacity: 1; }\n  .z-select.z-select-ui-material > .z-select-selected-box::after {\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);\n    content: '';\n    opacity: 0;\n    transition: opacity 300ms ease-out;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1; }\n  .z-select.z-select-ui-material .z-select-opt-comp {\n    border-top: none;\n    border-top-left-radius: 0;\n    border-top-right-radius: 0;\n    border: none; }\n    .z-select.z-select-ui-material .z-select-opt-comp > .z-select-opt-li:first-child {\n      border-top: #e5e5e5 1px solid; }\n", ""]);
 
 // exports
 
@@ -42944,7 +42961,7 @@ exports.default = function (h) {
     class: [this.xclass('menu')],
     props: {
       noTrig: true,
-      noCoverTrig: true,
+      coverTrig: this.coverTrig,
       width: this.menuWidth,
       trigHeight: this.UIBootstrap ? this.selectedHeight + 4 : this.selectedHeight,
       ui: this.ui,
@@ -47357,4 +47374,4 @@ module.exports = {"en-US":{"btn":{},"column":{},"check":{},"form":{},"input":{},
 
 /***/ })
 ],[194]);
-//# sourceMappingURL=app.fdf42b29a9a74408a23b.js.map
+//# sourceMappingURL=app.5fc907527687589f4bad.js.map
