@@ -2712,7 +2712,7 @@ a:hover {
  * zenSpa/scss/config.scss
  */
 .welcome .welcome-bg {
-  background: url(./static/img/home-bg.c5db186.jpg) center 0 no-repeat;
+  background: url(/static/img/home-bg.c5db186.jpg) center 0 no-repeat;
   background-size: cover;
   width: 100%;
   padding: 30px 0 18.54%; }
@@ -2895,4 +2895,4 @@ a:hover {
     .footer-layout-stage {
       position: static; } }
 
-/*# sourceMappingURL=app.26cf6346c844f0d48ec2.css.map*/
+/*# sourceMappingURL=app.b8f436e85a904ed5feaa.css.map*/
