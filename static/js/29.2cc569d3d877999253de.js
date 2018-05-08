@@ -1,0 +1,1 @@
+webpackJsonp([29],{558:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default={name:"page-not-found",render:function(e){return e("div",{style:{"font-size":"60px","text-align":"center"}},404)}}}});
