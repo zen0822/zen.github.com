@@ -1547,29 +1547,56 @@ a:hover {
 
 .z-icon.z-icon-theme-grey {
   color: #9e9e9e; }
-.z-motion-rip.z-motion-rip-comp {
+.z-motion-rip {
   position: absolute;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 100%;
   opacity: 1;
   top: 0;
   left: 0;
-  transition: opacity 800ms ease-out; }
-  .z-motion-rip.z-motion-rip-comp.z-motion-rip-circle {
+  will-change: opacity;
+  transition-property: opacity;
+  transition-timing-function: ease-in; }
+  .z-motion-rip.z-motion-rip-circle {
     border-radius: 100%; }
-    .z-motion-rip.z-motion-rip-comp.z-motion-rip-circle > .z-motion-rip-spot {
+    .z-motion-rip.z-motion-rip-circle > .z-motion-rip-spot {
       padding: 80%; }
-  .z-motion-rip.z-motion-rip-comp.z-motion-rip-overflow {
+  .z-motion-rip.z-motion-rip-overflow {
     overflow: hidden; }
-  .z-motion-rip.z-motion-rip-comp > .z-motion-rip-spot {
+  .z-motion-rip.z-motion-rip-assign > .z-motion-rip-spot {
+    top: auto;
+    left: auto;
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0); }
+  .z-motion-rip.z-motion-rip-active {
+    opacity: 1; }
+    .z-motion-rip.z-motion-rip-active.z-motion-rip-assign > .z-motion-rip-spot {
+      -webkit-transform: scale(1);
+          -ms-transform: scale(1);
+              transform: scale(1); }
+    .z-motion-rip.z-motion-rip-active > .z-motion-rip-spot {
+      -webkit-transform: translate(-50%, -50%) scale(1);
+          -ms-transform: translate(-50%, -50%) scale(1);
+              transform: translate(-50%, -50%) scale(1); }
+  .z-motion-rip.z-motion-rip-after {
+    opacity: 0; }
+    .z-motion-rip.z-motion-rip-after.z-motion-rip-assign > .z-motion-rip-spot {
+      -webkit-transform: scale(1);
+          -ms-transform: scale(1);
+              transform: scale(1); }
+    .z-motion-rip.z-motion-rip-after > .z-motion-rip-spot {
+      -webkit-transform: translate(-50%, -50%) scale(1);
+          -ms-transform: translate(-50%, -50%) scale(1);
+              transform: translate(-50%, -50%) scale(1); }
+  .z-motion-rip > .z-motion-rip-spot {
     position: absolute;
     top: 50%;
     left: 50%;
     padding: 100%;
     box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.16);
     border-radius: 100%;
     opacity: 1;
     will-change: transform;
@@ -1578,25 +1605,11 @@ a:hover {
             transform-origin: 50% 50%;
     -webkit-transform: translate(-50%, -50%) scale(0);
         -ms-transform: translate(-50%, -50%) scale(0);
-            transform: translate(-50%, -50%) scale(0); }
-
-.z-motion-rip.z-motion-rip-assign > .z-motion-rip-spot {
-  top: auto;
-  left: auto;
-  -webkit-transform: scale(0);
-      -ms-transform: scale(0);
-          transform: scale(0); }
-
-.z-motion-rip.z-motion-rip-active {
-  opacity: 0; }
-  .z-motion-rip.z-motion-rip-active.z-motion-rip-assign > .z-motion-rip-spot {
-    -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-            transform: scale(1); }
-  .z-motion-rip.z-motion-rip-active > .z-motion-rip-spot {
-    -webkit-transform: translate(-50%, -50%) scale(1);
-        -ms-transform: translate(-50%, -50%) scale(1);
-            transform: translate(-50%, -50%) scale(1); }
+            transform: translate(-50%, -50%) scale(0);
+    transition-timing-function: ease-in;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform; }
 @charset "UTF-8";
 /*
 * check 组件样式
@@ -1605,26 +1618,20 @@ a:hover {
   display: inline-block;
   vertical-align: middle;
   position: relative; }
-  .z-check-disabled {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: 0; }
   .z-check-vertical .z-check-opt-row {
     margin-left: 20px; }
   .z-check > .z-check-opt-row > .z-check-opt-col {
     display: inline-block;
     line-height: 0; }
-  .z-check .z-check-box {
+  .z-check .z-check-box,
+  .z-check .z-check-opt-check-all {
     display: inline-block;
     margin: 0 20px 20px 0; }
-    .z-check .z-check-box.z-check-checked > .z-check-icon > .z-icon {
+    .z-check .z-check-box.z-check-checked > .z-check-icon > .z-icon,
+    .z-check .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
       color: #2196f3; }
-    .z-check .z-check-box > .z-check-lable {
+    .z-check .z-check-box > .z-check-lable,
+    .z-check .z-check-opt-check-all > .z-check-lable {
       display: inline-block;
       vertical-align: middle;
       line-height: 1;
@@ -1634,20 +1641,11 @@ a:hover {
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    line-height: 0; }
+    line-height: 1; }
     .z-check .z-check-icon > .z-icon {
       vertical-align: middle; }
       .z-check .z-check-icon > .z-icon .z-icon-ali {
         text-align: center; }
-  .z-check .z-check-opt-check-all {
-    margin: 0 0 20px; }
-    .z-check .z-check-opt-check-all:focus {
-      outline: none; }
-    .z-check .z-check-opt-check-all .z-check-checked > .z-icon {
-      color: #2196f3; }
-    .z-check .z-check-opt-check-all .z-check-lable {
-      cursor: default;
-      margin-left: 10px; }
 
 .z-check.z-check-theme-success .z-check-opt-check-all.z-check-checked > .z-icon {
   color: #4caf50; }
@@ -1684,25 +1682,36 @@ a:hover {
   opacity: 0;
   transition: opacity 150ms; }
 
-.z-check.z-check-ui-material .z-check-box:focus {
+.z-check.z-check-ui-material .z-check-box:focus,
+.z-check.z-check-ui-material .z-check-opt-check-all:focus {
   outline: none; }
 
-.z-check.z-check-ui-material .z-check-box .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(158, 158, 158, 0.8); }
-
-.z-check.z-check-ui-material .z-check-box.z-check-focused .z-check-motion-rip {
+.z-check.z-check-ui-material .z-check-box.z-check-focused .z-check-motion-rip,
+.z-check.z-check-ui-material .z-check-opt-check-all.z-check-focused .z-check-motion-rip {
   opacity: 1; }
 
-.z-check.z-check-ui-material .z-check-checked .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(33, 150, 243, 0.8); }
+.z-check.z-check-ui-material .z-check-box .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material .z-check-opt-check-all .z-check-rip > .z-motion-rip-spot {
+  background-color: rgba(158, 158, 158, 0.2); }
 
-.z-check.z-check-ui-material .z-check-checked .z-check-motion-rip::after {
+.z-check.z-check-ui-material .z-check-checked .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
+  background-color: rgba(33, 150, 243, 0.2); }
+
+.z-check.z-check-ui-material .z-check-checked .z-check-motion-rip::after,
+.z-check.z-check-ui-material .z-check-indeterminate .z-check-motion-rip::after {
   background-color: rgba(33, 150, 243, 0.3); }
 
-.z-check.z-check-ui-material .z-check-checked .z-check-icon-box-circle {
+.z-check.z-check-ui-material .z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material .z-check-indeterminate .z-check-icon-box-rail {
   border-color: #2196f3; }
 
 .z-check.z-check-ui-material .z-check-checked .z-check-icon-box-checked, .z-check.z-check-ui-material .z-check-checked .z-check-icon-box-dot {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+      -ms-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1); }
+
+.z-check.z-check-ui-material .z-check-indeterminate .z-check-icon-box-indeterminate {
   -webkit-transform: translate(-50%, -50%) scale(1);
       -ms-transform: translate(-50%, -50%) scale(1);
           transform: translate(-50%, -50%) scale(1); }
@@ -1712,7 +1721,7 @@ a:hover {
   position: relative;
   height: 20px;
   width: 20px; }
-  .z-check.z-check-ui-material .z-check-icon-box-circle {
+  .z-check.z-check-ui-material .z-check-icon-box-rail {
     border: rgba(0, 0, 0, 0.54) 2px solid;
     box-sizing: border-box;
     border-radius: 100%;
@@ -1721,22 +1730,9 @@ a:hover {
     position: absolute;
     top: 0;
     left: 0; }
-  .z-check.z-check-ui-material .z-check-icon-box-dot {
+  .z-check.z-check-ui-material .z-check-icon-box-checked, .z-check.z-check-ui-material .z-check-icon-box-dot, .z-check.z-check-ui-material .z-check-icon-box-indeterminate {
     background-color: #2196f3;
     box-sizing: border-box;
-    border-radius: 100%;
-    height: 50%;
-    width: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%) scale(0);
-        -ms-transform: translate(-50%, -50%) scale(0);
-            transform: translate(-50%, -50%) scale(0);
-    transition: -webkit-transform 150ms;
-    transition: transform 150ms;
-    transition: transform 150ms, -webkit-transform 150ms; }
-  .z-check.z-check-ui-material .z-check-icon-box-checked {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1748,19 +1744,35 @@ a:hover {
     transition: -webkit-transform 150ms;
     transition: transform 150ms;
     transition: transform 150ms, -webkit-transform 150ms; }
+  .z-check.z-check-ui-material .z-check-icon-box-dot {
+    border-radius: 100%;
+    height: 50%;
+    width: 50%; }
+  .z-check.z-check-ui-material .z-check-icon-box-indeterminate::after {
+    content: '';
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 2px;
+    width: 60%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
 
 .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box {
   height: 20px;
   width: 20px;
   border-radius: 2px;
   overflow: hidden; }
-  .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box .z-icon {
-    font-size: 16px; }
-  .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-circle {
+  .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-rail {
     border-radius: 0; }
   .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-checked {
     width: 16px;
     height: 16px; }
+    .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-checked .z-icon {
+      font-size: 16px;
+      color: #fff; }
 
 .z-check.z-check-ui-material .z-check-motion-rip {
   position: absolute;
@@ -1786,120 +1798,126 @@ a:hover {
 @-webkit-keyframes z-check-motion-rip {
   0% {
     -webkit-transform: translate(-50%, -50%) scale(1);
-            transform: translate(-50%, -50%) scale(1); }
+            transform: translate(-50%, -50%) scale(1);
+    opacity: .6; }
   50% {
     -webkit-transform: translate(-50%, -50%) scale(0.8);
-            transform: translate(-50%, -50%) scale(0.8); }
+            transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1; }
   100% {
     -webkit-transform: translate(-50%, -50%) scale(1);
-            transform: translate(-50%, -50%) scale(1); } }
+            transform: translate(-50%, -50%) scale(1);
+    opacity: .6; } }
 
 @keyframes z-check-motion-rip {
   0% {
     -webkit-transform: translate(-50%, -50%) scale(1);
-            transform: translate(-50%, -50%) scale(1); }
+            transform: translate(-50%, -50%) scale(1);
+    opacity: .6; }
   50% {
     -webkit-transform: translate(-50%, -50%) scale(0.8);
-            transform: translate(-50%, -50%) scale(0.8); }
+            transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1; }
   100% {
     -webkit-transform: translate(-50%, -50%) scale(1);
-            transform: translate(-50%, -50%) scale(1); } }
+            transform: translate(-50%, -50%) scale(1);
+    opacity: .6; } }
 
 .z-check.z-check-ui-material.z-check-theme-success .z-check-checked .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(76, 175, 80, 0.8); }
+  background-color: rgba(76, 175, 80, 0.2); }
 
 .z-check.z-check-ui-material.z-check-theme-success .z-check-checked .z-check-motion-rip::after {
   background-color: rgba(76, 175, 80, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-success .z-check-checked .z-check-icon-box-circle {
+.z-check.z-check-ui-material.z-check-theme-success .z-check-checked .z-check-icon-box-rail {
   border-color: #4caf50; }
 
-.z-check.z-check-ui-material.z-check-theme-success .z-check-icon-box-dot {
-  background-color: #4caf50; }
+.z-check.z-check-ui-material.z-check-theme-success .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-success .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-success .z-check-icon-box-indeterminate {
+  background-color: #2196f3; }
 
 .z-check.z-check-ui-material.z-check-theme-danger .z-check-checked .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(244, 67, 54, 0.8); }
+  background-color: rgba(244, 67, 54, 0.2); }
 
 .z-check.z-check-ui-material.z-check-theme-danger .z-check-checked .z-check-motion-rip::after {
   background-color: rgba(244, 67, 54, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-danger .z-check-checked .z-check-icon-box-circle {
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-checked .z-check-icon-box-rail {
   border-color: #f44336; }
 
-.z-check.z-check-ui-material.z-check-theme-danger .z-check-icon-box-dot {
-  background-color: #f44336; }
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-danger .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-danger .z-check-icon-box-indeterminate {
+  background-color: #2196f3; }
 
 .z-check.z-check-ui-material.z-check-theme-warning .z-check-checked .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(255, 235, 59, 0.8); }
+  background-color: rgba(255, 235, 59, 0.2); }
 
 .z-check.z-check-ui-material.z-check-theme-warning .z-check-checked .z-check-motion-rip::after {
   background-color: rgba(255, 235, 59, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-warning .z-check-checked .z-check-icon-box-circle {
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-checked .z-check-icon-box-rail {
   border-color: #ffeb3b; }
 
-.z-check.z-check-ui-material.z-check-theme-warning .z-check-icon-box-dot {
-  background-color: #ffeb3b; }
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-warning .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-warning .z-check-icon-box-indeterminate {
+  background-color: #2196f3; }
 
 .z-check.z-check-ui-material.z-check-theme-orange .z-check-checked .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(255, 87, 34, 0.8); }
+  background-color: rgba(255, 87, 34, 0.2); }
 
 .z-check.z-check-ui-material.z-check-theme-orange .z-check-checked .z-check-motion-rip::after {
   background-color: rgba(255, 87, 34, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-orange .z-check-checked .z-check-icon-box-circle {
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-checked .z-check-icon-box-rail {
   border-color: #ff5722; }
 
-.z-check.z-check-ui-material.z-check-theme-orange .z-check-icon-box-dot {
-  background-color: #ff5722; }
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-orange .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-orange .z-check-icon-box-indeterminate {
+  background-color: #2196f3; }
 
 .z-check.z-check-ui-material.z-check-theme-blue .z-check-checked .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(33, 150, 243, 0.8); }
+  background-color: rgba(33, 150, 243, 0.2); }
 
 .z-check.z-check-ui-material.z-check-theme-blue .z-check-checked .z-check-motion-rip::after {
   background-color: rgba(33, 150, 243, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-blue .z-check-checked .z-check-icon-box-circle {
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-checked .z-check-icon-box-rail {
   border-color: #2196f3; }
 
-.z-check.z-check-ui-material.z-check-theme-blue .z-check-icon-box-dot {
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-blue .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-blue .z-check-icon-box-indeterminate {
   background-color: #2196f3; }
 
 .z-check.z-check-ui-material.z-check-theme-light .z-check-checked .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(245, 245, 245, 0.8); }
+  background-color: rgba(245, 245, 245, 0.2); }
 
 .z-check.z-check-ui-material.z-check-theme-light .z-check-checked .z-check-motion-rip::after {
   background-color: rgba(245, 245, 245, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-light .z-check-checked .z-check-icon-box-circle {
+.z-check.z-check-ui-material.z-check-theme-light .z-check-checked .z-check-icon-box-rail {
   border-color: #f5f5f5; }
 
-.z-check.z-check-ui-material.z-check-theme-light .z-check-icon-box-dot {
-  background-color: #f5f5f5; }
+.z-check.z-check-ui-material.z-check-theme-light .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-light .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-light .z-check-icon-box-indeterminate {
+  background-color: #2196f3; }
 
 .z-check.z-check-ui-material.z-check-theme-dark .z-check-checked .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(66, 66, 66, 0.8); }
+  background-color: rgba(66, 66, 66, 0.2); }
 
 .z-check.z-check-ui-material.z-check-theme-dark .z-check-checked .z-check-motion-rip::after {
   background-color: rgba(66, 66, 66, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-dark .z-check-checked .z-check-icon-box-circle {
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-checked .z-check-icon-box-rail {
   border-color: #424242; }
 
-.z-check.z-check-ui-material.z-check-theme-dark .z-check-icon-box-dot {
-  background-color: #424242; }
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-dark .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-dark .z-check-icon-box-indeterminate {
+  background-color: #2196f3; }
 
 .z-check.z-check-ui-material.z-check-theme-grey .z-check-checked .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(158, 158, 158, 0.8); }
+  background-color: rgba(158, 158, 158, 0.2); }
 
 .z-check.z-check-ui-material.z-check-theme-grey .z-check-checked .z-check-motion-rip::after {
   background-color: rgba(158, 158, 158, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-grey .z-check-checked .z-check-icon-box-circle {
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-checked .z-check-icon-box-rail {
   border-color: #9e9e9e; }
 
-.z-check.z-check-ui-material.z-check-theme-grey .z-check-icon-box-dot {
-  background-color: #9e9e9e; }
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-grey .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-grey .z-check-icon-box-indeterminate {
+  background-color: #2196f3; }
 @charset "UTF-8";
 /**
  * check 组件的 bootstrap UI 样式
@@ -1914,8 +1932,9 @@ a:hover {
 .z-check.z-check-ui-bootstrap .z-check-opt-check-all:focus {
   outline: none; }
 
-.z-check.z-check-ui-bootstrap .z-check-box.z-check-checked > .z-check-icon > .z-icon,
-.z-check.z-check-ui-bootstrap .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap .z-check-box.z-check-checked > .z-check-icon > .z-icon, .z-check.z-check-ui-bootstrap .z-check-box.z-check-indeterminate > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap .z-check-opt-check-all.z-check-indeterminate > .z-check-icon > .z-icon {
   color: #2196f3; }
 
 .z-check.z-check-ui-bootstrap .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap .z-check-box:focus:active > .z-check-icon,
@@ -3831,4 +3850,4 @@ a:hover {
     .footer-layout-stage {
       position: static; } }
 
-/*# sourceMappingURL=app.dba8cc51cee5f87d30df.css.map*/
+/*# sourceMappingURL=app.a4cb1cdd4a240109aa51.css.map*/
