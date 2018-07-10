@@ -1623,13 +1623,25 @@ a:hover {
   .z-check > .z-check-opt-row > .z-check-opt-col {
     display: inline-block;
     line-height: 0; }
+  .z-check .z-check-overlay {
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%; }
   .z-check .z-check-box,
   .z-check .z-check-opt-check-all {
+    position: relative;
     display: inline-block;
     margin: 0 20px 20px 0; }
     .z-check .z-check-box.z-check-checked > .z-check-icon > .z-icon,
     .z-check .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
       color: #2196f3; }
+    .z-check .z-check-box.z-check-disabled > .z-check-lable,
+    .z-check .z-check-opt-check-all.z-check-disabled > .z-check-lable {
+      color: rgba(0, 0, 0, 0.38); }
     .z-check .z-check-box > .z-check-lable,
     .z-check .z-check-opt-check-all > .z-check-lable {
       display: inline-block;
@@ -1694,28 +1706,6 @@ a:hover {
 .z-check.z-check-ui-material .z-check-opt-check-all .z-check-rip > .z-motion-rip-spot {
   background-color: rgba(158, 158, 158, 0.2); }
 
-.z-check.z-check-ui-material .z-check-checked .z-check-rip > .z-motion-rip-spot,
-.z-check.z-check-ui-material .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
-  background-color: rgba(33, 150, 243, 0.2); }
-
-.z-check.z-check-ui-material .z-check-checked .z-check-motion-rip::after,
-.z-check.z-check-ui-material .z-check-indeterminate .z-check-motion-rip::after {
-  background-color: rgba(33, 150, 243, 0.3); }
-
-.z-check.z-check-ui-material .z-check-checked .z-check-icon-box-rail,
-.z-check.z-check-ui-material .z-check-indeterminate .z-check-icon-box-rail {
-  border-color: #2196f3; }
-
-.z-check.z-check-ui-material .z-check-checked .z-check-icon-box-checked, .z-check.z-check-ui-material .z-check-checked .z-check-icon-box-dot {
-  -webkit-transform: translate(-50%, -50%) scale(1);
-      -ms-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1); }
-
-.z-check.z-check-ui-material .z-check-indeterminate .z-check-icon-box-indeterminate {
-  -webkit-transform: translate(-50%, -50%) scale(1);
-      -ms-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1); }
-
 .z-check.z-check-ui-material .z-check-icon-box {
   box-sizing: border-box;
   position: relative;
@@ -1767,12 +1757,48 @@ a:hover {
   overflow: hidden; }
   .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-rail {
     border-radius: 0; }
-  .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-checked {
+  .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-indeterminate, .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-checked {
     width: 16px;
     height: 16px; }
-    .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-checked .z-icon {
+    .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-indeterminate .z-icon, .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-checked .z-icon {
       font-size: 16px;
       color: #fff; }
+
+.z-check.z-check-ui-material .z-check-checked .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
+  background-color: rgba(33, 150, 243, 0.2); }
+
+.z-check.z-check-ui-material .z-check-checked .z-check-motion-rip::after,
+.z-check.z-check-ui-material .z-check-indeterminate .z-check-motion-rip::after {
+  background-color: rgba(33, 150, 243, 0.3); }
+
+.z-check.z-check-ui-material .z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material .z-check-indeterminate .z-check-icon-box-rail {
+  border-color: #2196f3; }
+
+.z-check.z-check-ui-material .z-check-checked .z-check-icon-box-checked, .z-check.z-check-ui-material .z-check-checked .z-check-icon-box-dot {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+      -ms-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1); }
+
+.z-check.z-check-ui-material .z-check-indeterminate .z-check-icon-box-indeterminate {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+      -ms-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1); }
+
+.z-check.z-check-ui-material .z-check-disabled .z-check-icon-box-dot, .z-check.z-check-ui-material .z-check-disabled .z-check-icon-box-checked {
+  background-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material .z-check-disabled .z-check-icon-box-rail {
+  border-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material .z-check-disabled.z-check-opt-check-all .z-check-icon-box-checked,
+.z-check.z-check-ui-material .z-check-disabled.z-check-indeterminate .z-check-icon-box-indeterminate {
+  background-color: rgba(33, 150, 243, 0.38); }
+
+.z-check.z-check-ui-material .z-check-disabled.z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material .z-check-disabled.z-check-indeterminate .z-check-icon-box-rail {
+  border-color: rgba(33, 150, 243, 0.38); }
 
 .z-check.z-check-ui-material .z-check-motion-rip {
   position: absolute;
@@ -1823,109 +1849,243 @@ a:hover {
             transform: translate(-50%, -50%) scale(1);
     opacity: .6; } }
 
-.z-check.z-check-ui-material.z-check-theme-success .z-check-checked .z-check-rip > .z-motion-rip-spot {
+.z-check.z-check-ui-material.z-check-theme-success .z-check-checked .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material.z-check-theme-success .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
   background-color: rgba(76, 175, 80, 0.2); }
 
-.z-check.z-check-ui-material.z-check-theme-success .z-check-checked .z-check-motion-rip::after {
+.z-check.z-check-ui-material.z-check-theme-success .z-check-checked .z-check-motion-rip::after,
+.z-check.z-check-ui-material.z-check-theme-success .z-check-indeterminate .z-check-motion-rip::after {
   background-color: rgba(76, 175, 80, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-success .z-check-checked .z-check-icon-box-rail {
+.z-check.z-check-ui-material.z-check-theme-success .z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-success .z-check-indeterminate .z-check-icon-box-rail {
   border-color: #4caf50; }
 
 .z-check.z-check-ui-material.z-check-theme-success .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-success .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-success .z-check-icon-box-indeterminate {
-  background-color: #2196f3; }
+  background-color: #4caf50; }
 
-.z-check.z-check-ui-material.z-check-theme-danger .z-check-checked .z-check-rip > .z-motion-rip-spot {
+.z-check.z-check-ui-material.z-check-theme-success .z-check-disabled .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-success .z-check-disabled .z-check-icon-box-checked {
+  background-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-success .z-check-disabled .z-check-icon-box-rail {
+  border-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-success .z-check-disabled.z-check-opt-check-all .z-check-icon-box-checked,
+.z-check.z-check-ui-material.z-check-theme-success .z-check-disabled.z-check-indeterminate .z-check-icon-box-indeterminate {
+  background-color: rgba(76, 175, 80, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-success .z-check-disabled.z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-success .z-check-disabled.z-check-indeterminate .z-check-icon-box-rail {
+  border-color: rgba(76, 175, 80, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-checked .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
   background-color: rgba(244, 67, 54, 0.2); }
 
-.z-check.z-check-ui-material.z-check-theme-danger .z-check-checked .z-check-motion-rip::after {
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-checked .z-check-motion-rip::after,
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-indeterminate .z-check-motion-rip::after {
   background-color: rgba(244, 67, 54, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-danger .z-check-checked .z-check-icon-box-rail {
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-indeterminate .z-check-icon-box-rail {
   border-color: #f44336; }
 
 .z-check.z-check-ui-material.z-check-theme-danger .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-danger .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-danger .z-check-icon-box-indeterminate {
-  background-color: #2196f3; }
+  background-color: #f44336; }
 
-.z-check.z-check-ui-material.z-check-theme-warning .z-check-checked .z-check-rip > .z-motion-rip-spot {
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-disabled .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-danger .z-check-disabled .z-check-icon-box-checked {
+  background-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-disabled .z-check-icon-box-rail {
+  border-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-disabled.z-check-opt-check-all .z-check-icon-box-checked,
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-disabled.z-check-indeterminate .z-check-icon-box-indeterminate {
+  background-color: rgba(244, 67, 54, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-disabled.z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-danger .z-check-disabled.z-check-indeterminate .z-check-icon-box-rail {
+  border-color: rgba(244, 67, 54, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-checked .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
   background-color: rgba(255, 235, 59, 0.2); }
 
-.z-check.z-check-ui-material.z-check-theme-warning .z-check-checked .z-check-motion-rip::after {
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-checked .z-check-motion-rip::after,
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-indeterminate .z-check-motion-rip::after {
   background-color: rgba(255, 235, 59, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-warning .z-check-checked .z-check-icon-box-rail {
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-indeterminate .z-check-icon-box-rail {
   border-color: #ffeb3b; }
 
 .z-check.z-check-ui-material.z-check-theme-warning .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-warning .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-warning .z-check-icon-box-indeterminate {
-  background-color: #2196f3; }
+  background-color: #ffeb3b; }
 
-.z-check.z-check-ui-material.z-check-theme-orange .z-check-checked .z-check-rip > .z-motion-rip-spot {
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-disabled .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-warning .z-check-disabled .z-check-icon-box-checked {
+  background-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-disabled .z-check-icon-box-rail {
+  border-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-disabled.z-check-opt-check-all .z-check-icon-box-checked,
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-disabled.z-check-indeterminate .z-check-icon-box-indeterminate {
+  background-color: rgba(255, 235, 59, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-disabled.z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-warning .z-check-disabled.z-check-indeterminate .z-check-icon-box-rail {
+  border-color: rgba(255, 235, 59, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-checked .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
   background-color: rgba(255, 87, 34, 0.2); }
 
-.z-check.z-check-ui-material.z-check-theme-orange .z-check-checked .z-check-motion-rip::after {
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-checked .z-check-motion-rip::after,
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-indeterminate .z-check-motion-rip::after {
   background-color: rgba(255, 87, 34, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-orange .z-check-checked .z-check-icon-box-rail {
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-indeterminate .z-check-icon-box-rail {
   border-color: #ff5722; }
 
 .z-check.z-check-ui-material.z-check-theme-orange .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-orange .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-orange .z-check-icon-box-indeterminate {
-  background-color: #2196f3; }
+  background-color: #ff5722; }
 
-.z-check.z-check-ui-material.z-check-theme-blue .z-check-checked .z-check-rip > .z-motion-rip-spot {
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-disabled .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-orange .z-check-disabled .z-check-icon-box-checked {
+  background-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-disabled .z-check-icon-box-rail {
+  border-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-disabled.z-check-opt-check-all .z-check-icon-box-checked,
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-disabled.z-check-indeterminate .z-check-icon-box-indeterminate {
+  background-color: rgba(255, 87, 34, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-disabled.z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-orange .z-check-disabled.z-check-indeterminate .z-check-icon-box-rail {
+  border-color: rgba(255, 87, 34, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-checked .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
   background-color: rgba(33, 150, 243, 0.2); }
 
-.z-check.z-check-ui-material.z-check-theme-blue .z-check-checked .z-check-motion-rip::after {
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-checked .z-check-motion-rip::after,
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-indeterminate .z-check-motion-rip::after {
   background-color: rgba(33, 150, 243, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-blue .z-check-checked .z-check-icon-box-rail {
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-indeterminate .z-check-icon-box-rail {
   border-color: #2196f3; }
 
 .z-check.z-check-ui-material.z-check-theme-blue .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-blue .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-blue .z-check-icon-box-indeterminate {
   background-color: #2196f3; }
 
-.z-check.z-check-ui-material.z-check-theme-light .z-check-checked .z-check-rip > .z-motion-rip-spot {
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-disabled .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-blue .z-check-disabled .z-check-icon-box-checked {
+  background-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-disabled .z-check-icon-box-rail {
+  border-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-disabled.z-check-opt-check-all .z-check-icon-box-checked,
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-disabled.z-check-indeterminate .z-check-icon-box-indeterminate {
+  background-color: rgba(33, 150, 243, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-disabled.z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-blue .z-check-disabled.z-check-indeterminate .z-check-icon-box-rail {
+  border-color: rgba(33, 150, 243, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-light .z-check-checked .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material.z-check-theme-light .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
   background-color: rgba(245, 245, 245, 0.2); }
 
-.z-check.z-check-ui-material.z-check-theme-light .z-check-checked .z-check-motion-rip::after {
+.z-check.z-check-ui-material.z-check-theme-light .z-check-checked .z-check-motion-rip::after,
+.z-check.z-check-ui-material.z-check-theme-light .z-check-indeterminate .z-check-motion-rip::after {
   background-color: rgba(245, 245, 245, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-light .z-check-checked .z-check-icon-box-rail {
+.z-check.z-check-ui-material.z-check-theme-light .z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-light .z-check-indeterminate .z-check-icon-box-rail {
   border-color: #f5f5f5; }
 
 .z-check.z-check-ui-material.z-check-theme-light .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-light .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-light .z-check-icon-box-indeterminate {
-  background-color: #2196f3; }
+  background-color: #f5f5f5; }
 
-.z-check.z-check-ui-material.z-check-theme-dark .z-check-checked .z-check-rip > .z-motion-rip-spot {
+.z-check.z-check-ui-material.z-check-theme-light .z-check-disabled .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-light .z-check-disabled .z-check-icon-box-checked {
+  background-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-light .z-check-disabled .z-check-icon-box-rail {
+  border-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-light .z-check-disabled.z-check-opt-check-all .z-check-icon-box-checked,
+.z-check.z-check-ui-material.z-check-theme-light .z-check-disabled.z-check-indeterminate .z-check-icon-box-indeterminate {
+  background-color: rgba(245, 245, 245, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-light .z-check-disabled.z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-light .z-check-disabled.z-check-indeterminate .z-check-icon-box-rail {
+  border-color: rgba(245, 245, 245, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-checked .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
   background-color: rgba(66, 66, 66, 0.2); }
 
-.z-check.z-check-ui-material.z-check-theme-dark .z-check-checked .z-check-motion-rip::after {
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-checked .z-check-motion-rip::after,
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-indeterminate .z-check-motion-rip::after {
   background-color: rgba(66, 66, 66, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-dark .z-check-checked .z-check-icon-box-rail {
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-indeterminate .z-check-icon-box-rail {
   border-color: #424242; }
 
 .z-check.z-check-ui-material.z-check-theme-dark .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-dark .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-dark .z-check-icon-box-indeterminate {
-  background-color: #2196f3; }
+  background-color: #424242; }
 
-.z-check.z-check-ui-material.z-check-theme-grey .z-check-checked .z-check-rip > .z-motion-rip-spot {
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-disabled .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-dark .z-check-disabled .z-check-icon-box-checked {
+  background-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-disabled .z-check-icon-box-rail {
+  border-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-disabled.z-check-opt-check-all .z-check-icon-box-checked,
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-disabled.z-check-indeterminate .z-check-icon-box-indeterminate {
+  background-color: rgba(66, 66, 66, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-disabled.z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-dark .z-check-disabled.z-check-indeterminate .z-check-icon-box-rail {
+  border-color: rgba(66, 66, 66, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-checked .z-check-rip > .z-motion-rip-spot,
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-indeterminate .z-check-rip > .z-motion-rip-spot {
   background-color: rgba(158, 158, 158, 0.2); }
 
-.z-check.z-check-ui-material.z-check-theme-grey .z-check-checked .z-check-motion-rip::after {
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-checked .z-check-motion-rip::after,
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-indeterminate .z-check-motion-rip::after {
   background-color: rgba(158, 158, 158, 0.3); }
 
-.z-check.z-check-ui-material.z-check-theme-grey .z-check-checked .z-check-icon-box-rail {
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-indeterminate .z-check-icon-box-rail {
   border-color: #9e9e9e; }
 
 .z-check.z-check-ui-material.z-check-theme-grey .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-grey .z-check-icon-box-checked, .z-check.z-check-ui-material.z-check-theme-grey .z-check-icon-box-indeterminate {
-  background-color: #2196f3; }
+  background-color: #9e9e9e; }
+
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-disabled .z-check-icon-box-dot, .z-check.z-check-ui-material.z-check-theme-grey .z-check-disabled .z-check-icon-box-checked {
+  background-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-disabled .z-check-icon-box-rail {
+  border-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-disabled.z-check-opt-check-all .z-check-icon-box-checked,
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-disabled.z-check-indeterminate .z-check-icon-box-indeterminate {
+  background-color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-disabled.z-check-checked .z-check-icon-box-rail,
+.z-check.z-check-ui-material.z-check-theme-grey .z-check-disabled.z-check-indeterminate .z-check-icon-box-rail {
+  border-color: rgba(158, 158, 158, 0.38); }
 @charset "UTF-8";
 /**
  * check 组件的 bootstrap UI 样式
  */
-.z-check.z-check-ui-bootstrap.z-check-multiple .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-multiple .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-multiple .z-check-box:focus:active > .z-check-icon,
-.z-check.z-check-ui-bootstrap.z-check-multiple .z-check-opt-check-all:focus > .z-check-icon,
-.z-check.z-check-ui-bootstrap.z-check-multiple .z-check-opt-check-all:active > .z-check-icon,
-.z-check.z-check-ui-bootstrap.z-check-multiple .z-check-opt-check-all:focus:active > .z-check-icon {
+.z-check.z-check-ui-bootstrap.z-check-multiple .z-check-box:focus > .z-check-icon,
+.z-check.z-check-ui-bootstrap.z-check-multiple .z-check-opt-check-all:focus > .z-check-icon {
   border-radius: 4px; }
 
 .z-check.z-check-ui-bootstrap .z-check-box:focus,
@@ -1937,25 +2097,40 @@ a:hover {
 .z-check.z-check-ui-bootstrap .z-check-opt-check-all.z-check-indeterminate > .z-check-icon > .z-icon {
   color: #2196f3; }
 
-.z-check.z-check-ui-bootstrap .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap .z-check-box:focus:active > .z-check-icon,
-.z-check.z-check-ui-bootstrap .z-check-opt-check-all:focus > .z-check-icon,
-.z-check.z-check-ui-bootstrap .z-check-opt-check-all:active > .z-check-icon,
-.z-check.z-check-ui-bootstrap .z-check-opt-check-all:focus:active > .z-check-icon {
+.z-check.z-check-ui-bootstrap .z-check-box.z-check-disabled > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap .z-check-opt-check-all.z-check-disabled > .z-check-icon > .z-icon {
+  color: rgba(207, 207, 207, 0.38); }
+
+.z-check.z-check-ui-bootstrap .z-check-box.z-check-disabled.z-check-checked > .z-check-icon > .z-icon, .z-check.z-check-ui-bootstrap .z-check-box.z-check-disabled.z-check-indeterminate > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap .z-check-opt-check-all.z-check-disabled.z-check-checked > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap .z-check-opt-check-all.z-check-disabled.z-check-indeterminate > .z-check-icon > .z-icon {
+  color: rgba(33, 150, 243, 0.38); }
+
+.z-check.z-check-ui-bootstrap .z-check-box:focus > .z-check-icon,
+.z-check.z-check-ui-bootstrap .z-check-opt-check-all:focus > .z-check-icon {
   border-radius: 100%;
   box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3); }
 
 .z-check.z-check-ui-bootstrap .z-check-box > .z-check-icon > .z-icon,
 .z-check.z-check-ui-bootstrap .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #cfcfcf;
-  font-size: 16px; }
+  font-size: 21px; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-box.z-check-checked > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-box.z-check-checked > .z-check-icon > .z-icon, .z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-box.z-check-indeterminate > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-opt-check-all.z-check-indeterminate > .z-check-icon > .z-icon {
   color: #4caf50; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-box:focus:active > .z-check-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-box.z-check-disabled > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-opt-check-all.z-check-disabled > .z-check-icon > .z-icon {
+  color: rgba(76, 175, 80, 0.38); }
+
+.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-box:focus > .z-check-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-opt-check-all:focus > .z-check-icon {
   box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3); }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-box > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-box > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #80e27e; }
 
 .z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
@@ -1964,13 +2139,21 @@ a:hover {
 .z-check.z-check-ui-bootstrap.z-check-theme-success .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #80e27e; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-box.z-check-checked > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-box.z-check-checked > .z-check-icon > .z-icon, .z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-box.z-check-indeterminate > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-opt-check-all.z-check-indeterminate > .z-check-icon > .z-icon {
   color: #f44336; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-box:focus:active > .z-check-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-box.z-check-disabled > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-opt-check-all.z-check-disabled > .z-check-icon > .z-icon {
+  color: rgba(244, 67, 54, 0.38); }
+
+.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-box:focus > .z-check-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-opt-check-all:focus > .z-check-icon {
   box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.3); }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-box > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-box > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #ff7961; }
 
 .z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
@@ -1979,13 +2162,21 @@ a:hover {
 .z-check.z-check-ui-bootstrap.z-check-theme-danger .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #ff7961; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-box.z-check-checked > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-box.z-check-checked > .z-check-icon > .z-icon, .z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-box.z-check-indeterminate > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-opt-check-all.z-check-indeterminate > .z-check-icon > .z-icon {
   color: #ffeb3b; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-box:focus:active > .z-check-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-box.z-check-disabled > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-opt-check-all.z-check-disabled > .z-check-icon > .z-icon {
+  color: rgba(255, 235, 59, 0.38); }
+
+.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-box:focus > .z-check-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-opt-check-all:focus > .z-check-icon {
   box-shadow: 0 0 0 3px rgba(255, 235, 59, 0.3); }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-box > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-box > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #ffff72; }
 
 .z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
@@ -1994,13 +2185,21 @@ a:hover {
 .z-check.z-check-ui-bootstrap.z-check-theme-warning .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #ffff72; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-box.z-check-checked > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-box.z-check-checked > .z-check-icon > .z-icon, .z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-box.z-check-indeterminate > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-opt-check-all.z-check-indeterminate > .z-check-icon > .z-icon {
   color: #ff5722; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-box:focus:active > .z-check-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-box.z-check-disabled > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-opt-check-all.z-check-disabled > .z-check-icon > .z-icon {
+  color: rgba(255, 87, 34, 0.38); }
+
+.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-box:focus > .z-check-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-opt-check-all:focus > .z-check-icon {
   box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.3); }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-box > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-box > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #ff8a50; }
 
 .z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
@@ -2009,13 +2208,21 @@ a:hover {
 .z-check.z-check-ui-bootstrap.z-check-theme-orange .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #ff8a50; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-box.z-check-checked > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-box.z-check-checked > .z-check-icon > .z-icon, .z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-box.z-check-indeterminate > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-opt-check-all.z-check-indeterminate > .z-check-icon > .z-icon {
   color: #2196f3; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-box:focus:active > .z-check-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-box.z-check-disabled > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-opt-check-all.z-check-disabled > .z-check-icon > .z-icon {
+  color: rgba(33, 150, 243, 0.38); }
+
+.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-box:focus > .z-check-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-opt-check-all:focus > .z-check-icon {
   box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3); }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-box > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-box > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #6ec6ff; }
 
 .z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
@@ -2024,13 +2231,21 @@ a:hover {
 .z-check.z-check-ui-bootstrap.z-check-theme-blue .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #6ec6ff; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-box.z-check-checked > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-box.z-check-checked > .z-check-icon > .z-icon, .z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-box.z-check-indeterminate > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-opt-check-all.z-check-indeterminate > .z-check-icon > .z-icon {
   color: #f5f5f5; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-box:focus:active > .z-check-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-box.z-check-disabled > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-opt-check-all.z-check-disabled > .z-check-icon > .z-icon {
+  color: rgba(245, 245, 245, 0.38); }
+
+.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-box:focus > .z-check-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-opt-check-all:focus > .z-check-icon {
   box-shadow: 0 0 0 3px rgba(245, 245, 245, 0.3); }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-box > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-box > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #fff; }
 
 .z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
@@ -2039,13 +2254,21 @@ a:hover {
 .z-check.z-check-ui-bootstrap.z-check-theme-light .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #fff; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-box.z-check-checked > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-box.z-check-checked > .z-check-icon > .z-icon, .z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-box.z-check-indeterminate > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-opt-check-all.z-check-indeterminate > .z-check-icon > .z-icon {
   color: #424242; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-box:focus:active > .z-check-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-box.z-check-disabled > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-opt-check-all.z-check-disabled > .z-check-icon > .z-icon {
+  color: rgba(66, 66, 66, 0.38); }
+
+.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-box:focus > .z-check-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-opt-check-all:focus > .z-check-icon {
   box-shadow: 0 0 0 3px rgba(66, 66, 66, 0.3); }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-box > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-box > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #6d6d6d; }
 
 .z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
@@ -2054,13 +2277,21 @@ a:hover {
 .z-check.z-check-ui-bootstrap.z-check-theme-dark .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #6d6d6d; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-box.z-check-checked > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-box.z-check-checked > .z-check-icon > .z-icon, .z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-box.z-check-indeterminate > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-opt-check-all.z-check-indeterminate > .z-check-icon > .z-icon {
   color: #9e9e9e; }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-box:focus > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-box:active > .z-check-icon, .z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-box:focus:active > .z-check-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-box.z-check-disabled > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-opt-check-all.z-check-disabled > .z-check-icon > .z-icon {
+  color: rgba(158, 158, 158, 0.38); }
+
+.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-box:focus > .z-check-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-opt-check-all:focus > .z-check-icon {
   box-shadow: 0 0 0 3px rgba(158, 158, 158, 0.3); }
 
-.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-box > .z-check-icon > .z-icon {
+.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-box > .z-check-icon > .z-icon,
+.z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-opt-check-all > .z-check-icon > .z-icon {
   color: #cfcfcf; }
 
 .z-check.z-check-ui-bootstrap.z-check-theme-grey .z-check-opt-check-all.z-check-checked > .z-check-icon > .z-icon {
@@ -3850,4 +4081,4 @@ a:hover {
     .footer-layout-stage {
       position: static; } }
 
-/*# sourceMappingURL=app.a4cb1cdd4a240109aa51.css.map*/
+/*# sourceMappingURL=app.53377624260598f7a118.css.map*/
