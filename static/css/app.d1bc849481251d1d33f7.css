@@ -1852,10 +1852,10 @@ a:hover {
   .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-rail {
     border-radius: 0; }
   .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-indeterminate, .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-checked {
-    width: 16px;
-    height: 16px; }
+    width: 18px;
+    height: 18px; }
     .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-indeterminate .z-icon, .z-check.z-check-ui-material .z-check-icon.z-check-icon-checkbox .z-check-icon-box-checked .z-icon {
-      font-size: 16px;
+      font-size: 18px;
       color: #fff;
       vertical-align: middle; }
 
@@ -1882,17 +1882,17 @@ a:hover {
           transform: translate(-50%, -50%) scale(1); }
 
 .z-check.z-check-ui-material .z-check-disabled .z-check-icon-box-dot, .z-check.z-check-ui-material .z-check-disabled .z-check-icon-box-checked {
-  background-color: rgba(158, 158, 158, 0.38); }
+  background-color: #dadada; }
 
 .z-check.z-check-ui-material .z-check-disabled .z-check-icon-box-rail {
-  border-color: rgba(158, 158, 158, 0.38); }
+  border-color: #dadada; }
 
 .z-check.z-check-ui-material .z-check-disabled.z-check-opt-check-all .z-check-icon-box-checked,
 .z-check.z-check-ui-material .z-check-disabled.z-check-indeterminate .z-check-icon-box-indeterminate {
-  background-color: rgba(33, 150, 243, 0.38); }
+  background-color: #add7fa; }
 
 .z-check.z-check-ui-material .z-check-disabled.z-check-opt-check-all.z-check-checked .z-check-icon-box-rail, .z-check.z-check-ui-material .z-check-disabled.z-check-opt-check-all.z-check-indeterminate .z-check-icon-box-rail {
-  border-color: rgba(33, 150, 243, 0.38); }
+  border-color: #add7fa; }
 
 .z-check.z-check-ui-material .z-check-motion-rip {
   position: absolute;
@@ -4380,4 +4380,4 @@ a:hover {
     .footer-layout-stage {
       position: static; } }
 
-/*# sourceMappingURL=app.0fb2506a0a6f5bf22e4d.css.map*/
+/*# sourceMappingURL=app.d1bc849481251d1d33f7.css.map*/
