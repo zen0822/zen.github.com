@@ -1,0 +1,1 @@
+webpackJsonp([29],{554:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var u,n=a(608),l=(u=n)&&u.__esModule?u:{default:u};t.default={name:"PageHello",template:(0,l.default)(),data:function(){return{}}}},608:function(e,t,a){a(92);e.exports=function(e){var t="";return t+='<div class="page-about">hello, 我可以撩你吗？</div>'}}});
