@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:////home/travis/build/zen0822/vue2do/example/client/component/page/Blog/Blog.scss"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA,iBAAiB","file":"static/css/2.0e1ffc7415e772736949.css","sourcesContent":[".p-blog-p {\n  max-width: 1200px;\n  box-sizing: border-box;\n  padding: 20px 50px;\n  margin: 0 auto; }\n"],"sourceRoot":""}

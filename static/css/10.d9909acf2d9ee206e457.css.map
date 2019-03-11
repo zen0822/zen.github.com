@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:////home/travis/build/zen0822/vue2do/example/client/component/page/Component/data/List/List.scss"],"names":[],"mappings":"AAAA;AACA,sBAAsB","file":"static/css/10.d9909acf2d9ee206e457.css","sourcesContent":[".component-list .z-list-li {\n  white-space: nowrap; }\n"],"sourceRoot":""}
