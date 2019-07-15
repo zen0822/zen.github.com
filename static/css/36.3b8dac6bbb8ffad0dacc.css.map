@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./example/client/component/page/Mock/Mock.scss"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA,iBAAiB","file":"static/css/36.3b8dac6bbb8ffad0dacc.css","sourcesContent":[".p-mock-p {\n  max-width: 1200px;\n  box-sizing: border-box;\n  padding: 20px 50px;\n  margin: 0 auto; }\n"],"sourceRoot":""}
