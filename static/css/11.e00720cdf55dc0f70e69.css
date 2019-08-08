@@ -1,0 +1,13 @@
+/**
+ * zenSpa/scss/config.scss
+ */
+.component-transition .transitioner {
+  min-height: 30px; }
+  .component-transition .transitioner-rip {
+    position: relative;
+    height: 30px;
+    width: 150px;
+    overflow: hidden; }
+
+
+/*# sourceMappingURL=11.e00720cdf55dc0f70e69.css.map*/
