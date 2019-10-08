@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/**
+ * img 组件样式
+ */
+.z-img {
+  display: block; }
+  .z-img-content {
+    width: 100%;
+    vertical-align: middle; }
+  .z-img-skeleton {
+    background-color: #cfcfcf; }
+
+
+/*# sourceMappingURL=39.d36b9da02729e2b13fc7.css.map*/
