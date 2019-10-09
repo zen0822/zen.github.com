@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[38],{496:function(n,e,t){t(105);n.exports=function(n){var e="";return e+='<div class="page-about">hello, 我可以撩你吗？</div>'}},560:function(n,e,t){"use strict";t.r(e);var a=t(496),o=t.n(a);e.default={name:"PageHello",template:o()(),data:function(){return{}}}}}]);
