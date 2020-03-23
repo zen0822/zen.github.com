@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[37],{504:function(n,t){},511:function(n,t,e){e(503);n.exports=function(n){var t="";return t+='<div class="page-about">hello, 我可以撩你吗？</div>'}},575:function(n,t,e){"use strict";e.r(t);var a=e(511),o=e.n(a);t.default={name:"PageHello",template:o()(),data:function(){return{}}}}}]);
+//# sourceMappingURL=37.bundle.f159bca.js.map
